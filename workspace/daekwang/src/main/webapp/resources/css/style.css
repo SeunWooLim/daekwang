@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#header{width:100%; height:100%; position:relative;}
+	.head_top_wrap{width:100%: height:48px; overflow:hidden; max-width:1170px; margin:0 auto}
+	.head_top_wrap .head_top_left{float:left;}
+	.head_top_wrap .head_top_left a{}
+	.head_top_wrap .head_top_left a img{}
+	
+	.head_top_wrap .head_top_right{float:right}
+	.head_top_wrap .head_top_right a{line-height:48px;}
+	
+

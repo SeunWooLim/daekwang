@@ -13,7 +13,7 @@
 		<div class="head_top_wrap">
 			<div class="head_top_left">
 				<a href="../index.jsp">
-					<img alt="안양대광교회" src="/daekwang/resource/img/index_logo.gif">
+					<img alt="안양대광교회" src="/daekwang/resources/img/index_logo.gif">
 				</a>
 			</div>
 			<div class="head_top_right">

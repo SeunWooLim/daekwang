@@ -7,8 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/daekwang/resource/css/basic.css">
-<link rel="stylesheet" type="text/css" href="/daekwang/resource/css/style.css">
+<link rel="stylesheet" type="text/css" href="/daekwang/resources/css/basic.css">
+<link rel="stylesheet" type="text/css" href="/daekwang/resources/css/style.css">
 </head>
 <body>
 
