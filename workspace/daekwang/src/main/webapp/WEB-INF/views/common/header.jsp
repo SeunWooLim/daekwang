@@ -9,6 +9,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div id="header">
+		<div class="head_top_wrap">
+			<div class="head_top_left">
+				<a href="../index.jsp">
+					<img alt="안양대광교회" src="/daekwang/resource/img/index_logo.gif">
+				</a>
+			</div>
+			<div class="head_top_right">
+				<a href="#">사이트맵</a>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
