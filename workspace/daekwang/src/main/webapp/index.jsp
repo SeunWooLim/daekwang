@@ -9,6 +9,6 @@
 <title>index</title>
 </head>
 <body>
-<jsp:forward page="home.do"></jsp:forward>
+<a href="forwardMain.do">go to mainPage</a>
 </body>
 </html>
