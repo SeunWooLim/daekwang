@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="/daekwang/resources/css/basic.css">
 <link rel="stylesheet" type="text/css" href="/daekwang/resources/css/style.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
 

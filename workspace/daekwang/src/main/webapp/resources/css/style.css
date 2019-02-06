@@ -1,12 +1,32 @@
 @charset "UTF-8";
 
 #header{width:100%; height:100%; position:relative;}
-	.head_top_wrap{width:100%: height:48px; overflow:hidden; max-width:1170px; margin:0 auto}
-	.head_top_wrap .head_top_left{float:left;}
-	.head_top_wrap .head_top_left a{}
-	.head_top_wrap .head_top_left a img{}
+	.head_top_wrap{width:100%: height:100%;}
+	.head_top_wrap .head_top{width:100%: height:48px; overflow:hidden; max-width:1170px; margin:0 auto}
+	.head_top_wrap .head_top .head_top_left{float:left;}
+	.head_top_wrap .head_top .head_top_left a{}
+	.head_top_wrap .head_top .head_top_left a img{}
 	
-	.head_top_wrap .head_top_right{float:right}
-	.head_top_wrap .head_top_right a{line-height:48px;}
+	.head_top_wrap .head_top .head_top_right{float:right}
+	.head_top_wrap .head_top .head_top_right a{line-height:48px;}
 	
-
+	.head_mid_wrap{width:100%; height:100%; background:rgb(61,81,147)}
+		.head_mid_wrap ul{width:100%; height:40px; max-width:1170px; margin:0 auto; overflow:hidden;}
+		.head_mid_wrap ul li{float:left; line-height:40px; width:20%; text-align:center;	}
+		.head_mid_wrap ul li a{font-size:16px; color:#f9f9f9; transition:all,.5s;}
+		.head_mid_wrap ul li a:hover{background:rgb(89,155,226); color:#fff; transition:all,.5s;}
+		
+	.head_mid_detail_wrap{width:100%; height:100%; border-bottom:1px solid #000; display:none;}
+		.head_mid_detail{width:100%; height:487px; max-width:1170px; margin:0 auto;}
+		.head_mid_detail table{width:100%; height:487px; text-align:center;}
+		.head_mid_detail table tbody{}
+		.head_mid_detail table tbody tr{}
+		.head_mid_detail table tbody tr td{vertical-align: top; border-right:2px solid #ccc; padding:0 10px; box-sizing:border-box;}
+		.head_mid_detail table tbody tr td:last-child{border:none;}
+		.head_mid_detail table tbody tr td:hover{background:#173e57}
+		.head_mid_detail table tbody tr td > ul{}
+		.head_mid_detail table tbody tr td > ul > li{height:34px; line-height:34px;}
+		.head_mid_detail table tbody tr td > ul > li a{font-size:14px; transition:all,.5s; color:#ccc}
+		.head_mid_detail table tbody tr td > ul > li a:hover{color:#fff !important; background:rgb(89,155,226); transition:all,.5s;}
+		.head_mid_detail table tbody tr td > ul > li span{font-size:14px; color:#a1a1a1; font-weight:bold;}
+		
