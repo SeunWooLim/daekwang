@@ -10,5 +10,9 @@
 </head>
 <body>
 
+<!-- 밑에 두가지 방법 중 하나 이용 -->
+<jsp:include page="header.jsp"/>
+<c:import url="header.jsp" />
+ 
 </body>
 </html>
