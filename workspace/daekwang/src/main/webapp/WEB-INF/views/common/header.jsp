@@ -24,11 +24,11 @@
 		</div>
 		<div class="head_mid_wrap">
 			<ul>
-				<li><a href="#">교회안내</a></li>
-				<li><a href="#">말씀과 찬양</a></li>
-				<li><a href="#">나눔과 자료</a></li>
-				<li><a href="#">다음세대</a></li>
-				<li><a href="#">선교</a></li>
+				<li><a href="pastorGreeting.do">교회안내</a></li>
+				<li><a href="sundayWorship.do">말씀과 찬양</a></li>
+				<li><a href="newFamilyIntroducing.do">나눔과 자료</a></li>
+				<li><a href="firstYouth.do">다음세대</a></li>
+				<li><a href="mediatorPrayer.do">선교</a></li>
 			</ul>
 		</div>
 		<div class="head_mid_detail_wrap">
@@ -45,59 +45,59 @@
 						<tr>
 							<td>
 								<ul>
-									<li><a href="#">담임목사 인사</a></li>
-									<li><a href="#">대광교회 소개</a></li>
-									<li><a href="#">교회연혁</a></li>
-									<li><a href="#">새가족을 위한 안내</a></li>
-									<li><a href="#">섬기는 사람들</a></li>
-									<li><a href="#">예배안내</a></li>
-									<li><a href="#">찾아오시는 길</a></li>
+									<li><a href="pastorGreeting.do">담임목사 인사</a></li>
+									<li><a href="churchIntrodocing.do">대광교회 소개</a></li>
+									<li><a href="churchHistory.do">교회연혁</a></li>
+									<li><a href="newFamilyGuide.do">새가족을 위한 안내</a></li>
+									<li><a href="volunteers.do">섬기는 사람들</a></li>
+									<li><a href="worshipGuide.do">예배안내</a></li>
+									<li><a href="howToCome.do">찾아오시는 길</a></li>
 								</ul>
 							</td>
 							<td>
 								<ul>
 									<li><span class="subtitle">예배 설교</span></li>
-									<li><a href="#">주일 낮 설교</a></li>
-									<li><a href="#">수요기도회 설교</a></li>
-									<li><a href="#">올젠워십 설교</a></li>
+									<li><a href="sundayWorship.do">주일 낮 설교</a></li>
+									<li><a href="wednesdayWorship.do">수요기도회 설교</a></li>
+									<li><a href="allgenWorship.do">올젠워십 설교</a></li>
 									<li><span class="subtitle">예배 찬양</span></li>
-									<li><a href="#">샬롬 찬양대</a></li>	
-									<li><a href="#">임마누엘 찬양대</a></li>
-									<li><a href="#">연합찬양대</a></li>
-									<li><a href="#">특송</a></li>
-									<li><a href="#">특별행사</a></li>
+									<li><a href="chalomChoir.do">샬롬 찬양대</a></li>	
+									<li><a href="immanuelChoir.do">임마누엘 찬양대</a></li>
+									<li><a href="unionChoir.do">연합찬양대</a></li>
+									<li><a href="speicalSong.do">특송</a></li>
+									<li><a href="specialEvent.do">특별행사</a></li>
 								</ul>
 							</td>
 							<td>
 								<ul>
-									<li><a href="#">새가족소개</a></li>
-									<li><a href="#">교회소식</a></li>
-									<li><a href="#">교우소식</a></li>
-									<li><a href="#">교회사진</a></li>
-									<li><a href="#">행사 동영상</a></li>
-									<li><a href="#">꽃꽃이 갤러리</a></li>
-									<li><a href="#">주보 광고신청</a></li>
-									<li><a href="#">예배 자료신청</a></li>
+									<li><a href="newFamilyIntroducing.do">새가족소개</a></li>
+									<li><a href="churchNews.do">교회소식</a></li>
+									<li><a href="personNews.do">교우소식</a></li>
+									<li><a href="churchPhoto.do">교회사진</a></li>
+									<li><a href="eventVideo.do">행사 동영상</a></li>
+									<li><a href="flowerPhoto.do">꽃꽃이 갤러리</a></li>
+									<li><a href="weekPageApply.do">주보 광고신청</a></li>
+									<li><a href="worshipDataApply.do">예배 자료신청</a></li>
 								</ul>
 							</td>
 							<td>
 								<ul>
 									<li><span class="subtitle">청년회</span></li>
-									<li><a href="#">제1청년회</a></li>
-									<li><a href="#">제2청년회</a></li>
+									<li><a href="firstYouth.do">제1청년회</a></li>
+									<li><a href="secondYouth.do">제2청년회</a></li>
 									<li><span class="subtitle">교회학교</span></li>
-									<li><a href="#">영유아부</a></li>
-									<li><a href="#">유치부</a></li>
-									<li><a href="#">유년부</a></li>
-									<li><a href="#">소년부</a></li>
-									<li><a href="#">중등부</a></li>
-									<li><a href="#">고등부</a></li>
+									<li><a href="infants.do">영유아부</a></li>
+									<li><a href="kindergarten.do">유치부</a></li>
+									<li><a href="lowChild.do">유년부</a></li>
+									<li><a href="highChild.do">소년부</a></li>
+									<li><a href="middleSchool.do">중등부</a></li>
+									<li><a href="highSchool.do">고등부</a></li>
 								</ul>
 							</td>
 							<td>
 								<ul>
-									<li><a href="#">중보기도회</a></li>
-									<li><a href="#">경기기독문화원</a></li>
+									<li><a href="mediatorPrayer.do">중보기도회</a></li>
+									<li><a href="christianityCulture.do">경기기독문화원</a></li>
 								</ul>
 							</td>						
 						</tr>

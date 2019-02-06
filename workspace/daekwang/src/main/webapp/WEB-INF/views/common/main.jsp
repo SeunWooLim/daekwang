@@ -16,8 +16,9 @@
 <!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="header.jsp"/>
 
+<div style="margin:550px 0;"></div>
 
-<%-- <jsp:include page="footer.jsp"/> --%>
+<jsp:include page="footer.jsp"/>
  
 </body>
 </html>
