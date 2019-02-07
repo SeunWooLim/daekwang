@@ -49,7 +49,7 @@
 	       		</p>
 			</div>
 			<div class="right_right">
-				<img src="/daekwang/resources/img/king.png">
+				<img src="<c:url value="/"/>resources/img/king.png">
 				<p class="title">담임목사 <span>이병수</span></p>
 				<ul>
 					<li>- 현 대광교회 담임목사</li>

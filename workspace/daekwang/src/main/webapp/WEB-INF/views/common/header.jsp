@@ -13,8 +13,8 @@
 		<div class="head_top_wrap">
 			<div class="head_top">
 				<div class="head_top_left">
-				<a href="../index.jsp">
-					<img alt="안양대광교회" src="/daekwang/resources/img/index_logo.gif">
+				<a href="forwardMain.do">
+					<img alt="안양대광교회" src="<c:url value="/"/>resources/img/index_logo.gif">
 				</a>
 			</div>
 			<div class="head_top_right">
@@ -46,7 +46,7 @@
 							<td>
 								<ul>
 									<li><a href="pastorGreeting.do">담임목사 인사</a></li>
-									<li><a href="churchIntrodocing.do">대광교회 소개</a></li>
+									<li><a href="churchIntroducing.do">대광교회 소개</a></li>
 									<li><a href="churchHistory.do">교회연혁</a></li>
 									<li><a href="newFamilyGuide.do">새가족을 위한 안내</a></li>
 									<li><a href="volunteers.do">섬기는 사람들</a></li>
