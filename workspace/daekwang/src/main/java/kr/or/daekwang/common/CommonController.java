@@ -28,9 +28,9 @@ public class CommonController {
 	 * @return churchIntrodocing.jsp
 	 * 대광교회 소개 페이지로 이동
 	 */
-	@RequestMapping(value = "/churchIntrodocing.do")
+	@RequestMapping(value = "/churchIntroducing.do")
 	public String churchIntrodocing() {
-		return "churchGuide/churchIntrodocing";
+		return "churchGuide/churchIntroducing";
 	}
 	
 	/**

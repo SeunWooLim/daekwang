@@ -1,10 +1,16 @@
 package kr.or.daekwang.board.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import kr.or.daekwang.board.model.service.BoardService;
+
 @Controller
-public class boardController {
+public class BoardController {
+	
+	@Autowired
+	private BoardService boardSerivce;
 	
 	@RequestMapping(value = "/newFamilyIntroducing.do")
 	public String newFamilyIntroducing() {

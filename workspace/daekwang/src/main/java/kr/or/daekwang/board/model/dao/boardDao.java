@@ -1,5 +1,12 @@
 package kr.or.daekwang.board.model.dao;
 
-public class boardDao {
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository("boardDao")
+public class BoardDao {
+	
+	@Autowired
+	private SqlSessionTemplate mybatis;
 }
