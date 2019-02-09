@@ -20,9 +20,7 @@
 	</div>
 </div>
 
-<div class="greet_wrap">
-	<div class="greet_title">담임목사 인사</div>
-	
+<div class="greet_wrap">	
 	<div class="greet_detail">
 		<div class="greet_left">
 			<p>환영인사</p>
