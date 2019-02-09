@@ -20,9 +20,7 @@
 	</div>
 </div>
 
-<div class="intro_wrap">
-	<div class="intro_title">대광교회 소개</div>
-	
+<div class="intro_wrap">	
 	<div class="intro_detail">
 		<div class="intro_left">
 			<p>교회소개</p>
