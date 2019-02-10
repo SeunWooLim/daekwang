@@ -12,7 +12,7 @@ public class AdminController {
 	@Autowired
 	private AdminService adminService;
 	
-	@RequestMapping(value = "adminHome.do")
+	@RequestMapping(value = "admin.do")
 	public String adminHome() {
 		return "admin/adminhome";
 	}
