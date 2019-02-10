@@ -48,11 +48,20 @@
 	</servlet-mapping>
 	
 	<!-- 공용에러페이지 -->
-<!-- 	<error-page>
-		<exception-type>java.lang.Exception</exception-type>
-		<location>/WEB-INF/views/common/errorPage.jsp</location>
-	</error-page> -->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/views/common/403errorPage.jsp</location>
+	</error-page>
+	<error-page>
+    	<error-code>404</error-code>
+    	<location>/WEB-INF/views/common/404errorPage.jsp</location>
+    </error-page>
+    <error-page>
+    	<error-code>500</error-code>
+    	<location>/WEB-INF/views/common/500errorPage.jsp</location>
+    </error-page>
 	
+	<!-- character set 설정 -->
 	<filter>
 		<filter-name>characterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -61,5 +70,5 @@
 			<param-value>UTF-8</param-value>
 		</init-param>
 	</filter>
-
+	
 </web-app>
