@@ -14,146 +14,148 @@
 <!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="../common/header.jsp"/>
 
-<div class="subvisual_wrap">
-	<div class="subvisual_text">
-		<p class=title>섬기는 사람들</p>
-		<p class="text">안양대광교회</p>
+<div id="wrap">
+	<div class="subvisual_wrap">
+		<div class="subvisual_text">
+			<p class=title>섬기는 사람들</p>
+			<p class="text">안양대광교회</p>
+		</div>
 	</div>
-</div>
-
-<div class="volunteers_wrap">	
-	<ul class="volunteers_btn">
-		<li class="on">목사</li><li>전도사</li><li>장로</li>
-	</ul>
 	
-	<div class="list_wrap list1">
-		<ul>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 원로목사</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 담임목사</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 부목사</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 부목사</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 부목사</p>
-				</div>
-			</li>
+	<div class="volunteers_wrap">	
+		<ul class="volunteers_btn">
+			<li class="on">목사</li><li>전도사</li><li>장로</li>
 		</ul>
+		
+		<div class="list_wrap list1">
+			<ul>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 원로목사</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 담임목사</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 부목사</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 부목사</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 부목사</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="list_wrap list2">
+			<ul>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 전도사</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 전도사</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 전도사</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 전도사</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="list_wrap list3">
+			<ul>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 장로</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 장로</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 장로</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 장로</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/king.png">
+					</div>
+					<div class="right_box">
+						<p>이병수 장로</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		
 	</div>
-	
-	<div class="list_wrap list2">
-		<ul>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 전도사</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 전도사</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 전도사</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 전도사</p>
-				</div>
-			</li>
-		</ul>
-	</div>
-	
-	<div class="list_wrap list3">
-		<ul>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 장로</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 장로</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 장로</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 장로</p>
-				</div>
-			</li>
-			<li>
-				<div class="left_box">
-					<img alt="" src="<c:url value="/"/>resources/img/king.png">
-				</div>
-				<div class="right_box">
-					<p>이병수 장로</p>
-				</div>
-			</li>
-		</ul>
-	</div>
-	
-	
 </div>
 
 <jsp:include page="../common/footer.jsp"/>

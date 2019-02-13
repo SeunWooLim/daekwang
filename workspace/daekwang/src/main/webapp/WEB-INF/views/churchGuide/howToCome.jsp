@@ -14,19 +14,20 @@
 <!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="../common/header.jsp"/>
 
-<div class="subvisual_wrap">
-	<div class="subvisual_text">
-		<p class=title>찾아오시는 길</p>
-		<p class="text">안양대광교회</p>
-	</div>
-</div>
-
-<div class="howtocome_wrap">
-	<div class=map_wrap>
-		<div id="map" style="width:100%;height:100%;"></div>
+<div id="wrap">
+	<div class="subvisual_wrap">
+		<div class="subvisual_text">
+			<p class=title>찾아오시는 길</p>
+			<p class="text">안양대광교회</p>
+		</div>
 	</div>
 	
-	<div class="map_text">
+	<div class="howtocome_wrap">
+		<div class=map_wrap>
+			<div id="map" style="width:100%;height:100%;"></div>
+		</div>
+		
+		<div class="map_text">
 			<table>
 				<colgroup>
 					<col width="25%">
@@ -55,6 +56,7 @@
 				</tbody>
 			</table>		
 		</div>
+	</div>
 </div>
 
 <jsp:include page="../common/footer.jsp"/>
