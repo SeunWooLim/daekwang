@@ -1,30 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/daekwang/resources/css/basic.css">
-<link rel="stylesheet" type="text/css" href="/daekwang/resources/css/style.css">
-<link rel="stylesheet" type="text/css" href="/daekwang/resources/css/jquery.jqplot.css"/>
-<link rel="stylesheet" type="text/css" href="/daekwang/resources/css/simple.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
-<script src="/daekwang/resources/js/jquery-1.11.1.min.js"></script>
-<script src="/daekwang/resources/js/jquery-ui.min.js"></script>
-<script src="/daekwang/resources/js/script.js"></script>
-
-<script src="/daekwang/resources/js/jquery.jqplot.js"></script>
-<script src="/daekwang/resources/js/excanvas.js"></script>
-<script type="text/javascript" src="/daekwang/resources/plugins/dist/jqplot.categoryAxisRenderer.min.js"></script>
-<script type="text/javascript" src="/daekwang/resources/plugins/dist/jqplot.barRenderer.min.js"></script>
-<script type="text/javascript" src="/daeknwang/resources/plugins/dist/jqplot.pointLabels.min.js"></script>
+<jsp:include page="../common/adminmeta.jsp"/>
 </head>
 <body>
 <div id="wrap">
 	<!--header s-->
-		<jsp:include page="header.jsp"/>
-		<jsp:include page="nav.jsp"/>
+	<jsp:include page="header.jsp"/>
+	<jsp:include page="nav.jsp"/>
 	<!--header e-->
 	<!--container s-->
 		<div id="container">
@@ -110,5 +99,12 @@
 		</div>
 	<!--container s-->
 	</div>
-</body>
+
+ </body>
 </html>
+<style>
+	.menuuuuuu{}
+	.menuuuuuu li{margin-bottom:20px; }
+	.menuuuuuu li p{font-size:20px;}
+	.menuuuuuu li p span{font-size:20px;}
+</style>

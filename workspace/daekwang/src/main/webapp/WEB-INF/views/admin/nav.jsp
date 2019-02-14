@@ -12,26 +12,22 @@
 <nav id="sidenav" class="sidenav">
 	<a class="logo" href="../index.html">LOGO</a>
 	<ul class="">
-		<li><a href="../index.html" style="background:none;"><i class="xi-home"></i>Home</a></li>
+		<li><a href="#" style="background:none;"><i class="xi-home"></i>Home</a></li>
 	</ul>
 	<ul class="menulist">
 		<li><a href="#"><i class="xi-layout-column"></i>메뉴1</a>
 			<ul class="nav_detail">
-				<li><a href="/contents/menu1_1.html">메뉴1-1</a></li>
-				<li><a href="/contents/menu1_2.html">메뉴1-2</a></li>
-				<li><a href="/contents/menu1_3.html">메뉴1-3</a></li>
-				<li><a href="/contents/menu1_4.html">메뉴1-4</a></li>
-				<li><a href="/contents/menu1_5.html">메뉴1-5</a></li>
-				<li><a href="/contents/menu1_6.html">메뉴1-6</a></li>
-				<li><a href="/contents/menu1_7.html">메뉴1-7</a></li>
-				<li><a href="/contents/menu1_8.html">메뉴1-8</a></li>
-				<li><a href="/contents/menu1_9.html">메뉴1-9</a></li>
-				<li><a href="/contents/menu1_10.html">메뉴1-10</a></li>
-				<li><a href="/contents/menu1_11.html">메뉴1-11</a></li>
-				<li><a href="/contents/menu1_12.html">메뉴1-12</a></li>
+				<li><a href="#">교회학교 관리 </a></li>
+				<li><a href="#">교회소식 관리 </a></li>
+				<li><a href="#">교우소식 관리</a></li>
+				<li><a href="#">교회사진 관리</a></li>
+				<li><a href="#">행사동영상 관리</a></li>
+				<li><a href="#">꽃꽃이 갤러리 관리</a></li>
+				<li><a href="#">주보 광고신청 관리</a></li>
+				<li><a href="#">예배 자료신청 관리</a></li>
 			</ul>
 		</li>
-		<li><a href="#"><i class="xi-market"></i>메뉴2</a>
+		<!-- <li><a href="#"><i class="xi-market"></i>메뉴2</a>
 			<ul class="nav_detail">
 				<li><a href="/contents/menu2_1.html">메뉴2-1</a></li>
 				<li><a href="/contents/menu2_2.html">메뉴2-2</a></li>
@@ -48,7 +44,7 @@
 				<li><a href="/contents/menu3_6.html">메뉴3-6</a></li>
 				<li><a href="/contents/menu3_7.html">메뉴3-7</a></li>
 			</ul>
-		</li>
+		</li> -->
 	</ul>	
 </nav>
 </body>

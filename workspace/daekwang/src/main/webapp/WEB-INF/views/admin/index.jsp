@@ -7,20 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="/daekwang/resources/css/basic.css">
-<link rel="stylesheet" type="text/css" href="/daekwang/resources/css/style.css">
-<link rel="stylesheet" type="text/css" href="/daekwang/resources/css/jquery.jqplot.css"/>
-<link rel="stylesheet" type="text/css" href="/daekwang/resources/css/simple.min.css"/>
-<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/xpressengine/xeicon@2.3.1/xeicon.min.css">
-<script src="/daekwang/resources/js/jquery-1.11.1.min.js"></script>
-<script src="/daekwang/resources/js/jquery-ui.min.js"></script>
-<script src="/daekwang/resources/js/script.js"></script>
+<jsp:include page="../common/adminmeta.jsp"/>
 
-<script src="/daekwang/resources/js/jquery.jqplot.js"></script>
-<script src="/daekwang/resources/js/excanvas.js"></script>
-<script type="text/javascript" src="/daekwang/resources/plugins/dist/jqplot.categoryAxisRenderer.min.js"></script>
-<script type="text/javascript" src="/daekwang/resources/plugins/dist/jqplot.barRenderer.min.js"></script>
-<script type="text/javascript" src="/daekwang/resources/plugins/dist/jqplot.pointLabels.min.js"></script>
 </head>
 <body>
 <div id="wrap">

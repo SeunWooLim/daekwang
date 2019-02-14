@@ -3,7 +3,7 @@ body{background:#edf0f5}
 #wrap{width:100%; height:100%; padding-left:200px; box-sizing:border-box;}
 /*--------------------------------------------------------header s-----------------------------------------------------------------------------------------------------*/
 header{width:100%; height:57px; position:fixed; z-index:999;}
-.header{width:100%; height:57px; background:#2d3539; position:relative; }
+.header{width:100%; height:57px; background:#2d3539; position:fixed; left:0; }
 .head_left{float:left;}
 .head_left p{line-height:46px; margin-left:20px;}
 .head_right{float:right; /*margin-right:10.5%;*/ position:relative;}
@@ -51,8 +51,8 @@ header{width:100%; height:57px; position:fixed; z-index:999;}
 
 .sidenav > a{padding: 16px 5px 16px 5px; text-decoration: none;  font-size: 13px; font-weight:bold;  color: #fff;  display:inline-block;  transition: 0.3s; width:150px;  margin-left:17px;}
 .sidenav > ul{background:#445163;}
-.sidenav > ul > li > a{padding: 16px 5px 16px 5px; text-decoration: none;  font-size: 14px; font-weight:bold;  color: #fff;  display:inline-block;  transition: 0.3s; width:150px; border-bottom:1px solid #515d6e; margin-left:17px; background:url('/common/img/navbtn_off.gif') no-repeat 140px 24px; line-height:1.5;}
-.sidenav > ul > li > a.on{background:url('/common/img/navbtn_on.gif') no-repeat 140px 24px;}
+.sidenav > ul > li > a{padding: 16px 5px 16px 5px; text-decoration: none;  font-size: 14px; font-weight:bold;  color: #fff;  display:inline-block;  transition: 0.3s; width:150px; border-bottom:1px solid #515d6e; margin-left:17px; background:url('/daekwang/resources/img/navbtn_off.gif') no-repeat 140px 24px; line-height:1.5;}
+.sidenav > ul > li > a.on{background:url('/daekwang/resources/img/navbtn_on.gif') no-repeat 140px 24px;}
 .sidenav > ul > li > .nav_detail{background:#414958; width:100%; height:100%; padding:20px 0 20px 50px; display:none; transition:none;}
 .sidenav > ul > li > .nav_detail li{padding-top:20px;}
 .sidenav > ul > li > .nav_detail li:first-child{padding-top:0px;}
