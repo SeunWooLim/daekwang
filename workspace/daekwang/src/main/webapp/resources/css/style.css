@@ -40,7 +40,7 @@
 	.footer_wrap ul li p{color:#fff; opacity: 0.5}
 	
 #wrap{width:100%; height:100%; position: relative;}
-.subvisual_wrap{background:url("../img/subvisual.jpg") no-repeat; min-height:157px; position: relative;}
+.subvisual_wrap{background:url("../img/subvisual.jpg") repeat 100% 100%; min-height:157px; position: relative;}
 	.subvisual_wrap .subvisual_text{position: absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); text-align:center;}
 	.subvisual_wrap .subvisual_text p.title{font-size:32px; font-weight:bold; color:#333}
 	.subvisual_wrap .subvisual_text p.text{color:#17539b; font-size:16px}
