@@ -25,7 +25,7 @@
 		</ul>
 	</div>
 	<div class="moviewrap">
-		<ul>S
+		<ul>
 			<li>
 				<a href="#">
 					<table>
