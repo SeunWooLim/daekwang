@@ -17,4 +17,43 @@ public class AdminController {
 		return "admin/adminhome";
 	}
 	
+	@RequestMapping(value = "churchSchoolAdmin.do")
+	public String churchSchoolAdmin() {
+		return "admin/churchSchoolAdmin";
+	}
+	
+	@RequestMapping(value = "churchNoticeAdmin.do")
+	public String churchNoticeAdmin() {
+		return "admin/churchNoticeAdmin";
+	}
+	
+	@RequestMapping(value = "personNewsAdmin.do")
+	public String personNewsAdmin() {
+		return "admin/personNewsAdmin";
+	}
+	
+	@RequestMapping(value = "churchPhotoAdmin.do")
+	public String churchPhotoAdmin() {
+		return "admin/churchPhotoAdmin";
+	}
+	
+	@RequestMapping(value = "eventVideoAdmin.do")
+	public String eventVideoAdmin() {
+		return "admin/eventVideoAdmin";
+	}
+	
+	@RequestMapping(value = "flowerPhotoAdmin.do")
+	public String flowerPhotoAdmin() {
+		return "admin/flowerPhotoAdmin";
+	}
+	
+	@RequestMapping(value = "weekPageApplyAdmin.do")
+	public String weekPageApplyAdmin() {
+		return "admin/weekPageApplyAdmin";
+	}
+	
+	@RequestMapping(value = "worshipDataApplayAdmin.do")
+	public String worshipDataApplayAdmin() {
+		return "admin/worshipDataApplayAdmin";
+	}
 }
