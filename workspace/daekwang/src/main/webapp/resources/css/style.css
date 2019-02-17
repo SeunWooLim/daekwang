@@ -143,6 +143,31 @@
 		.next_list_btn ul li:hover{background:rgb(89,155,226); border:1px solid rgb(89,155,226)}	
 		.next_list_btn ul li:hover a{color:#fff}	
 		
+.worshiptab{background:#dce0df}
+	.worshiptab ul{overflow:hidden;max-width:970px; margin:0 auto; padding:4px 0px;}
+	.worshiptab ul li{float:left; width:32.92%; box-sizing:border-box; background:#fff; margin:0 2px;}
+	.worshiptab ul li:hover a{color:#3d5191; transition:all,.5s}
+	.worshiptab ul li a{text-align:center; font-size:16px; color:#74777b; font-weight:normal; line-height:52px; transition:all,.5s}
+	.worshiptab ul li a i{font-size:24px;padding-right:5px; vertical-align: middle; margin-top: -5px;}
+	.worshiptab ul li a.on{color:#fff; background:#3d5191}
+	
+	.worshiptab1 ul li{float:left; width:19.58%; box-sizing:border-box; background:#fff; margin:0 2px;}
+	
+.moviewrap{width:100%; height:100%; max-width:970px; margin:50px auto;}
+	.moviewrap ul{}
+	.moviewrap ul li{border-bottom:1px solid #dce0df}
+	.moviewrap ul li a{transition:all,.5s;}
+	.moviewrap ul li a table{width:100%; }
+	.moviewrap ul li a table tbody{}
+	.moviewrap ul li a table tbody tr{}
+	.moviewrap ul li a table tbody tr td{text-align:center;}
+	.moviewrap ul li a table tbody tr td img{width:100%; height:100%; padding:10px; box-sizing:border-box;}
+	.moviewrap ul li a table tbody tr td p.title{text-align:left; font-size:20px; color:#333}
+	.moviewrap ul li a table tbody tr td p.text{text-align:left; color:#bbb}
+	.moviewrap ul li a:hover{background:#dce0df; transition:all,.5s;}
+	
+	
+	
 		
 		
 		
