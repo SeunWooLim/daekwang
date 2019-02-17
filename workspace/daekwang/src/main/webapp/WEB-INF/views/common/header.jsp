@@ -54,7 +54,7 @@
 									<li><a href="wednesdayWorship.do">수요기도회 설교</a></li>
 									<li><a href="allgenWorship.do">올젠워십 설교</a></li>
 									<li><span class="subtitle">예배 찬양</span></li>
-									<li><a href="chalomChoir.do">샬롬 찬양대</a></li>	
+									<li><a href="shalomChoir.do">샬롬 찬양대</a></li>	
 									<li><a href="immanuelChoir.do">임마누엘 찬양대</a></li>
 									<li><a href="unionChoir.do">연합찬양대</a></li>
 									<li><a href="speicalSong.do">특송</a></li>
