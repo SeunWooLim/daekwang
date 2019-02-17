@@ -52,4 +52,8 @@ public class SermonAndPraiseController {
 		return "sermonAndPraise/specialEvent";
 	}
 	
+	@RequestMapping(value = "/videoDetail.do")
+	public String videoDetail() {
+		return "sermonAndPraise/videoDetail";
+	}
 }
