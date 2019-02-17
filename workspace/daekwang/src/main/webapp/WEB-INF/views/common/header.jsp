@@ -83,15 +83,15 @@
 							<td>
 								<ul>
 									<li><span class="subtitle">청년회</span></li>
-									<li><a href="firstYouth.do">제1청년회</a></li>
-									<li><a href="secondYouth.do">제2청년회</a></li>
+									<li><a href="firstYouth.do#fYTab">제1청년회</a></li>
+									<li><a href="firstYouth.do#sYTab">제2청년회</a></li>
 									<li><span class="subtitle">교회학교</span></li>
-									<li><a href="infants.do">영유아부</a></li>
-									<li><a href="kindergarten.do">유치부</a></li>
-									<li><a href="lowChild.do">유년부</a></li>
-									<li><a href="highChild.do">소년부</a></li>
-									<li><a href="middleSchool.do">중등부</a></li>
-									<li><a href="highSchool.do">고등부</a></li>
+									<li><a href="firstYouth.do#infantsTab">영유아부</a></li>
+									<li><a href="firstYouth.do#kindergartenTab">유치부</a></li>
+									<li><a href="firstYouth.do#lowchildTab">유년부</a></li>
+									<li><a href="firstYouth.do#highchildTab">소년부</a></li>
+									<li><a href="firstYouth.do#middlescTab">중등부</a></li>
+									<li><a href="firstYouth.do#highscTab">고등부</a></li>
 								</ul>
 							</td>
 							<td>
