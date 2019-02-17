@@ -42,9 +42,9 @@ public class SermonAndPraiseController {
 		return "sermonAndPraise/unionChoir";
 	}
 	
-	@RequestMapping(value = "/speicalSong.do")
+	@RequestMapping(value = "/specialSong.do")
 	public String speicalSong() {
-		return "sermonAndPraise/speicalSong";
+		return "sermonAndPraise/specialSong";
 	}
 	
 	@RequestMapping(value = "/specialEvent.do")
