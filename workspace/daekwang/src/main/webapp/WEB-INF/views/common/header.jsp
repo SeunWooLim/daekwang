@@ -57,7 +57,7 @@
 									<li><a href="shalomChoir.do">샬롬 찬양대</a></li>	
 									<li><a href="immanuelChoir.do">임마누엘 찬양대</a></li>
 									<li><a href="unionChoir.do">연합찬양대</a></li>
-									<li><a href="speicalSong.do">특송</a></li>
+									<li><a href="specialSong.do">특송</a></li>
 									<li><a href="specialEvent.do">특별행사</a></li>
 								</ul>
 							</td>
