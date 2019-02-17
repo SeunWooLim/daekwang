@@ -17,9 +17,9 @@
 	</div>
 	<div class="worshiptab">
 		<ul>
-			<li><a href="#" class="on"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
-			<li><a href="#"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
-			<li><a href="#"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
+			<li><a href="sundayWorship.do" class="on"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
+			<li><a href="wednesdayWorship.do"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
+			<li><a href="allgenWorship.do"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
 		</ul>
 	</div>
 	<div class="moviewrap">
