@@ -333,7 +333,7 @@
 		</div>
 		
 		<div id="highscTab" class="nextgene_cate">
-			<p class="title">유치부</p>
+			<p class="title">고등부</p>
 			<div class="next_detail">
 				<div class="next_left">
 					<p>교육표어</p>
