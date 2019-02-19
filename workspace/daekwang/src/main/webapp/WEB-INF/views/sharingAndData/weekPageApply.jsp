@@ -36,7 +36,7 @@
 						<tr>
 							<td><label>분류</label></td>
 							<td>
-								<select>
+								<select name="category">
 									<option value="1">주보원고</option>
 									<option value="2">광고요청</option>
 								</select>
