@@ -166,6 +166,21 @@
 	.moviewrap ul li a table tbody tr td p.text{text-align:left; color:#bbb}
 	.moviewrap ul li a:hover{background:#dce0df; transition:all,.5s;}
 	
+.apply_wrap{width:100%; height:100%; max-width:970px; margin:50px auto}
+	.apply{text-align:center;}
+	.apply table{width:100%; border-top:4px solid #314275}
+	.apply table tbody{}
+	.apply table tbody tr{}
+	.apply table tbody tr td{border:1px solid #bbb; padding:5px; box-sizing:border-box; text-align:left;}
+	.apply table tbody tr td.point{color:red; font-size:16px; font-weight:bold;}
+	.apply table tbody tr td:first-child{background:rgba(49,66,117,0.15); text-align:center; border-bottom:1px solid #bbb;}
+	.apply table tbody tr td label{font-size:14px; font-weight:bold; color:#333; text-align:center}
+	.apply table tbody tr td input{width:20%; height:30px; box-sizing:border-box; border:1px solid #e1e1e1; padding:0 10px; color:#333;}
+	.apply table tbody tr td textarea{width:100%; height:300px; box-sizing:border-box; padding:10px; border:1px solid #e1e1e1; color:#333; resize:none;}
+	.apply table tbody tr td select{border:1px solid #e1e1e1; height:30px; width:20%; padding:0 5px; colro:#333;}
+	.apply table tbody tr td select option{}
+	.apply .apply_btn{width: 150px; height:50px; color:#333; text-aligN:center; margin:30px auto; background:#314275; border:none; cursor:pointer; font-size:16px; color:#fff;}
+	.apply .apply_btn:hover{text-decoration: underline !important}
 	
 	
 		
