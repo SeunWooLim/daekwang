@@ -16,11 +16,14 @@
 			<p class="text">안양대광교회</p>
 		</div>
 	</div>
-	
-	<div class="volunteers_wrap">	
-		<ul class="volunteers_btn">
-			<li class="on">목사</li><li>전도사</li><li>장로</li>
+	<div class="volunteertab">
+		<ul>
+			<li><a class="on">목사</a></li><li><a>전도사</a></li><li><a>장로</a></li>
 		</ul>
+	</div>
+	<div class="volunteers_wrap">	
+		
+		
 		
 		<div class="list_wrap list1">
 			<ul>
@@ -159,24 +162,24 @@
 
 <script>
 	$(document).ready(function(){
-		$(".volunteers_btn > li").click(function(){
+		$(".volunteertab > ul > li > a").click(function(){
 			$(this).addClass("on");
-			$(this).siblings("li").removeClass("on");
+			$(this).parent().siblings("li").find("a").removeClass("on");
 		});
 		
-		$(".volunteers_btn > li:eq(0)").click(function(){
+		$(".volunteertab > ul > li:eq(0)").click(function(){
 			$(".list1").show();
 			$(".list2").hide();
 			$(".list3").hide();
 		});
 		
-		$(".volunteers_btn > li:eq(1)").click(function(){
+		$(".volunteertab > ul > li:eq(1)").click(function(){
 			$(".list2").show();
 			$(".list1").hide();
 			$(".list3").hide();
 		});
 		
-		$(".volunteers_btn > li:eq(2)").click(function(){
+		$(".volunteertab > ul > li:eq(2)").click(function(){
 			$(".list3").show();
 			$(".list2").hide();
 			$(".list1").hide();

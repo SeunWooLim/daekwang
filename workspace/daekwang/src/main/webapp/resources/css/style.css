@@ -206,6 +206,13 @@
 	.cc_wrap .fix{font-size:14px; color:#aaa; }
 	.cc_wrap .fix span{font-weight:bold; color:#333; font-size:14px;}
 	
+.volunteertab{background:#dce0df}
+	.volunteertab ul{overflow:hidden;max-width:970px; margin:0 auto; padding:4px 0px;}
+	.volunteertab ul li{float:left; width:32.92%; box-sizing:border-box; background:#fff; margin:0 2px;}
+	.volunteertab ul li:hover a{color:#3d5191; transition:all,.5s}
+	.volunteertab ul li a{text-align:center; font-size:16px; color:#74777b; font-weight:normal; line-height:52px; transition:all,.5s; cursor:pointer}
+	.volunteertab ul li a i{font-size:24px;padding-right:5px; vertical-align: middle; margin-top: -5px;}
+	.volunteertab ul li a.on{color:#fff; background:#3d5191; }
 		
 		
 		
