@@ -14,11 +14,7 @@
 <script src="/daekwang/resources/js/jquery-ui.min.js"></script>
 <script src="/daekwang/resources/js/script.js"></script>
 
-<script src="/daekwang/resources/js/jquery.jqplot.js"></script>
-<script src="/daekwang/resources/js/excanvas.js"></script>
-<script type="text/javascript" src="/daekwang/resources/plugins/dist/jqplot.categoryAxisRenderer.min.js"></script>
-<script type="text/javascript" src="/daekwang/resources/plugins/dist/jqplot.barRenderer.min.js"></script>
-<script type="text/javascript" src="/daekwang/resources/plugins/dist/jqplot.pointLabels.min.js"></script>
+
 
 <title>Insert title here</title>
 </head>
