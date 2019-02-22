@@ -49,9 +49,11 @@
 		</div>
 	</c:if>
 	
-	<iframe width="900" height="500" src="https://www.youtube.com/embed/${vid}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<div class="iframe_wrap">
+		<iframe class="iframe11" width="900" height="500" src="https://www.youtube.com/embed/${vid}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	</div>
 	
-	<p>${desc }</p>
+	<p class="iframe_text">${desc }</p>
 	
 </div>
 <jsp:include page="../common/footer.jsp"/>
