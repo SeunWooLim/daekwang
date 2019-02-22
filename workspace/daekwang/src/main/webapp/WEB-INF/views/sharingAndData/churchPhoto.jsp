@@ -17,17 +17,61 @@
 	</div>
 	
 	<div class="photo_wrap">
-		<div class="photo_top">
-			<p>190124 교사강습회(평촌교회)
-		</div>
-		<div class="photo_mid">
-			<ul>
-				<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-			</ul>
-		</div>
-		<div class="photo_bot">
-			
-		</div>
+		<ul class="photo_list">
+			<li>
+				<div class="photo_top">
+					<ul>
+						<li>190124 교사강습회(평촌교회)</li>
+						<li>2019-02-02</li>
+					</ul>
+				</div>
+				<div class="photo_mid">
+					<ul>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+					</ul>
+				</div>
+				<div class="photo_bot">
+					내용입니다.
+				</div>
+			</li>
+			<li>
+				<div class="photo_top">
+					<ul>
+						<li>190124 교사강습회(평촌교회)</li>
+						<li>2019-02-02</li>
+					</ul>
+				</div>
+				<div class="photo_mid">
+					<ul>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+					</ul>
+				</div>
+				<div class="photo_bot">
+					내용입니다.
+				</div>
+			</li>
+			<li>
+				<div class="photo_top">
+					<ul>
+						<li>190124 교사강습회(평촌교회)</li>
+						<li>2019-02-02</li>
+					</ul>
+				</div>
+				<div class="photo_mid">
+					<ul>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+					</ul>
+				</div>
+				<div class="photo_bot">
+					내용입니다.
+				</div>
+			</li>
+		</ul>
 	</div>
 	
 	
@@ -35,6 +79,29 @@
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
-
+<script>
+	$(document).ready(function(){
+		$(".photo_mid > ul").bxSlider({
+			mode: "horizontal",    
+			slideMargin: 0,
+			minSlides: 1,
+			maxSlides: 5,
+			moveSlides: 1,
+			startSlide: 0,         
+			infiniteLoop: true,    
+			//captions: true,       
+			pager: true,         
+			adaptiveHeight: true,   
+			auto: false,            
+			pause: 3000,           
+			speed: 500,           
+			easing: "",	
+			touchEnabled:true,   	
+			controls: true,
+			//video: true,
+			useCSS: false,
+		});
+	})
+</script>
 
 </html>

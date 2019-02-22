@@ -17,8 +17,7 @@
 	</div>
 	<div class="worshiptab worshiptab1">
 		<ul>
-			<li><a href="shalomChoir.do"><i class="xi-bell-o"></i>샬롬 찬양대</a></li>
-			<li><a href="immanuelChoir.do"><i class="xi-bell-o"></i>임마누엘 찬양대</a></li>
+			
 			<li><a href="unionChoir.do"><i class="xi-bell-o"></i>연합찬양대</a></li>
 			<li><a href="specialSong.do"><i class="xi-bell-o"></i>특송</a></li>
 			<li><a href="specialEvent.do" class="on"><i class="xi-bell-o"></i>특별행사</a></li>
