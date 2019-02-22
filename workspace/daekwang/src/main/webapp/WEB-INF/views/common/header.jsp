@@ -20,7 +20,7 @@
 				<li><a href="pastorGreeting.do">교회안내</a></li>
 				<li><a href="sundayWorship.do">말씀과 찬양</a></li>
 				<li><a href="newFamilyIntroducing.do">나눔과 자료</a></li>
-				<li><a href="firstYouth.do">다음세대</a></li>
+				<li><a href="nextGeneration.do">다음세대</a></li>
 				<li><a href="mediatorPrayer.do">선교</a></li>
 			</ul>
 		</div>
@@ -76,15 +76,15 @@
 							<td>
 								<ul>
 									<li><span class="subtitle">청년회</span></li>
-									<li><a href="firstYouth.do#fYTab">제1청년회</a></li>
-									<li><a href="firstYouth.do#sYTab">제2청년회</a></li>
+									<li><a href="nextGeneration.do#fYTab">제1청년회</a></li>
+									<li><a href="nextGeneration.do#sYTab">제2청년회</a></li>
 									<li><span class="subtitle">교회학교</span></li>
-									<li><a href="firstYouth.do#infantsTab">영유아부</a></li>
-									<li><a href="firstYouth.do#kindergartenTab">유치부</a></li>
-									<li><a href="firstYouth.do#lowchildTab">유년부</a></li>
-									<li><a href="firstYouth.do#highchildTab">소년부</a></li>
-									<li><a href="firstYouth.do#middlescTab">중등부</a></li>
-									<li><a href="firstYouth.do#highscTab">고등부</a></li>
+									<li><a href="nextGeneration.do#infantsTab">영유아부</a></li>
+									<li><a href="nextGeneration.do#kindergartenTab">유치부</a></li>
+									<li><a href="nextGeneration.do#lowchildTab">유년부</a></li>
+									<li><a href="nextGeneration.do#highchildTab">소년부</a></li>
+									<li><a href="nextGeneration.do#middlescTab">중등부</a></li>
+									<li><a href="nextGeneration.do#highscTab">고등부</a></li>
 								</ul>
 							</td>
 							<td>
