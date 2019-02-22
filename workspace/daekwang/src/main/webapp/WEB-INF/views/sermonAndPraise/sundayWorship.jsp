@@ -23,58 +23,60 @@
 		</ul>
 	</div>
 	<div class="moviewrap">
-		<ul>
-			<li>
-				<a href="#">
-					<table>
-						<colgroup>
-							<col width="3%">
-							<col width="25%">
-							<col width="*">				
-						</colgroup>
-						<tbody>
-							<tr>
-								<td>10</td>
-								<td>
-									<img alt="" src="<c:url value="/"/>resources/img/movieex1.png">
-								</td>
-								<td>
-									<p class="title">마커스워십 - 주의길</p>
-									<p class="text">MARKERS WORSHIP</p>
-								</td>
-							</tr>
-						</tbody>
-					</table>	
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<table>
-						<colgroup>
-							<col width="3%">
-							<col width="25%">
-							<col width="*">				
-						</colgroup>
-						<tbody>
-							<tr>
-								<td>10</td>
-								<td>
-									<img alt="" src="<c:url value="/"/>resources/img/movieex1.png">
-								</td>
-								<td>
-									<p class="title">마커스워십 - 주의길</p>
-									<p class="text">MARKERS WORSHIP</p>
-								</td>
-							</tr>
-						</tbody>
-					</table>	
-				</a>
-			</li>
-		</ul>		
+		<ul id="results"></ul>
 	</div>
 	
 	
 </div>
 <jsp:include page="../common/footer.jsp"/>
+
+<script type="text/javascript">
+    var playlist = 'PLwcdqPJXVv0aMM-7HaSzQGvC4je06L1uN';
+    
+    $(document).ready(function(){
+       $.get(
+           "https://www.googleapis.com/youtube/v3/playlistItems", {
+               part: 'snippet',
+               maxResults: 50,
+               playlistId: playlist,
+               key: 'AIzaSyAYH3AjbJxhiYngE1l5obNvwBPNo5_lnyg'},
+               function(data){
+                   var output;
+                   $.each(data.items, function(i, item){
+                       console.log(item);
+                       vTitle = item.snippet.title;
+                       vId = item.snippet.resourceId.videoId;
+                       var temp = item.snippet.publishedAt;
+                       var time = temp.substring(0,10);
+                       var desc = item.snippet.description;
+                       var num = 1;
+                       //output = '<li>'+vTitle + '<br>--videoid: ' + vId+'<br>--time: ' + time + '<br>--desc: '+ desc + '</li>';
+                       //output= '<li>'+vTitle+'<iframe src="//www.youtube.com/embed/'+vId+'\"></iframe></li>';
+                       output=
+                    	   	  '<p>' + num++ + '</p>' +
+                    	      '<li>'+
+                       			'<div style="border-bottom: 1px solid var(--yt-spec-10-percent-layer);">' +
+	                       		  	
+                       		  		'<img style="margin: 10px 10px;" width="222" height="118" src=\"//img.youtube.com/vi/' + vId + '/mqdefault.jpg\">' +
+	                       		  	
+	                       		  	'<div style="display: inline-block; ">' +
+		                       		  	'<p style=" font-size:20px">' + vTitle + '</p>' +
+		                       		  	'<p>Sunday Worship</p>' +
+	                       		  	'</div>' +
+                       		  	'</div>' +
+                       		  '</li>'+
+                       		  '<hr>'
+                       		 ;
+                       	
+                       $("#results").append(output);
+                       
+                       
+                   })
+               }
+               );
+        
+    });
+
+  </script>
 </body>
 </html>
