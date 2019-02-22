@@ -54,22 +54,21 @@
                        //output= '<li>'+vTitle+'<iframe src="//www.youtube.com/embed/'+vId+'\"></iframe></li>';
                        output=                    	   	 
                     	      '<li>'+
-                    	      '<a href="videoDetail.do?vid='+vid+'">'+
-                       			'<div class="mwrap">' +
-                       				'<span class="mnum">' + num + '</span>'+
-	                       		  	
-                       		  		'<img width="222" height="118" src=\"//img.youtube.com/vi/' + vId + '/mqdefault.jpg\">' +
-	                       		  	
-	                       		  	'<div class="text">' +
-		                       		  	'<p class="title">' + vTitle + '</p>' +
-		                       		  	'<p class="text">Sunday Worship</p>' +
+	                    	      '<a href="videoDetail.do?vid=' + vId +'&desc=' + desc + '&menu=1">'+
+	                       			'<div class="mwrap">' +
+		                       		  	
+	                       		  		'<img width="222" height="118" src=\"//img.youtube.com/vi/' + vId + '/mqdefault.jpg\">' +
+		                       		  	
+		                       		  	'<div class="text">' +
+			                       		  	'<p class="title">' + vTitle + '</p>' +
+			                       		  	'<p class="text">Sunday Worship</p>' +
+		                       		  	'</div>' +
 	                       		  	'</div>' +
-                       		  	'</div>' +
-                       		  '</a>' +
+	                       		  '</a>' +
                        		  '</li>'
                        		  
                        		 ;
-                       	
+                       
                        $("#results").append(output);
                        
                        

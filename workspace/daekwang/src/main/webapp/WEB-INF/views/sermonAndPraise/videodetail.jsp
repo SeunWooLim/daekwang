@@ -15,15 +15,43 @@
 			<p class="text">안양대광교회</p>
 		</div>
 	</div>
-	<div class="worshiptab">
-		<ul>
-			<li><a href="sundayWorship.do"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
-			<li><a href="wednesdayWorship.do" class="on"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
-			<li><a href="allgenWorship.do"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
-		</ul>
-	</div>
 	
-	비디오 디테일페이지
+	<!-- 주일 낮 설교에서 넘어올 때 -->
+	<c:if test="${menu eq 1 }">
+		<div class="worshiptab">
+			<ul>
+				<li><a href="sundayWorship.do" class="on"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
+				<li><a href="wednesdayWorship.do"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
+				<li><a href="allgenWorship.do"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
+			</ul>
+		</div>
+	</c:if>
+	
+	<!-- 수요기도회에서 넘어올 때 -->
+	<c:if test="${menu eq 2 }">
+		<div class="worshiptab">
+			<ul>
+				<li><a href="sundayWorship.do"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
+				<li><a href="wednesdayWorship.do" class="on"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
+				<li><a href="allgenWorship.do"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
+			</ul>
+		</div>
+	</c:if>
+	
+	<!-- 올젠워쉽에서 넘어올 때 -->
+	<c:if test="${menu eq 3 }">
+		<div class="worshiptab">
+			<ul>
+				<li><a href="sundayWorship.do"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
+				<li><a href="wednesdayWorship.do"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
+				<li><a href="allgenWorship.do" class="on"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
+			</ul>
+		</div>
+	</c:if>
+	
+	<iframe width="900" height="500" src="https://www.youtube.com/embed/${vid}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	
+	<p>${desc }</p>
 	
 </div>
 <jsp:include page="../common/footer.jsp"/>
