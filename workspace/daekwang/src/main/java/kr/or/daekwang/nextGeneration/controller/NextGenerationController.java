@@ -19,9 +19,11 @@ public class NextGenerationController {
 	@RequestMapping(value = "nextGeneration.do")
 	public String nextGeneration(Model model) {
 		
-		List<NextGenerationVo> list = nextGenerationService.selectNextGenerationList();
+		List<NextGenerationVo> schoolList = nextGenerationService.selectNextGenerationList();
+		List<NextGenerationVo> youthList = nextGenerationService.selectNextGenerationYouthList();
 		
-		model.addAttribute("list", list);
+		model.addAttribute("schoolList", schoolList);
+		model.addAttribute("youthList", youthList);
 		return "nextGeneration/nextGeneration";
 	}
 }

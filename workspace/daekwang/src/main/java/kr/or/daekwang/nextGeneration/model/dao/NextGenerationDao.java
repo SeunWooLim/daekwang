@@ -17,6 +17,10 @@ public class NextGenerationDao {
 	public List<NextGenerationVo> selectNextGenerationList() {
 		return mybatis.selectList("nextGenerationMapper.selectNextGenerationList");
 	}
+
+	public List<NextGenerationVo> selectNextGenerationYouthList() {
+		return mybatis.selectList("nextGenerationMapper.selectNextGenerationYouthList");
+	}
 	
 	
 }

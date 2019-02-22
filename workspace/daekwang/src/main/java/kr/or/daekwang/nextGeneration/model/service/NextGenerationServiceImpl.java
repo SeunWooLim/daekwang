@@ -18,6 +18,12 @@ public class NextGenerationServiceImpl implements NextGenerationService{
 	public List<NextGenerationVo> selectNextGenerationList() {
 		return nextGenerationDao.selectNextGenerationList();
 	}
+
+	@Override
+	public List<NextGenerationVo> selectNextGenerationYouthList() {
+		return nextGenerationDao.selectNextGenerationYouthList();
+	}
+	
 	
 	
 }

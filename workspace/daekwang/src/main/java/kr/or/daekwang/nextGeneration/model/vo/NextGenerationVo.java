@@ -7,6 +7,7 @@ public class NextGenerationVo {
 	private String DEPT_NAME;			//부서명
 	private String EDU_TITLE;			//교육표어
 	private String MAIN_WORDS;			//주제말씀
+	private String WORSHIP_OBJECT;		//예배대상
 	private String WORSHIP_TIME;		//예배시간
 	private String WORSHIP_AREA;		//예배장소
 	private String DEPT_VISION;			//비전
@@ -26,15 +27,16 @@ public class NextGenerationVo {
 		
 	}
 
-	public NextGenerationVo(int dEPT_NO, String dEPT_NAME, String eDU_TITLE, String mAIN_WORDS, String wORSHIP_TIME,
-			String wORSHIP_AREA, String dEPT_VISION, String dEPT_MISSION, String dEPT_LEADER, String dEPT_HEADER,
-			String dEPT_DIRECTOR, String dEPT_BUDIRECTOR, String dEPT_MANAGER, String dEPT_WRITER,
+	public NextGenerationVo(int dEPT_NO, String dEPT_NAME, String eDU_TITLE, String mAIN_WORDS, String wORSHIP_OBJECT,
+			String wORSHIP_TIME, String wORSHIP_AREA, String dEPT_VISION, String dEPT_MISSION, String dEPT_LEADER,
+			String dEPT_HEADER, String dEPT_DIRECTOR, String dEPT_BUDIRECTOR, String dEPT_MANAGER, String dEPT_WRITER,
 			String dEPT_ACCOUNTANT, String dEPT_MEMBER, String dEPT_PHOTO, String dEPT_PHOTO_NAME) {
 		super();
 		DEPT_NO = dEPT_NO;
 		DEPT_NAME = dEPT_NAME;
 		EDU_TITLE = eDU_TITLE;
 		MAIN_WORDS = mAIN_WORDS;
+		WORSHIP_OBJECT = wORSHIP_OBJECT;
 		WORSHIP_TIME = wORSHIP_TIME;
 		WORSHIP_AREA = wORSHIP_AREA;
 		DEPT_VISION = dEPT_VISION;
@@ -81,6 +83,14 @@ public class NextGenerationVo {
 
 	public void setMAIN_WORDS(String mAIN_WORDS) {
 		MAIN_WORDS = mAIN_WORDS;
+	}
+
+	public String getWORSHIP_OBJECT() {
+		return WORSHIP_OBJECT;
+	}
+
+	public void setWORSHIP_OBJECT(String wORSHIP_OBJECT) {
+		WORSHIP_OBJECT = wORSHIP_OBJECT;
 	}
 
 	public String getWORSHIP_TIME() {
@@ -202,15 +212,13 @@ public class NextGenerationVo {
 	@Override
 	public String toString() {
 		return "NextGenerationVo [DEPT_NO=" + DEPT_NO + ", DEPT_NAME=" + DEPT_NAME + ", EDU_TITLE=" + EDU_TITLE
-				+ ", MAIN_WORDS=" + MAIN_WORDS + ", WORSHIP_TIME=" + WORSHIP_TIME + ", WORSHIP_AREA=" + WORSHIP_AREA
-				+ ", DEPT_VISION=" + DEPT_VISION + ", DEPT_MISSION=" + DEPT_MISSION + ", DEPT_LEADER=" + DEPT_LEADER
-				+ ", DEPT_HEADER=" + DEPT_HEADER + ", DEPT_DIRECTOR=" + DEPT_DIRECTOR + ", DEPT_BUDIRECTOR="
-				+ DEPT_BUDIRECTOR + ", DEPT_MANAGER=" + DEPT_MANAGER + ", DEPT_WRITER=" + DEPT_WRITER
-				+ ", DEPT_ACCOUNTANT=" + DEPT_ACCOUNTANT + ", DEPT_MEMBER=" + DEPT_MEMBER + ", DEPT_PHOTO=" + DEPT_PHOTO
-				+ ", DEPT_PHOTO_NAME=" + DEPT_PHOTO_NAME + "]";
+				+ ", MAIN_WORDS=" + MAIN_WORDS + ", WORSHIP_OBJECT=" + WORSHIP_OBJECT + ", WORSHIP_TIME=" + WORSHIP_TIME
+				+ ", WORSHIP_AREA=" + WORSHIP_AREA + ", DEPT_VISION=" + DEPT_VISION + ", DEPT_MISSION=" + DEPT_MISSION
+				+ ", DEPT_LEADER=" + DEPT_LEADER + ", DEPT_HEADER=" + DEPT_HEADER + ", DEPT_DIRECTOR=" + DEPT_DIRECTOR
+				+ ", DEPT_BUDIRECTOR=" + DEPT_BUDIRECTOR + ", DEPT_MANAGER=" + DEPT_MANAGER + ", DEPT_WRITER="
+				+ DEPT_WRITER + ", DEPT_ACCOUNTANT=" + DEPT_ACCOUNTANT + ", DEPT_MEMBER=" + DEPT_MEMBER
+				+ ", DEPT_PHOTO=" + DEPT_PHOTO + ", DEPT_PHOTO_NAME=" + DEPT_PHOTO_NAME + "]";
 	}
-	
-	
-	
+
 	
 }
