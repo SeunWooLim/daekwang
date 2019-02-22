@@ -165,6 +165,16 @@
 	.moviewrap ul li a table tbody tr td p.title{text-align:left; font-size:20px; color:#333}
 	.moviewrap ul li a table tbody tr td p.text{text-align:left; color:#bbb}
 	.moviewrap ul li a:hover{background:#dce0df; transition:all,.5s;}
+	.moviewrap ul.movieul{}
+	.moviewrap ul.movieul li{}
+	.moviewrap ul.movieul li a{}
+	.moviewrap ul.movieul li div.mwrap{width:100%;}
+	.moviewrap ul.movieul li div.mwrap span.mnum{width:2%; display: inline-block; vertical-align: middle; text-align:center; font-size:14px;}
+	.moviewrap ul.movieul li div.mwrap img{width:20%;display: inline-block; vertical-align: middle; padding:10px; box-sizing:border-box;}
+	.moviewrap ul.movieul li div.mwrap div.text{width:70%; display: inline-block; vertical-align: middle; padding:0 5px; box-sizing:border-box;}
+	.moviewrap ul.movieul li div.mwrap div.text p.title{text-align:left; font-size:20px; color:#333}
+	.moviewrap ul.movieul li div.mwrap div.text p.text{text-align:left; color:#bbb}
+	
 	
 .apply_wrap{width:100%; height:100%; max-width:970px; margin:50px auto}
 	.apply{text-align:center;}

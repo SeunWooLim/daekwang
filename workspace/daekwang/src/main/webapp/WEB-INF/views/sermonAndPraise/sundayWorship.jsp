@@ -23,7 +23,7 @@
 		</ul>
 	</div>
 	<div class="moviewrap">
-		<ul id="results"></ul>
+		<ul id="results" class="movieul"></ul>
 	</div>
 	
 	
@@ -52,20 +52,22 @@
                        var num = 1;
                        //output = '<li>'+vTitle + '<br>--videoid: ' + vId+'<br>--time: ' + time + '<br>--desc: '+ desc + '</li>';
                        //output= '<li>'+vTitle+'<iframe src="//www.youtube.com/embed/'+vId+'\"></iframe></li>';
-                       output=
-                    	   	  '<p>' + num++ + '</p>' +
+                       output=                    	   	 
                     	      '<li>'+
-                       			'<div style="border-bottom: 1px solid var(--yt-spec-10-percent-layer);">' +
+                    	      '<a href="videoDetail.do?vid='+vid+'">'+
+                       			'<div class="mwrap">' +
+                       				'<span class="mnum">' + num + '</span>'+
 	                       		  	
-                       		  		'<img style="margin: 10px 10px;" width="222" height="118" src=\"//img.youtube.com/vi/' + vId + '/mqdefault.jpg\">' +
+                       		  		'<img width="222" height="118" src=\"//img.youtube.com/vi/' + vId + '/mqdefault.jpg\">' +
 	                       		  	
-	                       		  	'<div style="display: inline-block; ">' +
-		                       		  	'<p style=" font-size:20px">' + vTitle + '</p>' +
-		                       		  	'<p>Sunday Worship</p>' +
+	                       		  	'<div class="text">' +
+		                       		  	'<p class="title">' + vTitle + '</p>' +
+		                       		  	'<p class="text">Sunday Worship</p>' +
 	                       		  	'</div>' +
                        		  	'</div>' +
-                       		  '</li>'+
-                       		  '<hr>'
+                       		  '</a>' +
+                       		  '</li>'
+                       		  
                        		 ;
                        	
                        $("#results").append(output);
