@@ -51,6 +51,34 @@
 				</div>
 				<div class="next_detail">
 					<div class="next_left">
+						<p>비전</p>
+					</div>
+					<div class="next_right">
+						<div class="right_left">
+							<p class="title">a.<span class="text">말씀이 쏙쏙, 말씀으로 쑥쑥</span></p>
+							<p class="title">b.<span class="text">말씀이 쏙쏙, 말씀으로 쑥쑥</span></p>
+							<p class="title">c.<span class="text">말씀이 쏙쏙, 말씀으로 쑥쑥</span></p>
+							<p class="title">d.<span class="text">말씀이 쏙쏙, 말씀으로 쑥쑥</span></p>
+						</div>				
+					</div>
+				</div>
+				
+				<div class="next_detail">
+					<div class="next_left">
+						<p>핵심사역</p>
+					</div>
+					<div class="next_right">
+						<div class="right_left">
+							<p class="title">예배<span class="text">말씀이 쏙쏙, 말씀으로 쑥쑥</span></p>
+							<p class="title">교육<span class="text">말씀이 쏙쏙, 말씀으로 쑥쑥</span></p>
+							<p class="title">전도<span class="text">말씀이 쏙쏙, 말씀으로 쑥쑥</span></p>
+							<p class="title">교제<span class="text">말씀이 쏙쏙, 말씀으로 쑥쑥</span></p>
+							<p class="title">친교<span class="text">말씀이 쏙쏙, 말씀으로 쑥쑥</span></p>
+						</div>				
+					</div>
+				</div>																	
+				<div class="next_detail">
+					<div class="next_left">
 						<p>섬기는분들</p>
 					</div>
 					<div class="next_right">
