@@ -58,7 +58,7 @@
 			<tbody>
 				<tr>
 					<td>1</td>
-					<td class="tal"><a href="#">제목</a></td>		
+					<td class="tal"><a href="churchNewsDetail.do">제목</a></td>		
 					<td>2019-02-24</td>
 					<td>오민식</td>
 					<td>3</td>
@@ -67,15 +67,7 @@
 		</table>	
 	</div>
 	
-	<div class=paging_wrap>
-		<ul>
-			<li><a href="#">&lt;</a></li>
-			<li><a href="#" class="on">1</a></li>
-			<li><a href="#">2</a></li>
-			<li><a href="#">3</a></li>
-			<li><a href="#">&gt;</a></li>
-		</ul>
-	</div>
+	<jsp:include page="../common/paging.jsp"/>
 	
 	
 </div>

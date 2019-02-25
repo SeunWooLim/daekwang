@@ -22,6 +22,11 @@ public class BoardController {
 		return "sharingAndData/churchNews";
 	}
 	
+	@RequestMapping(value = "/churchNewsDetail.do")
+	public String churchNewsDetail() {
+		return "sharingAndData/churchNewsDetail";
+	}
+	
 	@RequestMapping(value = "/personNews.do")
 	public String personNews() {
 		return "sharingAndData/personNews";
