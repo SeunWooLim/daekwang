@@ -16,30 +16,21 @@
 		</div>
 	</div>
 	
-	<div class="cw_board_wrap">
-		<table>
-			<colgroup>
-				<col width="33.333%">
-				<col width="33.333%">
-				<col width="*">
-			</colgroup>
-			
-			<tbody>
-				<tr>
-					<td colspan="3" style="font-size:16px;">제목</td>
-				</tr>
-				<tr>
-					<td>작성자 : 오민식</td>
-					<td>작성일 : 2019-02-04</td>
-					<td>조회수 : 3</td>
-				</tr>
-				<tr>
-					<td colspan="3">
-					내용
-					</td>
-				</tr>
-			</tbody>
-		</table>	
+	<div class="ch_detail_wrap">
+		<div class="head">
+			<span class="left">제목</span>
+			<span class="right">작성일 : 2019-02-02</span>
+		</div>
+		<div class="mid">
+			내용
+		</div>
+		<div class="bot">
+			<ul>
+				<li><a href="#"><i class="xi-angle-up"></i><span class="t1">이전글</span><span class="t2">이전글제목</span></a></li>
+				<li><a href="#"><i class="xi-angle-down"></i><span class="t1">다음글</span><span class="t2">다음글제목</span></a></li>
+			</ul> 
+		</div>
+		<a href="churchNews.do" class="btn11">목록</a>
 	</div>
 	
 	
