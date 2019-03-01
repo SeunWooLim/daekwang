@@ -8,6 +8,7 @@
   		<result property="DEPT_NAME" column="DEPT_NAME"/>
   		<result property="EDU_TITLE" column="EDU_TITLE"/>
   		<result property="MAIN_WORDS" column="MAIN_WORDS"/>
+  		<result property="WORSHIP_OBJECT" column="WORSHIP_OBJECT"/>
   		<result property="WORSHIP_TIME" column="WORSHIP_TIME"/>
   		<result property="WORSHIP_AREA" column="WORSHIP_AREA"/>
   		<result property="DEPT_VISION" column="DEPT_VISION"/>
@@ -29,6 +30,7 @@
   		<result property="DEPT_NAME" column="DEPT_NAME"/>
   		<result property="EDU_TITLE" column="EDU_TITLE"/>
   		<result property="MAIN_WORDS" column="MAIN_WORDS"/>
+  		<result property="WORSHIP_OBJECT" column="WORSHIP_OBJECT"/>
   		<result property="WORSHIP_TIME" column="WORSHIP_TIME"/>
   		<result property="WORSHIP_AREA" column="WORSHIP_AREA"/>
   		<result property="DEPT_VISION" column="DEPT_VISION"/>
@@ -42,15 +44,15 @@
   		<result property="DEPT_MEMBER" column="DEPT_MEMBER"/>
 	</resultMap>
 	
-	<select id="selectNextGenerationList" resultMap="nextGenerationResultMap1" resultType="list">
+	<select id="selectNextGenerationList" resultMap="nextGenerationResultMap" resultType="list">
 		SELECT *
 		FROM next_gen
 		WHERE DEPT_NO BETWEEN 1 AND 6 
 	</select>
 	
-<!-- 	<select id="selectNextGenerationYouthList" resultMap="nextGenerationResultMap1" resultType="list">
+	<select id="selectNextGenerationYouthList" resultMap="nextGenerationResultMap" resultType="list">
 		SELECT *
 		FROM next_gen
 		WHERE DEPT_NO IN (7,8)
-	</select> -->
+	</select>
 </mapper>
