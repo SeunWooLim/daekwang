@@ -9,6 +9,7 @@
 <title>index</title>
 </head>
 <body>
+<c:url var="contextPath" value="/"/>
 <jsp:forward page="WEB-INF/views/common/main.jsp"/>
 </body>
 </html>
