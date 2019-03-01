@@ -49,7 +49,7 @@
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 cursor" onclick="location.href='newFamilyIntroducing.do'"> 
-				<img src="<c:url value="/"/>resources/img/main_section3.jpg">
+				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
 				<div class="text">
 					<p>금주의 새가족</p>
 					<span>대광교회 예배시간</span>
@@ -60,7 +60,7 @@
 				<img src="<c:url value="/"/>resources/img/main_section4.jpg">
 			</div>
 			<div class="main_content1 main_content3">
-				<img src="<c:url value="/"/>resources/img/img_recent1.jpg">
+				<img src="<c:url value="/"/>resources/img/main_section2.jpg">
 				<div class="text">
 					<p>교회소식</p>
 					<ul>
@@ -82,27 +82,6 @@
 								<span class="right">2019-02-20</span>
 							</a>
 						</li>
-					</ul>
-				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
-			</div>
-			<div class="main_content1 main_content3">
-				<img src="<c:url value="/"/>resources/img/img_recent1.jpg">
-				<div class="text">
-					<p>교우소식</p>
-					<ul>
-						<li>
-							<a href="#">
-								<span class="left">제목입니다.</span>
-								<span class="right">2019-02-20</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="left">제목입니다.</span>
-								<span class="right">2019-02-20</span>
-							</a>
-						</li>
 						<li>
 							<a href="#">
 								<span class="left">제목입니다.</span>
@@ -111,8 +90,9 @@
 						</li>
 					</ul>
 				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
+				<span><a href="churchNews.do"><i class="xi-plus-circle-o"></i></a></span>
 			</div>
+			
 			<div class="main_content1">
 				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
 				<div class="text">
@@ -123,14 +103,14 @@
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 cursor" onclick="window.open('https://www.youtube.com/feed/subscriptions/UCUelWlMoTG9gH2J7DP_VYLg')">
-				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
+				<img src="<c:url value="/"/>resources/img/main_section2.jpg">
 				<div class="text">
 					<p>대광교회 유튜브</p>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 cursor" onclick="location.href='churchPhoto.do'">
-				<img src="<c:url value="/"/>resources/img/main_section7.jpg">
+				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
 				<div class="text">
 					<p>교회사진</p>
 				</div>
@@ -147,6 +127,13 @@
 				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
 				<div class="text">
 					<p>주보요청</p>
+				</div>
+				<span><i class="xi-plus-circle-o"></i></span>
+			</div>
+			<div class="main_content1 cursor"  onclick="location.href='worshipDataApply.do'">
+				<img src="<c:url value="/"/>resources/img/main_section2.jpg">
+				<div class="text">
+					<p>예배자료신청</p>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
