@@ -11,7 +11,11 @@
 				</a>
 			</div>
 			<div class="head_top_right">
-				<a href="#">사이트맵</a>
+				<ul>
+					<li><a href="#" class="login_btn">로그인</a></li>
+					<li>|</li>
+					<li><a href="#">사이트맵</a></li>
+				</ul>
 			</div>
 			</div>
 		</div>
@@ -99,7 +103,45 @@
 			</div>
 		</div>
 	</div>
+	
+<!-- 로그인  s-->
+<div class="h_login">
+	<div class="box">
+        <div class="head">
+        	<p><i class="xi-profile-o"></i>로그인</p>
+    		<i class="xi-close"></i>
+        </div>
+        <div class="body">
+            <div class="input"><i class="xi-mail-o"></i><input type="text" placeholder="아이디" id="loginEmail" name="loginEmail" value=""></div>
+            <div class="input"><i class="xi-key"></i><input type="password" class="password" placeholder="비밀번호" id="loginPasswd" name="loginPasswd"></div>
+            <label class="id_save"><input name="loginChk01" id="loginChk01" type="checkbox" value="">로그인 기억</label>
+            <ul class="menu">
+                <li><a class="find_id_btn">아이디찾기</a></li>
+                <li><span></span></li>
+                <li><a class="find_pw_btn">비밀번호찾기</a></li>
+            </ul>
+            <div class="cb"></div>
+            <div class="button">로그인</div>
+            <div class="line"></div>		
+       
+            <div class="join_btn">아직 계정이 없으신가요? <a href="/Front/contents/join/join_step00.html">회원가입 바로가기</a></div>		            
+        </div>
+    </div>
+	<div class="cb"></div>
+</div>
+<!-- 로그인 e -->
 
+<script>
+	$(document).ready(function(){
+		$(".login_btn").click(function(){
+			$(".h_login").stop().fadeIn(200);
+		});
+		
+		$(".h_login .box .head .xi-close").click(function(){
+			$(".h_login").stop().fadeOut(200);
+		});
+	});
+</script>
 <script>
 	$(document).ready(function(){
 		$(".head_mid_wrap").mouseover(function(){

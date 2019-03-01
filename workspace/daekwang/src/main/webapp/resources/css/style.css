@@ -8,6 +8,9 @@
 	.head_top_wrap .head_top .head_top_left a img{}
 	
 	.head_top_wrap .head_top .head_top_right{float:right}
+	.head_top_wrap .head_top .head_top_right ul{text-align: right;}
+	.head_top_wrap .head_top .head_top_right ul li{display: inline-block; padding:0 5px}
+	.head_top_wrap .head_top .head_top_right ul li a{}
 	.head_top_wrap .head_top .head_top_right a{line-height:48px;}
 	
 	.head_mid_wrap{width:100%; height:100%; background:rgb(61,81,147)}
@@ -29,6 +32,63 @@
 		.head_mid_detail table tbody tr td > ul > li a{font-size:14px; transition:all,.5s; color:#a1a1a1}
 		.head_mid_detail table tbody tr td > ul > li a:hover{color:#fff !important; background:rgb(89,155,226); transition:all,.5s;}
 		.head_mid_detail table tbody tr td > ul > li span{font-size:14px; color:#a1a1a1; font-weight:bold;}
+		
+/*로그인css start*/
+	.h_login{ position:fixed; z-index:50000; top:0; right:0; bottom:0; left:0; background:url(../img/bg70.png); transition:none; display:none;}
+		.h_login .box{ position:absolute; top:100px; left:50%; margin:0 0 0 -200px; width:400px; border-radius:3px; background:#FFF;}
+		.h_login .box .head{ padding:0 20px; height:50px; border-bottom:1px solid #DDD;}
+		.h_login .box .head p{ float:left; line-height:50px; font-size:15px; font-weight:600; color:#333;}
+		.h_login .box .head p i{ float:left; margin:0 5px 0 0; line-height:50px; font-size:24px; color:#333;}
+		.h_login .box .head .xi-close{ float:right; line-height:50px; font-size:20px; color:#666; cursor:pointer;}
+		.h_login .box .body{ padding:30px;}
+		.h_login .box .body .input{ position:relative; margin:0 0 10px 0;}
+		.h_login .box .body .input i{ display:block; position:absolute; top:0; left:0; z-index:10; width:50px; text-align:center; line-height:40px; font-size:18px; color:#666;}
+		.h_login .box .body .input input{ display:block; padding:0 10px 0 50px; width:100%; height:40px; border-radius:0; border:1px solid #DDD; background:#f5f5f5; line-height:38px; font-size:13px; color:#333; outline:none; -webkit-appearance:none; box-sizing:border-box;}
+		.h_login .box .body .input input.password{ font-family:Arial;}
+		.h_login .box .body .input .code{ position:absolute; z-index:20; top:0; right:0; width:80px; height:40px; border:1px solid #DDD; background:#FFF; text-align:center; line-height:40px; font-size:13px; color:#333;}
+		
+		.h_login .box .body .id_save{ display:block; float:left; margin:0; line-height:30px; font-size:13px; font-weight:normal; color:#666; cursor:pointer;}
+		.h_login .box .body .id_save input{ display:block; float:left; margin:8px 5px 0 0; width:14px; height:14px;}
+		.h_login .box .body .id_save:hover{ text-decoration:underline; color:#000;}
+		
+		.h_login .box .body .button{ margin:10px 0 0 0; border-radius:3px; background:#000; text-align:center; line-height:40px; font-size:16px; font-weight:800; color:#FFF; cursor:pointer;}
+		.h_login .box .body .button:hover{ background:#333;}
+		
+		.h_login .box .body .menu{ float:right;}
+		.h_login .box .body .menu li{ float:left;}
+		.h_login .box .body .menu li a{ line-height:30px; font-size:13px; font-weight:normal; color:#666; cursor:pointer;}
+		.h_login .box .body .menu li a:hover{ color:#333; text-decoration:underline !important;}
+		.h_login .box .body .menu li span{ display:block; margin:8px 10px; width:1px; height:14px; background:#CCC;}
+		
+		.h_login .box .body .line{ margin:20px 0; border-top:1px solid #DDD;}
+		
+		.h_login .box .sns{ overflow:hidden; margin:-5px -2.5px 0 -2.5px;}
+		.h_login .box .sns li{ overflow:hidden; float:left; width:50%; margin:5px 0 0 0;}
+		.h_login .box .sns li a{ margin:0 2.5px; border-radius:2px; background:#666; line-height:35px; font-size:13px; color:#FFF;}
+		.h_login .box .sns li a i{ float:left; margin:0 20px 0 0; width:35px; height:35px; background:rgba(0,0,0,0.15); text-align:center; line-height:35px; font-size:20px; color:#FFF;}
+		.h_login .box .sns li.n a{ background:#00c73c;}
+		.h_login .box .sns li.k a{ background:#fae100; color:#3c1e1e;}
+		.h_login .box .sns li.k a i{ color:#3c1e1e;}
+		.h_login .box .sns li.f a{ background:#3b5998;}
+		.h_login .box .sns li.g a{ background:#d64136;}
+		.h_login .box .sns li:hover a{ opacity:0.7; text-decoration:underline !important;}
+		
+		.h_login .box .join_btn{ margin:15px 0 0 0; text-align:right; line-height:15px; font-size:13px; color:#666;}
+		.h_login .box .join_btn a{ display:inline-block; font-weight:600; color:#333; cursor:pointer;}
+		.h_login .box .join_btn a:hover{ text-decoration:underline !important;}
+	
+		
+		.login_show{ display:none;}
+		.find_id_show{ display:none;}
+		.find_id_ok_show{ display:none;}
+		.find_pw_show{ display:none;}
+		.profile_pw_show{ display:none;}
+	
+		.join_show{ overflow:hidden; position:static; background:#fafafa;}
+		.join_show .box{ position:static; margin:60px auto; border:1px solid #DDD;}
+		.join_show_terms .content{ overflow-y:scroll; padding:29px; margin:0; width:auto; max-height:150px; border:1px solid #CCC; border-radius:0; background:#f5f5f5; line-height:20px; font-size:12px; color:#666;}
+		
+	/*로그인css end*/		
 		
 #footer{background:#30353a; width:100%; height:142px;}
 	.footer_wrap{width:100%; max-width:1170px; margin:0 auto;}
@@ -341,13 +401,22 @@
 	.main_content2{float:right;}
 	.main_content1.cursor{cursor:pointer}
 	.main_content1 img{width:100%; height:auto; vertical-align: middle;}
-	.main_content1 .text{padding:12%; position: absolute; left:0; top:0; width:100%;}
+	.main_content1 .text{padding:12%; position: absolute; left:0; top:0; width:100%;     box-sizing: border-box;}
 	.main_content1 .text p{color:#fff; font-size:19px}
 	.main_content1 .text span{font-size:14px; color:#fff; display: inline-block; opacity: 0.65; border:1px solid #fff; height:28px; line-height:28px; padding:0 5px; margin-top:5px;}
+	.main_content1 .text ul{}
+	.main_content1 .text ul li{}
+	.main_content1 .text ul li a{overflow: hidden}
+	.main_content1 .text ul li a span.left{display: inline-block; float: left; color:#333;}
+	.main_content1 .text ul li a span.right{display: inline-block; float: right; color:#333;}	
 	.main_content1 .text a{font-size:14px; color:#fff;  opacity: 0.65;   padding:0 5px; margin-top:2px;}
 	.main_content1 > span{position:absolute; right:10%; top:14%;}
 	.main_content1 > span i{color:#fff; font-size:35px;}
 	
+	.main_content3 .text p{color:#333; font-size:19px}
+	.main_content3 .text span{font-size:14px; color:#333; display: inline-block; opacity: 0.65; border:1px solid #fff; height:28px; line-height:28px; padding:0 5px; margin-top:5px;}
+	.main_content3 .text a{font-size:14px; color:#333;  opacity: 0.65;   padding:0 5px; margin-top:2px;}
+	.main_content3 > span i{color:#333; font-size:35px;}
 
 	
 	

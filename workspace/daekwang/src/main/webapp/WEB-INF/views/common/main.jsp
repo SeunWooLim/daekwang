@@ -32,11 +32,11 @@
 			</ul>
 		</div>
 		<div class="main_content_wrap">
-			<div class="main_content1 cursor" onclick="location.href='newFamilyIntroducing.do'">
+			<div class="main_content1 cursor" onclick="location.href='pastorGreeting.do'">
 				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
 				<div class="text">
-					<p>새가족등록안내</p>
-					<span>새가족 등록절차</span>
+					<p>환영합니다</p>
+					<span>담임목사 인사</span>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
@@ -48,40 +48,105 @@
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
-			<div class="main_content1">
+			<div class="main_content1 cursor" onclick="location.href='newFamilyIntroducing.do'"> 
 				<img src="<c:url value="/"/>resources/img/main_section3.jpg">
 				<div class="text">
-					<p>예배영상</p>
-					<a href="sundayWorship.do">주일 낮 설교</a>
-					<a href="wednesdayWorship.do">수요기도회 설교</a>
-					<a href="allgenWorship.do">올젠워십 설교</a>
+					<p>금주의 새가족</p>
+					<span>대광교회 예배시간</span>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 main_content2 cursor" onclick="location.href='sundayWorship.do'">
 				<img src="<c:url value="/"/>resources/img/main_section4.jpg">
 			</div>
-			<div class="main_content1 cursor" onclick="location.href='newFamilyIntroducing.do'">
+			<div class="main_content1 main_content3">
 				<img src="<c:url value="/"/>resources/img/img_recent1.jpg">
 				<div class="text">
-					<p>새가족등록안내</p>
-					<span>새가족 등록절차</span>
+					<p>교회소식</p>
+					<ul>
+						<li>
+							<a href="#">
+								<span class="left">제목입니다.</span>
+								<span class="right">2019-02-20</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="left">제목입니다.</span>
+								<span class="right">2019-02-20</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="left">제목입니다.</span>
+								<span class="right">2019-02-20</span>
+							</a>
+						</li>
+					</ul>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
-			<div class="main_content1 cursor" onclick="location.href='newFamilyIntroducing.do'">
+			<div class="main_content1 main_content3">
 				<img src="<c:url value="/"/>resources/img/img_recent1.jpg">
 				<div class="text">
-					<p>새가족등록안내</p>
-					<span>새가족 등록절차</span>
+					<p>교우소식</p>
+					<ul>
+						<li>
+							<a href="#">
+								<span class="left">제목입니다.</span>
+								<span class="right">2019-02-20</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="left">제목입니다.</span>
+								<span class="right">2019-02-20</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="left">제목입니다.</span>
+								<span class="right">2019-02-20</span>
+							</a>
+						</li>
+					</ul>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
-			<div class="main_content1 cursor" onclick="location.href='newFamilyIntroducing.do'">
-				<img src="<c:url value="/"/>resources/img/main_section6.jpg">
+			<div class="main_content1">
+				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
 				<div class="text">
-					<p>새가족등록안내</p>
-					<span>새가족 등록절차</span>
+					<p>찬양대</p>
+					<a href="shalomChoir.do">샬롬 찬양대</a>
+					<a href="immanuelChoir.do">임마누엘 찬양대</a>
+				</div>
+				<span><i class="xi-plus-circle-o"></i></span>
+			</div>
+			<div class="main_content1 cursor" onclick="window.open('https://www.youtube.com/feed/subscriptions/UCUelWlMoTG9gH2J7DP_VYLg')">
+				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
+				<div class="text">
+					<p>대광교회 유튜브</p>
+				</div>
+				<span><i class="xi-plus-circle-o"></i></span>
+			</div>
+			<div class="main_content1 cursor" onclick="location.href='churchPhoto.do'">
+				<img src="<c:url value="/"/>resources/img/main_section7.jpg">
+				<div class="text">
+					<p>교회사진</p>
+				</div>
+				<span><i class="xi-plus-circle-o"></i></span>
+			</div>
+			<div class="main_content1 cursor" onclick="location.href='flowerPhoto.do'">
+				<img src="<c:url value="/"/>resources/img/main_section2.jpg">
+				<div class="text">
+					<p>꽃꽃이갤러리</p>
+				</div>
+				<span><i class="xi-plus-circle-o"></i></span>
+			</div>
+			<div class="main_content1 cursor"  onclick="location.href='weekPageApply.do'">
+				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
+				<div class="text">
+					<p>주보요청</p>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
