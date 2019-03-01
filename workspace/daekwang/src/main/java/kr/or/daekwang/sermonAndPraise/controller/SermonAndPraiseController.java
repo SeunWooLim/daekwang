@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.daekwang.sermonAndPraise.model.service.SermonAndPraiseService;
+import kr.or.daekwang.sermonAndPraise.model.vo.SermonAndPraiseVo;
 
 @Controller
 public class SermonAndPraiseController {
@@ -30,12 +31,22 @@ public class SermonAndPraiseController {
 	}
 	
 	@RequestMapping(value = "/shalomChoir.do")
-	public String shalomChoir() {
+	public String shalomChoir(Model model) {
+		
+		SermonAndPraiseVo sermonAndPraiseVo = sermonAndPraiseService.selectshalomChoir();
+		
+		model.addAttribute("sapVo1", sermonAndPraiseVo);
+		
 		return "sermonAndPraise/shalomChoir";
 	}
 	
 	@RequestMapping(value = "/immanuelChoir.do")
-	public String immanuelChoir() {
+	public String immanuelChoir(Model model) {
+		
+		SermonAndPraiseVo sermonAndPraiseVo = sermonAndPraiseService.selectImmanuelChoir();
+		
+		model.addAttribute("sapVo2", sermonAndPraiseVo);
+		
 		return "sermonAndPraise/immanuelChoir";
 	}
 	
