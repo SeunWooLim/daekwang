@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<a href="errorPage403.do">403 페이지</a><br>
+<a href="errorPage404.do">404 페이지</a><br>
+<a href="errorPage500.do">500 페이지</a><br>
 
 </body>
 </html>

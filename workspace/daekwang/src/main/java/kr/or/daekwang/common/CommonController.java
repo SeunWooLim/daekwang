@@ -87,4 +87,19 @@ public class CommonController {
 	public String mediatorPrayer() {
 		return "mission/mediatorPrayer";
 	}
+	
+	@RequestMapping(value = "/errorPage403.do")
+	public String errorPage403() {
+		return "error/403errorPage";
+	}
+	
+	@RequestMapping(value = "/errorPage404.do")
+	public String errorPage404() {
+		return "error/404errorPage";
+	}
+	
+	@RequestMapping(value = "/errorPage500.do")
+	public String errorPage500() {
+		return "error/500errorPage";
+	}
 }
