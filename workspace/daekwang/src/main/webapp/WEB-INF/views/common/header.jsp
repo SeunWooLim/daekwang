@@ -12,7 +12,12 @@
 			</div>
 			<div class="head_top_right">
 				<ul>
-					<li><a href="#" class="login_btn">로그인</a></li>
+					<c:if test="${sessionScope.loginUser eq null}">
+						<li><a href="#" class="login_btn">로그인</a></li>
+					</c:if>
+					<c:if test="${sessionScope.loginUser ne null}">
+						<li><a href="logout.do" class="login_btn">로그아웃</a></li>
+					</c:if>
 					<li>|</li>
 					<li><a href="#">사이트맵</a></li>
 				</ul>
@@ -112,19 +117,21 @@
     		<i class="xi-close"></i>
         </div>
         <div class="body">
-            <div class="input"><i class="xi-mail-o"></i><input type="text" placeholder="아이디" id="loginEmail" name="loginEmail" value=""></div>
-            <div class="input"><i class="xi-key"></i><input type="password" class="password" placeholder="비밀번호" id="loginPasswd" name="loginPasswd"></div>
-            <label class="id_save"><input name="loginChk01" id="loginChk01" type="checkbox" value="">로그인 기억</label>
-            <ul class="menu">
-                <li><a class="find_id_btn">아이디찾기</a></li>
-                <li><span></span></li>
-                <li><a class="find_pw_btn">비밀번호찾기</a></li>
-            </ul>
-            <div class="cb"></div>
-            <div class="button">로그인</div>
-            <div class="line"></div>		
+	        <form method="post" action="login.do">
+	            <div class="input"><i class="xi-mail-o"></i><input type="text" placeholder="아이디" id="loginEmail" name="MEMBER_ID" value=""></div>
+	            <div class="input"><i class="xi-key"></i><input type="password" class="password" placeholder="비밀번호" id="loginPasswd" name="MEMBER_PWD"></div>
+	            <label class="id_save"><input name="loginChk01" id="loginChk01" type="checkbox" value="">로그인 기억</label>
+	            <ul class="menu">
+	                <li><a class="find_id_btn">아이디찾기</a></li>
+	                <li><span></span></li>
+	                <li><a class="find_pw_btn">비밀번호찾기</a></li>
+	            </ul>
+	            <div class="cb"></div>
+	            <button type="submit" class="button">로그인</button>
+	            <div class="line"></div>		
+	        </form>
        
-            <div class="join_btn">아직 계정이 없으신가요? <a href="/Front/contents/join/join_step00.html">회원가입 바로가기</a></div>		            
+            <div class="join_btn">아직 계정이 없으신가요? <a href="join.do">회원가입 바로가기</a></div>		            
         </div>
     </div>
 	<div class="cb"></div>
