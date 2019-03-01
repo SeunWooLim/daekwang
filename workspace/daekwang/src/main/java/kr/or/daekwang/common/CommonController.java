@@ -78,5 +78,13 @@ public class CommonController {
 		return "churchGuide/howToCome";
 	}
 	
-
+	@RequestMapping(value = "/christianityCulture.do")
+	public String christianityCulture() {
+		return "mission/christianityCulture";
+	}
+	
+	@RequestMapping(value = "/mediatorPrayer.do")
+	public String mediatorPrayer() {
+		return "mission/mediatorPrayer";
+	}
 }
