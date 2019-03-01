@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="memberMapper">
+	
+	<resultMap id="memberResultMap" type="Member">
+		<result property="MEMBER_NO" column="MEMBER_NO"/>
+  		<result property="MEMBER_FG" column="MEMBER_FG"/>
+  		<result property="MEMBER_ID" column="MEMBER_ID"/>
+  		<result property="MEMBER_PWD" column="MEMBER_PWD"/>
+  		<result property="MEMBER_NAME" column="MEMBER_NAME"/>
+  		<result property="MEMBER_PHONE" column="MEMBER_PHONE"/>
+  		<result property="MEMBER_EMAIL" column="MEMBER_EMAIL"/>
+  		<result property="MEMBER_ADDR" column="MEMBER_ADDR"/>
+  		<result property="MEMBER_DETAIL" column="MEMBER_DETAIL"/>
+  		<result property="MEMBER_USEYN" column="MEMBER_USEYN"/>
+	</resultMap>
+	
+	<select id="loginCheck" parameterType="Member" resultType="Member">
+		SELECT * 
+		FROM MEMBER
+		WHERE MEMBER_ID = #{MEMBER_ID} AND MEMBER_PWD = #{MEMBER_PWD}
+	</select>
+
+</mapper>

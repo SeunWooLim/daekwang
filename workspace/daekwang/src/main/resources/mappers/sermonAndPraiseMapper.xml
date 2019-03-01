@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="sermonAndPraiseMapper">
+	
+	<resultMap id="sermonAndPraiseResultMap" type="SermonAndPraise">
+		<result property="PRAISE_FG" column="PRAISE_FG"/>
+  		<result property="PRAISE_BOSS" column="PRAISE_BOSS"/>
+  		<result property="PRAISE_CONDUCTOR" column="PRAISE_CONDUCTOR"/>
+  		<result property="PRAISE_BANJU" column="PRAISE_BANJU"/>
+  		<result property="PRAISE_MANAGER" column="PRAISE_MANAGER"/>
+  		<result property="PRAISE_SUBMANAGER" column="PRAISE_SUBMANAGER"/>
+  		<result property="PRAISE_WRITER" column="PRAISE_WRITER"/>
+  		<result property="PRAISE_ACCOUNTANT" column="PRAISE_ACCOUNTANT"/>
+  		<result property="PRAISE_SOPRANO" column="PRAISE_SOPRANO"/>
+  		<result property="PRAISE_ALTO" column="PRAISE_ALTO"/>
+  		<result property="PRAISE_TENOR" column="PRAISE_TENOR"/>
+  		<result property="PRAISE_BASS" column="PRAISE_BASS"/>
+  		<result property="PRAISE_DETAIL" column="PRAISE_DETAIL"/>
+	</resultMap>
+	
+	<select id="selectshalomChoir" resultType="SermonAndPraise">
+		SELECT *
+		FROM praise_team
+		WHERE PRAISE_FG = '1'
+	</select>
+	
+	<select id="selectImmanuelChoir" resultType="SermonAndPraise">
+		SELECT *
+		FROM praise_team
+		WHERE PRAISE_FG = '2'
+	</select>
+</mapper>
