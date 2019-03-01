@@ -7,18 +7,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<jsp:include page="meta.jsp"/>
+<jsp:include page="../common/meta.jsp"/>
 </head>
 <body>
 
 <!-- 밑에 두가지 방법 중 하나 이용 -->
-<jsp:include page="header.jsp"/>
+<jsp:include page="../common/header.jsp"/>
 
 	<div id="wrap">
-		
+
 	</div>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="../common/footer.jsp"/>
  
 </body>
 
