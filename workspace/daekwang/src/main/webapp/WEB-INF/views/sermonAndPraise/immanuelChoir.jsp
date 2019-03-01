@@ -39,39 +39,39 @@
 						<tbody>
 							<tr>
 								<td class="title">대장</td>
-								<td colspan="5" class="tech">박종식</td>
+								<td colspan="5" class="tech" style="padding: 0 59px;">${sapVo2.PRAISE_BOSS }</td>
 							</tr>
 							<tr>
 								<td class="title">지휘</td>
-								<td>이은화 전도사</td>
+								<td>${sapVo2.PRAISE_CONDUCTOR }</td>
 								<td class="title">총무</td>
-								<td>조현숙 권사</td>
+								<td>${sapVo2.PRAISE_MANAGER }</td>
 								<td class="title">부총무</td>
-								<td>김성희 권사</td>
+								<td>${sapVo2.PRAISE_SUBMANAGER }</td>
 							</tr>
 							<tr>
 								<td class="title">서기</td>
-								<td>윤미라 권사</td>
+								<td>${sapVo2.PRAISE_WRITER }</td>
 								<td class="title">회계</td>
-								<td>강경화 권사</td>
+								<td>${sapVo2.PRAISE_ACCOUNTANT }</td>
 								<td class="title">반주</td>
-								<td>최송엽 권사</td>
+								<td>${sapVo2.PRAISE_BANJU }</td>
 							</tr>
 							<tr>
 								<td class="title">소프라노</td>
-								<td colspan="5" class="tech">박종식 박종식 박종식 박종식 박종식 박종식 박종식</td>
+								<td colspan="5" class="tech">${sapVo2.PRAISE_SOPRANO }</td>
 							</tr>
 							<tr>
 								<td class="title">알토</td>
-								<td colspan="5" class="tech">박종식 박종식 박종식 박종식 박종식 박종식 박종식 박종식 박종식 박종식 박종식 박종식 박종식</td>
+								<td colspan="5" class="tech">${sapVo2.PRAISE_ALTO }</td>
 							</tr>
 							<tr>
 								<td class="title">테너</td>
-								<td colspan="5" class="tech">박종식 박종식 박종식 박종식 박종식 박종식 박종식</td>
+								<td colspan="5" class="tech">${sapVo2.PRAISE_TENOR }</td>
 							</tr>
 							<tr>
 								<td class="title">베이스</td>
-								<td colspan="5" class="tech">박종식 박종식 박종식 박종식 박종식 박종식 박종식 박종식 박종식 박종식</td>
+								<td colspan="5" class="tech">${sapVo2.PRAISE_BASS }</td>
 							</tr>								
 						</tbody>
 					</table>

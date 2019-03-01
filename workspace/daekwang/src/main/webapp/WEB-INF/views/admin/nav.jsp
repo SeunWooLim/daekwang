@@ -10,14 +10,13 @@
 </head>
 <body>
 <nav id="sidenav" class="sidenav">
-	<a class="logo" href="../index.html">LOGO</a>
+	<a class="logo" href="forwardMain.do">LOGO</a>
 	<ul class="">
 		<li><a href="admin.do" style="background:none;"><i class="xi-home"></i>Home</a></li>
 	</ul>
 	<ul class="menulist">
-		<li><a href="#"><i class="xi-layout-column"></i>메뉴1</a>
+		<li><a href="#"><i class="xi-layout-column"></i>게시판 관리</a>
 			<ul class="nav_detail">
-				<li><a href="churchSchoolAdmin.do">교회학교 관리 </a></li>
 				<li><a href="churchNoticeAdmin.do">교회소식 관리 </a></li>
 				<li><a href="personNewsAdmin.do">교우소식 관리</a></li>
 				<li><a href="churchPhotoAdmin.do">교회사진 관리</a></li>
@@ -25,6 +24,14 @@
 				<li><a href="flowerPhotoAdmin.do">꽃꽃이 갤러리 관리</a></li>
 				<li><a href="weekPageApplyAdmin.do">주보 광고신청 관리</a></li>
 				<li><a href="worshipDataApplayAdmin.do">예배 자료신청 관리</a></li>
+			</ul>
+		</li>
+		<li><a href="#"><i class="xi-layout-column"></i>정보관리</a>
+			<ul class="nav_detail">
+				<li><a href="churchSchoolAdmin.do">교회학교 관리 </a></li>
+				<li><a href="#">샬롬 찬양대</a></li>
+				<li><a href="#">임마누엘 찬양대</a></li>
+				
 			</ul>
 		</li>
 		<!-- <li><a href="#"><i class="xi-market"></i>메뉴2</a>
