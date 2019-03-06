@@ -192,6 +192,10 @@
 	.nextgene_wrap .next_detail .next_right .right_left table tbody tr td{border:1px solid #c9c9c9; background:#fff; text-align:center; line-height:50px; font-size:14px; color:#7d7d7d}	
 	.nextgene_wrap .next_detail .next_right .right_left table tbody tr td.title{background:#f4f5f8 !important; font-size:14px; color:#333}	
 	.nextgene_wrap .next_detail .next_right .right_left table tbody tr td.tech{text-align:left; padding:0 20px}
+	.nextgene_wrap .nextjpg_wrap{max-width:970px; width:100%; height:100%; position: relative;}
+	.nextgene_wrap .nextjpg_wrap img{width: 100%; vertical-align: middle;}
+	.nextgene_wrap .nextjpg_wrap span{position: absolute; top:0; left:0; width: 100%; height:100%; right: 0; bottom: 0; background: rgba(0,0,0,0.6);}
+	
 	
 	.next_list_btn{position:fixed; top:300px; left:300px;}	
 		.next_list_btn ul{}	

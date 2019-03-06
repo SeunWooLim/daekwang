@@ -36,6 +36,12 @@
 	<c:forEach var="schoolList" items="${ schoolList }">
 		<div class="nextgene_wrap">	
 			<div id="tab<%= num++ %>"  class="nextgene_cate">
+				<!-- 이미지 추가부분 s -->
+				<div class="nextjpg_wrap">
+					<img alt="" src="<c:url value="/"/>resources/img/exnext.jpg">
+					<span class="bg"></span>
+				</div>
+				<!-- 이미지 추가부분 e -->
 				<p class="title">${schoolList.DEPT_NAME} </p>
 				<div class="next_detail">
 					<div class="next_left">
@@ -125,6 +131,12 @@
 	<c:forEach var="youthList" items="${ youthList }">	
 		<div class="nextgene_wrap">
 			<div id="tab<%= num++ %>" class="nextgene_cate">
+				<!-- 이미지 추가부분 s -->
+				<div class="nextjpg_wrap">
+					<img alt="" src="<c:url value="/"/>resources/img/exnext.jpg">
+					<span class="bg"></span>
+				</div>
+				<!-- 이미지 추가부분 e -->
 				<p class="title">${youthList.DEPT_NAME }</p>
 				<div class="next_detail">
 					<div class="next_left">
