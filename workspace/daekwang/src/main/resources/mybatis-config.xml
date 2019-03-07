@@ -22,5 +22,7 @@
 		<mapper resource="mappers/nextGenerationMapper.xml" /> 
 		<mapper resource="mappers/sermonAndPraiseMapper.xml" /> 
 		<mapper resource="mappers/memberMapper.xml" /> 
+		<mapper resource="mappers/boardMapper.xml"/>
+		<mapper resource="mappers/applyMapper.xml"/>
 	</mappers>
 </configuration>
