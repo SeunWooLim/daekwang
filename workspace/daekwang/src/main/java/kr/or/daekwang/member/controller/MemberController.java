@@ -6,8 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.daekwang.member.model.service.MemberService;
 import kr.or.daekwang.member.model.vo.MemberVo;
@@ -51,8 +53,43 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "/enroll.do")
-	public String enroll() {
+	public String enroll(HttpServletRequest request,  Model model, MemberVo member, HttpSession session) {
 		
-		return "common/main";
+		String email1 = request.getParameter("email1");
+		String email2 = request.getParameter("email2");
+		String email = email1 + "@" + email2;
+		System.out.println(email);
+		member.setMEMBER_EMAIL(email);
+		String returnVal = null;
+		
+		String phone1 = request.getParameter("phone1");
+		String phone2 = request.getParameter("phone2");
+		String phone3 = request.getParameter("phone3");
+		String phone = phone1 + "-" + phone2 + "-" + phone3;
+		System.out.println(phone);
+		member.setMEMBER_PHONE(phone);
+		
+		
+		int result = memberService.enroll(member);
+		
+		if(result != 1) {
+			model.addAttribute("msg", "회원가입에 실패 하였습니다");
+			model.addAttribute("url", "join.do");
+			returnVal = "common/alert";
+		}else {
+			returnVal = "common/main";
+		}
+		return returnVal;
 	}
+	
+	@ResponseBody 
+	@RequestMapping(value="/checkId.do",  method = RequestMethod.POST)
+	public String checkId(HttpServletRequest request, Model model) throws Exception{
+        String member_id = request.getParameter("inpuid");
+        //member_id와 같은 행의 갯수 조회
+        int rowcount = memberService.checkId(member_id);
+        
+        return String.valueOf(rowcount);
+	}
+
 }

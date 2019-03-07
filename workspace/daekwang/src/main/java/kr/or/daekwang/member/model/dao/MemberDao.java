@@ -15,6 +15,14 @@ public class MemberDao {
 		return mybatis.selectOne("memberMapper.loginCheck", member);
 	}
 
+	public int checkId(String member_id) {
+		return mybatis.selectOne("memberMapper.checkId", member_id);
+	}
+
+	public int enroll(MemberVo member) {
+		return mybatis.insert("memberMapper.enroll", member);
+	}
+
 
 	
 	

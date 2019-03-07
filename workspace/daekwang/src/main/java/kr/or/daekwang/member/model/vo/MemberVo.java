@@ -14,7 +14,10 @@ public class MemberVo {
 	private String MEMBER_NAME;		//회원이름
 	private String MEMBER_PHONE;	//핸드폰번호
 	private String MEMBER_EMAIL;	//회원이메일
+	private int MEMBER_POSTCODE;    //회원우편번호
 	private String MEMBER_ADDR;		//회원주소
+	private String MEMBER_ADDR_DETAIL; //회원상세주소
+	private String MEMBER_ADDR_EXTRA;  //회원추가주소
 	private String MEMBER_DETAIL;	//회원설명
 	private String MEMBER_USEYN;	//사용여부
 	
@@ -23,7 +26,8 @@ public class MemberVo {
 	}
 
 	public MemberVo(int mEMBER_NO, String mEMBER_FG, String mEMBER_ID, String mEMBER_PWD, String mEMBER_NAME,
-			String mEMBER_PHONE, String mEMBER_EMAIL, String mEMBER_ADDR, String mEMBER_DETAIL, String mEMBER_USEYN) {
+			String mEMBER_PHONE, String mEMBER_EMAIL, int mEMBER_POSTCODE, String mEMBER_ADDR,
+			String mEMBER_ADDR_DETAIL, String mEMBER_ADDR_EXTRA, String mEMBER_DETAIL, String mEMBER_USEYN) {
 		super();
 		MEMBER_NO = mEMBER_NO;
 		MEMBER_FG = mEMBER_FG;
@@ -32,7 +36,10 @@ public class MemberVo {
 		MEMBER_NAME = mEMBER_NAME;
 		MEMBER_PHONE = mEMBER_PHONE;
 		MEMBER_EMAIL = mEMBER_EMAIL;
+		MEMBER_POSTCODE = mEMBER_POSTCODE;
 		MEMBER_ADDR = mEMBER_ADDR;
+		MEMBER_ADDR_DETAIL = mEMBER_ADDR_DETAIL;
+		MEMBER_ADDR_EXTRA = mEMBER_ADDR_EXTRA;
 		MEMBER_DETAIL = mEMBER_DETAIL;
 		MEMBER_USEYN = mEMBER_USEYN;
 	}
@@ -93,12 +100,36 @@ public class MemberVo {
 		MEMBER_EMAIL = mEMBER_EMAIL;
 	}
 
+	public int getMEMBER_POSTCODE() {
+		return MEMBER_POSTCODE;
+	}
+
+	public void setMEMBER_POSTCODE(int mEMBER_POSTCODE) {
+		MEMBER_POSTCODE = mEMBER_POSTCODE;
+	}
+
 	public String getMEMBER_ADDR() {
 		return MEMBER_ADDR;
 	}
 
 	public void setMEMBER_ADDR(String mEMBER_ADDR) {
 		MEMBER_ADDR = mEMBER_ADDR;
+	}
+
+	public String getMEMBER_ADDR_DETAIL() {
+		return MEMBER_ADDR_DETAIL;
+	}
+
+	public void setMEMBER_ADDR_DETAIL(String mEMBER_ADDR_DETAIL) {
+		MEMBER_ADDR_DETAIL = mEMBER_ADDR_DETAIL;
+	}
+
+	public String getMEMBER_ADDR_EXTRA() {
+		return MEMBER_ADDR_EXTRA;
+	}
+
+	public void setMEMBER_ADDR_EXTRA(String mEMBER_ADDR_EXTRA) {
+		MEMBER_ADDR_EXTRA = mEMBER_ADDR_EXTRA;
 	}
 
 	public String getMEMBER_DETAIL() {
@@ -125,9 +156,12 @@ public class MemberVo {
 	public String toString() {
 		return "MemberVo [MEMBER_NO=" + MEMBER_NO + ", MEMBER_FG=" + MEMBER_FG + ", MEMBER_ID=" + MEMBER_ID
 				+ ", MEMBER_PWD=" + MEMBER_PWD + ", MEMBER_NAME=" + MEMBER_NAME + ", MEMBER_PHONE=" + MEMBER_PHONE
-				+ ", MEMBER_EMAIL=" + MEMBER_EMAIL + ", MEMBER_ADDR=" + MEMBER_ADDR + ", MEMBER_DETAIL=" + MEMBER_DETAIL
-				+ ", MEMBER_USEYN=" + MEMBER_USEYN + "]";
+				+ ", MEMBER_EMAIL=" + MEMBER_EMAIL + ", MEMBER_POSTCODE=" + MEMBER_POSTCODE + ", MEMBER_ADDR="
+				+ MEMBER_ADDR + ", MEMBER_ADDR_DETAIL=" + MEMBER_ADDR_DETAIL + ", MEMBER_ADDR_EXTRA="
+				+ MEMBER_ADDR_EXTRA + ", MEMBER_DETAIL=" + MEMBER_DETAIL + ", MEMBER_USEYN=" + MEMBER_USEYN + "]";
 	}
+
+	
 
 	
 	

@@ -16,6 +16,17 @@ public class MemberServiceImpl implements MemberService{
 	public MemberVo loginCheck(MemberVo member) {
 		return memberDao.loginCheck(member);
 	}
+
+	@Override
+	public int checkId(String member_id) {
+		return memberDao.checkId(member_id);
+	}
+
+	@Override
+	public int enroll(MemberVo member) {
+		return memberDao.enroll(member);
+	}
+	
 	
 	
 }

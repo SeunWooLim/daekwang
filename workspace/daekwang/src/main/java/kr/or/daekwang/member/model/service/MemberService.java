@@ -6,4 +6,8 @@ public interface MemberService {
 
 	MemberVo loginCheck(MemberVo member);
 
+	int checkId(String member_id);
+
+	int enroll(MemberVo member);
+
 }
