@@ -4,6 +4,8 @@ import java.sql.Date;
 
 import org.springframework.stereotype.Component;
 
+import kr.or.daekwang.member.model.vo.MemberVo;
+
 @Component
 public class ApplyVo {
 	
@@ -18,13 +20,19 @@ public class ApplyVo {
 	private String APPLY_ORFILE;	//첨부파일원본명
 	private String APPLY_REFILE;	//첨부파일고유명
 	private char DELETE_YN;			//삭제여부
+	private String WORSHIP_NAME; 	//예배명
+	private String APPLY_CATE;		//주보신청분류
+	private String DEPT_NAME; 		//부서명
+	
+	private MemberVo memberVo;
 	
 	public ApplyVo() {
 		
 	}
 
 	public ApplyVo(char aPPLY_FG, int aPPLY_NO, String aPPLY_TITLE, String aPPLY_CONTENT, int mEMBER_NO,
-			Date aPPLY_DATE, String aPPLY_ORFILE, String aPPLY_REFILE, char dELETE_YN) {
+			Date aPPLY_DATE, String aPPLY_ORFILE, String aPPLY_REFILE, char dELETE_YN, String wORSHIP_NAME,
+			String aPPLY_CATE, String dEPT_NAME, MemberVo memberVo) {
 		super();
 		APPLY_FG = aPPLY_FG;
 		APPLY_NO = aPPLY_NO;
@@ -35,6 +43,10 @@ public class ApplyVo {
 		APPLY_ORFILE = aPPLY_ORFILE;
 		APPLY_REFILE = aPPLY_REFILE;
 		DELETE_YN = dELETE_YN;
+		WORSHIP_NAME = wORSHIP_NAME;
+		APPLY_CATE = aPPLY_CATE;
+		DEPT_NAME = dEPT_NAME;
+		this.memberVo = memberVo;
 	}
 
 	public char getAPPLY_FG() {
@@ -109,6 +121,38 @@ public class ApplyVo {
 		DELETE_YN = dELETE_YN;
 	}
 
+	public String getWORSHIP_NAME() {
+		return WORSHIP_NAME;
+	}
+
+	public void setWORSHIP_NAME(String wORSHIP_NAME) {
+		WORSHIP_NAME = wORSHIP_NAME;
+	}
+
+	public String getAPPLY_CATE() {
+		return APPLY_CATE;
+	}
+
+	public void setAPPLY_CATE(String aPPLY_CATE) {
+		APPLY_CATE = aPPLY_CATE;
+	}
+
+	public String getDEPT_NAME() {
+		return DEPT_NAME;
+	}
+
+	public void setDEPT_NAME(String dEPT_NAME) {
+		DEPT_NAME = dEPT_NAME;
+	}
+
+	public MemberVo getMemberVo() {
+		return memberVo;
+	}
+
+	public void setMemberVo(MemberVo memberVo) {
+		this.memberVo = memberVo;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -118,8 +162,8 @@ public class ApplyVo {
 		return "ApplyVo [APPLY_FG=" + APPLY_FG + ", APPLY_NO=" + APPLY_NO + ", APPLY_TITLE=" + APPLY_TITLE
 				+ ", APPLY_CONTENT=" + APPLY_CONTENT + ", MEMBER_NO=" + MEMBER_NO + ", APPLY_DATE=" + APPLY_DATE
 				+ ", APPLY_ORFILE=" + APPLY_ORFILE + ", APPLY_REFILE=" + APPLY_REFILE + ", DELETE_YN=" + DELETE_YN
-				+ "]";
+				+ ", WORSHIP_NAME=" + WORSHIP_NAME + ", APPLY_CATE=" + APPLY_CATE + ", DEPT_NAME=" + DEPT_NAME + "]";
 	}
-	
+
 	
 }
