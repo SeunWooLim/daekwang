@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardMapper">
+	
+	<resultMap id="memberResultMap" type="Member">
+		<result property="MEMBER_NO" column="MEMBER_NO"/>
+  		<result property="MEMBER_FG" column="MEMBER_FG"/>
+  		<result property="MEMBER_ID" column="MEMBER_ID"/>
+  		<result property="MEMBER_PWD" column="MEMBER_PWD"/>
+  		<result property="MEMBER_NAME" column="MEMBER_NAME"/>
+  		<result property="MEMBER_PHONE" column="MEMBER_PHONE"/>
+  		<result property="MEMBER_EMAIL" column="MEMBER_EMAIL"/>
+  		<result property="MEMBER_POSTCODE" column="MEMBER_POSTCODE"/>
+  		<result property="MEMBER_ADDR" column="MEMBER_ADDR"/>
+  		<result property="MEMBER_ADDR_DETAIL" column="MEMBER_ADDR_DETAIL"/>
+  		<result property="MEMBER_ADDR_EXTRA" column="MEMBER_ADDR_EXTRA"/>
+  		<result property="MEMBER_DETAIL" column="MEMBER_DETAIL"/>
+  		<result property="MEMBER_USEYN" column="MEMBER_USEYN"/>
+	</resultMap>
+	
+	<resultMap id="boardResultMap" type="Board">
+		<result property="BOARD_FG" column="BOARD_FG"/>
+  		<result property="BOARD_NO" column="BOARD_NO"/>
+  		<result property="BOARD_TITLE" column="BOARD_TITLE"/>
+  		<result property="BOARD_CONTENT" column="BOARD_CONTENT"/>
+  		<result property="BOARD_READCNT" column="BOARD_READCNT"/>
+  		<result property="MEMBER_NO" column="MEMBER_NO"/>
+  		<result property="FIRST_INPUT_DATE" column="FIRST_INPUT_DATE"/>
+  		<result property="RECENT_UPDATE_DATE" column="RECENT_UPDATE_DATE"/>
+  		<result property="DELETE_YN" column="DELETE_YN"/>
+  		<result property="REPLY_NO" column="REPLY_NO"/>
+  		<result property="REPLY_BOARD_FG" column="REPLY_BOARD_FG"/>
+  		<result property="REPLY_BOARD_NO" column="REPLY_BOARD_NO"/>
+  		<result property="REPLY_CONTENT" column="MEMBER_USEREPLY_CONTENTYN"/>
+  		<result property="REPLY_MEMBER_NO" column="REPLY_MEMBER_NO"/>
+  		<result property="REPLY_DATE" column="REPLY_DATE"/>
+  		<result property="REPLY_DELETE_YN" column="REPLY_DELETE_YN"/>
+  		<collection property="memberVo" resultMap="memberResultMap"/>
+	</resultMap>
+	
+	<select id="personNewsList" resultMap="boardResultMap">
+		SELECT A.*, B.MEMBER_NAME
+		FROM board A, member B
+		WHERE A.MEMBER_NO = B.MEMBER_NO
+		AND A.BOARD_FG = 2
+		AND A.DELETE_YN = 'N'
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+	<select id="listCount" resultType="Integer">
+		SELECT COUNT(*)
+		FROM board A, member B
+		WHERE A.MEMBER_NO = B.MEMBER_NO
+		AND A.BOARD_FG = 2
+		AND A.DELETE_YN = 'N'
+		ORDER BY BOARD_NO DESC
+	</select>
+
+</mapper>
