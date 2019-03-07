@@ -12,10 +12,23 @@
 			</div>
 			<div class="head_top_right">
 				<ul>
+					<!-- 로그인X -->
 					<c:if test="${sessionScope.loginUser eq null}">
 						<li><a href="#" class="login_btn">로그인</a></li>
+						<li>|</li>
+						<li><a href="join.do" class="login_btn">회원가입</a></li>
 					</c:if>
+					<!-- 로그인O -->
 					<c:if test="${sessionScope.loginUser ne null}">
+						<!-- 관리자 -->
+						<c:if test="${sessionScope.loginUser.MEMBER_FG eq 1 }">
+							<li><a href="admin.do" class="login_btn">${sessionScope.loginUser.MEMBER_NAME }님</a></li>
+						</c:if>
+						<!-- 일반사용자 -->
+						<c:if test="${sessionScope.loginUser.MEMBER_FG eq 2 }">
+							<li><a href="#" class="">${sessionScope.loginUser.MEMBER_NAME }님</a></li>
+						</c:if>
+						<li>|</li>
 						<li><a href="logout.do" class="login_btn">로그아웃</a></li>
 					</c:if>
 					<li>|</li>
