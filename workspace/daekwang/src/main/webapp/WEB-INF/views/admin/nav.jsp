@@ -20,7 +20,6 @@
 				<li><a href="churchNoticeAdmin.do">교회소식 관리 </a></li>
 				<li><a href="personNewsAdmin.do">교우소식 관리</a></li>
 				<li><a href="churchPhotoAdmin.do">교회사진 관리</a></li>
-				<li><a href="eventVideoAdmin.do">행사동영상 관리</a></li>
 				<li><a href="flowerPhotoAdmin.do">꽃꽃이 갤러리 관리</a></li>
 				<li><a href="weekPageApplyAdmin.do">주보 광고신청 관리</a></li>
 				<li><a href="worshipDataApplayAdmin.do">예배 자료신청 관리</a></li>

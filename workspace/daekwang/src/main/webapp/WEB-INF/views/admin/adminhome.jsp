@@ -27,7 +27,6 @@
 					<li><a href="#">교회소식 관리페이지 // churchNoticeAdmin.do</a></li>
 					<li><a href="#">교우소식 관리페이지 // personNewsAdmin.do</a></li>
 					<li><a href="#">교회사진 관리페이지 // churchPhotoAdmin.do</a></li>
-					<li><a href="#">행사동영상 관리페이지 // eventVideoAdmin.do</a></li>
 					<li><a href="#">꽃꽃이 갤러리 관리페이지 // flowerPhotoAdmin.do</a></li>
 					<li><a href="#">주보 광고신청 관리페이지 // weekPageApplyAdmin.do</a></li>
 					<li><a href="#">예배 자료신청 관리페이지 // worshipDataApplyAdmin.do</a></li>
