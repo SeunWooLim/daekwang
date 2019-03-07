@@ -58,7 +58,6 @@
 					</tbody>
 				</table>
 				<button type="submit" class="apply_btn">신청하기</button>
-				<a href="downloadFile.do" class="apply_btn">다운로드</a>
 			</div>
 		</div>
 	</form>
