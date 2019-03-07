@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	
-	<form action="#" method="post">
+	<form action="insertWorshipData.do" method="post" enctype="multipart/form-data">
 		<div class="apply_wrap">
 			<div class="apply">
 				<table>
@@ -27,39 +27,38 @@
 					<tbody>
 						<tr>
 							<td><label for="wPA">신청자</label></td>
-							<td><input type="text" id="wPA" name="wPA" placeholder="신청자 작성"/></td>
+							<td>${sessionScope.loginUser.MEMBER_NAME }<input type="hidden" name="MEMBER_NO" value="${sessionScope.loginUser.MEMBER_NO}"></td>
 						</tr>
 						<tr>
 							<td><label>예배명</label></td>
 							<td>
-								<select name=category>
-									<option value="1">샬롬찬양대</option>
-									<option value="2">임마누엘찬양대</option>
-									<option value="3">연합찬양대</option>
-									<option value="4">주일 1부예배</option>
-									<option value="5">주일 2부예배</option>
-									<option value="6">주일 3부예배</option>
-									<option value="7">올젠워십</option>
-									<option value="8">수요기도회</option>
-									<option value="9">기타행사</option>
+								<select name="WORSHIP_NAME">
+									<option value="예배악보">예배악보</option>
+									<option value="1부예배">1부예배</option>
+									<option value="2부예배">2부예배</option>
+									<option value="3부예배">3부예배</option>
+									<option value="올젠워십">올젠워십</option>
+									<option value="수요기도회">수요기도회</option>
+									<option value="기타행사">기타행사</option>
 								</select>
 							</td>
 						</tr>
 						<tr>
 							<td><label for="wPA_context">내용</label></td>
-							<td><textarea id="wPA_context" name="wPA_context"  placeholder="내용 작성"></textarea></td>
+							<td><textarea id="wPA_context" name="APPLY_CONTENT"  placeholder="내용 작성"></textarea></td>
 						</tr>
 						<tr>
 							<td><label>첨부파일</label></td>
 							<td class="filebox">
-								<input class="upload-name" value="파일선택" disabled="disabled">
+								<input class="upload-name" placeholder="파일선택" disabled="disabled" name="src">
 								<label for="filename">업로드</label> 
-						  		<input type="file" id="filename" class="upload-hidden">
+						  		<input type="file" id="filename" name="file" class="upload-hidden">
 						  	</td>
 						</tr>
 					</tbody>
 				</table>
-				<button class="apply_btn">신청하기</button>
+				<button type="submit" class="apply_btn">신청하기</button>
+				<a href="downloadFile.do" class="apply_btn">다운로드</a>
 			</div>
 		</div>
 	</form>

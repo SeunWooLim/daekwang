@@ -18,61 +18,19 @@
 	
 	<div class="pw_board_wrap">
 		<ul>
-			<li>
-				<div class="head">
-					<div>1</div>
-					<p class="title">제목입니다</p>
-					<p class="text"><span>2018-02-02</span><span>오민식</span></p>
-					<i class="xi-angle-down"></i>
-				</div>
-				<div class="body">
-					<p class="title">내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.</p>
-				</div>
-			</li>
-			<li>
-				<div class="head">
-					<div>1</div>
-					<p class="title">제목입니다</p>
-					<p class="text"><span>2018-02-02</span><span>오민식</span></p>
-					<i class="xi-angle-down"></i>
-				</div>
-				<div class="body">
-					<p class="title">내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.</p>
-				</div>
-			</li>
-			<li>
-				<div class="head">
-					<div>1</div>
-					<p class="title">제목입니다</p>
-					<p class="text"><span>2018-02-02</span><span>오민식</span></p>
-					<i class="xi-angle-down"></i>
-				</div>
-				<div class="body">
-					<p class="title">내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.</p>
-				</div>
-			</li>
-			<li>
-				<div class="head">
-					<div>1</div>
-					<p class="title">제목입니다</p>
-					<p class="text"><span>2018-02-02</span><span>오민식</span></p>
-					<i class="xi-angle-down"></i>
-				</div>
-				<div class="body">
-					<p class="title">내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.</p>
-				</div>
-			</li>
-			<li>
-				<div class="head">
-					<div>1</div>
-					<p class="title">제목입니다</p>
-					<p class="text"><span>2018-02-02</span><span>오민식</span></p>
-					<i class="xi-angle-down"></i>
-				</div>
-				<div class="body">
-					<p class="title">내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.내용입니다.</p>
-				</div>
-			</li>
+			<c:forEach var="personNews" items="${list }">
+				<li>
+					<div class="head">
+						<div>${listCount }</div>
+						<p class="title">${personNews.BOARD_TITLE }</p>
+						<p class="text"><span>${personNews.RECENT_UPDATE_DATE }</span><span>${personNews.memberVo.MEMBER_NAME }</span></p>
+						<i class="xi-angle-down"></i>
+					</div>
+					<div class="body">
+						<p class="title">${personNews.BOARD_CONTENT }</p>
+					</div>
+				</li>
+			</c:forEach>
 		</ul>
 	</div>
 	
