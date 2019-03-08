@@ -7,7 +7,7 @@
 			<div class="head_top">
 				<div class="head_top_left">
 				<a href="forwardMain.do">
-					<img alt="안양대광교회" src="<c:url value="/"/>resources/img/index_logo.gif">
+					<img alt="안양대광교회" src="<c:url value="/resources/img/index_logo.gif"/>">
 				</a>
 			</div>
 			<div class="head_top_right">

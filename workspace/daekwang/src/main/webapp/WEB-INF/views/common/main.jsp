@@ -18,22 +18,22 @@
 		<div class="main_slider">
 			<ul>
 				<li>
-					<img alt="" src="<c:url value="/"/>resources/img/main1.jpg">
+					<img alt="" src="<c:url value="/resources/img/main1.jpg"/>">
 				</li>
 				<li>
-					<img alt="" src="<c:url value="/"/>resources/img/main2.jpg">
+					<img alt="" src="<c:url value="/resources/img/main2.jpg"/>">
 				</li>
 				<li>
-					<img alt="" src="<c:url value="/"/>resources/img/main3.jpg">
+					<img alt="" src="<c:url value="/resources/img/main3.jpg"/>">
 				</li>
 				<li>
-					<img alt="" src="<c:url value="/"/>resources/img/main4.jpg">
+					<img alt="" src="<c:url value="/resources/img/main4.jpg"/>">
 				</li>
 			</ul>
 		</div>
 		<div class="main_content_wrap">
 			<div class="main_content1 cursor" onclick="location.href='pastorGreeting.do'">
-				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
+				<img src="<c:url value="/resources/img/main_section1.jpg"/>">
 				<div class="text">
 					<p>환영합니다</p>
 					<span>담임목사 인사</span>
@@ -41,7 +41,7 @@
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 cursor" onclick="location.href='worshipGuide.do'">
-				<img src="<c:url value="/"/>resources/img/main_section2.jpg">
+				<img src="<c:url value="/resources/img/main_section2.jpg"/>">
 				<div class="text">
 					<p>예배시간안내</p>
 					<span>대광교회 예배시간</span>
@@ -49,7 +49,7 @@
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 cursor" onclick="location.href='newFamilyIntroducing.do'"> 
-				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
+				<img src="<c:url value="/resources/img/main_section1.jpg"/>">
 				<div class="text">
 					<p>금주의 새가족</p>
 					<span>대광교회 예배시간</span>
@@ -57,10 +57,10 @@
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 main_content2 cursor" onclick="location.href='sundayWorship.do'">
-				<img src="<c:url value="/"/>resources/img/main_section4.jpg">
+				<img src="<c:url value="/resources/img/main_section4.jpg"/>">
 			</div>
 			<div class="main_content1 main_content3">
-				<img src="<c:url value="/"/>resources/img/main_section2.jpg">
+				<img src="<c:url value="/resources/img/main_section2.jpg"/>">
 				<div class="text">
 					<p>교회소식</p>
 					<ul>
@@ -94,7 +94,7 @@
 			</div>
 			
 			<div class="main_content1">
-				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
+				<img src="<c:url value="/resources/img/main_section1.jpg"/>">
 				<div class="text">
 					<p>찬양대</p>
 					<a href="shalomChoir.do">샬롬 찬양대</a>
@@ -103,35 +103,35 @@
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 cursor" onclick="window.open('https://www.youtube.com/feed/subscriptions/UCUelWlMoTG9gH2J7DP_VYLg')">
-				<img src="<c:url value="/"/>resources/img/main_section2.jpg">
+				<img src="<c:url value="/resources/img/main_section2.jpg"/>">
 				<div class="text">
 					<p>대광교회 유튜브</p>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 cursor" onclick="location.href='churchPhoto.do'">
-				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
+				<img src="<c:url value="/resources/img/main_section1.jpg"/>">
 				<div class="text">
 					<p>교회사진</p>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 cursor" onclick="location.href='flowerPhoto.do'">
-				<img src="<c:url value="/"/>resources/img/main_section2.jpg">
+				<img src="<c:url value="/resources/img/main_section2.jpg"/>">
 				<div class="text">
 					<p>꽃꽃이갤러리</p>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 cursor"  onclick="location.href='weekPageApply.do'">
-				<img src="<c:url value="/"/>resources/img/main_section1.jpg">
+				<img src="<c:url value="/resources/img/main_section1.jpg"/>">
 				<div class="text">
 					<p>주보요청</p>
 				</div>
 				<span><i class="xi-plus-circle-o"></i></span>
 			</div>
 			<div class="main_content1 cursor"  onclick="location.href='worshipDataApply.do'">
-				<img src="<c:url value="/"/>resources/img/main_section2.jpg">
+				<img src="<c:url value="/resources/img/main_section2.jpg"/>">
 				<div class="text">
 					<p>예배자료신청</p>
 				</div>
