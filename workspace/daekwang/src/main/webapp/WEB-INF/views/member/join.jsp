@@ -53,11 +53,9 @@
 								<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 								<input type="text" id="address" name="MEMBER_ADDR" placeholder="주소" readonly><br>
 								<input type="text" id="detailAddress" name="MEMBER_ADDR_DETAIL" placeholder="상세주소" oninput="checkAddr()">
-								<input type="text" id="extraAddress" name="MEMBER_ADDR_EXTRA" placeholder="참고항목" readonly><p id="addrtxt" style="display: inline-block; margin-left:10px;" ></p>
+								<input type="text" id="extraAddress" name="MEMBER_ADDR_EXTRA" placeholder="참고항목" readonly>
+								<p id="addrtext" style="display: none; margin-left:10px;" ></p>
 							</td>
-							<!-- <td class="add">
-								<input type="text" id="address" name="MEMBER_ADDR"><a href="#">주소찾기</a>
-							</td> -->
 						</tr>
 						<tr>
 							<td><label for="email">이메일</label></td>
@@ -79,7 +77,7 @@
 						</tr>
 						<tr>
 							<td><label for="phone2">전화번호</label></td>
-							<td>
+							<td class="call">
 								<select id="phone1" name="phone1">
 									<option value="010">010</option>								
 									<option value="011">011</option>								
@@ -89,15 +87,15 @@
 									<option value="019">019</option>								
 								</select>
 								-
-								<input type="text" id="phone2" name="phone2" style="width: 70px" oninput="checkPhone()">
+								<input type="text" id="phone2" name="phone2"  oninput="checkPhone()">
 								-
-								<input type="text" id="phone3" name="phone3" style="width: 70px" oninput="checkPhone()">
-								<p id="phonetxt" style="display: inline-block; margin-left:10px;" ></p>
+								<input type="text" id="phone3" name="phone3"  oninput="checkPhone()">
+								<p id="phonetxt" style="display: none; margin-left:10px;" ></p>
 							</td>
 						</tr>
 						<tr>
 							<td><label for="inputAgree">약관동의</label></td>
-							<td>
+							<td class="dong">
 								<input id="inputAgree" type="checkbox" onclick=ischecked()> <a href="#"> 이용약관</a> 에 동의합니다.
 							</td>
 						</tr>
