@@ -56,4 +56,9 @@ public class AdminController {
 	public String worshipDataApplayAdmin() {
 		return "admin/worshipDataApplayAdmin";
 	}
+	
+	@RequestMapping(value = "updateDetail.do")
+	public String updateDetail() {
+		return "admin/updateDetail";
+	}
 }

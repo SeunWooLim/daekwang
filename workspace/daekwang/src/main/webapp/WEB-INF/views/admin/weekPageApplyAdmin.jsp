@@ -87,7 +87,7 @@
 							<td>내용입니다.</td>
 							<td>2018-04-23</td>
 							<td>
-								<a href="#" class="btnform5 update_btn">수정</a>
+								<a href="#" class="btnform5 update_btn" onclick="window.open('updateDetail.do','window_name','width=800,height=520,location=no,status=no,scrollbars=no')">수정</a>
 								<a href="#" class="btnform6">삭제</a>
 							</td>
 						</tr>
@@ -98,48 +98,7 @@
 			</div>
 		</div>
 	<!--container s-->
-	</div>
-	<div class="formbg"></div>
-	<div class="form_wrap">
-		<form action="" method="">
-			<div class="form">
-				<p>주보광고신청 수정</p>
-				<table>
-					<colgroup>
-						<col width="10%">
-						<col width="*">
-					</colgroup>
-					<tbody>
-						<tr>
-							<td><label for="wPA">신청자</label></td>
-							<td><input type="text" id="wPA" name="wPA" value="신청자명"/></td>
-						</tr>
-						<tr>
-							<td><label for="wPA_Dep">부서명</label></td>
-							<td><input type="text" id="wPA_Dep" name="wPA_Dep" value="부서명"/></td>
-						</tr>
-						<tr>
-							<td><label>분류</label></td>
-							<td>
-								<select name="category">
-									<option value="1" selected>주보원고</option>
-									<option value="2">광고요청</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td><label for="wPA_context">내용</label></td>
-							<td><textarea id="wPA_context" name="wPA_context"  value="내용 작성"></textarea></td>
-						</tr>
-					</tbody>
-				</table>
-				<ul>
-					<li><a class="btnform1">수정</a></li>
-					<li><a class="btnform2 close_btn">닫기</a></li>
-				</ul>
-			</div>
-		</form>
-	</div>
+	</div>	
  </body>
 <script>
 	$(document).ready(function(){
@@ -162,3 +121,4 @@
 	.menuuuuuu li p{font-size:20px;}
 	.menuuuuuu li p span{font-size:20px;}
 </style>
+
