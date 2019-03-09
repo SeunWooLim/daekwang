@@ -7,7 +7,7 @@
 			<div class="head_top">
 				<div class="head_top_left">
 				<a href="forwardMain.do">
-					<img alt="안양대광교회" src="<c:url value="/resources/img/index_logo.gif"/>">
+					<img alt="안양대광교회" src="<c:url value="/resources/img/logo1.png"/>">
 				</a>
 			</div>
 			<div class="head_top_right">
@@ -150,7 +150,11 @@
 	<div class="cb"></div>
 </div>
 <!-- 로그인 e -->
-
+<div class="scroll_top">
+    <img class="on" src="<c:url value="/resources/img/scroll_top_on.png"/>"/>
+    <img src="<c:url value="/resources/img/scroll_top.png"/>"/>
+    
+</div>
 <script>
 	$(document).ready(function(){
 		$(".login_btn").click(function(){
@@ -160,10 +164,7 @@
 		$(".h_login .box .head .xi-close").click(function(){
 			$(".h_login").stop().fadeOut(200);
 		});
-	});
-</script>
-<script>
-	$(document).ready(function(){
+		
 		$(".head_mid_wrap").mouseover(function(){
 			$(".head_mid_detail_wrap").show();
 		});
@@ -176,6 +177,42 @@
 		$(".head_mid_detail_wrap").mouseleave(function(){
 			$(".head_mid_detail_wrap").hide();
 		});
+		
+		// header:s
+		var scroll_header = 0
+		$(window).scroll(function(){
+			
+			if($(window).scrollTop() > 50){
+				if(scroll_header == 1) return;
+				scroll_header=1
+				$(".scroll_top").fadeIn(500)
+				$(".head_top_wrap").addClass("on");
+				$(".head_mid_wrap").addClass("on");
+
+			}else{
+				scroll_header=0
+				$(".scroll_top").fadeOut(500)
+				$(".head_top_wrap").removeClass("on");
+				$(".head_mid_wrap").removeClass("on");
+			}
+		})
+		
+		$(".scroll_top").mouseenter(function(){
+			$(".on",this).stop().fadeIn(200)
+			$(this).mouseleave(function(){
+				$(".on",this).stop().fadeOut(200)
+			})
+		})
+		
+		$(".scroll_top").click(function(){
+			$("html, body").animate({scrollTop:0},1000)
+			return false;
+		})
+	});
+</script>
+<script>
+	$(document).ready(function(){
+		
 	});
 		
 </script>

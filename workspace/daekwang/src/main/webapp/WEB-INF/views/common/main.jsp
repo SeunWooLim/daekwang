@@ -1,170 +1,232 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<jsp:include page="meta.jsp"/>
+<jsp:include page="meta.jsp" />
 </head>
 <body>
 
-<!-- 밑에 두가지 방법 중 하나 이용 -->
-<jsp:include page="header.jsp"/>
+	<!-- 밑에 두가지 방법 중 하나 이용 -->
+	<jsp:include page="header.jsp" />
 
 	<div id="wrap">
 		<div class="main_slider">
 			<ul>
-				<li>
-					<img alt="" src="<c:url value="/resources/img/main1.jpg"/>">
+				<li><img alt="" src="<c:url value="/resources/img/main1.jpg"/>">
 				</li>
-				<li>
-					<img alt="" src="<c:url value="/resources/img/main2.jpg"/>">
+				<li><img alt="" src="<c:url value="/resources/img/main2.jpg"/>">
 				</li>
-				<li>
-					<img alt="" src="<c:url value="/resources/img/main3.jpg"/>">
+				<li><img alt="" src="<c:url value="/resources/img/main3.jpg"/>">
 				</li>
-				<li>
-					<img alt="" src="<c:url value="/resources/img/main4.jpg"/>">
+				<li><img alt="" src="<c:url value="/resources/img/main4.jpg"/>">
 				</li>
 			</ul>
 		</div>
-		<div class="main_content_wrap">
-			<div class="main_content1 cursor" onclick="location.href='pastorGreeting.do'">
-				<img src="<c:url value="/resources/img/main_section1.jpg"/>">
-				<div class="text">
-					<p>환영합니다</p>
-					<span>담임목사 인사</span>
+		<div class="main_background_wrap" id="sliderwrapp">
+			<span class="bg"></span>
+			<div class="main_content_wrap">
+				<div class="main_content1 cursor"
+					onclick="location.href='pastorGreeting.do'">
+					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+					<div class="text">
+						<p>환영합니다</p>
+						<span>담임목사 인사</span>
+					</div>
+					<span><i class="xi-plus-circle-o"></i></span>
 				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
-			</div>
-			<div class="main_content1 cursor" onclick="location.href='worshipGuide.do'">
-				<img src="<c:url value="/resources/img/main_section2.jpg"/>">
-				<div class="text">
-					<p>예배시간안내</p>
-					<span>대광교회 예배시간</span>
+				<div class="main_content1 cursor"
+					onclick="location.href='worshipGuide.do'">
+					<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+					<div class="text">
+						<p>예배시간안내</p>
+						<span>대광교회 예배시간</span>
+					</div>
+					<span><i class="xi-plus-circle-o"></i></span>
 				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
-			</div>
-			<div class="main_content1 cursor" onclick="location.href='newFamilyIntroducing.do'"> 
-				<img src="<c:url value="/resources/img/main_section1.jpg"/>">
-				<div class="text">
-					<p>금주의 새가족</p>
-					<span>대광교회 예배시간</span>
+				<div class="main_content1 cursor"
+					onclick="location.href='newFamilyIntroducing.do'">
+					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+					<div class="text">
+						<p>금주의 새가족</p>
+						<span>대광교회 예배시간</span>
+					</div>
+					<span><i class="xi-plus-circle-o"></i></span>
 				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
-			</div>
-			<div class="main_content1 main_content2 cursor" onclick="location.href='sundayWorship.do'">
-				<img src="<c:url value="/resources/img/main_section4.jpg"/>">
-			</div>
-			<div class="main_content1 main_content3">
-				<img src="<c:url value="/resources/img/main_section2.jpg"/>">
-				<div class="text">
-					<p>교회소식</p>
-					<ul>
-						<li>
-							<a href="#">
-								<span class="left">제목입니다.</span>
-								<span class="right">2019-02-20</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="left">제목입니다.</span>
-								<span class="right">2019-02-20</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="left">제목입니다.</span>
-								<span class="right">2019-02-20</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="left">제목입니다.</span>
-								<span class="right">2019-02-20</span>
-							</a>
-						</li>
-					</ul>
+				<div class="main_content1 main_content2 cursor"
+					onclick="location.href='sundayWorship.do'">
+					<img src="<c:url value="/resources/img/main_section4.jpg"/>">
 				</div>
-				<span><a href="churchNews.do"><i class="xi-plus-circle-o"></i></a></span>
+				<div class="main_content1 main_content3">
+					<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+					<div class="text">
+						<p>교회소식</p>
+						<ul>
+							<li><a href="#"> <span class="left">제목입니다.</span> <span
+									class="right">2019-02-20</span>
+							</a></li>
+							<li><a href="#"> <span class="left">제목입니다.</span> <span
+									class="right">2019-02-20</span>
+							</a></li>
+							<li><a href="#"> <span class="left">제목입니다.</span> <span
+									class="right">2019-02-20</span>
+							</a></li>
+							<li><a href="#"> <span class="left">제목입니다.</span> <span
+									class="right">2019-02-20</span>
+							</a></li>
+						</ul>
+					</div>
+					<span><a href="churchNews.do"><i
+							class="xi-plus-circle-o"></i></a></span>
+				</div>
+
+				<div class="main_content1">
+					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+					<div class="text">
+						<p>찬양대</p>
+						<a href="shalomChoir.do">샬롬 찬양대</a> <a href="immanuelChoir.do">임마누엘
+							찬양대</a>
+					</div>
+					<span><i class="xi-plus-circle-o"></i></span>
+				</div>
+				<div class="main_content1 cursor"
+					onclick="window.open('https://www.youtube.com/feed/subscriptions/UCUelWlMoTG9gH2J7DP_VYLg')">
+					<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+					<div class="text">
+						<p>대광교회 유튜브</p>
+					</div>
+					<span><i class="xi-plus-circle-o"></i></span>
+				</div>
+				<div class="main_content1 cursor"
+					onclick="location.href='churchPhoto.do'">
+					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+					<div class="text">
+						<p>교회사진</p>
+					</div>
+					<span><i class="xi-plus-circle-o"></i></span>
+				</div>
+				<div class="main_content1 cursor"
+					onclick="location.href='flowerPhoto.do'">
+					<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+					<div class="text">
+						<p>꽃꽃이갤러리</p>
+					</div>
+					<span><i class="xi-plus-circle-o"></i></span>
+				</div>
+				<div class="main_content1 cursor"
+					onclick="location.href='weekPageApply.do'">
+					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+					<div class="text">
+						<p>주보요청</p>
+					</div>
+					<span><i class="xi-plus-circle-o"></i></span>
+				</div>
+				<div class="main_content1 cursor"
+					onclick="location.href='worshipDataApply.do'">
+					<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+					<div class="text">
+						<p>예배자료신청</p>
+					</div>
+					<span><i class="xi-plus-circle-o"></i></span>
+				</div>
 			</div>
 			
-			<div class="main_content1">
-				<img src="<c:url value="/resources/img/main_section1.jpg"/>">
-				<div class="text">
-					<p>찬양대</p>
-					<a href="shalomChoir.do">샬롬 찬양대</a>
-					<a href="immanuelChoir.do">임마누엘 찬양대</a>
-				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
-			</div>
-			<div class="main_content1 cursor" onclick="window.open('https://www.youtube.com/feed/subscriptions/UCUelWlMoTG9gH2J7DP_VYLg')">
-				<img src="<c:url value="/resources/img/main_section2.jpg"/>">
-				<div class="text">
-					<p>대광교회 유튜브</p>
-				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
-			</div>
-			<div class="main_content1 cursor" onclick="location.href='churchPhoto.do'">
-				<img src="<c:url value="/resources/img/main_section1.jpg"/>">
-				<div class="text">
-					<p>교회사진</p>
-				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
-			</div>
-			<div class="main_content1 cursor" onclick="location.href='flowerPhoto.do'">
-				<img src="<c:url value="/resources/img/main_section2.jpg"/>">
-				<div class="text">
-					<p>꽃꽃이갤러리</p>
-				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
-			</div>
-			<div class="main_content1 cursor"  onclick="location.href='weekPageApply.do'">
-				<img src="<c:url value="/resources/img/main_section1.jpg"/>">
-				<div class="text">
-					<p>주보요청</p>
-				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
-			</div>
-			<div class="main_content1 cursor"  onclick="location.href='worshipDataApply.do'">
-				<img src="<c:url value="/resources/img/main_section2.jpg"/>">
-				<div class="text">
-					<p>예배자료신청</p>
-				</div>
-				<span><i class="xi-plus-circle-o"></i></span>
-			</div>
 		</div>
+		
+
 	</div>
 
-<jsp:include page="footer.jsp"/>
- 
+	<jsp:include page="footer.jsp" />
+
 </body>
 <script>
-	$(document).ready(function(){
-		$(".main_slider > ul").bxSlider({
-			mode: "horizontal",    
-			slideMargin: 0,
-			minSlides: 1,
-			maxSlides: 5,
-			moveSlides: 1,
-			startSlide: 0,         
-			infiniteLoop: true,    
-			//captions: true,       
-			pager: true,         
-			adaptiveHeight: true,   
-			auto: true,            
-			pause: 3000,           
-			speed: 500,           
-			easing: "",	
-			touchEnabled:true,   	
-			controls: false,
-			//video: true,
-			useCSS: false,
+	$(document).ready(function() {
+		
+		
+		/*메인슬라이더 px*/
+		$(".main_slider ul li img").css({
+			height : $(window).height() + "px"
 		})
+		$(window).resize(function() {
+			$(".main_slider ul li img").css({
+				height : $(window).height() + "px"
+			})
+		})
+		/*메인슬라이더 px*/
+		
+		$(".main_slider > ul").bxSlider({
+			mode : "horizontal",
+			slideMargin : 0,
+			minSlides : 1,
+			maxSlides : 5,
+			moveSlides : 1,
+			startSlide : 0,
+			infiniteLoop : true,
+			//captions: true,       
+			pager : true,
+			adaptiveHeight : true,
+			auto : true,
+			pause : 3000,
+			speed : 500,
+			easing : "",
+			touchEnabled : true,
+			controls : false,
+			//video: true,
+			useCSS : false,
+		})
+		
+		
+		
+		
 	})
+	
+	
+	
+	
+	
+	
+</script>
+<script>
+
+var isVisible = false;
+
+
+	$(window).on('scroll',function() {
+		if (checkVisible($('#sliderwrapp'))&&!isVisible) {
+			TweenMax.staggerFrom(".main_content1:eq(0)", 1, {opacity:0, y:50}, 1);
+			TweenMax.staggerFrom(".main_content1:eq(1)", 1.3, {opacity:0, y:100}, 1);
+			TweenMax.staggerFrom(".main_content1:eq(2)", 1.5, {opacity:0, y:150}, 1);
+			TweenMax.staggerFrom(".main_content1:eq(3)", 1.8, {opacity:0, y:200}, 1);
+			TweenMax.staggerFrom(".main_content1:eq(4)", 2, {opacity:0, y:100}, 1.5);
+			TweenMax.staggerFrom(".main_content1:eq(5)", 2.4, {opacity:0, y:150}, 1.5);
+			TweenMax.staggerFrom(".main_content1:eq(6)", 2.8, {opacity:0, y:200}, 1.5);
+			TweenMax.staggerFrom(".main_content1:eq(7)", 3, {opacity:0, y:100}, 1);
+			TweenMax.staggerFrom(".main_content1:eq(8)", 3, {opacity:0, y:150}, 1);
+			TweenMax.staggerFrom(".main_content1:eq(9)", 3, {opacity:0, y:200}, 1);
+			TweenMax.staggerFrom(".main_content1:eq(10)", 3, {opacity:0, y:200}, 1);
+			
+			isVisible=true;
+		}
+		
+	});
+	 
+	function checkVisible( elm, eval ) {
+		eval = eval || "object visible";
+		var viewportHeight = $(window).height(), // Viewport Height
+			scrolltop = $(window).scrollTop(), // Scroll Top
+			y = $(elm).offset().top,
+			elementHeight = $(elm).height();   
+		
+		if (eval == "object visible") return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
+		if (eval == "above") return ((y < (viewportHeight + scrolltop)));
+	}
+
+</script>
 </script>
 </html>
+
+

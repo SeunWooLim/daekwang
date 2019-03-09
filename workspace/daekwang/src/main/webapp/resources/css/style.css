@@ -1,7 +1,9 @@
 @charset "UTF-8";
 
-#header{width:100%; height:100%; position:relative;}
-	.head_top_wrap{width:100%: height:100%;}
+/*#header{width:100%; height:100%; position:relative;}*/
+#header{width:100%; position: fixed; top:0; left:0; right:0; z-index:999}
+	.head_top_wrap{width:100%; height:100%; background-color:rgba(0,0,0,0.5); transition:all,.5s;}
+	.head_top_wrap.on{transition:all,.5s; background:#fff}
 	.head_top_wrap .head_top{width:100%: height:48px; overflow:hidden; max-width:1170px; margin:0 auto}
 	.head_top_wrap .head_top .head_top_left{float:left;}
 	.head_top_wrap .head_top .head_top_left a{}
@@ -9,11 +11,15 @@
 	
 	.head_top_wrap .head_top .head_top_right{float:right}
 	.head_top_wrap .head_top .head_top_right ul{text-align: right;}
-	.head_top_wrap .head_top .head_top_right ul li{display: inline-block; padding:0 5px}
+	.head_top_wrap .head_top .head_top_right ul li{display: inline-block; padding:0 5px; color:#fff}
+	.head_top_wrap.on .head_top .head_top_right ul li{color:#333}
 	.head_top_wrap .head_top .head_top_right ul li a{}
-	.head_top_wrap .head_top .head_top_right a{line-height:48px;}
+	.head_top_wrap .head_top .head_top_right a{line-height:48px; color:#fff;}
+	.head_top_wrap.on .head_top .head_top_right a{line-height:48px; color:#333;}
 	
-	.head_mid_wrap{width:100%; height:100%; background:rgb(61,81,147)}
+/* 	.head_mid_wrap{width:100%; height:100%; background:rgb(61,81,147)} */
+	.head_mid_wrap{width:100%; height:100%; background:rgba(0,0,0,0.3); transition:all,.5s;}
+	.head_mid_wrap.on{transition:all,.5s; background:#3d5191;}
 		.head_mid_wrap ul{width:100%; height:40px; max-width:1170px; margin:0 auto; overflow:hidden;}
 		.head_mid_wrap ul li{float:left; line-height:40px; width:20%; text-align:center;	}
 		.head_mid_wrap ul li a{font-size:16px; color:#f9f9f9; transition:all,.5s;}
@@ -32,6 +38,9 @@
 		.head_mid_detail table tbody tr td > ul > li a{font-size:14px; transition:all,.5s; color:#a1a1a1}
 		.head_mid_detail table tbody tr td > ul > li a:hover{color:#fff !important; background:rgb(89,155,226); transition:all,.5s;}
 		.head_mid_detail table tbody tr td > ul > li span{font-size:14px; color:#a1a1a1; font-weight:bold;}
+		
+		.scroll_top{ display:none; position:fixed; z-index:200; right:30px; bottom:80px; width:60px; height:60px; cursor:pointer;}
+			.scroll_top .on{ display:none; position:absolute;}	
 		
 /*로그인css start*/
 	.h_login{ position:fixed; z-index:50000; top:0; right:0; bottom:0; left:0; background:url(../img/bg70.png); transition:none; display:none;}
@@ -100,7 +109,7 @@
 	.footer_wrap ul li p{color:#fff; opacity: 0.5}
 	
 #wrap{width:100%; height:100%; position: relative;}
-.subvisual_wrap{background:url("../img/subvisual.jpg") repeat 100% 100%; min-height:157px; position: relative;}
+.subvisual_wrap{background:url("../img/subvisual.jpg") repeat 100% 100%; min-height:157px; position: relative;     margin-top: 99px;}
 	.subvisual_wrap .subvisual_text{position: absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); text-align:center;}
 	.subvisual_wrap .subvisual_text p.title{font-size:32px; font-weight:bold; color:#333}
 	.subvisual_wrap .subvisual_text p.text{color:#17539b; font-size:16px}
@@ -391,7 +400,7 @@
 	.ch_detail_wrap .btn11{  margin:50px auto; width:150px; box-sizing:border-box;  display: block;     padding: 17px 60px 18px;    color: #000 !important;    border: 2px solid #314275;    box-sizing: border-box;    line-height: 1;    font-weight: bold;    font-size: 14px;}
 	.ch_detail_wrap .btn11:hover{text-decoration: underline !important;}
 
-.main_slider{text-align:center; max-width:1200px; margin:0 auto; width:100%;}
+.main_slider{text-align:center; margin:0 auto; width:100%;}
 	.main_slider .bx-wrapper{background:#fff; border:none; box-shadow:none; text-align:center; margin:0;}
 	.main_slider .bx-wrapper .bx-viewport{}
 	.main_slider .bx-wrapper .bx-viewport ul{}
@@ -428,6 +437,8 @@
 	.main_content3 .text a{font-size:14px; color:#fff;  opacity: 0.65;   padding:0 5px; margin-top:2px;}
 	.main_content3 > span i{color:#fff; font-size:35px;}
 	
+.main_background_wrap{background:url("../img/main1-1.jpg") no-repeat center; background-attachment: fixed; height:100%; background-size:cover; position: relative; padding:50px 0; box-sizing:border-box;}
+	.main_background_wrap .bg{position: absolute; top:0; left:0; width:100%; display: block; height:100%; background: rgba(0,0,0,0.8);}
 .error_wrap{width:500px; text-align:center; margin:250px auto; border:1px solid #e1e1e1; padding:50px;}
 	.error_wrap p{color:red; font-size:40px; font-weight: bold; text-align:center;}
 	.error_wrap span{font-size:20px; font-weight:bold; text-align:center;}

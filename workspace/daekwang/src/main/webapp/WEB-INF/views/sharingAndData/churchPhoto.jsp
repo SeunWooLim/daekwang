@@ -46,7 +46,6 @@
 				<div class="photo_mid">
 					<ul>
 						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
 					</ul>
 				</div>
 				<div class="photo_bot">
@@ -88,7 +87,7 @@
 			maxSlides: 5,
 			moveSlides: 1,
 			startSlide: 0,         
-			infiniteLoop: true,    
+			infiniteLoop: false,    
 			//captions: true,       
 			pager: true,         
 			adaptiveHeight: true,   
