@@ -88,6 +88,47 @@
 								<a href="#" class="btnform6">삭제</a>
 							</td>
 						</tr>
+						<div class="formbg">
+						</div>
+						<div class="form_wrap">
+							<form action="" method="">
+								<div class="form">
+									<p>주보광고신청 수정</p>
+									<ul>
+										<li>
+											<label for="wPA">신청자</label>
+											<input type="text" id="wPA" name="wPA" value="신청자명"/>
+										</li>
+										<li>
+											<label for="wPA_Dep">부서명</label>
+											<input type="text" id="wPA_Dep" name="wPA_Dep" value="부서명"/>
+										</li>
+										<li>
+											<label>분류</label>
+											<select name="category">
+												<option value="1" selected>주보원고</option>
+												<option value="2">광고요청</option>
+											</select>
+										</li>
+										<li>
+											<label for="wPA_context" style="vertical-align:top;">내용</label>
+											<textarea id="wPA_context" name="wPA_context" value="내용 작성"></textarea>
+											<script>
+												CKEDITOR.replace('wPA_context',
+														{height: 150});
+											</script>
+																					
+										</li>
+									</ul>								
+									
+									
+									<ul class="list">
+										<li><a class="btnform1">수정</a></li>
+										<li><a class="btnform2 close_btn">닫기</a></li>
+									</ul>
+								</div>
+							</form>
+						</div>
 					</tbody>
 				</table>
 				
@@ -96,58 +137,7 @@
 		</div>
 	<!--container s-->
 	</div>
-	<div class="formbg"></div>
-	<div class="form_wrap">
-		<form action="" method="">
-			<div class="form">
-				<p>예배자료신청 수정</p>
-				<table>
-					<colgroup>
-						<col width="10%">
-						<col width="*">
-					</colgroup>
-					<tbody>
-						<tr>
-							<td><label for="wPA">신청자</label></td>
-							<td><input type="text" id="wPA" name="wPA" placeholder="신청자 작성"/></td>
-						</tr>
-						<tr>
-							<td><label>예배명</label></td>
-							<td>
-								<select name=category>
-									<option value="1">샬롬찬양대</option>
-									<option value="2">임마누엘찬양대</option>
-									<option value="3">연합찬양대</option>
-									<option value="4">주일 1부예배</option>
-									<option value="5">주일 2부예배</option>
-									<option value="6">주일 3부예배</option>
-									<option value="7">올젠워십</option>
-									<option value="8">수요기도회</option>
-									<option value="9">기타행사</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<td><label for="wPA_context">내용</label></td>
-							<td><textarea id="wPA_context" name="wPA_context"  placeholder="내용 작성"></textarea></td>
-						</tr>
-						<tr>
-							<td><label>첨부파일</label></td>
-							<td class="filebox">
-								<input class="upload-name" value="파일선택" disabled="disabled">
-								<label for="filename">업로드</label> 
-						  		<input type="file" id="filename" class="upload-hidden">
-						  	</td>
-						</tr>
-					</tbody>
-				</table>
-				<ul>
-					<li><a class="btnform1">수정</a></li>
-					<li><a class="btnform2 close_btn">닫기</a></li>
-				</ul>
-			</div>
-		</form>
-	</div>
+	
  </body>
 <script>
 	$(document).ready(function(){

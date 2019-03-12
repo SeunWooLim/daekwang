@@ -167,6 +167,7 @@
 		
 		$(".head_mid_wrap").mouseover(function(){
 			$(".head_mid_detail_wrap").show();
+			
 		});
 		
 		$(".head_top_wrap").mouseover(function(){

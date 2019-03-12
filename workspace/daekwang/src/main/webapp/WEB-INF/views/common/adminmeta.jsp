@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/daekwang/resources/css/adminstyle.css">
 <link rel="stylesheet" type="text/css" href="/daekwang/resources/css/jquery.jqplot.css"/>
 <link rel="stylesheet" type="text/css" href="/daekwang/resources/css/simple.min.css"/>
+<script src="/daekwang/resources/ckeditor/ckeditor.js"></script>
 <script src="/daekwang/resources/js/jquery-1.11.1.min.js"></script>
 <script src="/daekwang/resources/js/jquery-ui.min.js"></script>
 <script src="/daekwang/resources/js/script.js"></script>
