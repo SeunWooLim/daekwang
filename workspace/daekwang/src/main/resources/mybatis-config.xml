@@ -24,5 +24,6 @@
 		<mapper resource="mappers/memberMapper.xml" /> 
 		<mapper resource="mappers/boardMapper.xml"/>
 		<mapper resource="mappers/applyMapper.xml"/>
+		<mapper resource="mappers/adminMapper.xml"/>
 	</mappers>
 </configuration>

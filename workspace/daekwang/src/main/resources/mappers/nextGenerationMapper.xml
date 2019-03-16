@@ -44,12 +44,14 @@
   		<result property="DEPT_MEMBER" column="DEPT_MEMBER"/>
 	</resultMap>
 	
+	<!-- 다음세대 유아부~고등부 정보 --> 
 	<select id="selectNextGenerationList" resultMap="nextGenerationResultMap" resultType="list">
 		SELECT *
 		FROM next_gen
 		WHERE DEPT_NO BETWEEN 1 AND 6 
 	</select>
 	
+	<!-- 다음세대 1,2 청년부 정보 -->
 	<select id="selectNextGenerationYouthList" resultMap="nextGenerationResultMap" resultType="list">
 		SELECT *
 		FROM next_gen

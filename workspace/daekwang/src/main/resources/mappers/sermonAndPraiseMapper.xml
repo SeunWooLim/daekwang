@@ -19,12 +19,14 @@
   		<result property="PRAISE_DETAIL" column="PRAISE_DETAIL"/>
 	</resultMap>
 	
+	<!-- 샬롬찬양대 임원조직 정보 -->
 	<select id="selectshalomChoir" resultType="SermonAndPraise">
 		SELECT *
 		FROM praise_team
 		WHERE PRAISE_FG = '1'
 	</select>
 	
+	<!-- 임마누엘 찬양대 임원조직 정보 -->
 	<select id="selectImmanuelChoir" resultType="SermonAndPraise">
 		SELECT *
 		FROM praise_team

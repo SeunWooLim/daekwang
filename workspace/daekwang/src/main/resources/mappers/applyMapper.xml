@@ -35,11 +35,14 @@
   		<collection property="memberVo" resultMap="memberResultMap"/>
 	</resultMap>
 	
+	
+	<!-- 주보광고등록 insert -->
 	<insert id="insertWeekPage" parameterType="Apply">
 		INSERT INTO apply(APPLY_FG, APPLY_CONTENT, MEMBER_NO, APPLY_DATE, APPLY_CATE, DEPT_NAME)
 		VALUES(1, #{APPLY_CONTENT}, #{MEMBER_NO}, NOW(), #{APPLY_CATE}, #{DEPT_NAME})
 	</insert>
 	
+	<!-- 예배자료신청 insert -->
 	<insert id="insertWorshipData" parameterType="Apply">
 		INSERT INTO apply(APPLY_FG, APPLY_CONTENT, MEMBER_NO, APPLY_DATE, APPLY_ORFILE, APPLY_REFILE, WORSHIP_NAME)
 		VALUES(2, #{APPLY_CONTENT}, #{MEMBER_NO}, NOW(), #{APPLY_ORFILE}, #{APPLY_REFILE}, #{WORSHIP_NAME})

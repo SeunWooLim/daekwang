@@ -19,18 +19,22 @@
   		<result property="MEMBER_USEYN" column="MEMBER_USEYN"/>
 	</resultMap>
 	
+	
+	<!-- 로그인 시 ID 체크 -->
 	<select id="loginCheck" parameterType="Member" resultType="Member">
 		SELECT * 
 		FROM member
 		WHERE MEMBER_ID = #{MEMBER_ID} AND MEMBER_PWD = #{MEMBER_PWD}
 	</select>
 	
+	<!-- 회원가입시 ID 중복체크 -->	
 	<select id="checkId" parameterType="String" resultType="Integer">
 		SELECT COUNT(*)
 		FROM member
 		WHERE MEMBER_ID = #{member_id}
 	</select>
 	
+	<!-- 회원가입 -->
 	<insert id="enroll" parameterType="Member">
 		INSERT INTO member(   
 	      MEMBER_ID
