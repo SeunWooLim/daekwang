@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import org.springframework.stereotype.Component;
 
+import kr.or.daekwang.admin.model.vo.AdminVo;
 import kr.or.daekwang.member.model.vo.MemberVo;
 
 @Component
@@ -25,6 +26,7 @@ public class ApplyVo {
 	private String DEPT_NAME; 		//부서명
 	
 	private MemberVo memberVo;
+	private AdminVo adminVo;
 	
 	public ApplyVo() {
 		
@@ -32,7 +34,7 @@ public class ApplyVo {
 
 	public ApplyVo(char aPPLY_FG, int aPPLY_NO, String aPPLY_TITLE, String aPPLY_CONTENT, int mEMBER_NO,
 			Date aPPLY_DATE, String aPPLY_ORFILE, String aPPLY_REFILE, char dELETE_YN, String wORSHIP_NAME,
-			String aPPLY_CATE, String dEPT_NAME, MemberVo memberVo) {
+			String aPPLY_CATE, String dEPT_NAME, MemberVo memberVo, AdminVo adminVo) {
 		super();
 		APPLY_FG = aPPLY_FG;
 		APPLY_NO = aPPLY_NO;
@@ -47,6 +49,7 @@ public class ApplyVo {
 		APPLY_CATE = aPPLY_CATE;
 		DEPT_NAME = dEPT_NAME;
 		this.memberVo = memberVo;
+		this.adminVo = adminVo;
 	}
 
 	public char getAPPLY_FG() {
@@ -155,6 +158,14 @@ public class ApplyVo {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public AdminVo getAdminVo() {
+		return adminVo;
+	}
+
+	public void setAdminVo(AdminVo adminVo) {
+		this.adminVo = adminVo;
 	}
 
 	@Override

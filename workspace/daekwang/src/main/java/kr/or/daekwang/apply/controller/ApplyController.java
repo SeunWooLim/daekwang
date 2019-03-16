@@ -134,28 +134,4 @@ public class ApplyController {
 		return returnVal;
 	}
 	
-	@RequestMapping(value="/downloadFile.do")
-	public void downloadFile( HttpServletResponse response, HttpServletRequest request, Map<String,Object> map) throws Exception{	
-		
-		//map.put("STORED_FILE_NAME", "1551968046241.PNG");
-		//map.put("ORIGINAL_FILE_NAME", "캡처.PNG");
-		
-		String storedFileName = (String)map.get("STORED_FILE_NAME");
-		String originalFileName = (String)map.get("ORIGINAL_FILE_NAME");
-		
-		String root = request.getSession().getServletContext().getRealPath("resources");
-		String path = root + "\\uploadFile\\";
-		
-		byte fileByte[] = FileUtils.readFileToByteArray(new File(path + storedFileName));
-		
-		response.setContentType("application/octet-stream");
-		response.setContentLength(fileByte.length);
-		
-		response.setHeader("Content-Disposition",  "attachment;  fileName=\""  + URLEncoder.encode(originalFileName,"UTF-8")+"\";");
-		response.setHeader("Content-Transfer-Encoding", "binary");
-		
-		response.getOutputStream().write(fileByte);
-		response.getOutputStream().flush();
-		response.getOutputStream().close();
-	}
 }
