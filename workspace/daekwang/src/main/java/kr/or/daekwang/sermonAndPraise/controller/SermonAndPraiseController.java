@@ -73,4 +73,7 @@ public class SermonAndPraiseController {
 		model.addAttribute("menu", menu);
 		return "sermonAndPraise/videoDetail";
 	}
+	
+	
+	
 }

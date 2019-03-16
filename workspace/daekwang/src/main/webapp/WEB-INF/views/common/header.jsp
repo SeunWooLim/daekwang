@@ -32,7 +32,7 @@
 						<li><a href="logout.do" class="login_btn">로그아웃</a></li>
 					</c:if>
 					<li>|</li>
-					<li><a href="#">사이트맵</a></li>
+					<li><a href="myPage.do">사이트맵</a></li>
 				</ul>
 			</div>
 			</div>

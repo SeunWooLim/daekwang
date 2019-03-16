@@ -102,4 +102,9 @@ public class CommonController {
 	public String errorPage500() {
 		return "error/500errorPage";
 	}
+	
+	@RequestMapping(value = "/myPage.do")
+	public String myPage() {
+		return "mypage/myPage";
+	}
 }

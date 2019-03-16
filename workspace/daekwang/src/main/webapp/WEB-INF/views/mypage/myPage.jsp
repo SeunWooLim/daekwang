@@ -1,28 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <jsp:include page="../common/meta.jsp"/>
-<script type="text/javascript" src="/project/resources/js/jquery-3.3.1.min.js"></script>
-</head>
-<body>
+
 
 <!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="../common/header.jsp"/>
-	
-	<div id="wrap">
-		<div class="subvisual_wrap">
-			<div class="subvisual_text">
-				<p class=title>회원가입</p>
-				<p class="text">안양대광교회</p>
-			</div>
+<div id="wrap">
+	<div class="subvisual_wrap">
+		<div class="subvisual_text">
+			<p class=title>My Page</p>
+			<p class="text">안양대광교회</p>
 		</div>
-		<div class="join_form">
+	</div>
+	
+	<div class="join_form">
 			<form method="post" action="enroll.do">
 				<table>
 					<colgroup>
@@ -32,19 +26,23 @@
 					<tbody>
 						<tr>
 							<td><label for="user_id">아이디</label></td>
-							<td><input type="text" id="user_id" name="MEMBER_ID" oninput='return checkId()' onblur='return checkId()'><p id="enrollidtxt" style="display: inline-block; margin-left:10px;" ></p></td>
-						</tr>
+							<td>아이디출력</td>
+						</tr>						
 						<tr>
-							<td><label for="user_pw">비밀번호</label></td>
+							<td><label for="user_pw">현재 비밀번호</label></td>
 							<td><input type="password" id="ernollpwd" name="MEMBER_PWD" oninput="checkPwd()" placeholder="영문, 숫자 8~14자리 조합"><p id="enrollpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
 						</tr>
 						<tr>
-							<td><label for="user_pwc">비밀번호확인</label></td>
+							<td><label for="user_pw">새 비밀번호</label></td>
+							<td><input type="password" id="ernollpwd" name="MEMBER_PWD" oninput="checkPwd()" placeholder="영문, 숫자 8~14자리 조합"><p id="enrollpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
+						</tr>
+						<tr>
+							<td><label for="user_pwc">새 비밀번호확인</label></td>
 							<td><input type="password" id="confirmpwd" name="user_pwc" oninput="checkPwd()"><p id="confirmpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
 						</tr>
 						<tr>
 							<td><label for="user_name">이름</label></td>
-							<td><input type="text" id="username" name="MEMBER_NAME" oninput="checkName()"><p id="usernametxt" style="display: inline-block; margin-left:10px;" ></p></td>
+							<td>이름출력</td>
 						</tr>
 						<tr>
 							<td><label for="address">주소</label></td>
