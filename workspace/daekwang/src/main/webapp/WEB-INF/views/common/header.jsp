@@ -209,11 +209,6 @@
 			$("html, body").animate({scrollTop:0},1000)
 			return false;
 		})
-	});
+	})
 </script>
-<script>
-	$(document).ready(function(){
-		
-	});
-		
-</script>
+

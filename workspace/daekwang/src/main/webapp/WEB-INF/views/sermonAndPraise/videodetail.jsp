@@ -49,13 +49,78 @@
 		</div>
 	</c:if>
 	
-	<div class="iframe_wrap">
-		<iframe class="iframe11" width="900" height="500" src="https://www.youtube.com/embed/${vid}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+	<div class="iframe_wrapp">
+		<div class="iframe_wrap">
+			<iframe class="iframe11" width="840" height="500" src="https://www.youtube.com/embed/${vid}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		</div>
+		
+		<div class="visual">
+			<div class="list">
+				<div class="oh" id="choisBox">
+		        	<div class="wrap slick-initialized slick-slider slick-vertical">
+		            	<div class="slick-list draggable" tabindex="0" style="height: 485px;">
+		            		<div class="slick-track" id="result" style="opacity: 1; height: 485px; transform: translate3d(0px, 0px, 0px); overflow-y:auto; overflow-x: hidden;">
+		            			
+							</div>
+						</div>	
+		       		</div>
+				</div>
+			</div>
+		</div>
+	
 	</div>
+	
 	
 	<p class="iframe_text">${desc }</p>
 	
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
+<<script type="text/javascript">
+    var playlist = 'PLwcdqPJXVv0aMM-7HaSzQGvC4je06L1uN';
+    
+    $(document).ready(function(){
+       $.get(
+           "https://www.googleapis.com/youtube/v3/playlistItems", {
+               part: 'snippet',
+               maxResults: 50,
+               playlistId: playlist,
+               key: 'AIzaSyAYH3AjbJxhiYngE1l5obNvwBPNo5_lnyg'},
+               function(data){
+                   var output;
+                   $.each(data.items, function(i, item){
+                       console.log(item);
+                       vTitle = item.snippet.title;
+                       vId = item.snippet.resourceId.videoId;
+                       var temp = item.snippet.publishedAt;
+                       var time = temp.substring(0,10);
+                       var desc = item.snippet.description;
+                       var num = 1;
+                       //output = '<li>'+vTitle + '<br>--videoid: ' + vId+'<br>--time: ' + time + '<br>--desc: '+ desc + '</li>';
+                       //output= '<li>'+vTitle+'<iframe src="//www.youtube.com/embed/'+vId+'\"></iframe></li>';
+                       output=                    	   	 
+								'<div class="slide slide01Box slick-slide slick-active" name="slide" index="0" style="width: 350px;">'+
+									'<div class="box">' +
+										'<a class="img" href="videoDetail.do?vid=' + vId +'&desc=' + desc + '&menu=1">'+
+											'<div class="on"><i class="xi-play-circle"></i></div>' +
+											'<img src=\"//img.youtube.com/vi/' + vId + '/mqdefault.jpg\">' +
+										'</a>' +
+										'<div class="contents">' +
+											'<a class="tit" href="videoDetail.do?vid=' + vId +'&desc=' + desc + '&menu=1">' + vTitle + '</a>' +										
+										'</div>' +
+									'</div>' +
+								'</div>'
+                       		  
+                       		 ;
+                       
+                       $("#result").append(output);
+                       
+                       
+                   })
+               }
+               );
+        
+    });
+
+  </script>
 </html>

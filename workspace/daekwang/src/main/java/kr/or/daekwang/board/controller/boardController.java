@@ -58,5 +58,33 @@ public class BoardController {
 		return "sharingAndData/flowerPhoto";
 	}
 	
+	@RequestMapping(value = "/churchNewsInsert.do")
+	public String churchNewsInsert() {
+		return "sharingAndData/churchNewsInsert";
+	}
+	
+	@RequestMapping(value = "/personNewsInsert.do")
+	public String personNewsInsert() {
+		return "sharingAndData/personNewsInsert";
+	}
+	
+	@RequestMapping(value = "/newFamilyIntroducingInsert.do")
+	public String newFamilyIntroducingInsert() {
+		return "sharingAndData/newFamilyIntroducingInsert";
+	}
+	
+	@RequestMapping(value = "/churchPhotoInsert.do")
+	public String churchPhotoInsert() {
+		return "sharingAndData/churchPhotoInsert";
+	}
+	
+	@RequestMapping(value = "/flowerPhotoInsert.do")
+	public String flowerPhotoInsert() {
+		return "sharingAndData/flowerPhotoInsert";
+	}
+	
+	
+
+	
 
 }

@@ -17,6 +17,9 @@
 	</div>
 	
 	<div class="photo_wrap">
+		<div class="insertBtn_wrap">
+			<a href="churchPhotoInsert.do" class="newInsertBtn">글쓰기</a>
+		</div>
 		<ul class="photo_list">
 			<li>
 				<div class="photo_top">

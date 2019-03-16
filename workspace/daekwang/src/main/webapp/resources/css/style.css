@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+.bx-wrapper .bx-controls-direction a{z-index:99 !important;}
 /*#header{width:100%; height:100%; position:relative;}*/
 #header{width:100%; position: fixed; top:0; left:0; right:0; z-index:999}
 	.head_top_wrap{width:100%; height:100%; background-color:rgba(0,0,0,0.5); transition:all,.5s;}
@@ -141,6 +141,17 @@
 	.intro_wrap .intro_detail .intro_right .right_left p.text{color:#5d5d5d; margin-top:20px; font-size:14px}	
 	.intro_wrap .intro_detail .intro_right .right_right{float:left; width:35%;}	
 	
+	.intro_wrap .intro_detail .intro_right .history{width:100%; border-top:2px solid #3d5191;}
+	.intro_wrap .intro_detail .intro_right .history tbody{}
+	.intro_wrap .intro_detail .intro_right .history tbody tr{}
+	.intro_wrap .intro_detail .intro_right .history tbody tr td{border:1px solid #e1e1e1; padding:15px 20px; font-size:16px; border-left:0; border-right:0;}
+	.intro_wrap .intro_detail .intro_right .history tbody tr td:first-child{color:#3d5191; font-weight:bold; vertical-align: top;}
+	.intro_wrap .intro_detail .intro_right .history tbody tr td:last-child{color:#666}
+	.intro_wrap .intro_detail .intro_right .history1{display: block;}
+	/* .intro_wrap .intro_detail .intro_right .history2{display:none;}
+	.intro_wrap .intro_detail .intro_right .history3{display:none;} */
+	
+	
 	
 .volunteers_wrap{width:100%; height:100%; max-width:1170px; margin:50px auto;}
 	.volunteers_wrap .volunteers_title{font-size:26px; color:#17539b; margin:50px 0;}
@@ -154,7 +165,7 @@
 	.volunteers_wrap .list_wrap ul li{float:left; width:40%; margin-right:10%; overflow:hidden; border:1px solid #ccc; box-sizing:border-box; margin-bottom:20px;}
 	.volunteers_wrap .list_wrap ul li:nth-child(2n){margin-right:0;}
 	.volunteers_wrap .list_wrap ul li .left_box{float:left; width:35%;}
-	.volunteers_wrap .list_wrap ul li .left_box img{width:100%; height:100%; vertical-align: bottom;}
+	.volunteers_wrap .list_wrap ul li .left_box img{width:100%; height:100%; vertical-align: bottom; min-height:195px;}
 	.volunteers_wrap .list_wrap ul li .right_box{float:left; width:65%; padding:20px 30px; box-sizing:border-box;}
 	.volunteers_wrap .list_wrap ul li .right_box p{font-size:18px;}
 	.volunteers_wrap .list_wrap.list2{display:none}
@@ -260,6 +271,7 @@
 	.apply table tbody tr td:first-child{background:rgba(49,66,117,0.15); text-align:center; border-bottom:1px solid #bbb;}
 	.apply table tbody tr td label{font-size:14px; font-weight:bold; color:#333; text-align:center}
 	.apply table tbody tr td input{width:20%; height:30px; box-sizing:border-box; border:1px solid #e1e1e1; padding:0 10px; color:#333;}
+	.apply table tbody tr td input.title{width:100%;}
 	.apply table tbody tr td textarea{width:100%; height:300px; box-sizing:border-box; padding:10px; border:1px solid #e1e1e1; color:#333; resize:none;}
 	.apply table tbody tr td select{border:1px solid #e1e1e1; height:30px; width:20%; padding:0 5px; colro:#333;}
 	.apply table tbody tr td select option{}
@@ -379,9 +391,6 @@
 	
 	.asdfasdf{text-align:center; font-size:20px; color:#17539b; padding:20px 0; margin-bottom:20px; border-bottom:1px solid #d6d9e3;}
 	
-	.iframe_wrap{margin:0 auto; width:100%; background:#000; text-align:center;}
-	.iframe_wrap iframe{}
-	.iframe_text{margin:50px auto; width:100%; max-width:970px; font-size:18px;}
 	
 .ch_detail_wrap{width:100%; height:100%; max-width:970px; margin:50px auto}
 	.ch_detail_wrap .head{display:table; width:100%; height:50px; border-top:2px solid #314275;     border-bottom: 1px solid #d9d9d9; background:#f9f9f9; box-sizing:border-box; padding:0 20px;}
@@ -438,7 +447,8 @@
 	.main_content3 > span i{color:#fff; font-size:35px;}
 	
 .main_background_wrap{background:url("../img/main1-1.jpg") no-repeat center; background-attachment: fixed; height:100%; background-size:cover; position: relative; padding:50px 0; box-sizing:border-box;}
-	.main_background_wrap .bg{position: absolute; top:0; left:0; width:100%; display: block; height:100%; background: rgba(0,0,0,0.8);}
+.main_background_wrap1{background-color:#e9f0f5; background-attachment: fixed; height:100%; background-size:cover; position: relative; padding:50px 0 150px 0; box-sizing:border-box;}
+	.main_background_wrap .bg{position: absolute; top:0; left:0; width:100%; display: block; height:100%; background: rgba(0,0,0,0.2);}
 .error_wrap{width:500px; text-align:center; margin:250px auto; border:1px solid #e1e1e1; padding:50px;}
 	.error_wrap p{color:red; font-size:40px; font-weight: bold; text-align:center;}
 	.error_wrap span{font-size:20px; font-weight:bold; text-align:center;}
@@ -463,6 +473,50 @@
 	.join_form .button{ margin:40px 0 0 0; border-radius:3px; background:#314275; text-align:center; line-height:40px; font-size:16px; font-weight:800; color:#FFF; cursor:pointer; width: 100%; border: none;}
 	.join_form .button:hover{ background:#333;}
 		
+		
+.main_content_wrap .left{width:50%; float:left; position: relative;}
+.main_content_wrap .left .main_content_title{padding-top:130px;}
+	.main_content_wrap .left p{font-size:40px; color:#555; font-weight:bold;}
+	.main_content_wrap .left p+p{font-size:16px; color:#666; font-weight: normal; line-height:26px;}
+.main_content_wrap .right{width:50%; float:left;}
+	.main_content_wrap .right .main_content1{width:50%;}
+	.main_content_wrap .right .main_content1{width:49%; margin-right:2%; margin-bottom:15px;}
+	.main_content_wrap .right .main_content1:nth-child(2n){margin-right:0;}
 	
+.insertBtn_wrap{position: relative; height:40px; width:100%; max-width:970px; margin:0 auto; margin-bottom:20px;}
+.newInsertBtn{position:absolute; top:0; right:0; width:80px; height:40px; line-height:40px; background:#599be2; color:#fff; font-size:16px; color:#fff; border-radius:5px; text-align:center; margin-bottom:20px; transition:all,.5s; float:right;}
+	.newInsertBtn:hover{background:#314275; transition:all,.5s;}
+	
+.iframe_wrapp{width:100%; height:100%; margin:50px auto; overflow: hidden; max-width: 1200px;}
+.iframe_wrap{margin:0 auto; width:70%;  text-align:center; float:left;}
+	.iframe_wrap iframe{}
+	.iframe_text{margin:50px auto; width:100%; max-width:970px; font-size:18px;}
+	
+	
+.visual .list{ float:right; width:28%; margin-left:2%;}
+	.visual .list *{ transition:none;}
+	.visual .list .menu{ overflow:hidden; margin:0 0 30px 0;}
+	.visual .list .menu li{ float:left;}
+	.visual .list .menu li p{ line-height:20px; font-size:15px; color:#666; cursor:pointer;}
+	.visual .list .menu li span{ display:block; margin:3px 10px 0px; width:1px; height:15px; background:#DDD;}
+	.visual .list .menu li.on p{ font-weight:600; color:#333;}
+	
+	.visual .list .wrap{ margin:-18.2px 0 0 0;}
+	.visual .list .slide{ margin:18px 0 0 0; width:100%; border:0;}
+	.visual .list .slide .box{ overflow:hidden; padding:0 0 0 155px;}	
+	.visual .list .slide .box .img{ position:relative; float:left; margin:0 0 0 -155px; width:140px;}
+	.visual .list .slide .box .img .time{ position:absolute; z-index:30; right:0; bottom:0; padding:0 10px; background:#333; text-align:center; line-height:20px; font-size:12px; color:#FFF; letter-spacing:0;}
+	.visual .list .slide .box .img .on{ position:absolute; z-index:10; top:0; right:0; bottom:0; left:0; background:rgba(0,0,0,0.5); opacity:0; transition:all .5s;}
+	.visual .list .slide .box .img .on i{ display:block; position:absolute; top:50%; left:50%; margin:-20px 0 0 -20px; width:40px; width:40px; text-align:center; line-height:40px; font-size:40px; color:#FFF;}
+	.visual .list .slide .box .img img{ display:block; width:100%;}
+	.visual .list .slide .box .img:hover .on{ opacity:1;}
+	.visual .list .slide .box .contents{ padding:7px 0;}
+	.visual .list .slide .box .contents .tit{ line-height:20px; font-size:14px; font-weight:600; color:#333;/* text-overflow:ellipsis; white-space:nowrap; overflow:hidden;*/}
+	.visual .list .slide .box .contents .txt{ line-height:20px; font-size:12px; color:#666; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+	.visual .list .slide .box .contents ul{ margin:5px 0 0 0; height:20px;}
+	.visual .list .slide .box .contents ul li{ margin:0 10px 0 0; float:left; line-height:21px; font-size:12px; color:#999; letter-spacing:-0.5px; font-weight:bold;}
+	.visual .list .slide .box .contents ul li i{ display:block; float:left; margin:0 3px 0 0; text-align:center; line-height:20px; font-size:14px; color:#888;}
+	.visual .list .slide .box .contents ul li.share{ position:relative; float:right; margin:0; cursor:pointer;}
+	.visual .list .slide .box .contents ul li.share i{ margin:0; width:20px;}
 	
 	

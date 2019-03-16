@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" type="text/css" href="/daekwang/resources/css/basic.css">
 <link rel="stylesheet" type="text/css" href="/daekwang/resources/css/style.css">
+<script src="/daekwang/resources/js/jquery-3.3.1.min.js"></script>
 <script src="/daekwang/resources/ckeditor/ckeditor.js"></script>
-<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 <script src="/daekwang/resources/js/jquery-migrate-1.2.1.min.js"></script>
 <script src="/daekwang/resources/js/jquery-ui.min.js"></script>
 <script src="/daekwang/resources/js/jquery.easings.min.js"></script>

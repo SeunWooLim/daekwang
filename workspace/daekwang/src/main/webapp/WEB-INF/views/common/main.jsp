@@ -84,23 +84,7 @@
 							class="xi-plus-circle-o"></i></a></span>
 				</div>
 
-				<div class="main_content1">
-					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
-					<div class="text">
-						<p>찬양대</p>
-						<a href="shalomChoir.do">샬롬 찬양대</a> <a href="immanuelChoir.do">임마누엘
-							찬양대</a>
-					</div>
-					<span><i class="xi-plus-circle-o"></i></span>
-				</div>
-				<div class="main_content1 cursor"
-					onclick="window.open('https://www.youtube.com/feed/subscriptions/UCUelWlMoTG9gH2J7DP_VYLg')">
-					<img src="<c:url value="/resources/img/main_section2.jpg"/>">
-					<div class="text">
-						<p>대광교회 유튜브</p>
-					</div>
-					<span><i class="xi-plus-circle-o"></i></span>
-				</div>
+				
 				<div class="main_content1 cursor"
 					onclick="location.href='churchPhoto.do'">
 					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
@@ -117,25 +101,55 @@
 					</div>
 					<span><i class="xi-plus-circle-o"></i></span>
 				</div>
-				<div class="main_content1 cursor"
-					onclick="location.href='weekPageApply.do'">
-					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
-					<div class="text">
-						<p>주보요청</p>
+			</div>
+		</div>
+		<div class="main_background_wrap1" id="sliderwrapp">
+			<span class="bg"></span>
+			<div class="main_content_wrap">
+				<div class="left">
+					<div class="main_content_title">
+						<p>대광교회 클립보드</p>
+						<p>대광교회의 자료,영상 등을 <br> 만나실 수 있습니다.</p>
 					</div>
-					<span><i class="xi-plus-circle-o"></i></span>
 				</div>
-				<div class="main_content1 cursor"
-					onclick="location.href='worshipDataApply.do'">
-					<img src="<c:url value="/resources/img/main_section2.jpg"/>">
-					<div class="text">
-						<p>예배자료신청</p>
+				<div class="right">
+					<div class="main_content1">
+						<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+						<div class="text">
+							<p>찬양대</p>
+							<a href="shalomChoir.do">샬롬 찬양대</a> <a href="immanuelChoir.do">임마누엘
+								찬양대</a>
+						</div>
+						<span><i class="xi-plus-circle-o"></i></span>
 					</div>
-					<span><i class="xi-plus-circle-o"></i></span>
+					<div class="main_content1 cursor"
+						onclick="window.open('https://www.youtube.com/feed/subscriptions/UCUelWlMoTG9gH2J7DP_VYLg')">
+						<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+						<div class="text">
+							<p>대광교회 유튜브</p>
+						</div>
+						<span><i class="xi-plus-circle-o"></i></span>
+					</div>
+					<div class="main_content1 cursor"
+						onclick="location.href='weekPageApply.do'">
+						<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+						<div class="text">
+							<p>주보요청</p>
+						</div>
+						<span><i class="xi-plus-circle-o"></i></span>
+					</div>
+					<div class="main_content1 cursor"
+						onclick="location.href='worshipDataApply.do'">
+						<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+						<div class="text">
+							<p>예배자료신청</p>
+						</div>
+						<span><i class="xi-plus-circle-o"></i></span>
+					</div>
 				</div>
 			</div>
-			
 		</div>
+			
 		
 
 	</div>

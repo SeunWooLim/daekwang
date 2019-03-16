@@ -86,7 +86,8 @@ header{width:100%; height:57px; position:fixed; z-index:999;}
 .table_wrap > table > thead > tr > th > input{vertical-align:middle;}
 .table_wrap > table > tbody{}
 .table_wrap > table > tbody > tr{}
-.table_wrap > table > tbody > tr > td{text-align:center; border:1px solid #dbdde2; color:#6d6d6d; padding:5px 0;}
+.table_wrap > table > tbody > tr > td{text-align:center; border:1px solid #dbdde2; color:#6d6d6d; padding:5px;}
+.table_wrap > table > tbody > tr > td p{width:500px; text-overflow:ellipsis; white-space:nowrap; overflow:hidden; text-align:center;}
 .table_wrap > table > tbody > tr > td > img{height:40px; box-sizing:border-box; width:64px; vertical-align:middle;}
 .table_wrap > table > tbody > tr > td > input{vertical-align:middle; }
 

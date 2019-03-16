@@ -64,7 +64,10 @@
 					<td>3</td>
 				</tr>
 			</tbody>
-		</table>	
+		</table>
+		<div class="insertBtn_wrap mt20">
+			<a href="churchNewsInsert.do" class="newInsertBtn">글쓰기</a>
+		</div>	
 	</div>
 	
 	<jsp:include page="../common/paging.jsp"/>
