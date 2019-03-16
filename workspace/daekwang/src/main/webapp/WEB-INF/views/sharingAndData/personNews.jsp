@@ -23,6 +23,9 @@
 	%>
 	
 	<div class="pw_board_wrap">
+		<div class="insertBtn_wrap">
+	       <a href="#" class="newInsertBtn">글쓰기</a>
+	    </div>
 		<ul>
 			<c:forEach var="personNews" items="${list }">
 				<li>

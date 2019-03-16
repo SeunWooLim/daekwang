@@ -175,7 +175,7 @@
 											</li>
 											<li>
 												<label for="wPA_context" style="vertical-align:top;">내용</label>
-												<textarea id="wPA_context<%= ediNum %>" name="wPA_context" value="내용 작성">${weekPage.APPLY_CONTENT }</textarea>
+												<div id="wPA_context<%= ediNum++ %>" name="wPA_context" value="내용 작성">${weekPage.APPLY_CONTENT }</div>
 												<%-- 
 												<script type="text/javascript">
 												CKEDITOR.replace('wPA_context<%= ediNum%>',
@@ -193,7 +193,6 @@
 							</div>
 							<% 
 								rowNum++;
-								ediNum++;
 							%>
 							<!-- 수정 폼 모달 End -->
 						</c:forEach>
@@ -232,9 +231,8 @@
 								<c:param name="searchSelect1" value="${searchSelect1 }"/>
 								<c:param name="searchContent" value="${searchContent }"/>
 							</c:url>
-							<a href="${page }" id="pageNum<%=pageNum %>" class="">${p }</a>
+							<a href="${page }" id="pageNum<%=pageNum++ %>" class="">${p }</a>
 						</li>
-						<% pageNum++; %>
 					</c:forEach>
 					<li>
 						<c:url var="next" value="weekPageApplyAdmin.do">

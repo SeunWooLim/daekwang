@@ -46,6 +46,10 @@
 						<tr>
 							<td><label for="wPA_context">내용</label></td>
 							<td><textarea id="wPA_context" name="APPLY_CONTENT"  placeholder="내용 작성"></textarea></td>
+							<script type="text/javascript">
+							CKEDITOR.replace('wPA_context',
+									{height: 300});
+							</script>
 						</tr>
 						<tr>
 							<td><label>첨부파일</label></td>
