@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import kr.or.daekwang.admin.model.dao.AdminDao;
 import kr.or.daekwang.apply.model.vo.ApplyVo;
+import kr.or.daekwang.board.model.vo.BoardVo;
 
 @Service("adminService")
 public class AdminServiceImpl implements AdminService{
@@ -102,14 +103,43 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public int deletePersonNewsAdmin(int apply_no) {
-		return adminDao.deletePersonNewsAdmin(apply_no);
+	public int deletePersonNewsAdmin(int board_no) {
+		return adminDao.deletePersonNewsAdmin(board_no);
 	}
 
 	@Override
 	public int ckDeletePersonNewsAdmin(String idx) {
-		return adminDao.ckDeletePersonNewsAdmin(idx);
+		String[] arrIdx = idx.toString().split(",");
+		int stackNum = 0;
+		int result = 0;
+		System.out.println("arrIdx : " + arrIdx);
+		
+		for (int i=0; i<arrIdx.length; i++) {
+			result = adminDao.ckDeletePersonNewsAdmin(Integer.parseInt(arrIdx[i]));
+			System.out.println("arrIdx["+i+"] : " + arrIdx[i]);
+			if(result > 0) {
+				stackNum++;
+			}
+		}
+		System.out.println(stackNum);
+		System.out.println(result);
+		if(stackNum == arrIdx.length) {
+			return result;
+		}else {
+			return 0;
+		}
 	}
+
+	@Override
+	public int insertPersonNewsAdmin(BoardVo boardVo) {
+		return adminDao.insertPersonNewsAdmin(boardVo);
+	}
+
+	@Override
+	public int updatePersonNewsAdmin(BoardVo boardVo) {
+		return adminDao.updatePersonNewsAdmin(boardVo);
+	}
+	
 	
 	
 	

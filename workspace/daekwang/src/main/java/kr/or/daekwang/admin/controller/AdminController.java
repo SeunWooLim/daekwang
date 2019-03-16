@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.daekwang.admin.model.service.AdminService;
 import kr.or.daekwang.apply.model.vo.ApplyVo;
+import kr.or.daekwang.board.model.vo.BoardVo;
 
 @Controller
 public class AdminController {
@@ -39,8 +40,50 @@ public class AdminController {
 		return "admin/churchNoticeAdmin";
 	}
 	
+	/**
+	 * Admin - 교우소식 관리 페이지로 이동
+	 * @param model
+	 * @param request
+	 * @param boardVo
+	 * @return admin/personNewsAdmin
+	 */
 	@RequestMapping(value = "personNewsAdmin.do")
-	public String personNewsAdmin(Model model, HttpServletRequest request) {
+	public String personNewsAdmin(Model model, HttpServletRequest request, BoardVo boardVo) {
+		
+		// 신청자, 제목, 내용 선택
+		String searchSelect = request.getParameter("searchSelect");
+		// 검색어
+		String searchContent = request.getParameter("searchContent");
+		
+		System.out.println("insertFlag : "+request.getParameter("insertFlag"));
+		System.out.println("MEMBER_NO" + boardVo.getMEMBER_NO() + " boardVoTITLE : " + boardVo.getBOARD_TITLE() + " boardVoCONTENT : " + boardVo.getBOARD_CONTENT());
+		
+		//게시물등록
+		if(request.getParameter("insertFlag") != null) {
+			int result = 0;
+			//폼에서 제목과 내용이 값이 있을때만 insert 실행
+			if(boardVo.getBOARD_TITLE() != null && boardVo.getBOARD_CONTENT() != null) {
+				result = adminService.insertPersonNewsAdmin(boardVo);
+				if(result != 1) {
+					model.addAttribute("msg", "등록을 실패했습니다");
+					model.addAttribute("url", "personNewsAdmin.do");
+					return "common/alert";
+				}
+			}
+		}
+		
+		//게시물 수정
+		if(request.getParameter("updateFlag") != null) {
+			int result = 0;
+			if(boardVo.getBOARD_TITLE() != null && boardVo.getBOARD_CONTENT() != null) {
+				result = adminService.updatePersonNewsAdmin(boardVo);
+				if(result == 0) {
+					model.addAttribute("msg", "수정을 실패했습니다");
+					model.addAttribute("url", "personNewsAdmin.do");
+					return "common/alert";
+				}
+			}
+		}
 		
 		//삭제
 		if(request.getParameter("delete") != null) {
@@ -50,20 +93,26 @@ public class AdminController {
 				String idx = request.getParameter("idx");
 				result = adminService.ckDeletePersonNewsAdmin(idx);
 				if(result == 0) {
-					return "error/500errorPage";
+					model.addAttribute("msg", "삭제를 실패했습니다");
+					model.addAttribute("url", "personNewsAdmin.do");
+					return "common/alert";
 				}
 			//한줄삭제
 			}else {
-				int apply_no = Integer.parseInt(request.getParameter("APPLY_NO"));
-				result = adminService.deletePersonNewsAdmin(apply_no);
+				int board_no = Integer.parseInt(request.getParameter("BOARD_NO"));
+				result = adminService.deletePersonNewsAdmin(board_no);
 				if(result == 0) {
-					return "error/500errorPage";
+					model.addAttribute("msg", "삭제를 실패했습니다");
+					model.addAttribute("url", "personNewsAdmin.do");
+					return "common/alert";
 				}
 			}
 		}
 		
 		//조회할 총 갯수 map 파라미터
 		HashMap<String, Object> countMap = new HashMap<String, Object>();
+		countMap.put("searchSelect", searchSelect);
+		countMap.put("searchContent", searchContent);
 		
 		//페이징 처리 된 행의 갯수
 		int limit = 10;
@@ -117,6 +166,8 @@ public class AdminController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("startRow", startRow);
 		map.put("endRow", endRow);
+		map.put("searchSelect", searchSelect);
+		map.put("searchContent", searchContent);
 		
 		//검색조건에 대한 조회 prameter map
 		List<ApplyVo> list = adminService.personNewsAdminList(map);
@@ -130,10 +181,12 @@ public class AdminController {
 		model.addAttribute("limit",limit);
 		model.addAttribute("currentPage",currentPage);
 		model.addAttribute("maxPage",maxPage);
-		model.addAttribute("startPage",startPage);
+		model.addAttribute("startPage",startPage);	
 		model.addAttribute("endPage",endPage);
 		model.addAttribute("startRow", startRow);
 		model.addAttribute("listCount", listCount);
+		model.addAttribute("searchSelect", searchSelect);
+		model.addAttribute("searchContent", searchContent);
 		
 		
 		return "admin/personNewsAdmin";
@@ -144,10 +197,6 @@ public class AdminController {
 		return "admin/churchPhotoAdmin";
 	}
 	
-	@RequestMapping(value = "eventVideoAdmin.do")
-	public String eventVideoAdmin() {
-		return "admin/eventVideoAdmin";
-	}
 	
 	@RequestMapping(value = "flowerPhotoAdmin.do")
 	public String flowerPhotoAdmin() {
@@ -179,6 +228,7 @@ public class AdminController {
 			if(request.getParameter("idx") != null) {
 				String idx = request.getParameter("idx");
 				result = adminService.ckDeleteWeekPageApplyAdmin(idx);
+				
 				if(result == 0) {
 					return "error/500errorPage";
 				}
@@ -395,6 +445,12 @@ public class AdminController {
 		return "admin/worshipDataApplayAdmin";
 	}
 	
+	/**
+	 * Admin - 파일 다운로드
+	 * @param response
+	 * @param request
+	 * @throws Exception
+	 */
 	@RequestMapping(value="/downloadFile.do")
 	public void downloadFile( HttpServletResponse response, HttpServletRequest request) throws Exception{	
 		

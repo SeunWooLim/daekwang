@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.or.daekwang.apply.model.vo.ApplyVo;
+import kr.or.daekwang.board.model.vo.BoardVo;
 
 @Repository("adminDao")
 public class AdminDao {
@@ -55,11 +56,19 @@ public class AdminDao {
 		return mybatis.selectOne("adminMapper.countPersonNewsAdmin", countMap);
 	}
 
-	public int deletePersonNewsAdmin(int apply_no) {
-		return mybatis.update("adminMapper.deletePersoewsAdmin", apply_no);
+	public int deletePersonNewsAdmin(int board_no) {
+		return mybatis.update("adminMapper.deletePersoewsAdmin", board_no);
 	}
 
-	public int ckDeletePersonNewsAdmin(String idx) {
-		return mybatis.update("adminMapper.deletePersoewsAdmin", idx);
+	public int ckDeletePersonNewsAdmin(int checkNum) {
+		return mybatis.update("adminMapper.deletePersoewsAdmin", checkNum);
+	}
+
+	public int insertPersonNewsAdmin(BoardVo boardVo) {
+		return mybatis.insert("adminMapper.insertPersonNewsAdmin", boardVo);
+	}
+
+	public int updatePersonNewsAdmin(BoardVo boardVo) {
+		return mybatis.update("adminMapper.updatePersonNewsAdmin", boardVo);
 	}
 }

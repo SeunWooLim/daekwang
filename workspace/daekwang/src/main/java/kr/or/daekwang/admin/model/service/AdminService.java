@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import kr.or.daekwang.apply.model.vo.ApplyVo;
+import kr.or.daekwang.board.model.vo.BoardVo;
 
 public interface AdminService {
 
@@ -28,8 +29,12 @@ public interface AdminService {
 
 	int countPersonNewsAdmin(HashMap<String, Object> countMap);
 
-	int deletePersonNewsAdmin(int apply_no);
+	int deletePersonNewsAdmin(int board_no);
 
 	int ckDeletePersonNewsAdmin(String idx);
+
+	int insertPersonNewsAdmin(BoardVo boardVo);
+
+	int updatePersonNewsAdmin(BoardVo boardVo);
 
 }

@@ -154,6 +154,7 @@
 		WHERE APPLY_NO = #{apply_no}
 	</update>
 	
+	<!-- 교우소식관리 총 리스트 조회 -->
 	<select id="personNewsAdminList" resultMap="boardResultMap" parameterType="java.util.HashMap">
 		SELECT A.*, B.MEMBER_NAME
 		FROM board A, member B
@@ -161,17 +162,21 @@
 		AND BOARD_FG = 2
 		AND DELETE_YN = 'N'
 		<if test="searchContent != NULL and searchContent != ''">
-			<if test="searchSelect1 eq '1'.toString()">
-			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			<if test="searchSelect eq '1'.toString()">
+			AND A.BOARD_TITLE LIKE CONCAT('%', #{searchContent}, '%')
 			</if>
-			<if test="searchSelect1 eq '2'.toString()">
+			<if test="searchSelect eq '2'.toString()">
 			AND A.BOARD_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '3'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
 			</if>
 		</if>
 		ORDER BY BOARD_NO DESC
 		LIMIT #{startRow}, #{endRow}
 	</select>
 	
+	<!-- 교우소식관리 총 row 갯수 조회 -->
 	<select id="countPersonNewsAdmin" resultType="Integer">
 		SELECT COUNT(*)
 		FROM board A, member B
@@ -179,14 +184,38 @@
 		AND BOARD_FG = 2
 		AND DELETE_YN = 'N'
 		<if test="searchContent != NULL and searchContent != ''">
-			<if test="searchSelect1 eq '1'.toString()">
-			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			<if test="searchSelect eq '1'.toString()">
+			AND A.BOARD_TITLE LIKE CONCAT('%', #{searchContent}, '%')
 			</if>
-			<if test="searchSelect1 eq '2'.toString()">
+			<if test="searchSelect eq '2'.toString()">
 			AND A.BOARD_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '3'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
 			</if>
 		</if>
 		ORDER BY BOARD_NO DESC
 	</select>
 	
+	<!-- 교우소식 게시물 삭제 -->
+	<update id="deletePersoewsAdmin" parameterType="Integer">
+		UPDATE board
+		SET DELETE_YN = 'Y'
+		WHERE BOARD_NO = #{board_no}
+	</update>
+	
+	<!-- 교우소식 게시물 등록 -->
+	<insert id="insertPersonNewsAdmin" parameterType="Board">
+		INSERT INTO board(BOARD_FG, BOARD_TITLE, BOARD_CONTENT, MEMBER_NO, BOARD_READCNT, FIRST_INPUT_DATE, RECENT_UPDATE_DATE)
+		VALUES(2, #{BOARD_TITLE}, #{BOARD_CONTENT},  #{MEMBER_NO}, 0, NOW(), NOW())
+	</insert>
+	
+	<!-- 교우소식 게시물 수정 -->
+	<update id="updatePersonNewsAdmin" parameterType="Board">
+		UPDATE board
+		SET BOARD_TITLE = #{BOARD_TITLE}
+			, BOARD_CONTENT = #{BOARD_CONTENT}
+			, RECENT_UPDATE_DATE = NOW()
+		WHERE BOARD_NO = ${BOARD_NO}
+	</update>
 </mapper>
