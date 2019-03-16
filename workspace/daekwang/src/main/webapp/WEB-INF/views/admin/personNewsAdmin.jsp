@@ -24,15 +24,10 @@
 			<div class="category_wrap">
 				<ul class="ul_form1">
 					<li>
-						<select name="" title="" class="selectform2">
-							<option value="" selected="selected">카테고리</option>
-							<option value="">카테고리1</option>
-						</select>
-					</li>
-					<li>
 						<select name="" title="" class="selectform1">
 							<option value="" selected="selected">제목</option>
 							<option value="">내용</option>
+							<option value="">작성자</option>
 						</select>
 					</li>
 					<li>
@@ -59,7 +54,6 @@
 						<col width="5%"/>
 						<col width="5%"/>
 						<col width="10%"/>
-						<col width="10%"/>
 						<col width="25%"/>
 						<col width="25%"/>
 						<col width="10%"/>
@@ -69,8 +63,7 @@
 						<tr>
 							<th><input type="checkbox" name="" id="check1"/><label for="check1"></label> </th>
 							<th>NO</th>
-							<th>리스트이미지</th>
-							<th>카테고리</th>
+							<th>작성자</th>
 							<th>제목</th>
 							<th>내용</th>
 							<th>등록일</th>
@@ -78,19 +71,20 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td><input type="checkbox" name="" id="check2"/><label for="check2"></label> </td>
-							<td>1</td>
-							<td><img src="/common/img/eximg1.jpg" alt=""/></td>
-							<td>카테고리1</td>
-							<td>제목입니다.</td>
-							<td>내용입니다.</td>
-							<td>2018-04-23</td>
-							<td>
-								<a href="#" class="btnform5">수정</a>
-								<a href="#" class="btnform6">삭제</a>
-							</td>
-						</tr>
+						<c:forEach var="psersonNews" items="${list }">
+							<tr>
+								<td><input type="checkbox" name="" id="check2"/><label for="check2"></label> </td>
+								<td>1</td>
+								<td>${psersonNews.memberVo.MEMBER_NAME }</td>
+								<td>${psersonNews.BOARD_TITLE }</td>
+								<td>${psersonNews.BOARD_CONTENT }</td>
+								<td>${psersonNews.RECENT_UPDATE_DATE }</td>
+								<td>
+									<a href="#" class="btnform5">수정</a>
+									<a href="#" class="btnform6">삭제</a>
+								</td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 				
@@ -102,9 +96,3 @@
 
  </body>
 </html>
-<style>
-	.menuuuuuu{}
-	.menuuuuuu li{margin-bottom:20px; }
-	.menuuuuuu li p{font-size:20px;}
-	.menuuuuuu li p span{font-size:20px;}
-</style>

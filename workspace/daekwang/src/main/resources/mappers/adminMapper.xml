@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="adminMapper">
+	
+	<resultMap id="memberResultMap" type="Member">
+		<result property="MEMBER_NO" column="MEMBER_NO"/>
+  		<result property="MEMBER_FG" column="MEMBER_FG"/>
+  		<result property="MEMBER_ID" column="MEMBER_ID"/>
+  		<result property="MEMBER_PWD" column="MEMBER_PWD"/>
+  		<result property="MEMBER_NAME" column="MEMBER_NAME"/>
+  		<result property="MEMBER_PHONE" column="MEMBER_PHONE"/>
+  		<result property="MEMBER_EMAIL" column="MEMBER_EMAIL"/>
+  		<result property="MEMBER_POSTCODE" column="MEMBER_POSTCODE"/>
+  		<result property="MEMBER_ADDR" column="MEMBER_ADDR"/>
+  		<result property="MEMBER_ADDR_DETAIL" column="MEMBER_ADDR_DETAIL"/>
+  		<result property="MEMBER_ADDR_EXTRA" column="MEMBER_ADDR_EXTRA"/>
+  		<result property="MEMBER_DETAIL" column="MEMBER_DETAIL"/>
+  		<result property="MEMBER_USEYN" column="MEMBER_USEYN"/>
+	</resultMap>
+	
+	<resultMap id="adminResultMap" type="Admin">
+		<result property="RNUM" column="RNUM"/>
+	</resultMap>	
+	
+	<resultMap id="applyResultMap" type="Apply">
+		<result property="APPLY_FG" column="APPLY_FG"/>
+  		<result property="APPLY_NO" column="APPLY_NO"/>
+  		<result property="APPLY_TITLE" column="APPLY_TITLE"/>
+  		<result property="APPLY_CONTENT" column="APPLY_CONTENT"/>
+  		<result property="MEMBER_NO" column="MEMBER_NO"/>
+  		<result property="APPLY_DATE" column="APPLY_DATE"/>
+  		<result property="APPLY_ORFILE" column="APPLY_ORFILE"/>
+  		<result property="APPLY_REFILE" column="APPLY_REFILE"/>
+  		<result property="DELETE_YN" column="DELETE_YN"/>
+  		<result property="WORSHIP_NAME" column="WORSHIP_NAME"/>
+  		<result property="APPLY_CATE" column="APPLY_CATE"/>
+  		<result property="DEPT_NAME" column="DEPT_NAME"/>
+  		<collection property="memberVo" resultMap="memberResultMap"/>
+  		<collection property="adminVo" resultMap="adminResultMap"></collection>
+	</resultMap>
+	
+	<resultMap id="boardResultMap" type="Board">
+		<result property="BOARD_FG" column="BOARD_FG"/>
+  		<result property="BOARD_NO" column="BOARD_NO"/>
+  		<result property="BOARD_TITLE" column="BOARD_TITLE"/>
+  		<result property="BOARD_CONTENT" column="BOARD_CONTENT"/>
+  		<result property="BOARD_READCNT" column="BOARD_READCNT"/>
+  		<result property="MEMBER_NO" column="MEMBER_NO"/>
+  		<result property="FIRST_INPUT_DATE" column="FIRST_INPUT_DATE"/>
+  		<result property="RECENT_UPDATE_DATE" column="RECENT_UPDATE_DATE"/>
+  		<result property="DELETE_YN" column="DELETE_YN"/>
+  		<result property="REPLY_NO" column="REPLY_NO"/>
+  		<result property="REPLY_BOARD_FG" column="REPLY_BOARD_FG"/>
+  		<result property="REPLY_BOARD_NO" column="REPLY_BOARD_NO"/>
+  		<result property="REPLY_CONTENT" column="MEMBER_USEREPLY_CONTENTYN"/>
+  		<result property="REPLY_MEMBER_NO" column="REPLY_MEMBER_NO"/>
+  		<result property="REPLY_DATE" column="REPLY_DATE"/>
+  		<result property="REPLY_DELETE_YN" column="REPLY_DELETE_YN"/>
+  		<collection property="memberVo" resultMap="memberResultMap"/>
+	</resultMap>
+	
+	<!-- 주보광고신청 총 리스트 조회 -->
+	<select id="weekPageApplyAdminList" resultMap="applyResultMap" parameterType="java.util.HashMap">
+	  	SELECT A.*, B.MEMBER_NAME
+		FROM apply A, member B
+		WHERE A.MEMBER_NO = B.MEMBER_NO 
+		AND APPLY_FG = 1
+		AND DELETE_YN = 'N'
+		<if test="searchSelect2 != NULL and searchSelect2 != ''">
+		AND A.APPLY_CATE = #{searchSelect2}
+		</if>
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect1 eq '1'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect1 eq '2'.toString()">
+			AND A.APPLY_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY APPLY_NO DESC
+		LIMIT #{startRow}, #{endRow}
+	</select>
+	
+	<!-- 주보광고신청 총 row 갯수 조회 -->
+	<select id="countWeekPageApplyAdminList" resultType="Integer">
+		SELECT COUNT(*)
+		FROM apply A, member B
+		WHERE A.MEMBER_NO = B.MEMBER_NO 
+		AND APPLY_FG = 1
+		AND DELETE_YN = 'N'
+		<if test="searchSelect2 != NULL and searchSelect2 != ''">
+		AND A.APPLY_CATE = #{searchSelect2}
+		</if>
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect1 eq '1'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect1 eq '2'.toString()">
+			AND A.APPLY_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY APPLY_NO DESC
+	</select>
+	
+	<!-- 주보광고신청 삭제 -->
+	<update id="deleteWeekPageApplyAdmin" parameterType="Integer">
+		UPDATE apply
+		SET DELETE_YN = 'Y'
+		WHERE APPLY_NO = #{apply_no}
+	</update>
+	
+	<!-- 예배자료신청 총 리스트 조회 -->
+	<select id="worshipDataApplyAdminList" resultMap="applyResultMap" parameterType="java.util.HashMap">
+	  	SELECT A.*, B.MEMBER_NAME
+		FROM apply A, member B
+		WHERE A.MEMBER_NO = B.MEMBER_NO 
+		AND APPLY_FG = 2
+		AND DELETE_YN = 'N'
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect1 eq '1'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect1 eq '2'.toString()">
+			AND A.APPLY_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY APPLY_NO DESC
+		LIMIT #{startRow}, #{endRow}
+	</select>
+	
+	<!-- 예배자료신청 총 row 갯수 조회 -->
+	<select id="countWorshipDataApplyAdmin" resultType="Integer">
+	  	SELECT COUNT(*)
+		FROM apply A, member B
+		WHERE A.MEMBER_NO = B.MEMBER_NO 
+		AND APPLY_FG = 2
+		AND DELETE_YN = 'N'
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect1 eq '1'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect1 eq '2'.toString()">
+			AND A.APPLY_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY APPLY_NO DESC
+	</select>
+	
+	<!-- 예배자료신청 삭제 -->
+	<update id="deleteWorshipDataApplyAdmin" parameterType="Integer">
+		UPDATE apply
+		SET DELETE_YN = 'Y'
+		WHERE APPLY_NO = #{apply_no}
+	</update>
+	
+	<select id="personNewsAdminList" resultMap="boardResultMap" parameterType="java.util.HashMap">
+		SELECT A.*, B.MEMBER_NAME
+		FROM board A, member B
+		WHERE A.MEMBER_NO = B.MEMBER_NO 
+		AND BOARD_FG = 2
+		AND DELETE_YN = 'N'
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect1 eq '1'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect1 eq '2'.toString()">
+			AND A.BOARD_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY BOARD_NO DESC
+		LIMIT #{startRow}, #{endRow}
+	</select>
+	
+	<select id="countPersonNewsAdmin" resultType="Integer">
+		SELECT COUNT(*)
+		FROM board A, member B
+		WHERE A.MEMBER_NO = B.MEMBER_NO 
+		AND BOARD_FG = 2
+		AND DELETE_YN = 'N'
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect1 eq '1'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect1 eq '2'.toString()">
+			AND A.BOARD_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY BOARD_NO DESC
+	</select>
+	
+</mapper>

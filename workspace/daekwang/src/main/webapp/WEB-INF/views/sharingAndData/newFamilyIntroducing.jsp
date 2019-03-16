@@ -28,31 +28,13 @@
 				<div class="photo_mid">
 					<ul>
 						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
 					</ul>
 				</div>
 				<div class="photo_bot">
 					내용입니다.
 				</div>
 			</li>
-			<li>
-				<div class="photo_top">
-					<ul>
-						<li>2019.02.10(우홍섭 성도)</li>
-						<li>2019-02-02</li>
-					</ul>
-				</div>
-				<div class="photo_mid">
-					<ul>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-					</ul>
-				</div>
-				<div class="photo_bot">
-					내용입니다.
-				</div>
-			</li>
+
 			<li>
 				<div class="photo_top">
 					<ul>

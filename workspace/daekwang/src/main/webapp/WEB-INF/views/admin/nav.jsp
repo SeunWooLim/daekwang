@@ -22,7 +22,7 @@
 				<li><a href="churchPhotoAdmin.do">교회사진 관리</a></li>
 				<li><a href="flowerPhotoAdmin.do">꽃꽃이 갤러리 관리</a></li>
 				<li><a href="weekPageApplyAdmin.do">주보 광고신청 관리</a></li>
-				<li><a href="worshipDataApplayAdmin.do">예배 자료신청 관리</a></li>
+				<li><a href="worshipDataApplyAdmin.do">예배 자료신청 관리</a></li>
 			</ul>
 		</li>
 		<li><a href="#"><i class="xi-layout-column"></i>정보관리</a>

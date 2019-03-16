@@ -16,12 +16,18 @@
 		</div>
 	</div>
 	
+	<c:set var="listCount" value="${listCount }"/>
+	<% 
+		String listNum = pageContext.getAttribute("listCount").toString();
+		int listCount = Integer.parseInt(listNum);
+	%>
+	
 	<div class="pw_board_wrap">
 		<ul>
 			<c:forEach var="personNews" items="${list }">
 				<li>
 					<div class="head">
-						<div>${listCount }</div>
+						<div><%= listCount %></div>
 						<p class="title">${personNews.BOARD_TITLE }</p>
 						<p class="text"><span>${personNews.RECENT_UPDATE_DATE }</span><span>${personNews.memberVo.MEMBER_NAME }</span></p>
 						<i class="xi-angle-down"></i>
@@ -30,6 +36,9 @@
 						<p class="title">${personNews.BOARD_CONTENT }</p>
 					</div>
 				</li>
+				<% 
+					listCount--;
+				%>
 			</c:forEach>
 		</ul>
 	</div>

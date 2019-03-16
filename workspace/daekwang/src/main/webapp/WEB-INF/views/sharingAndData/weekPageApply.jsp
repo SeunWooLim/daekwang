@@ -45,6 +45,10 @@
 						<tr>
 							<td><label for="wPA_context">내용</label></td>
 							<td><textarea id="wPA_context" name="APPLY_CONTENT"  placeholder="내용 작성"></textarea></td>
+							<script type="text/javascript">
+							CKEDITOR.replace('wPA_context',
+									{height: 300});
+							</script>
 						</tr>
 						<tr>
 							<td colspan="2" class="point">주보광고신청은 매주 금요일 오후 12시 까지입니다.</td>
