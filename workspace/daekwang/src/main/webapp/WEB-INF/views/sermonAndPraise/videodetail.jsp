@@ -5,49 +5,113 @@
 
 <jsp:include page="../common/meta.jsp"/>
 
-
-<!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="../common/header.jsp"/>
 <div id="wrap">
 	<div class="subvisual_wrap">
 		<div class="subvisual_text">
-			<p class=title>수요기도회 설교</p>
+			<c:choose>
+				<c:when test="${menu eq 1 }">
+					<p class="title">주일 낮 설교</p>
+				</c:when>
+				<c:when test="${menu eq 2 }">
+					<p class="title">수요기도회 설교</p>
+				</c:when>
+				<c:when test="${menu eq 3 }">
+					<p class="title">올젠워십 설교</p>
+				</c:when>
+				<c:when test="${menu eq 4 }">
+					<p class="title">연합 찬양대</p>
+				</c:when>
+				<c:when test="${menu eq 5 }">
+					<p class="title">특송</p>
+				</c:when>
+				<c:when test="${menu eq 6 }">
+					<p class="title">특별예배</p>
+				</c:when>
+				<c:when test="${menu eq 7 }">
+					<p class="title">샬롬 찬양대</p>
+				</c:when>
+				<c:when test="${menu eq 8 }">
+					<p class="title">임마누엘 찬양대</p>
+				</c:when>
+				<c:when test="${menu eq 9 }">
+					<p class="title">특별행사</p>
+				</c:when>
+			</c:choose>
+			
 			<p class="text">안양대광교회</p>
 		</div>
 	</div>
-	
-	<!-- 주일 낮 설교에서 넘어올 때 -->
-	<c:if test="${menu eq 1 }">
-		<div class="worshiptab">
-			<ul>
-				<li><a href="sundayWorship.do" class="on"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
-				<li><a href="wednesdayWorship.do"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
-				<li><a href="allgenWorship.do"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
-			</ul>
-		</div>
-	</c:if>
-	
-	<!-- 수요기도회에서 넘어올 때 -->
-	<c:if test="${menu eq 2 }">
-		<div class="worshiptab">
-			<ul>
-				<li><a href="sundayWorship.do"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
-				<li><a href="wednesdayWorship.do" class="on"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
-				<li><a href="allgenWorship.do"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
-			</ul>
-		</div>
-	</c:if>
-	
-	<!-- 올젠워쉽에서 넘어올 때 -->
-	<c:if test="${menu eq 3 }">
-		<div class="worshiptab">
-			<ul>
-				<li><a href="sundayWorship.do"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
-				<li><a href="wednesdayWorship.do"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
-				<li><a href="allgenWorship.do" class="on"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
-			</ul>
-		</div>
-	</c:if>
+	<!-- 
+	메뉴 파라미터(menu)
+	1 : 주일낮 설교
+	2 : 수요기도회 설교
+	3 : 올젠워십 설교
+	4 : 연합찬양대
+	5 : 특송
+	6 : 특별예배
+	7 : 샬롬 찬양대
+	8 : 임마누엘 찬양대
+	9 : 특별행사
+	 -->
+	<c:choose>
+		<c:when test="${menu eq 1 }">
+			<div class="worshiptab">
+				<ul>
+					<li><a href="sundayWorship.do" class="on"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
+					<li><a href="wednesdayWorship.do"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
+					<li><a href="allgenWorship.do"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
+				</ul>
+			</div>
+		</c:when>
+		<c:when test="${menu eq 2 }">
+			<div class="worshiptab">
+				<ul>
+					<li><a href="sundayWorship.do"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
+					<li><a href="wednesdayWorship.do" class="on"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
+					<li><a href="allgenWorship.do"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
+				</ul>
+			</div>		
+		</c:when>
+		<c:when test="${menu eq 3 }">
+			<div class="worshiptab">
+				<ul>
+					<li><a href="sundayWorship.do"><i class="xi-bell-o"></i>주일 낮 설교</a></li>
+					<li><a href="wednesdayWorship.do"><i class="xi-bell-o"></i>수요기도회 설교</a></li>
+					<li><a href="allgenWorship.do" class="on"><i class="xi-bell-o"></i>올젠워십 설교</a></li>
+				</ul>
+			</div>
+		</c:when>
+		<c:when test="${menu eq 4 }">
+			<div class="worshiptab worshiptab1">
+				<ul>
+					<li><a href="unionChoir.do" class="on"><i class="xi-bell-o"></i>연합찬양대</a></li>
+					<li><a href="specialSong.do"><i class="xi-bell-o"></i>특송</a></li>
+					<li><a href="specialEvent.do"><i class="xi-bell-o"></i>특별예배</a></li>
+				</ul>
+			</div>
+		</c:when>
+		<c:when test="${menu eq 5 }">
+			<div class="worshiptab worshiptab1">
+				<ul>
+					<li><a href="unionChoir.do"><i class="xi-bell-o"></i>연합찬양대</a></li>
+					<li><a href="specialSong.do" class="on"><i class="xi-bell-o"></i>특송</a></li>
+					<li><a href="specialEvent.do"><i class="xi-bell-o"></i>특별예배</a></li>
+				</ul>
+			</div>
+		</c:when>
+		<c:when test="${menu eq 6 }">
+			<div class="worshiptab worshiptab1">
+				<ul>
+					<li><a href="unionChoir.do"><i class="xi-bell-o"></i>연합찬양대</a></li>
+					<li><a href="specialSong.do"><i class="xi-bell-o"></i>특송</a></li>
+					<li><a href="specialEvent.do" class="on"><i class="xi-bell-o"></i>특별예배</a></li>
+				</ul>
+			</div>
+		</c:when>
+		<c:otherwise>
+		</c:otherwise>
+	</c:choose>
 	
 	<div class="iframe_wrapp">
 		<div class="iframe_wrap">
@@ -76,8 +140,9 @@
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
-<<script type="text/javascript">
-    var playlist = 'PLwcdqPJXVv0aMM-7HaSzQGvC4je06L1uN';
+<script type="text/javascript">
+    var playlist = '${playlist}';
+    var menu = '${menu}';
     
     $(document).ready(function(){
        $.get(
@@ -101,26 +166,21 @@
                        output=                    	   	 
 								'<div class="slide slide01Box slick-slide slick-active" name="slide" index="0" style="width: 350px;">'+
 									'<div class="box">' +
-										'<a class="img" href="videoDetail.do?vid=' + vId +'&desc=' + desc + '&menu=1">'+
+										'<a class="img" href="videoDetail.do?vid=' + vId +'&desc=' + desc + '&menu=' + menu + '&playlist=' + playlist + '">'+
 											'<div class="on"><i class="xi-play-circle"></i></div>' +
 											'<img src=\"//img.youtube.com/vi/' + vId + '/mqdefault.jpg\">' +
 										'</a>' +
 										'<div class="contents">' +
-											'<a class="tit" href="videoDetail.do?vid=' + vId +'&desc=' + desc + '&menu=1">' + vTitle + '</a>' +										
+											'<a class="tit" href="videoDetail.do?vid=' + vId +'&desc=' + desc + '&menu=' + menu + '">' + vTitle + '</a>' +										
 										'</div>' +
 									'</div>' +
 								'</div>'
-                       		  
                        		 ;
-                       
                        $("#result").append(output);
-                       
-                       
                    })
                }
                );
-        
     });
 
-  </script>
+</script>
 </html>

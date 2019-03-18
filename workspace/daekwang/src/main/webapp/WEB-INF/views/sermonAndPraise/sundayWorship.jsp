@@ -5,8 +5,6 @@
 
 <jsp:include page="../common/meta.jsp"/>
 
-
-<!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="../common/header.jsp"/>
 <div id="wrap">
 	<div class="subvisual_wrap">
@@ -25,7 +23,6 @@
 	<div class="moviewrap">
 		<ul id="results" class="movieul"></ul>
 	</div>
-	
 	
 </div>
 <jsp:include page="../common/footer.jsp"/>
@@ -50,35 +47,25 @@
                        var time = temp.substring(0,10);
                        var desc = item.snippet.description;
                        var num = 1;
-                       //output = '<li>'+vTitle + '<br>--videoid: ' + vId+'<br>--time: ' + time + '<br>--desc: '+ desc + '</li>';
-                       //output= '<li>'+vTitle+'<iframe src="//www.youtube.com/embed/'+vId+'\"></iframe></li>';
                        output=                    	   	 
-								'<li>'+
-									'<a href="videoDetail.do?vid=' + vId +'&desc=' + desc + '&menu=1">'+
-									/* '<a href="videoDetail.do?vid=' + vId +'&menu=1">'+ */
-										'<div class="mwrap">' +
-											  	
-											'<img width="222" height="118" src=\"//img.youtube.com/vi/' + vId + '/mqdefault.jpg\">' +
-												
-											'<div class="text">' +
-												'<p class="title">' + vTitle + '</p>' +
-												'<p class="text">Sunday Worship</p>' +
-											'</div>' +
+							'<li>'+
+								'<a href="videoDetail.do?vid=' + vId +'&desc=' + desc + '&menu=1&playlist=' + playlist + '">'+
+									'<div class="mwrap">' +
+										'<img width="222" height="118" src=\"//img.youtube.com/vi/' + vId + '/mqdefault.jpg\">' +
+										'<div class="text">' +
+											'<p class="title">' + vTitle + '</p>' +
+											'<p class="text">Sunday Worship</p>' +
 										'</div>' +
-									 '</a>' +
-								'</li>'
-                       		  
-                       		 ;
-                       
-                       $("#results").append(output);
-                       
-                       
-                   })
-               }
-               );
-        
-    });
+									'</div>' +
+								 '</a>' +
+							'</li>'
+                  		 ;
+                  $("#results").append(output);
+              })
+          }
+          );
+});
 
-  </script>
+</script>
 </body>
 </html>

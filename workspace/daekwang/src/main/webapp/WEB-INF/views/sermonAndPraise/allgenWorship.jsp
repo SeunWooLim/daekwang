@@ -5,8 +5,6 @@
 
 <jsp:include page="../common/meta.jsp"/>
 
-
-<!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="../common/header.jsp"/>
 <div id="wrap">
 	<div class="subvisual_wrap">
@@ -23,58 +21,53 @@
 		</ul>
 	</div>
 	<div class="moviewrap">
-		<ul>
-			<li>
-				<a href="#">
-					<table>
-						<colgroup>
-							<col width="3%">
-							<col width="25%">
-							<col width="*">				
-						</colgroup>
-						<tbody>
-							<tr>
-								<td>10</td>
-								<td>
-									<img alt="" src="<c:url value="/"/>resources/img/movieex1.png">
-								</td>
-								<td>
-									<p class="title">마커스워십 - 주의길</p>
-									<p class="text">MARKERS WORSHIP</p>
-								</td>
-							</tr>
-						</tbody>
-					</table>	
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<table>
-						<colgroup>
-							<col width="3%">
-							<col width="25%">
-							<col width="*">				
-						</colgroup>
-						<tbody>
-							<tr>
-								<td>10</td>
-								<td>
-									<img alt="" src="<c:url value="/"/>resources/img/movieex1.png">
-								</td>
-								<td>
-									<p class="title">마커스워십 - 주의길</p>
-									<p class="text">MARKERS WORSHIP</p>
-								</td>
-							</tr>
-						</tbody>
-					</table>	
-				</a>
-			</li>
-		</ul>		
+		<ul id="results" class="movieul"></ul>
 	</div>
 	
 	
 </div>
 <jsp:include page="../common/footer.jsp"/>
+
+<script type="text/javascript">
+    var playlist = 'PLwcdqPJXVv0YrwhLebko46wVf_CsMLOdJ';
+    
+    $(document).ready(function(){
+       $.get(
+           "https://www.googleapis.com/youtube/v3/playlistItems", {
+               part: 'snippet',
+               maxResults: 50,
+               playlistId: playlist,
+               key: 'AIzaSyAYH3AjbJxhiYngE1l5obNvwBPNo5_lnyg'},
+               function(data){
+                   var output;
+                   $.each(data.items, function(i, item){
+                       console.log(item);
+                       vTitle = item.snippet.title;
+                       vId = item.snippet.resourceId.videoId;
+                       var temp = item.snippet.publishedAt;
+                       var time = temp.substring(0,10);
+                       var desc = item.snippet.description;
+                       var num = 1;
+                       output=                    	   	 
+							'<li>'+
+								'<a href="videoDetail.do?vid=' + vId +'&desc=' + desc + '&menu=3&playlist=' + playlist + '">'+
+									'<div class="mwrap">' +
+										'<img width="222" height="118" src=\"//img.youtube.com/vi/' + vId + '/mqdefault.jpg\">' +
+										'<div class="text">' +
+											'<p class="title">' + vTitle + '</p>' +
+											'<p class="text">Allgen Worship</p>' +
+										'</div>' +
+									'</div>' +
+								 '</a>' +
+							'</li>'
+                  		 ;
+                  $("#results").append(output);
+              })
+          }
+          );
+	});
+
+</script>
+
 </body>
 </html>
