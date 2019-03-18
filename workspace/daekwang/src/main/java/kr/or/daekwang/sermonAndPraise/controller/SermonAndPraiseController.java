@@ -66,11 +66,13 @@ public class SermonAndPraiseController {
 	}
 	
 	@RequestMapping(value = "/videoDetail.do")
-	public String videoDetail(Model model, @RequestParam(value="vid") String vid, @RequestParam(value="desc") String desc, @RequestParam(value="menu") String menu) {
+	public String videoDetail(Model model, @RequestParam(value="vid") String vid, @RequestParam(value="desc") String desc, @RequestParam(value="menu") String menu, @RequestParam(value="playlist") String playlist) {
 		
 		model.addAttribute("vid", vid);
 		model.addAttribute("desc", desc);
 		model.addAttribute("menu", menu);
+		model.addAttribute("playlist", playlist);
+		
 		return "sermonAndPraise/videoDetail";
 	}
 	
