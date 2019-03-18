@@ -50,15 +50,15 @@
 	<!-- 공용에러페이지 -->
 	<error-page>
 		<error-code>403</error-code>
-		<location>/WEB-INF/views/common/403errorPage.jsp</location>
+		<location>/WEB-INF/views/error/403errorPage.jsp</location>
 	</error-page>
 	<error-page>
     	<error-code>404</error-code>
-    	<location>/WEB-INF/views/common/404errorPage.jsp</location>
+    	<location>/WEB-INF/views/error/404errorPage.jsp</location>
     </error-page>
     <error-page>
     	<error-code>500</error-code>
-    	<location>/WEB-INF/views/common/500errorPage.jsp</location>
+    	<location>/WEB-INF/views/error/500errorPage.jsp</location>
     </error-page>
 	
 	<!-- character set 설정 -->
