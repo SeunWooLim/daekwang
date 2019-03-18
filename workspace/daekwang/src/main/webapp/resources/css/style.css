@@ -148,8 +148,8 @@
 	.intro_wrap .intro_detail .intro_right .history tbody tr td:first-child{color:#3d5191; font-weight:bold; vertical-align: top;}
 	.intro_wrap .intro_detail .intro_right .history tbody tr td:last-child{color:#666}
 	.intro_wrap .intro_detail .intro_right .history1{display: block;}
-	/* .intro_wrap .intro_detail .intro_right .history2{display:none;}
-	.intro_wrap .intro_detail .intro_right .history3{display:none;} */
+	.intro_wrap .intro_detail .intro_right .history2{display:none;}
+	.intro_wrap .intro_detail .intro_right .history3{display:none;}
 	
 	
 	
@@ -471,7 +471,7 @@
 	.join_form table tbody tr td.dong a:hover{text-decoration: underline !important;}
 	.join_form table tbody tr td input:active, .join_form table tbody tr td input:focus{border:1px solid #314275}
 	.join_form .button{ margin:40px 0 0 0; border-radius:3px; background:#314275; text-align:center; line-height:40px; font-size:16px; font-weight:800; color:#FFF; cursor:pointer; width: 100%; border: none;}
-	.join_form .button:hover{ background:#333;}
+	.join_form .button:hover{ background:#fff;}
 		
 		
 .main_content_wrap .left{width:50%; float:left; position: relative;}
@@ -484,8 +484,8 @@
 	.main_content_wrap .right .main_content1:nth-child(2n){margin-right:0;}
 	
 .insertBtn_wrap{position: relative; height:40px; width:100%; max-width:970px; margin:0 auto; margin-bottom:20px;}
-.newInsertBtn{position:absolute; top:0; right:0; width:80px; height:40px; line-height:40px; background:#599be2; color:#fff; font-size:16px; color:#fff; border-radius:5px; text-align:center; margin-bottom:20px; transition:all,.5s; float:right;}
-	.newInsertBtn:hover{background:#314275; transition:all,.5s;}
+.newInsertBtn{position:absolute; top:0; right:0; width:60px; height:30px; line-height:30px; background:#fff; color:#314275; border:1px solid #314275; font-size:14px; border-radius:3px; text-align:center; margin-bottom:20px; transition:all,.5s; float:right;}
+	.newInsertBtn:hover{background:#314275; color:#fff; transition:all,.5s;}
 	
 .iframe_wrapp{width:100%; height:100%; margin:50px auto; overflow: hidden; max-width: 1200px;}
 .iframe_wrap{margin:0 auto; width:70%;  text-align:center; float:left;}

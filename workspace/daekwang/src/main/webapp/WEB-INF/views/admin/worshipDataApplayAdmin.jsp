@@ -142,7 +142,7 @@
 													<c:param name="STORED_FILE_NAME" value="${worshipData.APPLY_REFILE }"/>
 													<c:param name="ORIGINAL_FILE_NAME" value="${worshipData.APPLY_ORFILE }"/>
 												</c:url>
-												<a href="${downloadFile }" >${worshipData.APPLY_ORFILE }</a> 
+												<a style="display:inline-block"href="${downloadFile }" >${worshipData.APPLY_ORFILE }</a> 
 											</li>
 											<li>
 												<label for="wPA_context" style="vertical-align:top;">내용</label>
