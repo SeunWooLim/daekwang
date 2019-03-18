@@ -262,7 +262,8 @@
 	      $("input[name=checkBox]").prop("checked", false);
 	    }
 	}
-
+	
+	/* 체크된 게시물 삭제 */
 	function deleteAction(){
 		var checkBox = "";
 		$( "input[name='checkBox']:checked" ).each (function (){
@@ -287,10 +288,13 @@
 		}
 	}
 	
-	function fileDown(ORIGINAL_FILE_NAME, STORED_FILE_NAME){
-		location.href="downloadFile.do?ORIGINAL_FILE_NAME="+ORIGINAL_FILE_NAME+"&STORED_FILE_NAME="+STORED_FILE_NAME;
-	}
-
+	/* ESC key 이벤트 */
+	$(document).keyup(function(e) {
+	     if (e.keyCode == 27) { 
+    	 	$(".formbg").hide();
+			$(".form_wrap").hide();	
+	    }
+	});
 </script>
 
 </html>

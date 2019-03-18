@@ -294,7 +294,8 @@
 	      $("input[name=checkBox]").prop("checked", false);
 	    }
 	}
-
+	
+	/* 체크된 게시물 삭제 */
 	function deleteAction(){
 		var checkBox = "";
 		$( "input[name='checkBox']:checked" ).each (function (){
@@ -319,7 +320,14 @@
 		    location.href="weekPageApplyAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&delete="+deleteYN;      
 		}
 	}
-
+	
+	/* ESC key 이벤트 */
+	$(document).keyup(function(e) {
+	     if (e.keyCode == 27) { 
+    	 	$(".formbg").hide();
+			$(".form_wrap").hide();	
+	    }
+	});
 </script>
 
 </html>

@@ -210,5 +210,12 @@
 			return false;
 		})
 	})
+	
+	/* ESC key 이벤트 */
+	$(document).keyup(function(e) {
+	     if (e.keyCode == 27) { 
+	    	 $(".h_login").stop().fadeOut(200);
+	    }
+	});
 </script>
 
