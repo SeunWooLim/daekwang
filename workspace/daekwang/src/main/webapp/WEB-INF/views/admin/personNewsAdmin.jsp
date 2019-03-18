@@ -260,7 +260,7 @@
  </body>
 <script type="text/javascript">
 	
-	/* 수정 버튼 onclick */
+	/* 수정폼 버튼 onclick */
 	function updateForm(modalValue){
 		$(document).ready(function(){
 			$(".formbg").show();
@@ -268,7 +268,7 @@
 		})
 	}
 	
-	/* 닫기 버튼 onclick */
+	/* 수정폼 닫기 버튼 onclick */
 	function closeUpdateForm(modalValue){
 		$(document).ready(function(){
 			$(".formbg").hide();
@@ -276,6 +276,7 @@
 		})
 	}
 	
+	/* 등록 버튼 onclick */
 	function openInsertForm(){
 		$(document).ready(function(){
 			$("#form_wrap_ins").show();
@@ -283,6 +284,7 @@
 		})
 	}
 	
+	/* 등록 닫기 버튼 onclick */
 	function closeInsertForm(){
 		$(document).ready(function(){
 			$("#form_wrap_ins").hide();
@@ -305,7 +307,8 @@
 	      $("input[name=checkBox]").prop("checked", false);
 	    }
 	}
-
+	
+	/* 체크된 게시물 삭제 */
 	function deleteAction(){
 		var checkBox = "";
 		$( "input[name='checkBox']:checked" ).each (function (){
@@ -329,6 +332,15 @@
 		    location.href="weekPageApplyAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&delete="+deleteYN;      
 		}
 	}
+	
+	/* ESC key 이벤트 */
+	$(document).keyup(function(e) {
+	     if (e.keyCode == 27) { 
+    	 	$(".formbg").hide();
+			$(".form_wrap").hide();
+			$("#form_wrap_ins").hide();
+	    }
+	});
 
 </script>
 </html>
