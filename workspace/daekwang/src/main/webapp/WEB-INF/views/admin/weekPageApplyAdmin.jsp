@@ -119,7 +119,7 @@
 							<th>부서명</th>
 							<th>분류</th>
 							<th>내용</th>
-							<th>등록일</th>
+							<th>등록일(수정일)</th>
 							<th>편집</th>
 						</tr>
 					</thead>
@@ -138,7 +138,7 @@
 									<c:url var="delete" value="weekPageApplyAdmin.do">
 										<c:param name="APPLY_NO" value="${weekPage.APPLY_NO }" />
 										<c:param name="currentPage" value="${currentPage }" />
-										<c:param name="delete" value="Y" />
+										<c:param name="deleteFlag" value="Y" />
 									</c:url>
 									<a href="${delete }" class="btnform6">삭제</a>
 								</td>	
@@ -317,7 +317,7 @@
 		    var searchContent = '${searchContent}';
 		    var deleteYN = 'Y';
 		    //location.href="weekPageApplyAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&searchSelect2="+searchSelect2+"searchSelect1="+searchSelect1+"searchContent="+searchContent+"delete="+deleteYN;      
-		    location.href="weekPageApplyAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&delete="+deleteYN;      
+		    location.href="weekPageApplyAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&deleteFlag="+deleteYN;      
 		}
 	}
 	
