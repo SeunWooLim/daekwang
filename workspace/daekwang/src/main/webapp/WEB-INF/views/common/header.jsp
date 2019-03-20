@@ -17,6 +17,8 @@
 						<li><a href="#" class="login_btn">로그인</a></li>
 						<li>|</li>
 						<li><a href="join.do" class="login_btn">회원가입</a></li>
+						<li>|</li>
+						<li><a>사이트맵</a></li>
 					</c:if>
 					<!-- 로그인O -->
 					<c:if test="${sessionScope.loginUser ne null}">
@@ -30,9 +32,9 @@
 						</c:if>
 						<li>|</li>
 						<li><a href="logout.do" class="login_btn">로그아웃</a></li>
+						<li>|</li>
+						<li><a href="myPage.do">myPage</a></li>
 					</c:if>
-					<li>|</li>
-					<li><a href="myPage.do">사이트맵</a></li>
 				</ul>
 			</div>
 			</div>
