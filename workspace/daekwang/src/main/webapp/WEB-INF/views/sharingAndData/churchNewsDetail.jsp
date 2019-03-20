@@ -18,18 +18,18 @@
 	
 	<div class="ch_detail_wrap">
 		<div class="head">
-			<span class="left">제목</span>
-			<span class="right">작성일 : 2019-02-02</span>
+			<span class="left">${boardVo.BOARD_TITLE }</span>
+			<span class="right">${boardVo.RECENT_UPDATE_DATE }</span>
 		</div>
 		<div class="mid">
-			내용
+			${boardVo.BOARD_CONTENT }
 		</div>
-		<div class="bot">
+		<!-- <div class="bot">
 			<ul>
 				<li><a href="#"><i class="xi-angle-up"></i><span class="t1">이전글</span><span class="t2">이전글제목</span></a></li>
 				<li><a href="#"><i class="xi-angle-down"></i><span class="t1">다음글</span><span class="t2">다음글제목</span></a></li>
 			</ul> 
-		</div>
+		</div> -->
 		<a href="churchNews.do" class="btn11">목록</a>
 	</div>
 	

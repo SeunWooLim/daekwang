@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	
-	<form action="#" method="post">
+	<form action="insertChurchNews.do" method="post">
 		<div class="apply_wrap">
 			<div class="apply">
 				<table>
@@ -31,11 +31,11 @@
 						</tr>
 						<tr>
 							<td><label for="wPA_Dep">제목</label></td>
-							<td><input type="text" id="wPA_title" name="wPA_title" class="title" placeholder="제목 작성"/></td>
+							<td><input type="text" id="wPA_title" name="BOARD_TITLE" class="title" placeholder="제목 작성"/></td>
 						</tr>
 						<tr>
 							<td><label for="wPA_context">내용</label></td>
-							<td><textarea id="wPA_context" name="APPLY_CONTENT"  placeholder="내용 작성"></textarea></td>
+							<td><textarea id="wPA_context" name="BOARD_CONTENT"  placeholder="내용 작성"></textarea></td>
 							<script type="text/javascript">
 							CKEDITOR.replace('wPA_context',
 									{height: 300});
