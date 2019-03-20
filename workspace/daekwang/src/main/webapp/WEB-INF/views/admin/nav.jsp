@@ -15,8 +15,14 @@
 		<li><a href="admin.do" style="background:none;"><i class="xi-home"></i>Home</a></li>
 	</ul>
 	<ul class="menulist">
+		<li><a href="#"><i class="xi-layout-column"></i>회원관리</a>
+			<ul class="nav_detail">
+				<li><a href="#">회원 관리 </a></li>
+			</ul>
+		</li>
 		<li><a href="#"><i class="xi-layout-column"></i>게시판 관리</a>
 			<ul class="nav_detail">
+				<li><a href="newFamilyAdmin.do">새가족소개 관리 </a></li>
 				<li><a href="churchNoticeAdmin.do">교회소식 관리 </a></li>
 				<li><a href="personNewsAdmin.do">교우소식 관리</a></li>
 				<li><a href="churchPhotoAdmin.do">교회사진 관리</a></li>
