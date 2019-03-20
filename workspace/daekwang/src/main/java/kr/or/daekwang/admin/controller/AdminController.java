@@ -35,8 +35,168 @@ public class AdminController {
 		return "admin/churchSchoolAdmin";
 	}
 	
+	@RequestMapping(value = "newFamilyAdmin.do")
+	public String newFamilyAdmin() {
+		return "admin/newFamilyAdmin";
+	}
+	
+	/**
+	 * Admin - 교회소식 관리 페이지로 이동
+	 * @param model
+	 * @param request
+	 * @param boardVo
+	 * @return admin/churchNoticeAdmin
+	 */
 	@RequestMapping(value = "churchNoticeAdmin.do")
-	public String churchNoticeAdmin() {
+	public String churchNoticeAdmin(Model model, HttpServletRequest request, BoardVo boardVo) {
+		
+		// 신청자, 제목, 내용 선택
+		String searchSelect = request.getParameter("searchSelect");
+		// 검색어
+		String searchContent = request.getParameter("searchContent");
+		
+		System.out.println("insertFlag : "+request.getParameter("insertFlag"));
+		System.out.println("MEMBER_NO" + boardVo.getMEMBER_NO() + " boardVoTITLE : " + boardVo.getBOARD_TITLE() + " boardVoCONTENT : " + boardVo.getBOARD_CONTENT());
+		
+		//게시물등록
+		if(request.getParameter("insertFlag") != null) {
+			int result = 0;
+			//폼에서 제목과 내용이 값이 있을때만 insert 실행
+			if(boardVo.getBOARD_TITLE() != null && boardVo.getBOARD_CONTENT() != null) {
+				result = adminService.insertChurchNoticeAdmin(boardVo);
+				if(result != 1) {
+					model.addAttribute("msg", "등록을 실패했습니다");
+					model.addAttribute("url", "personNewsAdmin.do");
+					return "common/alert";
+				}
+			}
+		}
+		
+		//게시물 수정
+		if(request.getParameter("updateFlag") != null) {
+			int result = 0;
+			if(boardVo.getBOARD_TITLE() != null && boardVo.getBOARD_CONTENT() != null) {
+				result = adminService.updateChurchNoticeAdmin(boardVo);
+				if(result == 0) {
+					model.addAttribute("msg", "수정을 실패했습니다");
+					model.addAttribute("url", "personNewsAdmin.do");
+					return "common/alert";
+				}
+			}
+		}
+		
+		//삭제
+		if(request.getParameter("deleteFlag") != null) {
+			int result = 0;
+			//체크박스 체크된것 모두 삭제
+			if(request.getParameter("idx") != null) {
+				String idx = request.getParameter("idx");
+				result = adminService.ckDeleteChurchNoticeAdmin(idx);
+				if(result == 0) {
+					model.addAttribute("msg", "삭제를 실패했습니다");
+					model.addAttribute("url", "personNewsAdmin.do");
+					return "common/alert";
+				}
+			//한줄삭제
+			}else {
+				int board_no = Integer.parseInt(request.getParameter("BOARD_NO"));
+				result = adminService.deleteChurchNoticeAdmin(board_no);
+				if(result == 0) {
+					model.addAttribute("msg", "삭제를 실패했습니다");
+					model.addAttribute("url", "personNewsAdmin.do");
+					return "common/alert";
+				}
+			}
+		}
+		
+		//조회할 총 갯수 map 파라미터
+		HashMap<String, Object> countMap = new HashMap<String, Object>();
+		countMap.put("searchSelect", searchSelect);
+		countMap.put("searchContent", searchContent);
+		
+		//페이징 처리 된 행의 갯수
+		int limit = 10;
+		//페이징 처리 할 총 게시물의 갯수 조회
+		int listCount = adminService.countChurchNoticeAdmin(countMap);
+		System.out.println("listCount : " + listCount);
+		//총 페이징 갯수
+		int maxPage = (int)((double)listCount / limit + 0.9);
+		//현재 페이지 기본 값 1
+		int currentPage = 1;
+		int temp = 0;
+		//화면에서 선택된 현재 페이지의 값 불러오기
+		if(request.getParameter("currentPage") != null) {
+			// < 버튼 눌렀을때의 처리
+			if(request.getParameter("prev") != null) {
+				temp = Integer.parseInt(request.getParameter("currentPage"));
+				
+				if(temp > 5) {
+					currentPage = ((int)((temp - 1) / 5) - 1) * 5 + 1;
+				}
+			// > 버튼 눌렀을 때의 처리
+			}else if(request.getParameter("next") != null) {
+				temp = Integer.parseInt(request.getParameter("currentPage"));
+				if(maxPage % 5 == 0) {
+					if(temp < maxPage - ((maxPage - 1 )% 5)) {
+						currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+					}else {
+						currentPage = maxPage;
+					}
+				}else {
+					if(temp < maxPage - ((maxPage % 5) - 1)) {
+						currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+					}else {
+						currentPage = maxPage;
+					}
+				}
+				
+			// 이외의 처리
+			}else {
+				currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			}
+		}
+		//화면의 시작 페이지
+		int startPage = 0;
+		if(currentPage % 5 != 0){
+			startPage = (((int)((limit + currentPage) / 5)) -2 ) * 5 + 1;
+		}else{
+			startPage = currentPage - 4;
+		}
+		//화면의 끝 페이지
+		int endPage = startPage + 4;
+		//페이징의 시작 행
+		int startRow = (currentPage - 1)*limit;
+		//페이징의 끝 행
+		int endRow = 10;
+		//페이징 처리한 게시물의 번호
+		int tableNum = listCount - (currentPage - 1)*limit;
+		
+		//현재 페이지에 대한 시작행부터 끝행 까지만 조회
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		map.put("searchSelect", searchSelect);
+		map.put("searchContent", searchContent);
+		
+		//검색조건에 대한 조회 prameter map
+		List<ApplyVo> list = adminService.churchNoticeAdminList(map);
+		System.out.println(list);
+		
+		if(maxPage < endPage)
+			endPage = maxPage;
+		
+		model.addAttribute("tableNum",tableNum);
+		model.addAttribute("list",list);
+		model.addAttribute("limit",limit);
+		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("maxPage",maxPage);
+		model.addAttribute("startPage",startPage);	
+		model.addAttribute("endPage",endPage);
+		model.addAttribute("startRow", startRow);
+		model.addAttribute("listCount", listCount);
+		model.addAttribute("searchSelect", searchSelect);
+		model.addAttribute("searchContent", searchContent);
+		
 		return "admin/churchNoticeAdmin";
 	}
 	
@@ -86,7 +246,7 @@ public class AdminController {
 		}
 		
 		//삭제
-		if(request.getParameter("delete") != null) {
+		if(request.getParameter("deleteFlag") != null) {
 			int result = 0;
 			//체크박스 체크된것 모두 삭제
 			if(request.getParameter("idx") != null) {
@@ -136,11 +296,20 @@ public class AdminController {
 			// > 버튼 눌렀을 때의 처리
 			}else if(request.getParameter("next") != null) {
 				temp = Integer.parseInt(request.getParameter("currentPage"));
-				if(temp < maxPage - ((maxPage % 5) - 1)) {
-					currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+				if(maxPage % 5 == 0) {
+					if(temp < maxPage - ((maxPage - 1 )% 5)) {
+						currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+					}else {
+						currentPage = maxPage;
+					}
 				}else {
-					currentPage = maxPage;
+					if(temp < maxPage - ((maxPage % 5) - 1)) {
+						currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+					}else {
+						currentPage = maxPage;
+					}
 				}
+				
 			// 이외의 처리
 			}else {
 				currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -171,7 +340,6 @@ public class AdminController {
 		
 		//검색조건에 대한 조회 prameter map
 		List<ApplyVo> list = adminService.personNewsAdminList(map);
-		System.out.println(list);
 		
 		if(maxPage < endPage)
 			endPage = maxPage;
@@ -187,7 +355,6 @@ public class AdminController {
 		model.addAttribute("listCount", listCount);
 		model.addAttribute("searchSelect", searchSelect);
 		model.addAttribute("searchContent", searchContent);
-		
 		
 		return "admin/personNewsAdmin";
 	}
@@ -222,7 +389,7 @@ public class AdminController {
 		System.out.println("searchSelect2 : " + searchSelect2 + "searchSelect1" + searchSelect1 + "searchContent" + searchContent);
 		
 		//삭제
-		if(request.getParameter("delete") != null) {
+		if(request.getParameter("deleteFlag") != null) {
 			int result = 0;
 			//체크박스 체크된것 모두 삭제
 			if(request.getParameter("idx") != null) {
@@ -270,11 +437,20 @@ public class AdminController {
 			// > 버튼 눌렀을 때의 처리
 			}else if(request.getParameter("next") != null) {
 				temp = Integer.parseInt(request.getParameter("currentPage"));
-				if(temp < maxPage - ((maxPage % 5) - 1)) {
-					currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+				if(maxPage % 5 == 0) {
+					if(temp < maxPage - ((maxPage - 1 )% 5)) {
+						currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+					}else {
+						currentPage = maxPage;
+					}
 				}else {
-					currentPage = maxPage;
+					if(temp < maxPage - ((maxPage % 5) - 1)) {
+						currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+					}else {
+						currentPage = maxPage;
+					}
 				}
+				
 			// 이외의 처리
 			}else {
 				currentPage = Integer.parseInt(request.getParameter("currentPage"));
@@ -344,7 +520,7 @@ public class AdminController {
 		System.out.println("searchSelect1" + searchSelect1 + "searchContent" + searchContent);
 		
 		//삭제
-		if(request.getParameter("delete") != null) {
+		if(request.getParameter("deleteFlag") != null) {
 			int result = 0;
 			//체크박스 체크된것 모두 삭제
 			if(request.getParameter("idx") != null) {
@@ -390,11 +566,20 @@ public class AdminController {
 			// > 버튼 눌렀을 때의 처리
 			}else if(request.getParameter("next") != null) {
 				temp = Integer.parseInt(request.getParameter("currentPage"));
-				if(temp < maxPage - ((maxPage % 5) - 1)) {
-					currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+				if(maxPage % 5 == 0) {
+					if(temp < maxPage - ((maxPage - 1 )% 5)) {
+						currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+					}else {
+						currentPage = maxPage;
+					}
 				}else {
-					currentPage = maxPage;
+					if(temp < maxPage - ((maxPage % 5) - 1)) {
+						currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+					}else {
+						currentPage = maxPage;
+					}
 				}
+				
 			// 이외의 처리
 			}else {
 				currentPage = Integer.parseInt(request.getParameter("currentPage"));

@@ -37,4 +37,16 @@ public interface AdminService {
 
 	int updatePersonNewsAdmin(BoardVo boardVo);
 
+	List<ApplyVo> churchNoticeAdminList(HashMap<String, Object> map);
+
+	int countChurchNoticeAdmin(HashMap<String, Object> countMap);
+
+	int deleteChurchNoticeAdmin(int board_no);
+
+	int ckDeleteChurchNoticeAdmin(String idx);
+
+	int insertChurchNoticeAdmin(BoardVo boardVo);
+
+	int updateChurchNoticeAdmin(BoardVo boardVo);
+
 }

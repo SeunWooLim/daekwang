@@ -139,6 +139,54 @@ public class AdminServiceImpl implements AdminService{
 	public int updatePersonNewsAdmin(BoardVo boardVo) {
 		return adminDao.updatePersonNewsAdmin(boardVo);
 	}
+
+	@Override
+	public List<ApplyVo> churchNoticeAdminList(HashMap<String, Object> map) {
+		return adminDao.churchNoticeAdminList(map);
+	}
+
+	@Override
+	public int countChurchNoticeAdmin(HashMap<String, Object> countMap) {
+		return adminDao.countChurchNoticeAdmin(countMap);
+	}
+
+	@Override
+	public int deleteChurchNoticeAdmin(int board_no) {
+		return adminDao.deleteChurchNoticeAdmin(board_no);
+	}
+
+	@Override
+	public int ckDeleteChurchNoticeAdmin(String idx) {
+		String[] arrIdx = idx.toString().split(",");
+		int stackNum = 0;
+		int result = 0;
+		System.out.println("arrIdx : " + arrIdx);
+		
+		for (int i=0; i<arrIdx.length; i++) {
+			result = adminDao.ckDeleteChurchNoticeAdmin(Integer.parseInt(arrIdx[i]));
+			System.out.println("arrIdx["+i+"] : " + arrIdx[i]);
+			if(result > 0) {
+				stackNum++;
+			}
+		}
+		System.out.println(stackNum);
+		System.out.println(result);
+		if(stackNum == arrIdx.length) {
+			return result;
+		}else {
+			return 0;
+		}
+	}
+
+	@Override
+	public int insertChurchNoticeAdmin(BoardVo boardVo) {
+		return adminDao.insertChurchNoticeAdmin(boardVo);
+	}
+
+	@Override
+	public int updateChurchNoticeAdmin(BoardVo boardVo) {
+		return adminDao.updateChurchNoticeAdmin(boardVo);
+	}
 	
 	
 	

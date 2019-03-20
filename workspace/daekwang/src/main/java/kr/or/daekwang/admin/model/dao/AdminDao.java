@@ -71,4 +71,29 @@ public class AdminDao {
 	public int updatePersonNewsAdmin(BoardVo boardVo) {
 		return mybatis.update("adminMapper.updatePersonNewsAdmin", boardVo);
 	}
+
+	public List<ApplyVo> churchNoticeAdminList(HashMap<String, Object> map) {
+		return mybatis.selectList("adminMapper.churchNoticeAdminList", map);
+	}
+
+	public int countChurchNoticeAdmin(HashMap<String, Object> countMap) {
+		return mybatis.selectOne("adminMapper.countChurchNoticeAdmin", countMap);
+	}
+
+	public int deleteChurchNoticeAdmin(int board_no) {
+		return mybatis.update("adminMapper.deleteChurchNoticeAdmin", board_no);
+	}
+
+	public int ckDeleteChurchNoticeAdmin(int parseInt) {
+		return mybatis.update("adminMapper.deleteChurchNoticeAdmin", parseInt);
+	}
+
+	public int insertChurchNoticeAdmin(BoardVo boardVo) {
+		return mybatis.insert("adminMapper.insertChurchNoticeAdmin", boardVo);
+	}
+
+	public int updateChurchNoticeAdmin(BoardVo boardVo) {
+		return mybatis.update("adminMapper.updateChurchNoticeAdmin", boardVo);
+	}
+	
 }
