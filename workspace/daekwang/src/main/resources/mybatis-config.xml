@@ -16,6 +16,7 @@
 		<typeAlias type="kr.or.daekwang.member.model.vo.MemberVo" alias="Member" />
 		<typeAlias type="kr.or.daekwang.sermonAndPraise.model.vo.SermonAndPraiseVo" alias="SermonAndPraise" />
 		<typeAlias type="kr.or.daekwang.nextGeneration.model.vo.NextGenerationVo" alias="NextGeneration" />
+		<typeAlias type="kr.or.daekwang.board.model.vo.PhotoVo" alias="Photo" />
 	</typeAliases>
 	
 	<mappers>
