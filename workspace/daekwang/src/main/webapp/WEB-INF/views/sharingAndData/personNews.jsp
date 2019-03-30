@@ -5,8 +5,6 @@
 
 <jsp:include page="../common/meta.jsp"/>
 
-
-<!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="../common/header.jsp"/>
 <div id="wrap">
 	<div class="subvisual_wrap">
@@ -16,16 +14,17 @@
 		</div>
 	</div>
 	
-	<c:set var="listCount" value="${listCount }"/>
+<%-- 	<c:set var="listCount" value="${listCount }"/>
 	<% 
 		String listNum = pageContext.getAttribute("listCount").toString();
 		int listCount = Integer.parseInt(listNum);
-	%>
+	%> --%>
 	
 	<div class="pw_board_wrap">
 		<div class="insertBtn_wrap">
 	       <a href="#" class="newInsertBtn">글쓰기</a>
 	    </div>
+<%-- 		
 		<ul>
 			<c:forEach var="personNews" items="${list }">
 				<li>
@@ -44,6 +43,9 @@
 				%>
 			</c:forEach>
 		</ul>
+ --%>		
+ 		<ul id="personNews">
+		</ul>
 	</div>
 	
 	
@@ -60,6 +62,71 @@
 			$(this).parent().siblings().removeClass("on"); */
 		})
 	})
+</script>
+<script type="text/javascript">
+	let isEnd = false;
+	let pageNum = 1;
+
+	$(function() {
+		$(window).scroll(function() {
+			let $window = $(this);
+			let scrollTop = $window.scrollTop();
+			let windowHeight = $window.height();
+			let documentHeight = $(document).height();
+	
+			console.log("documentHeight:" + documentHeight + " | scrollTop:" +
+			scrollTop + " | windowHeight: " + windowHeight);
+			
+			// scrollbar의 thumb가 바닥 전 50px까지 도달 하면 리스트를 가져온다.
+			if (scrollTop + windowHeight + 50 > documentHeight) {
+				fetchList(pageNum);
+				pageNum++;
+			}
+		})
+		fetchList(pageNum);
+	})
+
+	let fetchList = function(pageNum) {
+		if (isEnd == true) {
+			return;
+		}
+
+		$.ajax({
+	      	url: "addPersonNews.do",
+	      	data: {"pageNum" : pageNum},
+	      	type: "post",
+	      	dataType: "JSON",
+	      	success: function(result){
+	      		$('#personNews').html("");
+	      		var jsonStr = JSON.stringify(result);
+	      		var json = JSON.parse(jsonStr);
+	      		var tag = "";
+	      		var listCount = json.listCount;
+	      			
+	      		for(var i = 0; i<json.personNewsList.length; i++){
+	      			tag += 
+		      				'<li>' +
+								'<div class="head">' +
+									'<div>' + listCount + '</div>' +
+									'<p class="title">'+ json.personNewsList[i].board_title +'</p>' +
+									'<p class="text"><span>' + json.personNewsList[i].recent_update_date + '</span><span>' + json.personNewsList[i].member_name + '</span></p>' +
+									'<i class="xi-angle-down"></i>' +
+								'</div>' +
+								'<div class="body">' +
+									'<p class="title">' + json.personNewsList[i].board_content + '</p>' +
+								'</div>' +
+							'</li>'
+							;
+					listCount--;
+	      		}
+	      		$('#personNews').html(tag);
+	      	},
+	      	error: function(request, status, errorData){
+	      		alert("error code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + errorData);
+	      	}
+    	});
+	}
+
 </script>
 
 </html>

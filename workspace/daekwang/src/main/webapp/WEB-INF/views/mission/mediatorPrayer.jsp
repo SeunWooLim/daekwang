@@ -10,6 +10,8 @@
 <a href="errorPage403.do">403 페이지</a><br>
 <a href="errorPage404.do">404 페이지</a><br>
 <a href="errorPage500.do">500 페이지</a><br>
+<a href="dragAndDrop.do">드래그앤 드롭</a><br>
+
 
 </body>
 </html>

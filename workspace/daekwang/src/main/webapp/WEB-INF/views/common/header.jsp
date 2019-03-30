@@ -41,11 +41,11 @@
 		</div>
 		<div class="head_mid_wrap">
 			<ul>
-				<li><a href="pastorGreeting.do">교회안내</a></li>
-				<li><a href="sundayWorship.do">말씀과 찬양</a></li>
-				<li><a href="newFamilyIntroducing.do">나눔과 자료</a></li>
-				<li><a href="nextGeneration.do">다음세대</a></li>
-				<li><a href="mediatorPrayer.do">선교</a></li>
+				<li><a>교회안내</a></li>
+				<li><a>말씀과 찬양</a></li>
+				<li><a>나눔과 자료</a></li>
+				<li><a>다음세대</a></li>
+				<li><a>선교</a></li>
 			</ul>
 		</div>
 		<div class="head_mid_detail_wrap">
@@ -99,9 +99,6 @@
 							</td>
 							<td>
 								<ul>
-									<li><span class="subtitle">청년회</span></li>
-									<li><a href="nextGeneration.do#tab7">제1청년회</a></li>
-									<li><a href="nextGeneration.do#tab8">제2청년회</a></li>
 									<li><span class="subtitle">교회학교</span></li>
 									<li><a href="nextGeneration.do#tab1">영유아부</a></li>
 									<li><a href="nextGeneration.do#tab2">유치부</a></li>
@@ -109,6 +106,9 @@
 									<li><a href="nextGeneration.do#tab4">소년부</a></li>
 									<li><a href="nextGeneration.do#tab5">중등부</a></li>
 									<li><a href="nextGeneration.do#tab6">고등부</a></li>
+									<li><span class="subtitle">청년회</span></li>
+									<li><a href="nextGeneration.do#tab7">제1청년회</a></li>
+									<li><a href="nextGeneration.do#tab8">제2청년회</a></li>
 								</ul>
 							</td>
 							<td>

@@ -89,6 +89,9 @@
 </body>
 <script>
 	$(document).ready(function(){
+		$(".nextgene_wrap1").show();
+		$(".moviewrap").hide();
+		
 		$(".worshiptab > ul > li:eq(0) > a").click(function(e){
 			e.preventDefault();
 			$(".nextgene_wrap1").show();

@@ -5,8 +5,6 @@
 
 <jsp:include page="../common/meta.jsp"/>
 
-
-<!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="../common/header.jsp"/>
 <div id="wrap">
 	<div class="subvisual_wrap">
@@ -17,63 +15,31 @@
 	</div>
 	
 	<div class="photo_wrap">
-		<div class="insertBtn_wrap">
-			<a href="flowerPhotoInsert.do" class="newInsertBtn">글쓰기</a>
-		</div>
+		<c:if test="${sessionScope.loginUser ne null}">
+			<div class="insertBtn_wrap">
+				<a href="flowerPhotoInsert.do" class="newInsertBtn">글쓰기</a>
+			</div>
+		</c:if>
+		
 		<ul class="photo_list">
-			<li>
-				<div class="photo_top">
-					<ul>
-						<li>190124 교사강습회(평촌교회)</li>
-						<li>2019-02-02</li>
-					</ul>
-				</div>
-				<div class="photo_mid">
-					<ul>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-					</ul>
-				</div>
-				<div class="photo_bot">
-					내용입니다.
-				</div>
-			</li>
-			<li>
-				<div class="photo_top">
-					<ul>
-						<li>190124 교사강습회(평촌교회)</li>
-						<li>2019-02-02</li>
-					</ul>
-				</div>
-				<div class="photo_mid">
-					<ul>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-					</ul>
-				</div>
-				<div class="photo_bot">
-					내용입니다.
-				</div>
-			</li>
-			<li>
-				<div class="photo_top">
-					<ul>
-						<li>190124 교사강습회(평촌교회)</li>
-						<li>2019-02-02</li>
-					</ul>
-				</div>
-				<div class="photo_mid">
-					<ul>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-					</ul>
-				</div>
-				<div class="photo_bot">
-					내용입니다.
-				</div>
-			</li>
+			<c:forEach var="flowerPhoto" items="${list }">
+				<li>
+					<div class="photo_top">
+						<ul>
+							<li>${flowerPhoto.BOARD_TITLE }</li>
+							<li>${flowerPhoto.RECENT_UPDATE_DATE }</li>
+						</ul>
+					</div>
+					<div class="photo_mid">
+						<ul>
+							<li><img alt="" src="<c:url value="/"/>resources/uploadPhoto/${flowerPhoto.photoVo.PHOTO_RENAME}"></li>
+						</ul>
+					</div>
+					<div class="photo_bot">
+						${flowerPhoto.BOARD_CONTENT }
+					</div>
+				</li>
+			</c:forEach>
 		</ul>
 	</div>
 	
@@ -82,6 +48,7 @@
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
+
 <script>
 	$(document).ready(function(){
 		$(".photo_mid > ul").bxSlider({

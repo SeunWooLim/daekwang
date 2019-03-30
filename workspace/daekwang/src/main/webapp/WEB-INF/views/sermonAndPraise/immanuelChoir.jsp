@@ -20,7 +20,7 @@
 		</ul>
 	</div>
 	<div class="nextgene_wrap1">
-		<img alt="" src="<c:url value="/"/>resources/img/ex111.jpg">
+		<img alt="" src="<c:url value="/"/>resources/img/ex222.jpg">
 		<div class="next_detail">	
 			<p class="next_title">임마누엘 찬양대 임원조직</p>			
 			<div class="next_right">
@@ -89,6 +89,9 @@
 </body>
 <script>
 	$(document).ready(function(){
+		$(".nextgene_wrap1").show();
+		$(".moviewrap").hide();
+		
 		$(".worshiptab > ul > li:eq(0) > a").click(function(e){
 			e.preventDefault();
 			$(".nextgene_wrap1").show();
@@ -107,7 +110,7 @@
 </script>
 
 <script type="text/javascript">
-    var playlist = 'PLwcdqPJXVv0YrwhLebko46wVf_CsMLOdJ';
+    var playlist = 'PLwcdqPJXVv0ZVyeuDgSUlBBlIUnKSiGoW';
     
     $(document).ready(function(){
        $.get(
