@@ -36,26 +36,35 @@
 	<c:forEach var="schoolList" items="${ schoolList }">
 		<div class="nextgene_wrap">	
 			<div id="tab<%= num++ %>"  class="nextgene_cate">
-				<!-- 이미지 추가부분 s -->
-				<div class="nextjpg_wrap">
-					<img alt="" src="<c:url value="/"/>resources/img/exnext.jpg">
-					<span class="bg"></span>
-				</div>
-				<!-- 이미지 추가부분 e -->
+				
 				<p class="title">${schoolList.DEPT_NAME} </p>
-				<div class="next_detail">
-					<div class="next_left">
-						<p>교육표어</p>
+				<div class="next_detail_all_wrap">
+					<div class="next_detail next_detail_wrapppp">
+						<div class="next_left">
+							<p>교육표어</p>
+						</div>
+						<div class="next_right">
+							<div class="right_left">
+								<p class="title">
+									교육표어<span class="text">${schoolList.EDU_TITLE}</span>
+								</p>
+								<p class="title">주제말씀<span class="text">${schoolList.MAIN_WORDS }</span></p>
+								<p class="title">예배대상<span class="text">${schoolList.WORSHIP_OBJECT }</span></p>
+								<p class="title">예배시간<span class="text">${schoolList.WORSHIP_TIME }</span></p>
+								<p class="title">예배장소<span class="text">${schoolList.WORSHIP_AREA }</span></p>
+							</div>				
+						</div>
 					</div>
-					<div class="next_right">
-						<div class="right_left">
-							<p class="title">교육표어<span class="text">${schoolList.EDU_TITLE}</span></p>
-							<p class="title">주제말씀<span class="text">${schoolList.MAIN_WORDS }</span></p>
-							<p class="title">예배대상<span class="text">${schoolList.WORSHIP_OBJECT }</span></p>
-							<p class="title">예배시간<span class="text">${schoolList.WORSHIP_TIME }</span></p>
-							<p class="title">예배장소<span class="text">${schoolList.WORSHIP_AREA }</span></p>
-						</div>				
+					<!-- 이미지 추가부분 s -->
+					<div class="nextjpg_wrap nextjpg_wrap1111">
+						<img alt="" src="<c:url value="/"/>resources/img/exnext.jpg">
+						<span class="bg"></span>
+						<span class="lt"></span>
+						<span class="rt"></span>
+						<span class="lb"></span>
+						<span class="rb"></span>
 					</div>
+					<!-- 이미지 추가부분 e -->	
 				</div>
 				<div class="next_detail">
 					<div class="next_left">
@@ -131,27 +140,38 @@
 	<c:forEach var="youthList" items="${ youthList }">	
 		<div class="nextgene_wrap">
 			<div id="tab<%= num++ %>" class="nextgene_cate">
-				<!-- 이미지 추가부분 s -->
-				<div class="nextjpg_wrap">
-					<img alt="" src="<c:url value="/"/>resources/img/exnext.jpg">
-					<span class="bg"></span>
-				</div>
-				<!-- 이미지 추가부분 e -->
+				
 				<p class="title">${youthList.DEPT_NAME }</p>
-				<div class="next_detail">
-					<div class="next_left">
-						<p>교육표어</p>
+				<div class="next_detail_all_wrap">
+					<div class="next_detail next_detail_wrapppp">
+						<div class="next_left ">
+							<p>교육표어</p>
+						</div>
+						<div class="next_right">
+							<div class="right_left">
+								<p class="title">교육표어<span class="text">${youthList.EDU_TITLE}</span></p>
+								<p class="title">주제말씀<span class="text">${youthList.MAIN_WORDS }</span></p>
+								<p class="title">예배대상<span class="text">${youthList.WORSHIP_OBJECT }</span></p>
+								<p class="title">예배시간<span class="text">${youthList.WORSHIP_TIME }</span></p>
+								<p class="title">예배장소<span class="text">${youthList.WORSHIP_AREA }</span></p>
+							</div>				
+						</div>						
 					</div>
-					<div class="next_right">
-						<div class="right_left">
-							<p class="title">교육표어<span class="text">${youthList.EDU_TITLE}</span></p>
-							<p class="title">주제말씀<span class="text">${youthList.MAIN_WORDS }</span></p>
-							<p class="title">예배대상<span class="text">${youthList.WORSHIP_OBJECT }</span></p>
-							<p class="title">예배시간<span class="text">${youthList.WORSHIP_TIME }</span></p>
-							<p class="title">예배장소<span class="text">${youthList.WORSHIP_AREA }</span></p>
-						</div>				
+					<!-- 이미지 추가부분 s -->
+					<div class="nextjpg_wrap nextjpg_wrap1111">
+						<img alt="" src="<c:url value="/"/>resources/img/exnext.jpg">
+						<span class="bg"></span>
+						<span class="bg"></span>
+						<span class="lt"></span>
+						<span class="rt"></span>
+						<span class="lb"></span>
+						<span class="rb"></span>
 					</div>
+					<!-- 이미지 추가부분 e -->
 				</div>
+				
+				
+				
 				<div class="next_detail">
 					<div class="next_left">
 						<p>비전</p>
