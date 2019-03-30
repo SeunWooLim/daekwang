@@ -97,6 +97,9 @@
 				String cp = pageContext.getAttribute("pageNum").toString();
 				int pageNum = Integer.parseInt(cp);
 				int ediNum = 1;
+				
+				
+				
 			%>
 			
 			<div class="table_wrap">
@@ -131,7 +134,12 @@
 								<td>${weekPage.memberVo.MEMBER_NAME }</td>
 								<td>${weekPage.DEPT_NAME }</td>
 								<td>${weekPage.APPLY_CATE }</td>
-								<td>${weekPage.APPLY_CONTENT }</td>
+								<c:set var="text" value="${weekPage.APPLY_CONTENT }"/>		
+								<%
+									String text = pageContext.getAttribute("text").toString();
+									String replacetext = text.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+								%>
+								<td style="text-align:center"><p style="width:800px; text-align:center; margin:0 auto;"><%=replacetext %></p></td>
 								<td>${weekPage.APPLY_DATE }</td>
 								<td>
 									<a class="btnform5 update_btn" onclick="updateForm(<%= rowNum %>);">보기</a>
@@ -175,13 +183,13 @@
 											</li>
 											<li>
 												<label for="wPA_context" style="vertical-align:top;">내용</label>
-												<div id="wPA_context<%= ediNum++ %>" name="wPA_context" value="내용 작성">${weekPage.APPLY_CONTENT }</div>
-												<%-- 
+												<div id="wPA_context<%= ediNum %>" name="wPA_context" value="내용 작성">${weekPage.APPLY_CONTENT }</div>
+												
 												<script type="text/javascript">
-												CKEDITOR.replace('wPA_context<%= ediNum%>',
-														{height: 150});
+												CKEDITOR.replace('wPA_context<%= ediNum++%>',
+														{height: 350});
 												</script>
-												 --%>
+												
 											</li>
 										</ul>								
 										
