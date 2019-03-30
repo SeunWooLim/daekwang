@@ -103,6 +103,11 @@ public class CommonController {
 		return "error/500errorPage";
 	}
 	
+	@RequestMapping(value = "/dragAndDrop.do")
+	public String dragAndDrop() {
+		return "sharingAndData/dragAndDrop";
+	}
+	
 	@RequestMapping(value = "/myPage.do")
 	public String myPage() {
 		return "mypage/myPage";
