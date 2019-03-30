@@ -55,31 +55,9 @@
 						<tr>
 							<td><label>이미지</label></td>
 							<td class="filebox">
-								<!-- <input class="upload-name" placeholder="파일선택" disabled="disabled" name="src" id="file">
+								<input class="upload-name" placeholder="파일선택" disabled="disabled" name="src" id="file">
 								<label for="filename">업로드</label> 
-						  		<input type="file" id="filename" name="file" class="upload-hidden"> -->
-						  		<fieldset>
-								<legend>HTML File Upload</legend>
-								
-								<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
-								
-								<div>
-									<label for="fileselect">Files to upload:</label>
-									<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
-									<div id="filedrag">or drop files here</div>
-								</div>
-								
-								<div id="submitbutton">
-									<button type="submit">Upload Files</button>
-								</div>
-								
-								</fieldset>
-								
-								</form>
-								
-								<div id="messages">
-								<p>Status Messages</p>
-								</div>
+						  		<input type="file" id="filename" name="file" class="upload-hidden">
 						  	</td>
 						</tr>
 						<tr>
@@ -161,7 +139,7 @@
 	    });
 	}); 
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 //getElementById
 function $id(id) {
 	return document.getElementById(id);
@@ -244,5 +222,5 @@ function ParseFile(file) {
 }
 
 
-</script>
+</script> -->
 </html>
