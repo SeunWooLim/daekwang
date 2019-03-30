@@ -5,10 +5,11 @@ import java.util.List;
 
 import kr.or.daekwang.apply.model.vo.ApplyVo;
 import kr.or.daekwang.board.model.vo.BoardVo;
+import kr.or.daekwang.board.model.vo.PhotoVo;
 
 public interface BoardService {
 
-	List<BoardVo> personNewsList();
+	List<BoardVo> personNewsList(int endRow);
 
 	int listCount();
 
@@ -21,5 +22,13 @@ public interface BoardService {
 	BoardVo selectChurchNewsDetail(int BOARD_NO);
 
 	int addChurchNewsReadCount(int BOARD_NO);
+
+	List<BoardVo> newFamilyIntroducing();
+
+	int insertNewFamilyIntroducing(BoardVo boardVo, PhotoVo photoVo);
+
+	List<BoardVo> flowerPhotoList();
+
+	int insertFlowerPhoto(BoardVo boardVo, PhotoVo photoVo);
 
 }

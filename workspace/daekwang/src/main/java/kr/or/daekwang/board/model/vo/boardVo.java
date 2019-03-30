@@ -28,7 +28,9 @@ public class BoardVo {
 	private Date REPLY_DATE;			//댓글날짜
 	private char REPLY_DELETE_YN;		//댓글삭제여부
 	
+	
 	private MemberVo memberVo;
+	private PhotoVo photoVo;
 	
 	public BoardVo() {
 		
@@ -37,7 +39,7 @@ public class BoardVo {
 	public BoardVo(char bOARD_FG, int bOARD_NO, String bOARD_TITLE, String bOARD_CONTENT, int bOARD_READCNT,
 			int mEMBER_NO, Date fIRST_INPUT_DATE, Date rECENT_UPDATE_DATE, char dELETE_YN, int rEPLY_NO,
 			char rEPLY_BOARD_FG, int rEPLY_BOARD_NO, String rEPLY_CONTENT, int rEPLY_MEMBER_NO, Date rEPLY_DATE,
-			char rEPLY_DELETE_YN, MemberVo memberVo) {
+			char rEPLY_DELETE_YN, MemberVo memberVo, PhotoVo photoVo) {
 		super();
 		BOARD_FG = bOARD_FG;
 		BOARD_NO = bOARD_NO;
@@ -56,6 +58,7 @@ public class BoardVo {
 		REPLY_DATE = rEPLY_DATE;
 		REPLY_DELETE_YN = rEPLY_DELETE_YN;
 		this.memberVo = memberVo;
+		this.photoVo = photoVo;
 	}
 
 	public char getBOARD_FG() {
@@ -194,6 +197,14 @@ public class BoardVo {
 		this.memberVo = memberVo;
 	}
 
+	public PhotoVo getPhotoVo() {
+		return photoVo;
+	}
+
+	public void setPhotoVo(PhotoVo photoVo) {
+		this.photoVo = photoVo;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -205,11 +216,7 @@ public class BoardVo {
 				+ ", FIRST_INPUT_DATE=" + FIRST_INPUT_DATE + ", RECENT_UPDATE_DATE=" + RECENT_UPDATE_DATE
 				+ ", DELETE_YN=" + DELETE_YN + ", REPLY_NO=" + REPLY_NO + ", REPLY_BOARD_FG=" + REPLY_BOARD_FG
 				+ ", REPLY_BOARD_NO=" + REPLY_BOARD_NO + ", REPLY_CONTENT=" + REPLY_CONTENT + ", REPLY_MEMBER_NO="
-				+ REPLY_MEMBER_NO + ", REPLY_DATE=" + REPLY_DATE + ", REPLY_DELETE_YN=" + REPLY_DELETE_YN
-				+ ", memberVo=" + memberVo + "]";
+				+ REPLY_MEMBER_NO + ", REPLY_DATE=" + REPLY_DATE + ", REPLY_DELETE_YN=" + REPLY_DELETE_YN + "]";
 	}
-
 	
-	
-
 }
