@@ -15,36 +15,11 @@
 		</div>
 	</div>
 	
-<%-- 	<c:set var="listCount" value="${listCount }"/>
-	<% 
-		String listNum = pageContext.getAttribute("listCount").toString();
-		int listCount = Integer.parseInt(listNum);
-	%> --%>
-	
 	<div class="pw_board_wrap">
 		<div class="insertBtn_wrap mt20">
 	       <a href="#" class="newInsertBtn">글쓰기</a>
 	    </div>
-<%-- 		
-		<ul>
-			<c:forEach var="personNews" items="${list }">
-				<li>
-					<div class="head">
-						<div><%= listCount %></div>
-						<p class="title">${personNews.BOARD_TITLE }</p>
-						<p class="text"><span>${personNews.RECENT_UPDATE_DATE }</span><span>${personNews.memberVo.MEMBER_NAME }</span></p>
-						<i class="xi-angle-down"></i>
-					</div>
-					<div class="body">
-						<p class="title">${personNews.BOARD_CONTENT }</p>
-					</div>
-				</li>
-				<% 
-					listCount--;
-				%>
-			</c:forEach>
-		</ul>
- --%>		
+	
  		<ul id="personNews">
 		</ul>
 	</div>
@@ -54,7 +29,7 @@
 <jsp:include page="../common/footer.jsp"/>
 </body>
 
-
+<!-- 무한 스크롤 처리 -->
 <script type="text/javascript">
 	let isEnd = false;
 	let pageNum = 1;
@@ -75,12 +50,7 @@
 				fetchList(pageNum);
 				pageNum++;
 			}
-			
-			
 		})
-		
-		
-		
 		fetchList(pageNum);
 	})
 
@@ -124,9 +94,6 @@
 	      	}
     	});
 	}
-	
-	
-
 </script>
 
 <script>
@@ -136,6 +103,5 @@
 		$("#head"+listCount).parent().toggleClass("on");
 	}
 </script>
-
 
 </html>

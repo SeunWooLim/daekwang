@@ -21,25 +21,7 @@
 			</div>
 		</c:if>
 		
-		<ul class="photo_list">
-			<c:forEach var="flowerPhoto" items="${list }">
-				<li>
-					<div class="photo_top">
-						<ul>
-							<li>${flowerPhoto.BOARD_TITLE }</li>
-							<li>${flowerPhoto.RECENT_UPDATE_DATE }</li>
-						</ul>
-					</div>
-					<div class="photo_mid">
-						<ul>
-							<li><img alt="" src="<c:url value="/"/>resources/uploadPhoto/${flowerPhoto.photoVo.PHOTO_RENAME}"></li>
-						</ul>
-					</div>
-					<div class="photo_bot">
-						${flowerPhoto.BOARD_CONTENT }
-					</div>
-				</li>
-			</c:forEach>
+		<ul class="photo_list" id="flowerPhoto">
 		</ul>
 	</div>
 	
@@ -49,6 +31,74 @@
 <jsp:include page="../common/footer.jsp"/>
 </body>
 
+<!-- 무한 스크롤 처리 -->
+<script type="text/javascript">
+	let isEnd = false;
+	let pageNum = 1;
 
+	$(function() {
+		$(window).scroll(function() {
+			let $window = $(this);
+			let scrollTop = $window.scrollTop();
+			let windowHeight = $window.height();
+			let documentHeight = $(document).height();
+	
+			console.log("documentHeight:" + documentHeight + " | scrollTop:" +
+			scrollTop + " | windowHeight: " + windowHeight);
+			
+			// scrollbar의 thumb가 바닥 전 50px까지 도달 하면 리스트를 가져온다.
+			if (scrollTop + windowHeight + 50 > documentHeight) {
+				fetchList(pageNum);
+				pageNum++;
+			}
+		})
+		fetchList(pageNum);
+	})
+
+	let fetchList = function(pageNum) {
+		if (isEnd == true) {
+			return;
+		}
+
+		$.ajax({
+	      	url: "addFlowerPhoto.do",
+	      	data: {"pageNum" : pageNum},
+	      	type: "post",
+	      	dataType: "JSON",
+	      	success: function(result){
+	      		$('#flowerPhoto').html("");
+	      		var jsonStr = JSON.stringify(result);
+	      		var json = JSON.parse(jsonStr);
+	      		var tag = "";
+	      			
+	      		for(var i = 0; i<json.flowerPhoto.length; i++){
+	      			tag += 
+		      				'<li>' +
+								'<div class="photo_top">' +
+									'<ul>' +
+										'<li>' + json.flowerPhoto[i].board_title + '</li>' +
+										'<li>' + json.flowerPhoto[i].recent_update_date + '</li>' +
+									'</ul>' +
+								'</div>' +
+								'<div class="photo_mid">' +
+									'<ul>' +
+										'<li><img src="<c:url value="/"/>resources/uploadPhoto/' + json.flowerPhoto[i].photo_rename + '"></li>' +
+									'</ul>' +
+								'</div>' +
+								'<div class="photo_bot">' +
+									json.flowerPhoto[i].board_content +
+								'</div>' +
+							'</li>'
+							;
+	      		}
+	      		$('#flowerPhoto').html(tag);
+	      	},
+	      	error: function(request, status, errorData){
+	      		alert("error code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + errorData);
+	      	}
+    	});
+	}
+
+</script>
 
 </html>
