@@ -58,9 +58,14 @@
 				</li>
 				<li>
 					<!-- <a href="#">검색</a> -->
-					<button type="submit">검색</button>
+					<button type="submit" class="newInsertBtn" style="position:relative; margin:0;">검색</button>
 				</li> 
 			</ul>
+			<c:if test="${sessionScope.loginUser ne null}">
+				<div class="insertBtn_wrap" style="position:absolute; top:0; right:0; width:62px;">
+					<a href="churchNewsInsertPage.do" class="newInsertBtn">글쓰기</a>
+				</div>
+			</c:if>
 		</div>
 	</form>
 	
@@ -109,11 +114,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<c:if test="${sessionScope.loginUser ne null}">
-			<div class="insertBtn_wrap mt20">
-				<a href="churchNewsInsertPage.do" class="newInsertBtn">글쓰기</a>
-			</div>
-		</c:if>
+		
 	</div>
 	
 	<!-- 페이지 네이션 -->
