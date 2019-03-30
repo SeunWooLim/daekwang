@@ -6,6 +6,7 @@
 <jsp:include page="../common/meta.jsp"/>
 
 <jsp:include page="../common/header.jsp"/>
+
 <div id="wrap">
 	<div class="subvisual_wrap">
 		<div class="subvisual_text">
@@ -21,7 +22,7 @@
 	%> --%>
 	
 	<div class="pw_board_wrap">
-		<div class="insertBtn_wrap">
+		<div class="insertBtn_wrap mt20">
 	       <a href="#" class="newInsertBtn">글쓰기</a>
 	    </div>
 <%-- 		
@@ -52,22 +53,14 @@
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
-<script>
-	$(document).ready(function(){
-		$(".head").click(function(e){
-			e.preventDefault();
-			$(this).siblings(".body").slideToggle();
-			$(this).parent().toggleClass("on");
-			/* $(this).parent().siblings().find(".body").slideUp();
-			$(this).parent().siblings().removeClass("on"); */
-		})
-	})
-</script>
+
+
 <script type="text/javascript">
 	let isEnd = false;
 	let pageNum = 1;
 
 	$(function() {
+		
 		$(window).scroll(function() {
 			let $window = $(this);
 			let scrollTop = $window.scrollTop();
@@ -82,7 +75,12 @@
 				fetchList(pageNum);
 				pageNum++;
 			}
+			
+			
 		})
+		
+		
+		
 		fetchList(pageNum);
 	})
 
@@ -106,16 +104,16 @@
 	      		for(var i = 0; i<json.personNewsList.length; i++){
 	      			tag += 
 		      				'<li>' +
-								'<div class="head">' +
+								'<div class="head" id="head'+listCount+'" onclick=slideBtn('+listCount+')>' +
 									'<div>' + listCount + '</div>' +
 									'<p class="title">'+ json.personNewsList[i].board_title +'</p>' +
 									'<p class="text"><span>' + json.personNewsList[i].recent_update_date + '</span><span>' + json.personNewsList[i].member_name + '</span></p>' +
 									'<i class="xi-angle-down"></i>' +
 								'</div>' +
-								'<div class="body">' +
+								'<div class="body" id="body'+listCount+'">' +
 									'<p class="title">' + json.personNewsList[i].board_content + '</p>' +
 								'</div>' +
-							'</li>'
+							'</li>'							
 							;
 					listCount--;
 	      		}
@@ -126,7 +124,18 @@
 	      	}
     	});
 	}
+	
+	
 
 </script>
+
+<script>
+	function slideBtn(listCount){
+		var body = document.getElementById("body");
+		$("#body"+listCount).slideToggle();
+		$("#head"+listCount).parent().toggleClass("on");
+	}
+</script>
+
 
 </html>
