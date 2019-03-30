@@ -48,29 +48,6 @@
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
-<script>
-	$(document).ready(function(){
-		$(".photo_mid > ul").bxSlider({
-			mode: "horizontal",    
-			slideMargin: 0,
-			minSlides: 1,
-			maxSlides: 5,
-			moveSlides: 1,
-			startSlide: 0,         
-			infiniteLoop: true,    
-			//captions: true,       
-			pager: true,         
-			adaptiveHeight: true,   
-			auto: false,            
-			pause: 3000,           
-			speed: 500,           
-			easing: "",	
-			touchEnabled:true,   	
-			controls: true,
-			//video: true,
-			useCSS: false,
-		});
-	})
-</script>
+
 
 </html>
