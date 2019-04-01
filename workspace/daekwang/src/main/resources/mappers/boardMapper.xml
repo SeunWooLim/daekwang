@@ -175,6 +175,7 @@
 		AND A.DELETE_YN = 'N'
 		AND B.DELETE_YN = 'N'
 		ORDER BY A.BOARD_NO DESC
+		LIMIT 0, #{endRow}
 	</select>
 	
 	<!-- 꽃꽂이 갤러리 리스트 조회 -->
@@ -186,6 +187,7 @@
 		AND A.DELETE_YN = 'N'
 		AND B.DELETE_YN = 'N'
 		ORDER BY A.BOARD_NO DESC
+		LIMIT 0, #{endRow}
 	</select>
 	
 	<!-- 꽃꽂이 갤러리 게시물 board에 insert -->
@@ -209,4 +211,56 @@
 		INSERT INTO photo(PHOTO_DATE, PHOTO_ORNAME, PHOTO_RENAME, BOARD_FG, BOARD_NO, MEMBER_NO)
 		VALUES(NOW(), #{PHOTO_ORNAME}, #{PHOTO_RENAME}, 5, #{BOARD_NO}, #{MEMBER_NO})
 	</insert>
+	
+	<!-- 교회 사진 게시물 board에 insert -->
+	<insert id="insertChurchPhotoBoardVo">
+		INSERT INTO board(BOARD_FG, BOARD_TITLE, BOARD_CONTENT, MEMBER_NO, FIRST_INPUT_DATE, RECENT_UPDATE_DATE)
+		VALUES(3, #{BOARD_TITLE}, #{BOARD_CONTENT}, #{MEMBER_NO}, NOW(), NOW())
+	</insert>
+	
+	<!-- photo에 교회 사진 insert 하기 위한 board_no 조회 --> 
+	<select id="selectChurchPhotoBoardInformation" parameterType="Integer" resultType="Integer">
+		SELECT BOARD_NO
+		FROM board
+		WHERE MEMBER_NO = #{member_no}
+		AND BOARD_FG = 3
+		ORDER BY FIRST_INPUT_DATE DESC
+		LIMIT 0, 1
+	</select>
+	
+	<!-- 교회 사진 게시물 photo에 insert -->
+	<insert id="insertChurchPhotoPhotoVo">
+		INSERT INTO photo(PHOTO_DATE, PHOTO_ORNAME, PHOTO_RENAME, BOARD_FG, BOARD_NO, MEMBER_NO)
+		VALUES(NOW(), #{PHOTO_ORNAME}, #{PHOTO_RENAME}, 3, #{BOARD_NO}, #{MEMBER_NO})
+	</insert>
+	
+	<!-- 교회 사진 게시판 리스트 조회 -->
+	<select id="churchPhotoBoardMap" resultMap="boardResultMap">
+		SELECT A.*
+		FROM board A
+		WHERE A.BOARD_FG = 3
+		AND A.DELETE_YN = 'N'
+		ORDER BY A.BOARD_NO DESC
+		LIMIT 0, #{endRow}
+	</select>
+	
+	<!-- 교회사진 게시물에 대한 사진 갯수 조회 -->
+	<select id="PhotoListCount" resultType = "Integer">
+		SELECT COUNT(*)
+		FROM photo
+		WHERE BOARD_NO = #{board_no}
+		AND DELETE_YN = 'N'
+		ORDER BY PHOTO_NO DESC
+	</select>
+	
+	<!-- 교회 사진 사진 리스트 조회 -->
+	<select id="churchPhotoPhotoList" resultMap="photoResultMap">
+		SELECT *
+		FROM photo
+		WHERE BOARD_NO = #{board_no}
+		AND DELETE_YN = 'N'
+		ORDER BY PHOTO_NO DESC
+	</select>
+	
+	
 </mapper>

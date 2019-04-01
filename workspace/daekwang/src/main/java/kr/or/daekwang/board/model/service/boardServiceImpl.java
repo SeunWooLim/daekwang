@@ -79,13 +79,13 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<BoardVo> newFamilyIntroducing() {
-		return boardDao.newFamilyIntroducing();
+	public List<BoardVo> newFamilyIntroducing(int endRow) {
+		return boardDao.newFamilyIntroducing(endRow);
 	}
 
 	@Override
-	public List<BoardVo> flowerPhotoList() {
-		return boardDao.flowerPhotoList();
+	public List<BoardVo> flowerPhotoList(int endRow) {
+		return boardDao.flowerPhotoList(endRow);
 	}
 
 	@Override
@@ -112,6 +112,66 @@ public class BoardServiceImpl implements BoardService {
 		
 		return photoResult;
 	}
+	
+	@Override
+	public int insertChurchPhotoBoardVo(BoardVo boardVo) {
+		
+		//게시판 정보 등록
+		int result = boardDao.insertChurchPhotoBoardVo(boardVo);
+		int board_no = 0;
+		
+		//게시판 정보 정상 등록 됐으면 게시물 번호 조회
+		if(result != 0) {
+			board_no = boardDao.selectChurchPhotoBoardInformation(boardVo.getMEMBER_NO());
+		}else {
+			board_no = 0;
+		}
+		
+		return board_no;
+	}
+	
+	
+
+	@Override
+	public int insertChurchPhotoPhotoVo(PhotoVo photoVo) {
+		return boardDao.insertChurchPhotoPhotoVo(photoVo);
+	}
+
+	@Override
+	public HashMap<String, Object> churchPhoto(int endRow) {
+		
+		//List<BoardVo> BoardList = boardDao.churchPhotoBoardList(endRow);
+		
+		//교회 사진 게시물 전체 조회
+		HashMap<String, Object> BoardMap = boardDao.churchPhotoBoardMap(endRow);
+		
+		//게시물에 사진정보 붙이기
+		for(int i = 0; i < BoardMap.size(); i++) {
+			int board_no = (int) BoardMap.get("BOARD_NO");
+			
+			//게시물에 대한 사진 갯수 조회
+			int PhotoListCount = boardDao.PhotoListCount(board_no);
+			
+			//사진 갯수를 "PHOTO_COUNT" 로 저장
+			if(PhotoListCount != 0) {
+				BoardMap.put("PHOTO_COUNT", PhotoListCount);
+			}
+			
+			//게시물에 대한 사진 정보 조회
+			List<PhotoVo> PhotoList = boardDao.churchPhotoPhotoList(board_no);
+			
+			//사진정보 저장
+			if(PhotoList != null) {
+				for(int j = 1; j <= PhotoList.size(); j++) {
+					BoardMap.put("PHOTO_IMAGE" + j, PhotoList.get(j).getPHOTO_RENAME());
+				}
+			}
+			
+		}
+		
+		return BoardMap;
+	}
+	
 	
 	
 }

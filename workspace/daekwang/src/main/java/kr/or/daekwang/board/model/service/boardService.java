@@ -23,12 +23,20 @@ public interface BoardService {
 
 	int addChurchNewsReadCount(int BOARD_NO);
 
-	List<BoardVo> newFamilyIntroducing();
+	List<BoardVo> newFamilyIntroducing(int endRow);
 
 	int insertNewFamilyIntroducing(BoardVo boardVo, PhotoVo photoVo);
 
-	List<BoardVo> flowerPhotoList();
+	List<BoardVo> flowerPhotoList(int endRow);
 
 	int insertFlowerPhoto(BoardVo boardVo, PhotoVo photoVo);
+
+	int insertChurchPhotoBoardVo(BoardVo boardVo);
+
+	int insertChurchPhotoPhotoVo(PhotoVo photoVo);
+
+	HashMap<String, Object> churchPhoto(int endRow);
+
+
 
 }

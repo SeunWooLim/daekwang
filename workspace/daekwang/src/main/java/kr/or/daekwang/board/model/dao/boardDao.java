@@ -57,12 +57,12 @@ public class BoardDao {
 		return mybatis.insert("boardMapper.insertNewFamilyIntroducingPhoto", photoVo);
 	}
 
-	public List<BoardVo> newFamilyIntroducing() {
-		return mybatis.selectList("boardMapper.newFamilyIntroducing");
+	public List<BoardVo> newFamilyIntroducing(int endRow) {
+		return mybatis.selectList("boardMapper.newFamilyIntroducing", endRow);
 	}
 
-	public List<BoardVo> flowerPhotoList() {
-		return mybatis.selectList("boardMapper.flowerPhotoList");
+	public List<BoardVo> flowerPhotoList(int endRow) {
+		return mybatis.selectList("boardMapper.flowerPhotoList", endRow);
 	}
 
 	public int insertFlowerPhotoBoard(BoardVo boardVo) {
@@ -76,5 +76,40 @@ public class BoardDao {
 	public int insertFlowerPhotoPhoto(PhotoVo photoVo) {
 		return mybatis.insert("boardMapper.insertFlowerPhotoPhoto", photoVo);
 	}
+	
+	public int insertChurchPhotoBoardVo(BoardVo boardVo) {
+		return mybatis.insert("boardMapper.insertChurchPhotoBoardVo", boardVo);
+	}
+	
+	public int selectChurchPhotoBoardInformation(int member_no) {
+		return mybatis.selectOne("boardMapper.selectChurchPhotoBoardInformation", member_no);
+	}
+	
+	public int insertChurchPhotoPhotoVo(PhotoVo photoVo) {
+		return mybatis.insert("boardMapper.insertChurchPhotoPhotoVo", photoVo);
+	}
+	
+	public List<BoardVo> churchPhotoBoardList(int endRow) {
+		return mybatis.selectList("boardMapper.churchPhotoBoardList", endRow);
+	}
+	
+	public HashMap<String, Object> churchPhotoBoardMap(int board_no) {
+		return (HashMap<String, Object>)mybatis.selectList("boardMapper.churchPhotoBoardMap", board_no);
+	}
+	
+	public int PhotoListCount(int board_no) {
+		return mybatis.selectOne("boardMapper.PhotoListCount", board_no);
+	}
+	
+	public List<PhotoVo> churchPhotoPhotoList(int board_no) {
+		return mybatis.selectList("boardMapper.churchPhotoPhotoList", board_no);
+	}
+
+	
+
+	
+
+	
+	
 
 }
