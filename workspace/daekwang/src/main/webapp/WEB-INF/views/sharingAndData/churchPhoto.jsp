@@ -20,8 +20,9 @@
 		<div class="insertBtn_wrap">
 			<a href="churchPhotoInsert.do" class="newInsertBtn">글쓰기</a>
 		</div>
-		<ul class="photo_list">
-			<li>
+		<ul class="photo_list masonry2">
+			<li class="sizer w25"></li>
+			<li class="item w25">
 				<div class="photo_top">
 					<ul>
 						<li>190124 교사강습회(평촌교회)</li>
@@ -39,7 +40,7 @@
 					내용입니다.
 				</div>
 			</li>
-			<li>
+			<li class="item w25">
 				<div class="photo_top">
 					<ul>
 						<li>190124 교사강습회(평촌교회)</li>
@@ -55,7 +56,61 @@
 					내용입니다.
 				</div>
 			</li>
-			<li>
+			<li class="item w25">
+				<div class="photo_top">
+					<ul>
+						<li>190124 교사강습회(평촌교회)</li>
+						<li>2019-02-02</li>
+					</ul>
+				</div>
+				<div class="photo_mid">
+					<ul>
+						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>						
+					</ul>
+				</div>
+				<div class="photo_bot">
+					내용입니다.
+				</div>
+			</li>
+			<li class="item w25">
+				<div class="photo_top">
+					<ul>
+						<li>190124 교사강습회(평촌교회)</li>
+						<li>2019-02-02</li>
+					</ul>
+				</div>
+				<div class="photo_mid">
+					<ul>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
+					</ul>
+				</div>
+				<div class="photo_bot">
+					내용입니다.
+				</div>
+			</li>
+			<li class="item w25">
+				<div class="photo_top">
+					<ul>
+						<li>190124 교사강습회(평촌교회)</li>
+						<li>2019-02-02</li>
+					</ul>
+				</div>
+				<div class="photo_mid">
+					<ul>
+						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>
+						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>						
+					</ul>
+				</div>
+				<div class="photo_bot">
+					내용입니다.
+				</div>
+			</li>
+			<li class="item w25">
 				<div class="photo_top">
 					<ul>
 						<li>190124 교사강습회(평촌교회)</li>
@@ -81,6 +136,26 @@
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
+
+<script>
+
+	var container1 = document.querySelector( '.masonry2' );
+	var msnry1 = $('.masonry2').masonry( {	  
+		  	itemSelector	: ".item",
+			columnWidth	: '.sizer',
+			gutter : 20,
+			percentPosition : true,
+			
+			
+		});
+	
+	 msnry1.imagesLoaded().progress(function(){
+				msnry1.masonry('layout');
+	});
+	
+	 	
+</script>
+
 <script>
 	$(document).ready(function(){
 		$(".photo_mid > ul").bxSlider({
@@ -105,5 +180,6 @@
 		});
 	})
 </script>
+
 
 </html>

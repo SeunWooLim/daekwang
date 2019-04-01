@@ -21,7 +21,8 @@
 			</div>
 		</c:if>
 		
-		<ul class="photo_list" id="newFamilyIntroducing">
+		<ul class="photo_list masonry2" id="newFamilyIntroducing">
+			<li class="sizer w25"></li>
 		</ul> 
 	</div>
 	
@@ -73,7 +74,7 @@
 	      			
 	      		for(var i = 0; i<json.newFamilyIntroducing.length; i++){
 	      			tag += 
-		      				'<li>' +
+		      				'<li class="item w25">' +
 								'<div class="photo_top">' +
 									'<ul>' +
 										'<li>' + json.newFamilyIntroducing[i].board_title + '</li>' +
@@ -99,6 +100,25 @@
     	});
 	}
 
+</script>
+
+<script>
+
+	var container1 = document.querySelector( '.masonry2' );
+	var msnry1 = $('.masonry2').masonry( {	  
+		  	itemSelector	: ".item",
+			columnWidth	: '.sizer',
+			gutter : 20,
+			percentPosition : true,
+			
+			
+		});
+	
+	 msnry1.imagesLoaded().progress(function(){
+				msnry1.masonry('layout');
+	});
+	
+	 	
 </script>
 
 </html>
