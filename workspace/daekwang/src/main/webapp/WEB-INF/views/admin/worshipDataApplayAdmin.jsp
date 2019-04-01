@@ -109,7 +109,13 @@
 								<td>${worshipData.memberVo.MEMBER_NAME }</td>
 								<td>${worshipData.WORSHIP_NAME }</td>
 								<td>${worshipData.APPLY_ORFILE }</td>
-								<td>${worshipData.APPLY_CONTENT }</td>
+								
+								<c:set var="text" value="${worshipData.APPLY_CONTENT }"/>		
+								<%
+									String text = pageContext.getAttribute("text").toString();
+									String replacetext = text.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+								%>
+								<td style="text-align:center"><p style="width:800px; text-align:center; margin:0 auto;"><%=replacetext %></p></td>
 								<td>${worshipData.APPLY_DATE }</td>
 								<td>
 									<a class="btnform5 update_btn" onclick="updateForm(<%= rowNum %>);">보기</a>
@@ -147,12 +153,12 @@
 											<li>
 												<label for="wPA_context" style="vertical-align:top;">내용</label>
 												<textarea id="wPA_context<%= ediNum %>" name="wPA_context" value="내용 작성">${worshipData.APPLY_CONTENT }</textarea>
-												<%-- 
+												
 												<script type="text/javascript">
 												CKEDITOR.replace('wPA_context<%= ediNum%>',
 														{height: 150});
 												</script>
-												 --%>
+												 
 											</li>
 										</ul>								
 										
