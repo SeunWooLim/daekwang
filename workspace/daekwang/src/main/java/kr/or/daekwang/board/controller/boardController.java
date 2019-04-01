@@ -9,7 +9,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -36,21 +38,54 @@ public class BoardController {
 	
 	@Autowired
 	private BoardService boardSerivce;
-
+	
 	/**
 	 * 새가족 소개 게시판으로 이동
 	 * @param model
 	 * @return sharingAndData/newFamilyIntroducing
 	 */
 	@RequestMapping(value = "/newFamilyIntroducing.do")
-	public String newFamilyIntroducing(Model model) {
-		
-		List<BoardVo> list = boardSerivce.newFamilyIntroducing();
-		
-		model.addAttribute("list", list);
-		
+	public String newFamilyIntroducing() {
 		return "sharingAndData/newFamilyIntroducing";
 	}
+	
+	/**
+	 * 새가족 게시판 AJAX 무한스크롤 조회
+	 * @param model
+	 * @param response
+	 * @param pageNum
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/addNewFamilyIntroducing.do")
+	public void addNewFamilyIntroducing(Model model, HttpServletResponse response, @RequestParam(value="pageNum")int pageNum) throws IOException {
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		JSONObject job = new JSONObject();
+		JSONArray jarr = new JSONArray();
+		
+		int endRow = pageNum * 10;
+		List<BoardVo> list = boardSerivce.newFamilyIntroducing(endRow);
+		
+		for(BoardVo board : list) {
+			JSONObject job2 = new JSONObject();
+			job2.put("board_no", board.getBOARD_NO());
+			job2.put("member_name", board.getMemberVo().getMEMBER_NAME());
+			job2.put("board_title", board.getBOARD_TITLE());
+			job2.put("board_content", board.getBOARD_CONTENT());
+			job2.put("recent_update_date", board.getRECENT_UPDATE_DATE().toString());
+			job2.put("photo_rename", board.getPhotoVo().getPHOTO_RENAME());
+			jarr.add(job2);
+		}
+		job.put("newFamilyIntroducing", jarr);
+		
+		out.println(job.toJSONString());
+		out.flush();
+		out.close();
+	}
+	
 	
 	/**
 	 * 새가족 소개 등록 페이지로 이동
@@ -276,10 +311,13 @@ public class BoardController {
 		return "redirect:/churchNews.do";
 	}
 	
+	
 	/**
-	 * 교우소식 게시판으로 이동
+	 * 교우소식 게시판 AJAX 무한스크롤 조회
 	 * @param model
-	 * @throws IOException 
+	 * @param response
+	 * @param pageNum
+	 * @throws IOException
 	 */
 	@RequestMapping(value = "/addPersonNews.do")
 	public void personNews(Model model, HttpServletResponse response, @RequestParam(value="pageNum")int pageNum) throws IOException {
@@ -312,14 +350,13 @@ public class BoardController {
 		out.close();
 	}
 	
+	/**
+	 * 교우소식 게시판으로 이동
+	 * @param model
+	 * @throws IOException 
+	 */
 	@RequestMapping(value = "/personNews.do")
 	public String personNews(Model model) {
-		
-		/*List<BoardVo> list = boardSerivce.personNewsList();
-		int listCount = boardSerivce.listCount();
-		
-		model.addAttribute("list", list);
-		model.addAttribute("listCount", listCount);*/
 		
 		return "sharingAndData/personNews";
 	}
@@ -349,11 +386,44 @@ public class BoardController {
 	@RequestMapping(value = "/flowerPhoto.do")
 	public String flowerPhoto(Model model) {
 		
-		List<BoardVo> list = boardSerivce.flowerPhotoList();
-		
-		model.addAttribute("list", list);
-		
 		return "sharingAndData/flowerPhoto";
+	}
+	
+	/**
+	 * 꽃꽂이 갤러리 게시판 AJAX 무한스크롤 조회
+	 * @param model
+	 * @param response
+	 * @param pageNum
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/addFlowerPhoto.do")
+	public void addFlowerPhoto(Model model, HttpServletResponse response, @RequestParam(value="pageNum")int pageNum) throws IOException {
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		JSONObject job = new JSONObject();
+		JSONArray jarr = new JSONArray();
+		
+		int endRow = pageNum * 10;
+		List<BoardVo> list = boardSerivce.flowerPhotoList(endRow);
+		
+		for(BoardVo board : list) {
+			JSONObject job2 = new JSONObject();
+			job2.put("board_no", board.getBOARD_NO());
+			job2.put("member_name", board.getMemberVo().getMEMBER_NAME());
+			job2.put("board_title", board.getBOARD_TITLE());
+			job2.put("board_content", board.getBOARD_CONTENT());
+			job2.put("recent_update_date", board.getRECENT_UPDATE_DATE().toString());
+			job2.put("photo_rename", board.getPhotoVo().getPHOTO_RENAME());
+			jarr.add(job2);
+		}
+		job.put("flowerPhoto", jarr);
+		
+		out.println(job.toJSONString());
+		out.flush();
+		out.close();
 	}
 	
 	/**
@@ -424,40 +494,118 @@ public class BoardController {
 		return returnVal;
 	}
 	
+	/**
+	 * 교회 사진 페이지로 이동
+	 * @return sharingAndData/churchPhoto
+	 */
 	@RequestMapping(value = "/churchPhoto.do")
 	public String churchPhoto() {
 		return "sharingAndData/churchPhoto";
 	}
 	
+	/**
+	 * 교회 사진 게시판 AJAX 무한스크롤 조회
+	 * @param model
+	 * @param response
+	 * @param pageNum
+	 * @throws IOException
+	 */
+	@RequestMapping(value = "/addChurchPhoto.do")
+	public void addChurchPhoto(Model model, HttpServletResponse response, @RequestParam(value="pageNum")int pageNum) throws IOException {
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json; charset=UTF-8");
+		
+		PrintWriter out = response.getWriter();
+		JSONObject job = new JSONObject();
+		JSONArray jarr = new JSONArray();
+		
+		int endRow = pageNum * 10;
+		HashMap<String, Object> map = boardSerivce.churchPhoto(endRow);
+		
+		/*for(BoardVo board : list) {
+			JSONObject job2 = new JSONObject();
+			job2.put("board_no", board.getBOARD_NO());
+			job2.put("member_name", board.getMemberVo().getMEMBER_NAME());
+			job2.put("board_title", board.getBOARD_TITLE());
+			job2.put("board_content", board.getBOARD_CONTENT());
+			job2.put("recent_update_date", board.getRECENT_UPDATE_DATE().toString());
+			job2.put("photo_rename", board.getPhotoVo().getPHOTO_RENAME());
+			jarr.add(job2);
+		}*/
+		
+	    Set<String> entries = map.keySet();
+	    Iterator<String> i = entries.iterator();
+
+	    while(i.hasNext()) {
+	    	JSONObject job2 = new JSONObject();
+	        
+	    	String key = i.next();
+	        Object value = map.get(key);
+	        
+	    }
+		
+		job.put("flowerPhoto", jarr);
+		
+		out.println(job.toJSONString());
+		out.flush();
+		out.close();
+	}
+	
+	/**
+	 * 교회 사진 게시물 등록 페이지로 이동
+	 * @return sharingAndData/churchPhotoInsert
+	 */
 	@RequestMapping(value = "/churchPhotoInsert.do")
 	public String churchPhotoInsert() {
-		
-/*		//파일객체생성
-		List<MultipartFile> fileList = mtfRequest.getFiles("fileselect[]");
+		return "sharingAndData/churchPhotoInsert";
+	}
+	
+	/**
+	 * 
+	 */
+	@RequestMapping(value = "/insertChurchPhoto.do")
+	public void insertChurchPhoto(Model model, MultipartHttpServletRequest mtfRequest, HttpServletRequest request, BoardVo boardVo, PhotoVo photoVo, HttpServletResponse response) throws IOException {
+		PrintWriter out = response.getWriter();
+		//파일객체생성
+		List<MultipartFile> fileList = mtfRequest.getFiles("img");
 		System.out.println(fileList);
-		//경로설정
+		System.out.println(boardVo);
+		
+		//경로설정 및 변수 설정
 		String root = request.getSession().getServletContext().getRealPath("resources");
-		String path = root + "\\uploadPhoto\\";
+		String path = root + "\\uploadChurch\\";
 		String originFileName = null ;// 원본 파일 명
         String ext = null;//확장자명
         long reFileName = 0;  // 고유 파일 명
-        long fileSize = 0; // 파일 사이즈
 		String safeFile = null;
+		int result = 0;
+		
+		//게시판 정보 저장
+		int board_no = boardSerivce.insertChurchPhotoBoardVo(boardVo);
 		
         for (MultipartFile mf : fileList) {
             originFileName = mf.getOriginalFilename(); // 원본 파일 명
             ext = originFileName.substring(originFileName.lastIndexOf('.')); //확장자명 추출
             reFileName = System.currentTimeMillis();  // 고유 파일 명
-            fileSize = mf.getSize(); // 파일 사이즈
-
-            System.out.println("originFileName : " + originFileName);
-            System.out.println("fileSize : " + fileSize);
-
+            
+            photoVo.setPHOTO_ORNAME(originFileName);
+            photoVo.setPHOTO_RENAME(Long.valueOf(reFileName).toString() + ext);
+            photoVo.setBOARD_NO(board_no);
+            photoVo.setMEMBER_NO(boardVo.getMEMBER_NO());
+            
+            //사진 정보 저장
+            result = boardSerivce.insertChurchPhotoPhotoVo(photoVo);
+            
+            //생성된 파일 객체 이미지파일로 변환
+    		BufferedImage image = ImageIO.read(mf.getInputStream());
+    		
             //저장될 파일 명
             safeFile = path + reFileName + ext;
             
             try {
-                mf.transferTo(new File(safeFile));
+                //mf.transferTo(new File(safeFile));
+            	ImageIO.write(imageResize(image), "jpg", new File(safeFile));
             } catch (IllegalStateException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -467,20 +615,15 @@ public class BoardController {
             }
         }
         
-        photoVo.setPHOTO_ORNAME(originFileName);
-        photoVo.setPHOTO_RENAME(Long.valueOf(reFileName).toString() + ext);
-        
-        int result = boardSerivce.insertNewFamilyIntroducing(boardVo, photoVo);
-        
-        if(result != 1) {
-			model.addAttribute("msg", "신청을 실패했습니다");
-			model.addAttribute("url", "newFamilyIntroducing.do");
-			returnVal = "common/alert";
-		}else {
-			returnVal = "common/main";
+        if(result > 0) {
+			out.append("ok");
+			out.flush();
 		}
-		*/
-		return "sharingAndData/churchPhotoInsert";
+		else {
+			out.append("fail");
+			out.flush();
+		}
+		out.close();
 	}
 	
 	/**
