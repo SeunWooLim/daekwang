@@ -18,6 +18,8 @@
 <script src="/daekwang/resources/js/tweenMax.js"></script>
 <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=x3qoGzKGs6zyZkgA8Ry0&submodules=geocoder"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="/daekwang/resources/js/imgreload.js"></script>
 <title>Insert title here</title>
 </head>
 <body>
