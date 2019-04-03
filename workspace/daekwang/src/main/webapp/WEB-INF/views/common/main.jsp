@@ -32,7 +32,8 @@
 			<div class="main_content_wrap">
 				<div class="main_content1 cursor"
 					onclick="location.href='pastorGreeting.do'">
-					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+					<img src="<c:url value="/resources/img/mainmenu1.jpg"/>">
+					<span class="bg1"></span>
 					<div class="text">
 						<p>환영합니다</p>
 						<span>담임목사 인사</span>
@@ -41,7 +42,8 @@
 				</div>
 				<div class="main_content1 cursor"
 					onclick="location.href='worshipGuide.do'">
-					<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+					<img src="<c:url value="/resources/img/mainmenu2.jpg"/>">
+					<span class="bg1"></span>
 					<div class="text">
 						<p>예배시간안내</p>
 						<span>대광교회 예배시간</span>
@@ -50,19 +52,22 @@
 				</div>
 				<div class="main_content1 cursor"
 					onclick="location.href='newFamilyIntroducing.do'">
-					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
-					<div class="text">
-						<p>금주의 새가족</p>
-						<span>대광교회 예배시간</span>
+					<img src="<c:url value="/resources/img/mainmenu3.png"/>">
+					<span class="bg2"></span>
+					<div class="text" >
+						<p style="color:#333">금주의 새가족</p>
+						<span  style="color:#333; border-color:#333">대광교회 예배시간</span>
 					</div>
-					<span><i class="xi-plus-circle-o"></i></span>
+					<span><i class="xi-plus-circle-o"  style="color:#333"></i></span>
 				</div>
 				<div class="main_content1 main_content2 cursor"
 					onclick="location.href='sundayWorship.do'">
-					<img src="<c:url value="/resources/img/main_section4.jpg"/>">
+					<img src="<c:url value="/resources/img/main_section4.jpg"/>" style="height:100%;">
+					
 				</div>
 				<div class="main_content1 main_content3">
-					<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+					<img src="<c:url value="/resources/img/mainmenu4.png"/>">
+					<span class="bg2"></span>
 					<div class="text">
 						<p>교회소식</p>
 						<ul>
@@ -87,7 +92,8 @@
 				
 				<div class="main_content1 cursor"
 					onclick="location.href='churchPhoto.do'">
-					<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+					<img src="<c:url value="/resources/img/mainmenu5.jpg"/>">
+					<span class="bg1"></span>
 					<div class="text">
 						<p>교회사진</p>
 					</div>
@@ -95,7 +101,8 @@
 				</div>
 				<div class="main_content1 cursor"
 					onclick="location.href='flowerPhoto.do'">
-					<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+					<img src="<c:url value="/resources/img/mainmenu6.jpg"/>">
+					<span class="bg1"></span>
 					<div class="text">
 						<p>꽃꽃이갤러리</p>
 					</div>
@@ -114,7 +121,8 @@
 				</div>
 				<div class="right">
 					<div class="main_content1">
-						<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+						<img src="<c:url value="/resources/img/mainmenu7.jpg"/>">
+						<span class="bg1"></span>
 						<div class="text">
 							<p>찬양대</p>
 							<a href="shalomChoir.do">샬롬 찬양대</a> <a href="immanuelChoir.do">임마누엘
@@ -124,7 +132,8 @@
 					</div>
 					<div class="main_content1 cursor"
 						onclick="window.open('https://www.youtube.com/feed/subscriptions/UCUelWlMoTG9gH2J7DP_VYLg')">
-						<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+						<img src="<c:url value="/resources/img/mainmenu8.jpg"/>">
+						<span class="bg1"></span>
 						<div class="text">
 							<p>대광교회 유튜브</p>
 						</div>
@@ -132,7 +141,8 @@
 					</div>
 					<div class="main_content1 cursor"
 						onclick="location.href='weekPageApply.do'">
-						<img src="<c:url value="/resources/img/main_section1.jpg"/>">
+						<img src="<c:url value="/resources/img/mainmenu9.jpg"/>">
+						<span class="bg1"></span>
 						<div class="text">
 							<p>주보요청</p>
 						</div>
@@ -140,7 +150,8 @@
 					</div>
 					<div class="main_content1 cursor"
 						onclick="location.href='worshipDataApply.do'">
-						<img src="<c:url value="/resources/img/main_section2.jpg"/>">
+						<img src="<c:url value="/resources/img/mainmenu10.jpg"/>">
+						<span class="bg1"></span>
 						<div class="text">
 							<p>예배자료신청</p>
 						</div>
