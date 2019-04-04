@@ -2,6 +2,7 @@ package kr.or.daekwang.board.model.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.daekwang.apply.model.vo.ApplyVo;
 import kr.or.daekwang.board.model.vo.BoardVo;
@@ -35,7 +36,7 @@ public interface BoardService {
 
 	int insertChurchPhotoPhotoVo(PhotoVo photoVo);
 
-	HashMap<String, Object> churchPhoto(int endRow);
+	List<Map< String, Object>> churchPhoto(int endRow);
 
 
 

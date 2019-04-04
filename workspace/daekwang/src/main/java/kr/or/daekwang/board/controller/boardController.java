@@ -6,11 +6,11 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.imageio.ImageIO;
@@ -521,31 +521,38 @@ public class BoardController {
 		JSONArray jarr = new JSONArray();
 		
 		int endRow = pageNum * 10;
-		HashMap<String, Object> map = boardSerivce.churchPhoto(endRow);
+		List<Map< String, Object>> list = boardSerivce.churchPhoto(endRow);
 		
-		/*for(BoardVo board : list) {
+		for(int i = 0; i < list.size(); i++) {
 			JSONObject job2 = new JSONObject();
-			job2.put("board_no", board.getBOARD_NO());
-			job2.put("member_name", board.getMemberVo().getMEMBER_NAME());
-			job2.put("board_title", board.getBOARD_TITLE());
-			job2.put("board_content", board.getBOARD_CONTENT());
-			job2.put("recent_update_date", board.getRECENT_UPDATE_DATE().toString());
-			job2.put("photo_rename", board.getPhotoVo().getPHOTO_RENAME());
+			String imageName = null;
+			job2.put("board_no", list.get(i).get("BOARD_NO"));
+			job2.put("board_title", list.get(i).get("BOARD_TITLE"));
+			job2.put("board_content", list.get(i).get("BOARD_CONTENT"));
+			job2.put("recent_update_date", list.get(i).get("RECENT_UPDATE_DATE").toString());
+			job2.put("photo_count", list.get(i).get("PHOTO_COUNT"));
+			for(int j = 1; j <= (int)list.get(i).get("PHOTO_COUNT"); j++) {
+				imageName += list.get(i).get("PHOTO_IMAGE" + j);
+			}
+			job2.put("photo_image", imageName);
 			jarr.add(job2);
-		}*/
+		}
+		job.put("churchPhoto", jarr);
 		
-	    Set<String> entries = map.keySet();
-	    Iterator<String> i = entries.iterator();
-
-	    while(i.hasNext()) {
-	    	JSONObject job2 = new JSONObject();
-	        
-	    	String key = i.next();
-	        Object value = map.get(key);
-	        
-	    }
-		
-		job.put("flowerPhoto", jarr);
+		/*for(Map< String, Object> map : list) {
+			JSONObject job2 = new JSONObject();
+			job2.put("board_no", map.get("BOARD_NO"));
+			job2.put("board_title", map.get("BOARD_TITLE"));
+			job2.put("board_content", map.get("BOARD_CONTENT"));
+			job2.put("recent_update_date", map.get("RECENT_UPDATE_DATE").toString());
+			job2.put("photo_count",map.get("PHOTO_COUNT"));
+			for(int i = 1; i <= (int)map.get("PHOTO_COUNT"); i++) {
+				job2.put("photo_image" + i, map.get("PHOTO_COUNT" + i));
+				System.out.println(map.get("PHOTO_COUNT" + i));
+			}
+			jarr.add(job2);
+		}
+		job.put("churchPhoto", jarr);*/
 		
 		out.println(job.toJSONString());
 		out.flush();
@@ -566,7 +573,7 @@ public class BoardController {
 	 */
 	@RequestMapping(value = "/insertChurchPhoto.do")
 	public void insertChurchPhoto(Model model, MultipartHttpServletRequest mtfRequest, HttpServletRequest request, BoardVo boardVo, PhotoVo photoVo, HttpServletResponse response) throws IOException {
-		PrintWriter out = response.getWriter();
+		
 		//파일객체생성
 		List<MultipartFile> fileList = mtfRequest.getFiles("img");
 		System.out.println(fileList);
@@ -614,8 +621,9 @@ public class BoardController {
                 e.printStackTrace();
             }
         }
-        
-        if(result > 0) {
+        PrintWriter out = response.getWriter();
+        System.out.println(result);
+        if(result != 0) {
 			out.append("ok");
 			out.flush();
 		}

@@ -2,6 +2,7 @@ package kr.or.daekwang.board.model.dao;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,8 +94,8 @@ public class BoardDao {
 		return mybatis.selectList("boardMapper.churchPhotoBoardList", endRow);
 	}
 	
-	public HashMap<String, Object> churchPhotoBoardMap(int board_no) {
-		return (HashMap<String, Object>)mybatis.selectList("boardMapper.churchPhotoBoardMap", board_no);
+	public List<BoardVo> churchPhotoBoardMap(int board_no) {
+		return mybatis.selectList("boardMapper.churchPhotoBoardMap", board_no);
 	}
 	
 	public int PhotoListCount(int board_no) {

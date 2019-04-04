@@ -1,7 +1,9 @@
 package kr.or.daekwang.board.model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -138,38 +140,49 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public HashMap<String, Object> churchPhoto(int endRow) {
+	public List<Map< String, Object>> churchPhoto(int endRow) {
 		
-		//List<BoardVo> BoardList = boardDao.churchPhotoBoardList(endRow);
+		//게시판 게시물 먼저 조회
+		List<BoardVo> boardList = boardDao.churchPhotoBoardMap(endRow);
 		
-		//교회 사진 게시물 전체 조회
-		HashMap<String, Object> BoardMap = boardDao.churchPhotoBoardMap(endRow);
-		
+		//변수
+		int board_no = 0;
+		//최종 리턴 리스트
+		List<Map< String, Object>> list= new ArrayList<Map< String, Object>>();
+
 		//게시물에 사진정보 붙이기
-		for(int i = 0; i < BoardMap.size(); i++) {
-			int board_no = (int) BoardMap.get("BOARD_NO");
+		for(int i = 0; i < boardList.size(); i++){
+			//정보담을 map
+			Map<String, Object> map  = new HashMap<String, Object>();
 			
-			//게시물에 대한 사진 갯수 조회
+			//map에 리스트 값 하나하나 담기
+			map.put("BOARD_NO", boardList.get(i).getBOARD_NO());
+			map.put("BOARD_TITLE", boardList.get(i).getBOARD_TITLE());
+			map.put("BOARD_CONTENT", boardList.get(i).getBOARD_CONTENT());
+			map.put("RECENT_UPDATE_DATE", boardList.get(i).getRECENT_UPDATE_DATE());
+			
+			//각 게시물에 관련된 사진 갯수 조회
+			board_no = (int) boardList.get(i).getBOARD_NO();
 			int PhotoListCount = boardDao.PhotoListCount(board_no);
 			
-			//사진 갯수를 "PHOTO_COUNT" 로 저장
+			//map에 사진 갯수 넣기
 			if(PhotoListCount != 0) {
-				BoardMap.put("PHOTO_COUNT", PhotoListCount);
+				map.put("PHOTO_COUNT", PhotoListCount);
 			}
 			
-			//게시물에 대한 사진 정보 조회
+			//각 게시물에 관련된 사진 rename 모두 조회
 			List<PhotoVo> PhotoList = boardDao.churchPhotoPhotoList(board_no);
 			
-			//사진정보 저장
+			//map 모든 사진 rename 넣기
 			if(PhotoList != null) {
 				for(int j = 1; j <= PhotoList.size(); j++) {
-					BoardMap.put("PHOTO_IMAGE" + j, PhotoList.get(j).getPHOTO_RENAME());
+					map.put("PHOTO_IMAGE" + j, PhotoList.get(j-1).getPHOTO_RENAME());
 				}
 			}
-			
+			list.add(map);
 		}
 		
-		return BoardMap;
+		return list;
 	}
 	
 	
