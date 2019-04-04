@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +11,15 @@
 </head>
 <body>
 	<header>
+		<jsp:useBean id="now" class="java.util.Date" />
+		<fmt:formatDate value="${now}" pattern="yyyy년 MM월 dd일 HH:mm" var="today" />
+
 		<div class="header">
 			<div class="head_right">
 				<ul class="">
-					<li>2017년 9월 5일 월요일</li>
-					<li>관리자 : 홍길동
-					</li>
-					<li>문자 잔여건수 : 5</li>
-					<li class="nav_button"><a href="#">문자충전</a></li>
-					<li class="nav_button"><a href="#">로그아웃</a></li>
+					<li>관리자님 환영합니다.</li>
+					<li><c:out value="${today}"/></li>
+					<li class="nav_button"><a href="logout.do">로그아웃</a></li>
 				</ul>
 			</div>
 		</div>

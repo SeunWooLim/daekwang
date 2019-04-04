@@ -17,126 +17,20 @@
 	</div>
 	
 	<div class="photo_wrap">
-		<div class="insertBtn_wrap">
-			<a href="churchPhotoInsert.do" class="newInsertBtn">글쓰기</a>
-		</div>
-		<ul class="photo_list masonry2">
+		<c:if test="${sessionScope.loginUser ne null}">
+			<div class="insertBtn_wrap">
+				<a href="churchPhotoInsert.do" class="newInsertBtn">글쓰기</a>
+			</div>
+		</c:if>
+		
+		<ul class="photo_list masonry2" id="churchPhoto">
 			<li class="sizer w25"></li>
-			<li class="item w25">
-				<div class="photo_top">
-					<ul>
-						<li>190124 교사강습회(평촌교회)</li>
-						<li>2019-02-02</li>
-					</ul>
-				</div>
-				<div class="photo_mid">
-					<ul>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-					</ul>
-				</div>
-				<div class="photo_bot">
-					내용입니다.
-				</div>
-			</li>
-			<li class="item w25">
-				<div class="photo_top">
-					<ul>
-						<li>190124 교사강습회(평촌교회)</li>
-						<li>2019-02-02</li>
-					</ul>
-				</div>
-				<div class="photo_mid">
-					<ul>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-					</ul>
-				</div>
-				<div class="photo_bot">
-					내용입니다.
-				</div>
-			</li>
-			<li class="item w25">
-				<div class="photo_top">
-					<ul>
-						<li>190124 교사강습회(평촌교회)</li>
-						<li>2019-02-02</li>
-					</ul>
-				</div>
-				<div class="photo_mid">
-					<ul>
-						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>						
-					</ul>
-				</div>
-				<div class="photo_bot">
-					내용입니다.
-				</div>
-			</li>
-			<li class="item w25">
-				<div class="photo_top">
-					<ul>
-						<li>190124 교사강습회(평촌교회)</li>
-						<li>2019-02-02</li>
-					</ul>
-				</div>
-				<div class="photo_mid">
-					<ul>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-					</ul>
-				</div>
-				<div class="photo_bot">
-					내용입니다.
-				</div>
-			</li>
-			<li class="item w25">
-				<div class="photo_top">
-					<ul>
-						<li>190124 교사강습회(평촌교회)</li>
-						<li>2019-02-02</li>
-					</ul>
-				</div>
-				<div class="photo_mid">
-					<ul>
-						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/king.png"></li>						
-					</ul>
-				</div>
-				<div class="photo_bot">
-					내용입니다.
-				</div>
-			</li>
-			<li class="item w25">
-				<div class="photo_top">
-					<ul>
-						<li>190124 교사강습회(평촌교회)</li>
-						<li>2019-02-02</li>
-					</ul>
-				</div>
-				<div class="photo_mid">
-					<ul>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-						<li><img alt="" src="<c:url value="/"/>resources/img/exphoto.png"></li>
-					</ul>
-				</div>
-				<div class="photo_bot">
-					내용입니다.
-				</div>
-			</li>
 		</ul>
 	</div>
-	
-	
-	
 </div>
+
 <jsp:include page="../common/footer.jsp"/>
 </body>
-
 <script>
 
 	var container1 = document.querySelector( '.masonry2' );
@@ -181,5 +75,82 @@
 	})
 </script>
 
+<!-- 무한 스크롤 처리 -->
+<script type="text/javascript">
+	let isEnd = false;
+	let pageNum = 1;
+
+	$(function() {
+		$(window).scroll(function() {
+			let $window = $(this);
+			let scrollTop = $window.scrollTop();
+			let windowHeight = $window.height();
+			let documentHeight = $(document).height();
+	
+			console.log("documentHeight:" + documentHeight + " | scrollTop:" +
+			scrollTop + " | windowHeight: " + windowHeight);
+			
+			// scrollbar의 thumb가 바닥 전 50px까지 도달 하면 리스트를 가져온다.
+			if (scrollTop + windowHeight + 50 > documentHeight) {
+				fetchList(pageNum);
+				pageNum++;
+			}
+		})
+		fetchList(pageNum);
+	})
+
+	let fetchList = function(pageNum) {
+		if (isEnd == true) {
+			return;
+		}
+
+		$.ajax({
+	      	url: "addChurchPhoto.do",
+	      	data: {"pageNum" : pageNum},
+	      	type: "post",
+	      	dataType: "JSON",
+	      	success: function(result){
+	      		$('#churchPhoto').html("");
+	      		var jsonStr = JSON.stringify(result);
+	      		var json = JSON.parse(jsonStr);
+	      		var tag = "";
+	      			
+	      		for(var i = 0; i<json.churchPhoto.length; i++){
+	      			var endNum = json.churchPhoto[i].photo_count;
+	      			var imageName = json.churchPhoto[i].photo_image;
+	      			tag += 
+			      			'<li class="item w25">' +
+								'<div class="photo_top">' +
+									'<ul>' +
+										'<li>' + json.churchPhoto[i].board_title + '</li>' +
+										'<li>' + json.churchPhoto[i].recent_update_date + '</li>' +
+									'</ul>' +
+								'</div>' +
+								'<div class="photo_mid">' +
+									'<ul>';
+										var tempA = 4;
+										var tempB = 21;
+										for(var j = 1; j <= json.churchPhoto[i].photo_count; j++  ){
+											tag +=	'<li><img src="<c:url value="/"/>resources/uploadChurch/' + imageName.substring(tempA, tempB) + '"></li>' ;
+											tempA += 17;
+											tempB += 17;
+										} 
+					tag +=			'</ul>' +
+								'</div>' +
+								'<div class="photo_bot">' +
+									json.churchPhoto[i].board_content +
+								'</div>' +
+							'</li>'
+							;
+	      		}
+	      		$('#churchPhoto').html(tag);
+	      	},
+	      	error: function(request, status, errorData){
+	      		alert("error code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + errorData);
+	      	}
+    	});
+	}
+
+</script>
 
 </html>

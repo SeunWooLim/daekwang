@@ -23,13 +23,13 @@
 
 			<div class="category_wrap">
 				<ul class="menuuuuuu">
-					<li><a href="#">교회학교 관리페이지 // churchSchoolAdmin.do</a></li>
+					<!-- <li><a href="#">교회학교 관리페이지 // churchSchoolAdmin.do</a></li>
 					<li><a href="#">교회소식 관리페이지 // churchNoticeAdmin.do</a></li>
 					<li><a href="#">교우소식 관리페이지 // personNewsAdmin.do</a></li>
 					<li><a href="#">교회사진 관리페이지 // churchPhotoAdmin.do</a></li>
 					<li><a href="#">꽃꽃이 갤러리 관리페이지 // flowerPhotoAdmin.do</a></li>
 					<li><a href="#">주보 광고신청 관리페이지 // weekPageApplyAdmin.do</a></li>
-					<li><a href="#">예배 자료신청 관리페이지 // worshipDataApplyAdmin.do</a></li>
+					<li><a href="#">예배 자료신청 관리페이지 // worshipDataApplyAdmin.do</a></li> -->
 					<!-- <li><p>메뉴1_1 (<span style="color:blue">리스트이미지</span>, <span style="color:red">카테고리</span>, 제목, 내용, 등록일)</p></li>
 					<li><p>메뉴1_2 (<span style="color:red">카테고리</span>, 제목, 내용, 등록일)</p></li>
 					<li><p>메뉴1_3 (<span style="color:blue">리스트이미지</span>, 제목, 내용, 등록일)</p></li>

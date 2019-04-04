@@ -33,24 +33,23 @@
 </body>
 
 
-<script>
+<!-- <script type="text/javascript">
 
 	var container1 = document.querySelector( '.masonry2' );
 	var msnry1 = $('.masonry2').masonry( {	  
 		  	itemSelector	: ".item",
 			columnWidth	: '.sizer',
 			gutter : 20,
-			percentPosition : true,
+			percentPosition : true
 			
 			
 		});
 	
-	 msnry1.imagesLoaded().progress(function(){
+	  msnry1.imagesLoaded().progress(function(){
 				msnry1.masonry('layout');
 	});
-	
-	 	
-</script>
+	 	 
+</script> -->
 
 <!-- 무한 스크롤 처리 -->
 <script type="text/javascript">

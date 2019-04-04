@@ -117,6 +117,7 @@
 					<div class="main_content_title">
 						<p>대광교회 클립보드</p>
 						<p>대광교회의 자료,영상 등을 <br> 만나실 수 있습니다.</p>
+						<i class=""></i>
 					</div>
 				</div>
 				<div class="right">
