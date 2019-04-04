@@ -328,7 +328,6 @@
 		    var searchSelect1 = '${searchSelect}';
 		    var searchContent = '${searchContent}';
 		    var deleteYN = 'Y';
-		    //location.href="weekPageApplyAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&searchSelect2="+searchSelect2+"searchSelect1="+searchSelect1+"searchContent="+searchContent+"delete="+deleteYN;      
 		    location.href="personNewsAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&deleteFlag="+deleteYN;      
 		}
 	}

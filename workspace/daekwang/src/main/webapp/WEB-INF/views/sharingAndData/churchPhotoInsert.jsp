@@ -239,13 +239,13 @@ function UploadImage(){
 	        	//document.location.href = "churchPhoto.do";
 	        }else{
 	            alert("이미지 등록에 실패하였습니다.");
-	            document.location.href = "churchPhoto.do";
+	            location.href = "churchPhoto.do";
 	        }
 	        
 	    },
 	    err : function(err) {
 	        alert(err.status);
-	        document.location.href = "churchPhoto.do";
+	        location.href = "churchPhoto.do";
 	    }
 	});
 
