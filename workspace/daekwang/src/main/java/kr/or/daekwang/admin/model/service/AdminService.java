@@ -49,4 +49,14 @@ public interface AdminService {
 
 	int updateChurchNoticeAdmin(BoardVo boardVo);
 
+	List<ApplyVo> photoAdminList(HashMap<String, Object> map);
+
+	int countPhotoAdmin(HashMap<String, Object> countMap);
+
+	int deletePhotoAdmin(int board_no);
+
+	int ckDeletePhotoAdmin(String idx);
+
+	int updatePhotoAdmin(BoardVo boardVo);
+
 }

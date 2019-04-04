@@ -95,5 +95,31 @@ public class AdminDao {
 	public int updateChurchNoticeAdmin(BoardVo boardVo) {
 		return mybatis.update("adminMapper.updateChurchNoticeAdmin", boardVo);
 	}
+
+	public List<ApplyVo> photoAdminList(HashMap<String, Object> map) {
+		return mybatis.selectList("adminMapper.photoAdminList", map);
+	}
+
+	public int countPhotoAdmin(HashMap<String, Object> countMap) {
+		return mybatis.selectOne("adminMapper.countPhotoAdmin", countMap);
+	}
+
+	public int deletePhotoAdmin(int board_no) {
+		return mybatis.update("adminMapper.deletePhotoAdmin", board_no);
+	}
+
+	public int ckDeletePhotoAdmin(int parseInt) {
+		return mybatis.update("adminMapper.deletePhotoAdmin", parseInt);
+	}
+	
+	public int deleteImagePhotoAdmin(int board_no) {
+		return mybatis.update("adminMapper.deleteImagePhotoAdmin", board_no);
+	}
+
+	public int updatePhotoAdmin(BoardVo boardVo) {
+		return mybatis.update("adminMapper.updatePhotoAdmin", boardVo);
+	}
+
+	
 	
 }

@@ -36,17 +36,13 @@ public class AdminServiceImpl implements AdminService{
 		String[] arrIdx = idx.toString().split(",");
 		int stackNum = 0;
 		int result = 0;
-		System.out.println("arrIdx : " + arrIdx);
 		
 		for (int i=0; i<arrIdx.length; i++) {
 			result = adminDao.ckDeleteWeekPageApplyAdmin(Integer.parseInt(arrIdx[i]));
-			System.out.println("arrIdx["+i+"] : " + arrIdx[i]);
 			if(result > 0) {
 				stackNum++;
 			}
 		}
-		System.out.println(stackNum);
-		System.out.println(result);
 		if(stackNum == arrIdx.length) {
 			return result;
 		}else {
@@ -74,17 +70,13 @@ public class AdminServiceImpl implements AdminService{
 		String[] arrIdx = idx.toString().split(",");
 		int stackNum = 0;
 		int result = 0;
-		System.out.println("arrIdx : " + arrIdx);
 		
 		for (int i=0; i<arrIdx.length; i++) {
 			result = adminDao.ckDeleteWorshipDataApplyAdmin(Integer.parseInt(arrIdx[i]));
-			System.out.println("arrIdx["+i+"] : " + arrIdx[i]);
 			if(result > 0) {
 				stackNum++;
 			}
 		}
-		System.out.println(stackNum);
-		System.out.println(result);
 		if(stackNum == arrIdx.length) {
 			return result;
 		}else {
@@ -112,17 +104,13 @@ public class AdminServiceImpl implements AdminService{
 		String[] arrIdx = idx.toString().split(",");
 		int stackNum = 0;
 		int result = 0;
-		System.out.println("arrIdx : " + arrIdx);
 		
 		for (int i=0; i<arrIdx.length; i++) {
 			result = adminDao.ckDeletePersonNewsAdmin(Integer.parseInt(arrIdx[i]));
-			System.out.println("arrIdx["+i+"] : " + arrIdx[i]);
 			if(result > 0) {
 				stackNum++;
 			}
 		}
-		System.out.println(stackNum);
-		System.out.println(result);
 		if(stackNum == arrIdx.length) {
 			return result;
 		}else {
@@ -160,17 +148,13 @@ public class AdminServiceImpl implements AdminService{
 		String[] arrIdx = idx.toString().split(",");
 		int stackNum = 0;
 		int result = 0;
-		System.out.println("arrIdx : " + arrIdx);
 		
 		for (int i=0; i<arrIdx.length; i++) {
 			result = adminDao.ckDeleteChurchNoticeAdmin(Integer.parseInt(arrIdx[i]));
-			System.out.println("arrIdx["+i+"] : " + arrIdx[i]);
 			if(result > 0) {
 				stackNum++;
 			}
 		}
-		System.out.println(stackNum);
-		System.out.println(result);
 		if(stackNum == arrIdx.length) {
 			return result;
 		}else {
@@ -186,6 +170,58 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public int updateChurchNoticeAdmin(BoardVo boardVo) {
 		return adminDao.updateChurchNoticeAdmin(boardVo);
+	}
+
+	@Override
+	public List<ApplyVo> photoAdminList(HashMap<String, Object> map) {
+		return adminDao.photoAdminList(map);
+	}
+
+	@Override
+	public int countPhotoAdmin(HashMap<String, Object> countMap) {
+		return adminDao.countPhotoAdmin(countMap);
+	}
+
+	@Override
+	public int deletePhotoAdmin(int board_no) {
+		int deleteResult = adminDao.deletePhotoAdmin(board_no);
+		int result = 0;
+		
+		if(deleteResult != 0 ) {
+			result = adminDao.deleteImagePhotoAdmin(board_no);
+		}
+		
+		return result;
+	}
+
+	@Override
+	public int ckDeletePhotoAdmin(String idx) {
+		
+		String[] arrIdx = idx.toString().split(",");
+		int stackNum = 0;
+		int result = 0;
+		
+		for (int i=0; i<arrIdx.length; i++) {
+			result = adminDao.ckDeletePhotoAdmin(Integer.parseInt(arrIdx[i]));
+			if(result > 0) {
+				int photoResult = adminDao.deleteImagePhotoAdmin(Integer.parseInt(arrIdx[i]));
+				
+				if(photoResult != 0) {
+					stackNum++;
+				}
+			}
+		}
+		
+		if(stackNum == arrIdx.length) {
+			return result;
+		}else {
+			return 0;
+		}
+	}
+
+	@Override
+	public int updatePhotoAdmin(BoardVo boardVo) {
+		return adminDao.updatePhotoAdmin(boardVo);
 	}
 	
 	
