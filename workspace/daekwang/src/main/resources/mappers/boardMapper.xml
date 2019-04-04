@@ -242,6 +242,7 @@
 		AND A.DELETE_YN = 'N'
 		ORDER BY A.BOARD_NO DESC
 		LIMIT 0, #{endRow}
+		
 	</select>
 	
 	<!-- 교회사진 게시물에 대한 사진 갯수 조회 -->
