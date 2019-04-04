@@ -3,6 +3,17 @@
 
 <mapper namespace="adminMapper">
 	
+	<resultMap id="photoResultMap" type="Photo">
+		<result property="BOARD_FG" column="BOARD_FG"/>
+  		<result property="BOARD_NO" column="BOARD_NO"/>
+  		<result property="DELETE_YN" column="DELETE_YN"/>
+  		<result property="MEMBER_NO" column="MEMBER_NO"/>
+  		<result property="PHOTO_DATE" column="PHOTO_DATE"/>
+  		<result property="PHOTO_NO" column="PHOTO_NO"/>
+  		<result property="PHOTO_ORNAME" column="PHOTO_ORNAME"/>
+  		<result property="PHOTO_RENAME" column="PHOTO_RENAME"/>
+	</resultMap>
+	
 	<resultMap id="memberResultMap" type="Member">
 		<result property="MEMBER_NO" column="MEMBER_NO"/>
   		<result property="MEMBER_FG" column="MEMBER_FG"/>
@@ -58,6 +69,7 @@
   		<result property="REPLY_DATE" column="REPLY_DATE"/>
   		<result property="REPLY_DELETE_YN" column="REPLY_DELETE_YN"/>
   		<collection property="memberVo" resultMap="memberResultMap"/>
+  		<collection property="photoVo" resultMap="photoResultMap"/>
 	</resultMap>
 	
 	<!-- 주보광고신청 총 리스트 조회 -->
@@ -283,4 +295,81 @@
 			, RECENT_UPDATE_DATE = NOW()
 		WHERE BOARD_NO = ${BOARD_NO}
 	</update>
+	
+	<!-- 꽃꽂이 갤러리, 새가족 소개 관리 총 리스트 조회 -->
+	<select id="photoAdminList" resultMap="boardResultMap" parameterType="java.util.HashMap">
+		SELECT A.*
+			 , B.MEMBER_NAME
+			 , C.PHOTO_RENAME
+		FROM board A
+		   , member B
+		   , photo C
+		WHERE A.MEMBER_NO = B.MEMBER_NO
+		AND A.BOARD_NO = C.BOARD_NO
+		AND A.BOARD_FG = #{board_fg}
+		AND A.DELETE_YN = 'N'
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect eq '1'.toString()">
+			AND A.BOARD_TITLE LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '2'.toString()">
+			AND A.BOARD_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '3'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY A.BOARD_NO DESC
+		LIMIT #{startRow}, #{endRow}
+	</select>
+	
+	<!-- 꽃꽂이 갤러리, 새가족 소개 관리 총 row 갯수 조회 -->
+	<select id="countPhotoAdmin" resultType="Integer">
+		SELECT COUNT(*)
+		FROM board A
+		   , member B
+		   , photo C
+		WHERE A.MEMBER_NO = B.MEMBER_NO
+		AND A.BOARD_NO = C.BOARD_NO
+		AND A.BOARD_FG = #{board_fg}
+		AND A.DELETE_YN = 'N'
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect eq '1'.toString()">
+			AND A.BOARD_TITLE LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '2'.toString()">
+			AND A.BOARD_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '3'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY A.BOARD_NO DESC
+	</select>
+	
+	<!-- 꽃꽂이 갤러리, 새가족 소개 관리 게시물 삭제 -->
+	<update id="deletePhotoAdmin" parameterType="Integer">
+		UPDATE board
+		SET DELETE_YN = 'Y'
+		WHERE BOARD_NO = #{board_no}
+	</update>
+	
+	<!-- 꽃꽂이 갤러리, 새가족 소개 사진테이블 삭제처리 -->
+	<update id="deleteImagePhotoAdmin">
+		UPDATE photo
+		SET DELETE_YN = 'Y'
+		WHERE BOARD_NO = #{board_no}
+	</update>
+	
+	<!-- 꽃꽂이 갤러리, 새가족 소개 관리 게시물 수정 -->
+	<update id="updatePhotoAdmin" parameterType="Board">
+		UPDATE board
+		SET BOARD_TITLE = #{BOARD_TITLE}
+			, BOARD_CONTENT = #{BOARD_CONTENT}
+			, RECENT_UPDATE_DATE = NOW()
+		WHERE BOARD_NO = ${BOARD_NO}
+	</update>
+	
+	
+	
 </mapper>
