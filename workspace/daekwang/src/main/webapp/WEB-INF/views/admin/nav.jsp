@@ -17,7 +17,7 @@
 	<ul class="menulist">
 		<li><a href="#"><i class="xi-layout-column"></i>회원관리</a>
 			<ul class="nav_detail">
-				<li><a href="#">회원 관리 </a></li>
+				<li><a href="memberAdmin.do">회원 관리 </a></li>
 			</ul>
 		</li>
 		<li><a href="#"><i class="xi-layout-column"></i>게시판 관리</a>
@@ -34,8 +34,8 @@
 		<li><a href="#"><i class="xi-layout-column"></i>정보관리</a>
 			<ul class="nav_detail">
 				<li><a href="churchSchoolAdmin.do">교회학교 관리 </a></li>
-				<li><a href="#">샬롬 찬양대</a></li>
-				<li><a href="#">임마누엘 찬양대</a></li>
+				<li><a href="shalomChoirAdmin.do">샬롬 찬양대</a></li>
+				<li><a href="immanuelChoirAdmin.do">임마누엘 찬양대</a></li>
 				
 			</ul>
 		</li>
