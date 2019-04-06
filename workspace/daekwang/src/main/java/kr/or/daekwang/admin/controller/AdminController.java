@@ -30,6 +30,11 @@ public class AdminController {
 		return "admin/adminhome";
 	}
 	
+	@RequestMapping(value = "memberAdmin.do")
+	public String memberAdmin() {
+		return "admin/memberAdmin";
+	}
+	
 	@RequestMapping(value = "churchSchoolAdmin.do")
 	public String churchSchoolAdmin() {
 		return "admin/churchSchoolAdmin";
@@ -910,6 +915,16 @@ public class AdminController {
 		response.getOutputStream().write(fileByte);
 		response.getOutputStream().flush();
 		response.getOutputStream().close();
+	}
+	
+	@RequestMapping(value = "shalomChoirAdmin.do")
+	public String shalomChoirAdmin() {
+		return "admin/shalomChoirAdmin";
+	}
+	
+	@RequestMapping(value = "immanuelChoirAdmin.do")
+	public String immanuelChoirAdmin() {
+		return "admin/immanuelChoirAdmin";
 	}
 	
 }
