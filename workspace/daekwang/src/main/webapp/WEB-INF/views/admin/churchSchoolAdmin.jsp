@@ -18,83 +18,169 @@
 	<!--container s-->
 		<div id="container">
 			<div class="main_title">
-				<p>메뉴1_1</p>
+				<p>교회학교 관리</p>
 			</div>
 
 			<div class="category_wrap">
 				<ul class="ul_form1">
-					<li>
-						<select name="" title="" class="selectform2">
-							<option value="" selected="selected">카테고리</option>
-							<option value="">카테고리1</option>
-						</select>
-					</li>
-					<li>
-						<select name="" title="" class="selectform1">
-							<option value="" selected="selected">제목</option>
-							<option value="">내용</option>
-						</select>
-					</li>
-					<li>
-						<input type="text" class="inputform150" title="" value="" name=""/>
-					</li>
-					<li>
-						<a href="#" class="btnform1">검색</a>
-					</li>
-					<li>
-						<a href="#" class="btnform2">전체보기</a>
-					</li>
-				</ul>
-
-				<ul class="ul_form2">
-					<li><a href="#" class="btnform3">등록</a></li>
-					<li><a href="#" class="btnform4">삭제</a></li>
+					<li><a href="#" class="btnform3">영유아부</a></li>
+					<li><a href="#" class="btnform3">유치부</a></li>
+					<li><a href="#" class="btnform3">유년부</a></li>
+					<li><a href="#" class="btnform3">소년부</a></li>
+					<li><a href="#" class="btnform3">중등부</a></li>
+					<li><a href="#" class="btnform3">고등부</a></li>
+					<li><a href="#" class="btnform3">제1청년회</a></li>
+					<li><a href="#" class="btnform3">제2청년회</a></li>
 				</ul>
 			</div>
 
 
-			<div class="table_wrap">
+			<div class="management_wrap" style="text-align:center;">
+				<p class="tal f20 mb10 fb">영유아부</p>
 				<table>
 					<colgroup>
-						<col width="5%"/>
-						<col width="5%"/>
-						<col width="10%"/>
-						<col width="10%"/>
-						<col width="25%"/>
-						<col width="25%"/>
-						<col width="10%"/>
-						<col width="10%"/>
+						<col width="15%">
+						<col width="35%">
+						<col width="15%">
+						<col width="35%">
 					</colgroup>
-					<thead>
-						<tr>
-							<th><input type="checkbox" name="" id="check1"/><label for="check1"></label> </th>
-							<th>NO</th>
-							<th>리스트이미지</th>
-							<th>카테고리</th>
-							<th>제목</th>
-							<th>내용</th>
-							<th>등록일</th>
-							<th>편집</th>
-						</tr>
-					</thead>
 					<tbody>
 						<tr>
-							<td><input type="checkbox" name="" id="check2"/><label for="check2"></label> </td>
-							<td>1</td>
-							<td><img src="/common/img/eximg1.jpg" alt=""/></td>
-							<td>카테고리1</td>
-							<td>제목입니다.</td>
-							<td>내용입니다.</td>
-							<td>2018-04-23</td>
-							<td>
-								<a href="#" class="btnform5">수정</a>
-								<a href="#" class="btnform6">삭제</a>
+							<td>이미지</td>
+							<td colspan="3" class="tal">
+								<img src="<c:url value="/"/>resources/uploadPhoto/1553920806011.jpg">
+								<input type="file" style="padding:0;">
 							</td>
+						</tr>
+						<tr>
+							<td>교육표어</td>
+							<td><input type="text" name="" id="" value=""></td>
+							<td>주제말씀</td>
+							<td><input type="text" name="" id="" value=""></td>
+						</tr>
+						<tr>
+							<td>예배대상</td>
+							<td><input type="text" name="" id="" value=""></td>
+							<td>예배시간</td>
+							<td><input type="text" name="" id="" value=""></td>
+						</tr>
+						<tr>
+							<td>예배장소</td>
+							<td colspan="3"><input type="text" name="" id="" value=""></td>
+						</tr>
+					</tbody>
+				</table>	
+				
+				<table class="mt20">
+					<colgroup>
+						<col width="15%">
+						<col width="35%">
+						<col width="15%">
+						<col width="35%">
+					</colgroup>
+					<tbody>
+						<tr>
+							<td>지도</td>
+							<td><input type="text" name="" id="" value=""></td>
+							<td>부장</td>
+							<td><input type="text" name="" id="" value=""></td>
+						</tr>
+						<tr>
+							<td>부감</td>
+							<td><input type="text" name="" id="" value=""></td>
+							<td>총무</td>
+							<td><input type="text" name="" id="" value=""></td>
+						</tr>
+						<tr>
+							<td>서기</td>
+							<td><input type="text" name="" id="" value=""></td>
+							<td>회계</td>
+							<td><input type="text" name="" id="" value=""></td>
+						</tr>
+						<tr>
+							<td>선생님</td>
+							<td colspan="3"><input type="text" name="" id="" value=""></td>
 						</tr>
 					</tbody>
 				</table>
 				
-				<jsp:include page="board_page.jsp"/>
+				<button class="btnform1 mt20">수정</button>			
+			</div>
+			
+			<div class="management_wrap" style="text-align:center;">
+				<p class="tal f20 mb10 fb">제1청년회</p>
+				<table>
+					<colgroup>
+						<col width="15%">
+						<col width="35%">
+						<col width="15%">
+						<col width="35%">
+					</colgroup>
+					<tbody>
+						<tr>
+							<td>이미지</td>
+							<td colspan="3" class="tal">
+								<img src="<c:url value="/"/>resources/uploadPhoto/1553920806011.jpg">
+								<input type="file" style="padding:0;">
+							</td>
+						</tr>
+						<tr>
+							<td>교육표어</td>
+							<td><input type="text" name="" id="" value=""></td>
+							<td>주제말씀</td>
+							<td><input type="text" name="" id="" value=""></td>
+						</tr>
+						<tr>
+							<td>예배대상</td>
+							<td><input type="text" name="" id="" value=""></td>
+							<td>예배시간</td>
+							<td><input type="text" name="" id="" value=""></td>
+						</tr>
+						<tr>
+							<td>예배장소</td>
+							<td colspan="3"><input type="text" name="" id="" value=""></td>
+						</tr>
+					</tbody>
+				</table>	
+				
+				<table class="mt20">
+					<colgroup>
+						<col width="15%">
+						<col width="35%">
+						<col width="15%">
+						<col width="35%">
+					</colgroup>
+					<tbody>
+						<tr>
+							<td>지도</td>
+							<td colspan="3"><input type="text" name="" id="" value=""></td>
+							
+						</tr>
+						<tr>
+							<td>부장</td>
+							<td><input type="text" name="" id="" value=""></td>
+							<td>회장</td>
+							<td><input type="text" name="" id="" value=""></td>
+							
+						</tr>
+						<tr>
+							<td>부회장</td>
+							<td><input type="text" name="" id="" value=""></td>
+							<td>총무</td>
+							<td><input type="text" name="" id="" value=""></td>
+							
+						</tr>
+						<tr>
+							<td>서기</td>
+							<td><input type="text" name="" id="" value=""></td>
+							<td>회계</td>
+							<td><input type="text" name="" id="" value=""></td>
+							
+						</tr>
+					</tbody>
+				</table>
+				
+				<button class="btnform1 mt20">수정</button>			
 			</div>
 		</div>
 	<!--container s-->
@@ -102,9 +188,3 @@
 
  </body>
 </html>
-<style>
-	.menuuuuuu{}
-	.menuuuuuu li{margin-bottom:20px; }
-	.menuuuuuu li p{font-size:20px;}
-	.menuuuuuu li p span{font-size:20px;}
-</style>
