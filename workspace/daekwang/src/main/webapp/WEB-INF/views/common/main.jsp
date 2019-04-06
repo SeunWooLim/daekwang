@@ -17,13 +17,37 @@
 	<div id="wrap">
 		<div class="main_slider">
 			<ul>
-				<li><img alt="" src="<c:url value="/resources/img/main1.jpg"/>">
+				<li>
+					<div class="main_slider_div">
+						<p class="title">제목</p>
+						<p class="text">내용</p>
+					</div>
+					<div class="main_slider_bg"></div>
+					<img alt="" src="<c:url value="/resources/img/main1.jpg"/>">
 				</li>
-				<li><img alt="" src="<c:url value="/resources/img/main2.jpg"/>">
+				<li>
+					<div class="main_slider_div">
+						<p class="title">제목</p>
+						<p class="text">내용</p>
+					</div>
+					<div class="main_slider_bg"></div>
+					<img alt="" src="<c:url value="/resources/img/main2.jpg"/>">
 				</li>
-				<li><img alt="" src="<c:url value="/resources/img/main3.jpg"/>">
+				<li>
+					<div class="main_slider_div">
+						<p class="title">제목</p>
+						<p class="text">내용</p>
+					</div>
+					<div class="main_slider_bg"></div>
+					<img alt="" src="<c:url value="/resources/img/main3.jpg"/>">
 				</li>
-				<li><img alt="" src="<c:url value="/resources/img/main4.jpg"/>">
+				<li>
+					<div class="main_slider_div">
+						<p class="title">제목</p>
+						<p class="text">내용</p>
+					</div>
+					<div class="main_slider_bg"></div>
+					<img alt="" src="<c:url value="/resources/img/main4.jpg"/>">
 				</li>
 			</ul>
 		</div>

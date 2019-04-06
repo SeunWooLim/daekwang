@@ -33,6 +33,7 @@
 		</li>
 		<li><a href="#"><i class="xi-layout-column"></i>정보관리</a>
 			<ul class="nav_detail">
+				<li><a href="mainSlideAdmin.do">메인슬라이드 관리 </a></li>
 				<li><a href="churchSchoolAdmin.do">교회학교 관리 </a></li>
 				<li><a href="shalomChoirAdmin.do">샬롬 찬양대</a></li>
 				<li><a href="immanuelChoirAdmin.do">임마누엘 찬양대</a></li>

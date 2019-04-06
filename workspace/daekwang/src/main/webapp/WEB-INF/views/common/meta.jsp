@@ -20,6 +20,7 @@
 <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=x3qoGzKGs6zyZkgA8Ry0&submodules=geocoder"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script src="/daekwang/resources/js/imgreload.js"></script>
+<script src="https://unpkg.com/infinite-scroll@3/dist/infinite-scroll.pkgd.min.js"></script>
 <title>Insert title here</title>
 </head>
 <body>

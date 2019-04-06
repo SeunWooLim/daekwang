@@ -927,4 +927,9 @@ public class AdminController {
 		return "admin/immanuelChoirAdmin";
 	}
 	
+	@RequestMapping(value = "mainSlideAdmin.do")
+	public String mainSlideAdmin() {
+		return "admin/mainSlideAdmin";
+	}
+	
 }

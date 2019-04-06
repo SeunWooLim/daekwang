@@ -420,7 +420,12 @@
 	.main_slider .bx-wrapper{background:#fff; border:none; box-shadow:none; text-align:center; margin:0;}
 	.main_slider .bx-wrapper .bx-viewport{}
 	.main_slider .bx-wrapper .bx-viewport ul{}
-	.main_slider .bx-wrapper .bx-viewport ul li{}
+	.main_slider .bx-wrapper .bx-viewport ul li{position: relative;}
+	.main_slider .bx-wrapper .bx-viewport ul li .main_slider_div{position: absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); z-index:99}
+	.main_slider .bx-wrapper .bx-viewport ul li .main_slider_div p.title{font-size:24px; color:#fff; text-align:center;}
+	.main_slider .bx-wrapper .bx-viewport ul li .main_slider_div p.text{font-size:20px; color:#fff; text-align:center;}
+	.main_slider .bx-wrapper .bx-viewport ul li .main_slider_bg{position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.3) !important;}
+	
 	.main_slider .bx-wrapper .bx-viewport ul li img{width:100%; height:100%;}
 	.main_slider .bx-wrapper .bx-controls{}
 	.main_slider .bx-wrapper .bx-controls .bx-pager{bottom:20px; right:20px; width:inherit;}
