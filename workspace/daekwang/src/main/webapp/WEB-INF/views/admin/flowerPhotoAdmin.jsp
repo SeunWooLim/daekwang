@@ -127,7 +127,7 @@
 							<form action="flowerPhotoAdmin.do" method="post">
 								<div class="form_wrap" id="form_wrap<%= rowNum %>">
 									<div class="form">
-										<p>교우소식 수정</p>
+										<p>꽃꽃이갤러리 수정</p>
 										<ul>
 											<li>
 												<label for="wPA">작성자</label>
@@ -137,6 +137,10 @@
 											<li>
 												<label for="wPA_Dep">등록일</label>
 												<input type="text" id="wPA_Dep" name="wPA_Dep" value="${flowerPhoto.RECENT_UPDATE_DATE }" readonly/>
+											</li>
+											<li>
+												<label>이미지</label>
+												<img alt="" src="<c:url value="/"/>resources/uploadPhoto/${flowerPhoto.photoVo.PHOTO_RENAME}">
 											</li>
 											<li>
 												<label>제목</label>

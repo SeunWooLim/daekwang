@@ -139,6 +139,10 @@
 												<input type="text" id="wPA_Dep" name="wPA_Dep" value="${newFamily.RECENT_UPDATE_DATE }" readonly/>
 											</li>
 											<li>
+												<label>이미지</label>
+												<img alt="" src="<c:url value="/"/>resources/uploadPhoto/${newFamily.photoVo.PHOTO_RENAME}">
+											</li>
+											<li>
 												<label>제목</label>
 												<input type="text" id="wPA_Dep" name="BOARD_TITLE" value="${newFamily.BOARD_TITLE }"/>
 											</li>
