@@ -64,6 +64,7 @@
 								<ul>
 									<li><a href="pastorGreeting.do">담임목사 인사</a></li>
 									<li><a href="churchIntroducing.do">대광교회 소개</a></li>
+									<li><a href="churchVision.do">교회비전</a></li>
 									<li><a href="churchHistory.do">교회연혁</a></li>
 									<li><a href="newFamilyGuide.do">새가족을 위한 안내</a></li>
 									<li><a href="volunteers.do">섬기는 사람들</a></li>

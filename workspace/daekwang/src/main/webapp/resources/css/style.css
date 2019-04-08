@@ -539,3 +539,12 @@
 	.masonry2 .item a{box-sizing:border-box;}
 	.masonry2 .item a img{width:100%; height:100%; box-sizing:border-box; vertical-align:top;}
 	
+
+	.newfamilybg{ background:url(../img/newfamily.jpg) no-repeat center bottom; background-size: cover; height: 615px; position: relative;}
+	.newfamilytxt{background: url(../img/titlebg.png) no-repeat;   width: 122px;    height: 122px;    padding-top: 28px;    top: -24px; left:50%; transform:translateX(-50%); position: absolute; text-align:center; color:#fff; font-size:20px; font-weight: bold;}
+	
+	
+	
+	
+	
+	
