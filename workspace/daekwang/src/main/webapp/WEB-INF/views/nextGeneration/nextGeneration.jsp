@@ -66,7 +66,7 @@
 					</div>
 					<!-- 이미지 추가부분 e -->	
 				</div>
-				<div class="next_detail">
+				<%-- <div class="next_detail">
 					<div class="next_left">
 						<p>비전</p>
 					</div>
@@ -90,7 +90,7 @@
 							<p class="title">친교<span class="text">${schoolList.DEPT_MISSION }</span></p>
 						</div>				
 					</div>
-				</div>																	
+				</div>	 --%>																
 				<div class="next_detail">
 					<div class="next_left">
 						<p>섬기는분들</p>
@@ -172,7 +172,7 @@
 				
 				
 				
-				<div class="next_detail">
+				<%-- <div class="next_detail">
 					<div class="next_left">
 						<p>비전</p>
 					</div>
@@ -196,7 +196,7 @@
 							<p class="title">친교<span class="text">${youthList.DEPT_MISSION }</span></p>
 						</div>				
 					</div>
-				</div>
+				</div> --%>
 				<div class="next_detail">
 					<div class="next_left">
 						<p>섬기는분들</p>
