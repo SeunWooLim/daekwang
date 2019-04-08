@@ -33,47 +33,12 @@
 </body>
 <script>
 
-	var container1 = document.querySelector( '.masonry2' );
-	var msnry1 = $('.masonry2').masonry( {	  
-		  	itemSelector	: ".item",
-			columnWidth	: '.sizer',
-			gutter : 20,
-			percentPosition : true,
-			
-			
-		});
 	
-	 msnry1.imagesLoaded().progress(function(){
-				msnry1.masonry('layout');
-	});
 	
 	 	
 </script>
 
-<script>
-	$(document).ready(function(){
-		$(".photo_mid > ul").bxSlider({
-			mode: "horizontal",    
-			slideMargin: 0,
-			minSlides: 1,
-			maxSlides: 5,
-			moveSlides: 1,
-			startSlide: 0,         
-			infiniteLoop: false,    
-			//captions: true,       
-			pager: true,         
-			adaptiveHeight: true,   
-			auto: false,            
-			pause: 3000,           
-			speed: 500,           
-			easing: "",	
-			touchEnabled:true,   	
-			controls: true,
-			//video: true,
-			useCSS: false,
-		});
-	})
-</script>
+
 
 <!-- 무한 스크롤 처리 -->
 <script type="text/javascript">
@@ -144,6 +109,28 @@
 							;
 	      		}
 	      		$('#churchPhoto').html(tag);
+	      		$(document).ready(function(){
+	      			$(".photo_mid > ul").bxSlider({
+	      				mode: "fade",    
+	      				slideMargin: 0,
+	      				moveSlides: 1,
+	      				startSlide: 0,         
+	      				infiniteLoop: true,    
+	      				//captions: true,       
+	      				pager: true,         
+	      				adaptiveHeight: true,   
+	      				auto: false,            
+	      				pause: 3000,           
+	      				speed: 500,           
+	      				easing: "",	
+	      				touchEnabled:true,   	
+	      				controls: true,
+	      				//video: true,
+	      				useCSS: false,
+	      			});
+	      			
+	      			
+	      		})
 	      	},
 	      	error: function(request, status, errorData){
 	      		alert("error code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + errorData);
@@ -152,5 +139,6 @@
 	}
 
 </script>
+
 
 </html>
