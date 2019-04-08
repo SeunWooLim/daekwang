@@ -25,6 +25,14 @@ public class CommonController {
 	}
 	
 	/**
+	 * @return churchVision.jsp
+	 * 교회비전  페이지로 이동
+	 */
+	@RequestMapping(value = "/churchVision.do")
+	public String churchVision() {
+		return "churchGuide/churchVision";
+	}
+	/**
 	 * @return churchIntrodocing.jsp
 	 * 대광교회 소개 페이지로 이동
 	 */
