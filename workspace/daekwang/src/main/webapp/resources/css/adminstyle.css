@@ -154,7 +154,7 @@ input[type='radio']:checked + label::before{background: url('/common/img/radio_o
 
 
 .formbg{background:rgba(0,0,0,0.5); width:100%; height:100%; position:absolute; top:0; left:0; right:0; bottom:0; z-index:99; display:none}
-.form_wrap{width:800px; height:790px; position:absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); z-index:999; background:#fff; padding:20px; box-sizing:border-box; border:1px solid #ccc; display: none;}
+.form_wrap{width:800px; position:absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); z-index:999; background:#fff; padding:20px; box-sizing:border-box; border:1px solid #ccc; display: none;}
 .form_wrap p{font-size:20px; font-weight:bold; margin-bottom:10px;}
 .form_wrap table{width:100%;}
 .form_wrap table tbody{}
@@ -168,7 +168,7 @@ input[type='radio']:checked + label::before{background: url('/common/img/radio_o
 .form_wrap ul li{border:1px solid #ccc; padding:10px 10px; color:#333; border-bottom:0;}
 .form_wrap ul li:last-child{border-bottom:1px solid #ccc; }
 .form_wrap ul li label{width:60px; display:inline-block; vertical-align: top}
-.form_wrap ul li img{width:240px; height:188px;}
+.form_wrap ul li img{width:100% !important; height:400px !important;}
 .form_wrap ul li input{height:30px; width:91%; box-sizing:border-box; padding:0 10px; color:#333; border:1px solid #e1e1e1;}
 .form_wrap ul li select{height:30px; width:91%; box-sizing:border-box; padding:0 10px; color:#333; border:1px solid #e1e1e1;}
 .form_wrap ul li textarea{height:200px; width:91%; box-sizing:border-box; padding:5px 10px; color:#333; border:1px solid #e1e1e1;}
