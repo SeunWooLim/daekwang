@@ -61,9 +61,9 @@ $(document).ready(function(){
 	$('.sidenav > .menulist > li > a').click(function(e){
 		e.preventDefault();
 		$(this).toggleClass('on');
-		$(this).parent().siblings().find('> a').removeClass('on');
+		
 		$(this).parent().find('ul').slideToggle();
-		$(this).parent().siblings().find('ul').slideUp();		
+		
 	});
 });
 

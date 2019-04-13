@@ -22,6 +22,12 @@
 	</div>
 	<div class="moviewrap">
 		<ul id="results" class="movieul"></ul>
+		<div class="youtube_Btn">
+			<a href="https://www.youtube.com/playlist?list=PLwcdqPJXVv0a6Oh50GrnRaQgMMRQ0N7QD" target="_blank">
+				<i class="xi-youtube-play"></i>
+				<span>대광교회 YouTube</span>
+			</a>
+		</div>
 	</div>
 	
 	

@@ -41,6 +41,13 @@
 		
 		.scroll_top{ display:none; position:fixed; z-index:200; right:30px; bottom:80px; width:60px; height:60px; cursor:pointer;}
 			.scroll_top .on{ display:none; position:absolute;}	
+			
+		.youtube_Btn{position:fixed; top:40%; right:19%; text-align:center;}
+		.youtube_Btn a i{font-size:40px; color:#000;}
+		.youtube_Btn a span{color:#000; display: block}
+		
+		.youtube_Btn a:hover i{color:red;}
+		.youtube_Btn a:hover span{color:red; }
 		
 /*로그인css start*/
 	.h_login{ position:fixed; z-index:50000; top:0; right:0; bottom:0; left:0; background:url(../img/bg70.png); transition:none; display:none;}
