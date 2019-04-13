@@ -145,9 +145,14 @@
 											</li>
 											<li>
 												<label>이미지</label>
-												<c:forEach var="photo" begin="1" end="${churchPhoto.PHOTO_COUNT }" step="1">
-													<img alt="" src="<c:url value="/"/>resources/uploadChurch/${churchPhoto.PHOTO_IMAGE1}">
-												</c:forEach>
+												<ul class="photoooooooooooo">
+													<c:forEach var="photo" begin="1" end="${churchPhoto.PHOTO_COUNT }" step="1">
+													<li>
+														<img alt="" src="<c:url value="/"/>resources/uploadChurch/${churchPhoto.PHOTO_IMAGE1}">
+													</li>
+													</c:forEach>
+												</ul>	
+												
 											</li>
 											<li>
 												<label>제목</label>
@@ -237,6 +242,7 @@
 </body>
 <script type="text/javascript">
 	
+	
 	/* 수정폼 버튼 onclick */
 	function updateForm(modalValue){
 		$(document).ready(function(){
@@ -317,6 +323,8 @@
 			$("#form_wrap_ins").hide();
 	    }
 	});
+	
+	
 
 </script>
 </html>

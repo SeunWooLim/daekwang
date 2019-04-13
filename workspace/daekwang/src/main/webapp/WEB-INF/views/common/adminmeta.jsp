@@ -13,6 +13,7 @@
 <script src="/daekwang/resources/ckeditor/ckeditor.js"></script>
 <script src="/daekwang/resources/js/jquery-1.11.1.min.js"></script>
 <script src="/daekwang/resources/js/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <script src="/daekwang/resources/js/script.js"></script>
 
 
