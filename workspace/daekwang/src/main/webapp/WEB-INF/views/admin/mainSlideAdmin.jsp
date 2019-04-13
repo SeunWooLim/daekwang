@@ -32,36 +32,23 @@
 			<div class="table_wrap">
 				<table>
 					<colgroup>
-						<col width="5%"/>
-						<col width="5%"/>
-						<col width="10%"/>
 						<col width="*"/>
-						<col width="25%"/>
-						<col width="10%"/>
-						<col width="10%"/>
 					</colgroup>
-					<thead>
-						<tr>
-							<th><input type="checkbox" name="checkAll" id="check1" onclick="checkAll();"/><label for="check1"></label> </th>
-							<th>NO</th>
-							<th>리스트이미지</th>
-							<th>타이틀</th>
-							<th>내용</th>
-							<th>등록일</th>
-							<th>편집</th>
-						</tr>
-					</thead>
 					<tbody>
-						<tr>
-							<td><input type="checkbox" name="checkBox" id="check2"/><label for="check2"></label> </td>
-							<td>1</td>
-							<td><img src="/common/img/eximg1.jpg" alt=""/></td>
-							<td>제목입니다.</td>
-							<td>내용입니다.</td>
-							<td>2018-04-23</td>
-							<td>
-								<a href="#" class="btnform5" onclick="updateForm()">수정</a>
-								<a href="#" class="btnform6">삭제</a>
+						<tr>							
+							<td style="position: relative; padding:0;">
+								<img style="width:100%; height:600px"src="<c:url value="/"/>resources/uploadPhoto/1553920806011.jpg">
+								<div style="position:absolute; top:0; left:0; width:100%; height:600px; display:block; background:rgba(0,0,0,0.5)"></div>
+								<div style="position: absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); text-align:center; color:#fff;">
+									<p>제목입니다</p>
+									<p>내용입니다</p>
+								</div>
+								<ul class="mt20 mb20">
+									<li>
+										<a href="#" class="btnform5" onclick="updateForm()">수정</a>
+										<a href="#" class="btnform6">삭제</a>
+									</li>
+								</ul>
 							</td>
 						</tr>
 						<!-- 수정 폼 모달 -->
@@ -100,6 +87,8 @@
 				
 				<jsp:include page="board_page.jsp"/>
 			</div>
+			
+			
 		</div>
 	<!--container s-->
 	</div>

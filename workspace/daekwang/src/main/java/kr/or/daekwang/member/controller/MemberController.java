@@ -217,6 +217,18 @@ public class MemberController {
 	}
 	
 	/**
+	 * 마이페이지 체크 로 이동
+	 * @return mypage/myPageChk
+	 */
+	@RequestMapping(value = "/myPageChk.do")
+	public String myPageChk() {
+		
+		
+		
+		return "member/myPageChk";
+	}
+	
+	/**
 	 * 마이페이지로 이동
 	 * @return mypage/myPage
 	 */

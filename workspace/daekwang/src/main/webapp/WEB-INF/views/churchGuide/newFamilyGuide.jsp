@@ -20,6 +20,9 @@
 		<div class="newfamilytxt">
 			새가족<br>등록안내
 		</div>
+		<img alt="" src="<c:url value="/resources/img/new1.png"/>" style="width:100%">
+		
+		<img alt="" src="<c:url value="/resources/img/new3.jpg"/>">
 	</div>
 </div>
 

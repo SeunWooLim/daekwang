@@ -10,7 +10,7 @@
 </head>
 <body>
 <nav id="sidenav" class="sidenav">
-	<a class="logo" href="forwardMain.do">LOGO</a>
+	<a class="logo" href="forwardMain.do"><img alt="안양대광교회" src="/daekwang/resources/img/logo5.png" style="width:100%"></a>
 	<ul class="">
 		<li><a href="admin.do" style="background:none;"><i class="xi-home"></i>Home</a></li>
 	</ul>

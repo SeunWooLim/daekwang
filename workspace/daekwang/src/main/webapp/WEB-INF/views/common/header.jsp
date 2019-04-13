@@ -16,7 +16,7 @@
 					<c:if test="${sessionScope.loginUser eq null}">
 						<li><a href="#" class="login_btn">로그인</a></li>
 						<li>|</li>
-						<li><a href="join.do" class="login_btn">회원가입</a></li>
+						<li><a href="join.do">회원가입</a></li>
 						<li>|</li>
 						<li><a>사이트맵</a></li>
 					</c:if>
@@ -163,10 +163,10 @@
         </div>
         <div class="body">
 	        <form method="post" action="findId.do">
-	            <div class="input"><i class="xi-mail-o"></i><input type="text" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL1" value="">@<input type="text" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL2" value=""></div>
+	            <div class="input"><i class="xi-mail-o"></i><input type="text" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL1" value="" class="loginidsearch1"> @ <input type="text"  class="loginidsearch1" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL2" value=""></div>
 	            <div class="input"><i class="xi-key"></i><input type="text" placeholder="이름" id="loginPasswd" name="MEMBER_NAME"></div>
 	            <div class="cb"></div>
-	            <button type="submit" class="button">아이디 찾기</button>
+	            <button type="submit" class="button" onclick="javascript: findEmailFunc()">아이디 찾기</button>
 	            <div class="line"></div>		
 	        </form>
        
@@ -174,6 +174,22 @@
         </div>
     </div>
 	<div class="cb"></div>
+</div>
+
+<div class="h_login find_id_ok_show" id="find_id_ok_show">
+	<div class="box">
+        <div class="head">
+        	<p><i class="xi-mail-o"></i>아이디찾기</p>
+    		<i class="xi-close"></i>
+        </div>
+    	<div class="body">
+        	<p class="tac lh20 f14 c666">가입 시 입력하신 아이디입니다.</p>
+			<div id="dixBox">
+				<p class="mb20 tac lh20 f16 fb c333"></p>
+			</div>
+            <div class="mt20 button" onclick="javascript: $('#dixBox').html('')">확인</div>
+        </div>
+    </div>
 </div>
 <!-- 아이디찾기 e -->
 
@@ -187,12 +203,11 @@
         <div class="body">
 	        <form method="post" action="findPwd.do">
 	            <div class="input"><i class="xi-key"></i><input type="text" placeholder="아이디" id="loginPasswd" name="MEMBER_ID"></div>
-	            <div class="input"><i class="xi-mail-o"></i><input type="text" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL1" value="">@<input type="text" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL2" value=""></div>
+	            <div class="input"><i class="xi-mail-o"></i><input type="text" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL1" value="" class="loginidsearch1"> @ <input type="text" class="loginidsearch1" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL2" value=""></div>
 	            <div class="cb"></div>
 	            <button type="submit" class="button" id="findBtn">비밀번호 찾기</button>
 	            <div class="line"></div>		
-	        </form>
-       
+	        </form>       
             <div class="join_btn" id="txt"></div>		            
         </div>
     </div>
@@ -283,5 +298,79 @@
 	    	 $(".h_login").stop().fadeOut(200);
 	    }
 	});
+	
+	//이메일 찾기 버튼 클릭 :s
+	function findEmailFunc(){
+		if($("#findName").val()==""){
+			alert("이름을 입력하셔야 합니다.");
+			$("#findName").focus();
+		}else if($("#findEmail").val()==""){
+			alert("이메일을 입력하셔야 합니다.");
+			$("#findEmail").focus();
+		}else{
+			$.ajax({
+					data:{'name':$("#findName").val(),'email':$("#findEmail").val()},
+					url:'/idChk',
+					type:"post",
+					success:function(data){
+						if(data != "N"){
+							var dataText="";							
+							dataText ='<p class="mt20 tac lh20 f16 fb c333">'+data.user_id+'</p><br>';								
+							
+							$("#dixBox").html(dataText);
+							$(".find_id_show").stop().fadeOut(200)
+							$(".find_id_ok_show").stop().fadeIn(300)
+							$(".find_id_ok_show .xi-close, .find_id_ok_show .button").click(function(){
+								$("#find_id_ok_show").stop().fadeOut(200)
+								$("#loginModal").stop().fadeIn(200);
+							})
+							$("#findName").val("");
+							$("#findEmail").val("");
+						}else{
+							alert("이메일 또는 이름을 다시 확인하세요.");
+							$("#find_id_ok_show").stop().fadeOut(200)
+							$("#loginModal").stop().fadeIn(200);
+						}
+					}
+				});
+		}
+	}
+	//이메일 찾기 버튼 클릭:e
+
+	//이메일 찾기 엔터 클릭 :s
+	function findEmailEntFunc(){
+		if(event.keyCode==13){
+			if($("#findEmail").val()==""){
+				alert("이메일을 입력하셔야 합니다.");
+				$("#findEmail").focus();
+			}else if($("#findPasswd").val()==""){
+				alert("이름을 입력하셔야 합니다.");
+				$("#findName").focus();
+			}else{
+				$.ajax({
+						data:{'name':$("#findName").val(),'email':$("#findEmail").val()},
+						url:'/idChk',
+						type:"post",
+						success:function(data){
+							if(data != "N"){
+								var dataText="";
+								var dataText="";							
+								dataText ='<p class="mt20 tac lh20 f16 fb c333">'+data.user_id+'</p><br>';	
+								$("#dixBox").html(dataText);
+								$(".find_id_show").stop().fadeOut(200)
+								$(".find_id_ok_show").stop().fadeIn(300)
+								$(".find_id_ok_show .xi-close, .find_id_ok_show .button").click(function(){
+									$("#find_id_ok_show").stop().fadeOut(200)
+									$("#loginModal").stop().fadeIn(200);
+								})
+							}else{
+								alert("이름 또는 패스워드를 다시 확인하세요.");
+							}
+						}
+					});
+			}
+		}
+	}
+	//이메일 찾기 엔터 클릭:e
 </script>
 

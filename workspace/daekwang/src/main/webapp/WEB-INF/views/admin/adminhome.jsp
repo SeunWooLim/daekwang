@@ -18,32 +18,25 @@
 	<!--container s-->
 		<div id="container">
 			<div class="main_title">
-				<p>홈</p>
+				<p>대광교회 관리자 홈</p>
 			</div>
 
 			<div class="category_wrap">
 				<ul class="menuuuuuu">
-					<!-- <li><a href="#">교회학교 관리페이지 // churchSchoolAdmin.do</a></li>
-					<li><a href="#">교회소식 관리페이지 // churchNoticeAdmin.do</a></li>
-					<li><a href="#">교우소식 관리페이지 // personNewsAdmin.do</a></li>
-					<li><a href="#">교회사진 관리페이지 // churchPhotoAdmin.do</a></li>
-					<li><a href="#">꽃꽃이 갤러리 관리페이지 // flowerPhotoAdmin.do</a></li>
-					<li><a href="#">주보 광고신청 관리페이지 // weekPageApplyAdmin.do</a></li>
-					<li><a href="#">예배 자료신청 관리페이지 // worshipDataApplyAdmin.do</a></li> -->
-					<!-- <li><p>메뉴1_1 (<span style="color:blue">리스트이미지</span>, <span style="color:red">카테고리</span>, 제목, 내용, 등록일)</p></li>
-					<li><p>메뉴1_2 (<span style="color:red">카테고리</span>, 제목, 내용, 등록일)</p></li>
-					<li><p>메뉴1_3 (<span style="color:blue">리스트이미지</span>, 제목, 내용, 등록일)</p></li>
-					<li><p>-----------------작성자 있는 테이블 S---------------------</p></li>
-					<li><p>메뉴1_4 (<span style="color:blue">리스트이미지</span>, <span style="color:red">카테고리</span>, 제목, 내용, 작성자, 등록일)</p></li>
-					<li><p>메뉴1_5 (<span style="color:red">카테고리</span>, 제목, 내용, 작성자, 등록일)</p></li>
-					<li><p>메뉴1_6 (<span style="color:blue">리스트이미지</span>, 제목, 내용, 작성자, 등록일)</p></li>
-					<li><p>-----------------작성자 있는 테이블 E---------------------</p></li>
-					<li><p>메뉴1_7 (제목, 내용, 작성자, 등록일)</p></li>
-					<li><p>메뉴1_8 (<span style="color:blue">리스트이미지</span>, 제목, 등록일)</p></li>
-					<li><p>메뉴1_9 (작성자, 메일, 제목, 확인여부, 등록일) &lt;&lt;&lt; Q&A용</p></li>
-					<li><p>메뉴1_10 (아이디, 이름, 전화번호, 사용여부) &lt;&lt;&lt; 어드민계정관리용</p></li>
-					<li><p>메뉴1_11 (이름, 이메일, 전화번호, 가입경로, 가입일) &lt;&lt;&lt; 일반회원관리용</p></li>
-					<li><p>메뉴1_12 (<span style="color:blue">리스트이미지</span>, 제목, 이벤트기간, 등록일) &lt;&lt;&lt; 이벤트용</p></li> -->
+					
+				<li><a href="memberAdmin.do"><i class="xi-user"></i>회원 관리 </a></li>			
+				<li><a href="newFamilyAdmin.do"><i class="xi-home"></i>새가족소개 관리 </a></li>
+				<li><a href="churchNoticeAdmin.do"><i class="xi-paper-o"></i>교회소식 관리 </a></li>
+				<li><a href="personNewsAdmin.do"><i class="xi-paper-o"></i>교우소식 관리</a></li>
+				<li><a href="churchPhotoAdmin.do"><i class="xi-camera-o"></i>교회사진 관리</a></li>
+				<li><a href="flowerPhotoAdmin.do"><i class="xi-image-o"></i>꽃꽃이 갤러리 관리</a></li>
+				<li><a href="weekPageApplyAdmin.do"><i class="xi-plus-square-o"></i>주보 광고신청 관리</a></li>
+				<li><a href="worshipDataApplyAdmin.do"><i class="xi-plus-square-o"></i>예배 자료신청 관리</a></li>			
+				<li><a href="mainSlideAdmin.do"><i class="xi-layout-aside-o"></i>메인슬라이드 관리 </a></li>
+				<li><a href="churchSchoolAdmin.do"><i class="xi-home"></i>교회학교 관리 </a></li>
+				<li><a href="shalomChoirAdmin.do"><i class="xi-emoticon-happy-o"></i>샬롬 찬양대</a></li>
+				<li><a href="immanuelChoirAdmin.do"><i class="xi-emoticon-smiley-o"></i>임마누엘 찬양대</a></li>
+				
 				</ul>
 			</div>		
 		</div>
@@ -53,8 +46,11 @@
  </body>
 </html>
 <style>
-	.menuuuuuu{}
-	.menuuuuuu li{margin-bottom:20px; }
+	.menuuuuuu{text-align:center;}
+	.menuuuuuu li{margin-bottom:20px; display: inline-block; width:24%; margin-right:1%; height:100px; }
+	.menuuuuuu li a{width:100%; height:100px; padding-top:20px; box-sizing:border-box; border:1px solid #ccc; }
+	.menuuuuuu li i{display: block; font-size:30px; margin-bottom:5px;}
+	.menuuuuuu li:nth-child(4n){margin-right:0;}
 	.menuuuuuu li p{font-size:20px;}
 	.menuuuuuu li p span{font-size:20px;}
 </style>

@@ -108,7 +108,12 @@
 								<td><%= num-- %></td>
 								<td>${churchNotice.memberVo.MEMBER_NAME }</td>
 								<td>${churchNotice.BOARD_TITLE }</td>
-								<td>${churchNotice.BOARD_CONTENT }</td>
+								<c:set var="text" value="${churchNotice.BOARD_CONTENT }"/>		
+								<%
+									String text = pageContext.getAttribute("text").toString();
+									String replacetext = text.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+								%>
+								<td style="text-align:center"><p style="width:600px; text-align:center; margin:0 auto;"><%=replacetext %></p></td>
 								<td>${churchNotice.RECENT_UPDATE_DATE }</td>
 								<td>
 									<a href="#" class="btnform5" onclick="updateForm(<%= rowNum %>);">수정</a>

@@ -110,7 +110,12 @@
 								<td><img src="<c:url value="/"/>resources/uploadPhoto/${flowerPhoto.photoVo.PHOTO_RENAME}"></td>
 								<td>${flowerPhoto.memberVo.MEMBER_NAME }</td>
 								<td>${flowerPhoto.BOARD_TITLE }</td>
-								<td>${flowerPhoto.BOARD_CONTENT }</td>
+								<c:set var="text" value="${flowerPhoto.BOARD_CONTENT }"/>		
+								<%
+									String text = pageContext.getAttribute("text").toString();
+									String replacetext = text.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
+								%>
+								<td style="text-align:center"><p style="width:600px; text-align:center; margin:0 auto;"><%=replacetext %></p></td>
 								<td>${flowerPhoto.RECENT_UPDATE_DATE }</td>
 								<td>
 									<a href="#" class="btnform5" onclick="updateForm(<%= rowNum %>);">수정</a>
