@@ -10,4 +10,10 @@ public interface MemberService {
 
 	int enroll(MemberVo member);
 
+	String findId(MemberVo member);
+
+	int findPwd(MemberVo member);
+
+	int updateTempPwd(MemberVo member);
+
 }

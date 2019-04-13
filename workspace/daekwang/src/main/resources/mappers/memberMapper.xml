@@ -61,4 +61,27 @@
 	    , ""
 	    )
 	</insert>
+	
+	<!-- 아이디 찾기 -->
+	<select id="findId" parameterType="Member" resultType="String">
+		SELECT MEMBER_ID
+		FROM member
+		WHERE MEMBER_EMAIL = #{MEMBER_EMAIL}
+		AND MEMBER_NAME = #{MEMBER_NAME}
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="findPwd" parameterType="Member" resultType="Integer">
+		SELECT COUNT(*)
+		FROM member
+		WHERE MEMBER_ID = #{MEMBER_ID}
+		AND MEMBER_EMAIL = #{MEMBER_EMAIL}
+	</select>
+	
+	<!-- 임시비밀번호로 업데이트 -->
+	<update id="updateTempPwd" parameterType="Member">
+		UPDATE member
+		SET MEMBER_PWD = #{MEMBER_PWD}
+		WHERE MEMBER_ID = #{MEMBER_ID}
+	</update>
 </mapper>

@@ -26,6 +26,21 @@ public class MemberServiceImpl implements MemberService{
 	public int enroll(MemberVo member) {
 		return memberDao.enroll(member);
 	}
+
+	@Override
+	public String findId(MemberVo member) {
+		return memberDao.findId(member);
+	}
+
+	@Override
+	public int findPwd(MemberVo member) {
+		return memberDao.findPwd(member);
+	}
+
+	@Override
+	public int updateTempPwd(MemberVo member) {
+		return memberDao.updateTempPwd(member);
+	}
 	
 	
 	

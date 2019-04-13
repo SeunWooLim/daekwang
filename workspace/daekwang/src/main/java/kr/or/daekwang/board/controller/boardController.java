@@ -45,7 +45,13 @@ public class BoardController {
 	 * @return sharingAndData/newFamilyIntroducing
 	 */
 	@RequestMapping(value = "/newFamilyIntroducing.do")
-	public String newFamilyIntroducing() {
+	public String newFamilyIntroducing(HttpServletRequest request) {
+		
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String path = root + "\\uploadPhoto\\";
+		
+		boardSerivce.autoDeletePhoto(path);
+		
 		return "sharingAndData/newFamilyIntroducing";
 	}
 	
@@ -85,7 +91,6 @@ public class BoardController {
 		out.flush();
 		out.close();
 	}
-	
 	
 	/**
 	 * 새가족 소개 등록 페이지로 이동
@@ -384,7 +389,12 @@ public class BoardController {
 	 * @return sharingAndData/flowerPhoto
 	 */
 	@RequestMapping(value = "/flowerPhoto.do")
-	public String flowerPhoto(Model model) {
+	public String flowerPhoto(HttpServletRequest request) {
+		
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String path = root + "\\uploadPhoto\\";
+		
+		boardSerivce.autoDeletePhoto(path);
 		
 		return "sharingAndData/flowerPhoto";
 	}
@@ -499,7 +509,13 @@ public class BoardController {
 	 * @return sharingAndData/churchPhoto
 	 */
 	@RequestMapping(value = "/churchPhoto.do")
-	public String churchPhoto() {
+	public String churchPhoto(HttpServletRequest request) {
+		
+		String root = request.getSession().getServletContext().getRealPath("resources");
+		String path = root + "\\uploadChurch\\";
+		
+		boardSerivce.autoDeletePhoto(path);
+		
 		return "sharingAndData/churchPhoto";
 	}
 	
@@ -539,21 +555,6 @@ public class BoardController {
 		}
 		job.put("churchPhoto", jarr);
 		
-		/*for(Map< String, Object> map : list) {
-			JSONObject job2 = new JSONObject();
-			job2.put("board_no", map.get("BOARD_NO"));
-			job2.put("board_title", map.get("BOARD_TITLE"));
-			job2.put("board_content", map.get("BOARD_CONTENT"));
-			job2.put("recent_update_date", map.get("RECENT_UPDATE_DATE").toString());
-			job2.put("photo_count",map.get("PHOTO_COUNT"));
-			for(int i = 1; i <= (int)map.get("PHOTO_COUNT"); i++) {
-				job2.put("photo_image" + i, map.get("PHOTO_COUNT" + i));
-				System.out.println(map.get("PHOTO_COUNT" + i));
-			}
-			jarr.add(job2);
-		}
-		job.put("churchPhoto", jarr);*/
-		
 		out.println(job.toJSONString());
 		out.flush();
 		out.close();
@@ -568,8 +569,16 @@ public class BoardController {
 		return "sharingAndData/churchPhotoInsert";
 	}
 	
+	
 	/**
-	 * 
+	 * 교회 사진 게시물 insert
+	 * @param model
+	 * @param mtfRequest
+	 * @param request
+	 * @param boardVo
+	 * @param photoVo
+	 * @param response
+	 * @throws IOException
 	 */
 	@RequestMapping(value = "/insertChurchPhoto.do")
 	public void insertChurchPhoto(Model model, MultipartHttpServletRequest mtfRequest, HttpServletRequest request, BoardVo boardVo, PhotoVo photoVo, HttpServletResponse response) throws IOException {
@@ -624,13 +633,12 @@ public class BoardController {
         PrintWriter out = response.getWriter();
         System.out.println(result);
         if(result != 0) {
-			out.append("ok");
-			out.flush();
+			out.append("success");
 		}
 		else {
 			out.append("fail");
-			out.flush();
 		}
+        out.flush();
 		out.close();
 	}
 	
@@ -639,7 +647,7 @@ public class BoardController {
 	 * @param image
 	 * @return resizeImageHintJpg
 	 */
-	private BufferedImage imageResize(BufferedImage image) {
+	public static BufferedImage imageResize(BufferedImage image) {
 		
 		Integer IMG_WIDTH = image.getWidth();
 		Integer IMG_HEIGHT = image.getHeight();
@@ -661,7 +669,7 @@ public class BoardController {
      * @param IMG_HEIGHT
      * @return resizedImage
      */
-    private static BufferedImage resizeImageWithHint(BufferedImage originalImage, int type, Integer IMG_WIDTH, Integer IMG_HEIGHT){
+    public static BufferedImage resizeImageWithHint(BufferedImage originalImage, int type, Integer IMG_WIDTH, Integer IMG_HEIGHT){
 		
 		BufferedImage resizedImage = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, type);
 		Graphics2D g = resizedImage.createGraphics();

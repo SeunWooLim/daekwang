@@ -1,9 +1,12 @@
 package kr.or.daekwang.board.model.service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -184,7 +187,41 @@ public class BoardServiceImpl implements BoardService {
 		
 		return list;
 	}
-	
+
+	@Override
+	public void autoDeletePhoto(String path) {
+		
+		//삭제처리된지 한달 이상 된 사진리스트 조회
+		List<PhotoVo> list =  boardDao.autoDeletePhoto();
+
+		//사진이 있으면 삭제
+		if(list != null) {
+			for(int i = 0; i < list.size(); i++) {
+				//삭제할 사진 고유명 저장
+				String photo_rename = list.get(i).getPHOTO_RENAME();
+				//실제 경로 저장
+				String real_path = path + photo_rename;
+				//파일객체 생성
+				File file = new File(real_path);
+				//파일삭제
+		        file.delete();
+		        
+		        //해당 파일이 삭제된지 안된지 확인
+		        boolean isExists = file.exists();
+		        if(!isExists) { 
+		        	//삭제되었다면 DB에서도 삭제
+		        	int result = boardDao.completeDeletePhoto(photo_rename);
+		        	
+		        	if(result != 0) {
+		        		System.out.println("delete the file.");
+		        	}
+		        }else { 
+		        	System.out.println("No, there is not a no file."); 
+	        	}
+
+			}
+		}
+	}
 	
 	
 }

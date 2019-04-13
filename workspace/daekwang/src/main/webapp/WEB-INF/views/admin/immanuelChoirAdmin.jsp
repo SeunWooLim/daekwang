@@ -20,74 +20,76 @@
 			<div class="main_title">
 				<p>임마누엘 찬양대 관리</p>
 			</div>
-
 			
-
-
-			<div class="management_wrap" style="text-align:center;">
-				<table>
-					<colgroup>
-						<col width="15%">
-						<col width="35%">
-						<col width="15%">
-						<col width="35%">
-					</colgroup>
-					<tbody>
-						<tr>
-							<td>이미지</td>
-							<td colspan="3" class="tal">
-								<img src="<c:url value="/"/>resources/uploadPhoto/1553920806011.jpg">
-								<input type="file" style="padding:0;">
-							</td>
-						</tr>
-						<tr>
-							<td>대장</td>
-							<td colspan="3"><input type="text" name="" id="" value=""></td>							
-						</tr>
-						<tr>
-							<td>지휘</td>
-							<td><input type="text" name="" id="" value=""></td>
-							<td>총무</td>
-							<td><input type="text" name="" id="" value=""></td>							
-						</tr>
-						<tr>
-							<td>부총무</td>
-							<td><input type="text" name="" id="" value=""></td>
-							<td>서기</td>
-							<td colspan="3"><input type="text" name="" id="" value=""></td>
-						</tr>
-						<tr>
-							<td>회계</td>
-							<td><input type="text" name="" id="" value=""></td>
-							<td>반주</td>
-							<td><input type="text" name="" id="" value=""></td>
-						</tr>
-						<tr>
-							<td>소프라노</td>
-							<td colspan="3"><input type="text" name="" id="" value=""></td>
-						</tr>
-						<tr>
-							<td>알토</td>
-							<td colspan="3"><input type="text" name="" id="" value=""></td>
-						</tr>
-						<tr>
-							<td>테너</td>
-							<td colspan="3"><input type="text" name="" id="" value=""></td>
-						</tr>
-						<tr>
-							<td>베이스</td>
-							<td colspan="3"><input type="text" name="" id="" value=""></td>
-						</tr>
-					</tbody>
-				</table>	
-								
-				<button class="btnform1 mt20">수정</button>			
-			</div>
-			
-			
+			<form action="modifyChoirAdmin.do" method="post" enctype="multipart/form-data">
+				<div class="management_wrap" style="text-align:center;">
+					<table>
+						<colgroup>
+							<col width="15%">
+							<col width="35%">
+							<col width="15%">
+							<col width="35%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<td>이미지</td>
+								<td colspan="3" class="tal">
+									<img src="<c:url value="/"/>resources/img/deptImage/${sapVo2.PRAISE_PHOTO_RENAME}">
+									<input type="file" name="file" style="padding:0;" value="${sapVo2.PRAISE_PHOTO_ORNAME}">
+									<p style="color:red;">* 가로 사진으로 업로드 하시기 바랍니다.</p>
+									<input type="hidden" name="PRAISE_PHOTO_RENAME" value="${sapVo2.PRAISE_PHOTO_RENAME}">
+									<input type="hidden" name="PRAISE_PHOTO_ORNAME" value="${sapVo2.PRAISE_PHOTO_ORNAME}">
+									<input type="hidden" name="PRAISE_FG" value="2">
+								</td>
+							</tr>
+							<tr>
+								<td>대장</td>
+								<td colspan="3"><input type="text" name="PRAISE_BOSS" id="" value="${sapVo2.PRAISE_BOSS}"></td>							
+							</tr>
+							<tr>
+								<td>지휘</td>
+								<td><input type="text" name="PRAISE_CONDUCTOR" id="" value="${sapVo2.PRAISE_CONDUCTOR}"></td>
+								<td>총무</td>
+								<td><input type="text" name="PRAISE_MANAGER" id="" value="${sapVo2.PRAISE_MANAGER}"></td>							
+							</tr>
+							<tr>
+								<td>부총무</td>
+								<td><input type="text" name="PRAISE_SUBMANAGER" id="" value="${sapVo2.PRAISE_SUBMANAGER}"></td>
+								<td>서기</td>
+								<td colspan="3"><input type="text" name="PRAISE_WRITER" id="" value="${sapVo2.PRAISE_WRITER}"></td>
+							</tr>
+							<tr>
+								<td>회계</td>
+								<td><input type="text" name="PRAISE_ACCOUNTANT" id="" value="${sapVo2.PRAISE_ACCOUNTANT}"></td>
+								<td>반주</td>
+								<td><input type="text" name="PRAISE_BANJU" id="" value="${sapVo2.PRAISE_BANJU}"></td>
+							</tr>
+							<tr>
+								<td>소프라노</td>
+								<td colspan="3"><input type="text" name="PRAISE_SOPRANO" id="" value="${sapVo2.PRAISE_SOPRANO}"></td>
+							</tr>
+							<tr>
+								<td>알토</td>
+								<td colspan="3"><input type="text" name="PRAISE_ALTO" id="" value="${sapVo2.PRAISE_ALTO}"></td>
+							</tr>
+							<tr>
+								<td>테너</td>
+								<td colspan="3"><input type="text" name="PRAISE_TENOR" id="" value="${sapVo2.PRAISE_TENOR}"></td>
+							</tr>
+							<tr>
+								<td>베이스</td>
+								<td colspan="3"><input type="text" name="PRAISE_BASS" id="" value="${sapVo2.PRAISE_BASS}"></td>
+							</tr>
+						</tbody>
+					</table>	
+									
+					<button class="btnform1 mt20">수정</button>			
+				</div>
+			</form>
+		
 		</div>
 	<!--container s-->
 	</div>
 
- </body>
+</body>
 </html>

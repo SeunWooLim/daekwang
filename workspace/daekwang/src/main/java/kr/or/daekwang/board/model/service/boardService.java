@@ -38,6 +38,8 @@ public interface BoardService {
 
 	List<Map< String, Object>> churchPhoto(int endRow);
 
+	void autoDeletePhoto(String path);
+
 
 
 }

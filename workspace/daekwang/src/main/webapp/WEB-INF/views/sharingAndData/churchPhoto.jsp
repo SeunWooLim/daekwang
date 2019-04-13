@@ -31,14 +31,6 @@
 
 <jsp:include page="../common/footer.jsp"/>
 </body>
-<script>
-
-	
-	
-	 	
-</script>
-
-
 
 <!-- 무한 스크롤 처리 -->
 <script type="text/javascript">

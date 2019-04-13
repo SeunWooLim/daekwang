@@ -1,7 +1,9 @@
 package kr.or.daekwang.admin.model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +11,9 @@ import org.springframework.stereotype.Service;
 import kr.or.daekwang.admin.model.dao.AdminDao;
 import kr.or.daekwang.apply.model.vo.ApplyVo;
 import kr.or.daekwang.board.model.vo.BoardVo;
+import kr.or.daekwang.board.model.vo.PhotoVo;
+import kr.or.daekwang.nextGeneration.model.vo.NextGenerationVo;
+import kr.or.daekwang.sermonAndPraise.model.vo.SermonAndPraiseVo;
 
 @Service("adminService")
 public class AdminServiceImpl implements AdminService{
@@ -184,11 +189,17 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public int deletePhotoAdmin(int board_no) {
+		//게시판 DELETE_YN = 'Y'처리
 		int deleteResult = adminDao.deletePhotoAdmin(board_no);
 		int result = 0;
 		
 		if(deleteResult != 0 ) {
+			//사진정보 DELETE_YN ='Y' 처리
 			result = adminDao.deleteImagePhotoAdmin(board_no);
+			//사진 DELETE_DATE 추가
+			if(result != 0) {
+				adminDao.insertDeleteDate(board_no);
+			}
 		}
 		
 		return result;
@@ -207,6 +218,7 @@ public class AdminServiceImpl implements AdminService{
 				int photoResult = adminDao.deleteImagePhotoAdmin(Integer.parseInt(arrIdx[i]));
 				
 				if(photoResult != 0) {
+					adminDao.insertDeleteDate(Integer.parseInt(arrIdx[i]));
 					stackNum++;
 				}
 			}
@@ -223,9 +235,97 @@ public class AdminServiceImpl implements AdminService{
 	public int updatePhotoAdmin(BoardVo boardVo) {
 		return adminDao.updatePhotoAdmin(boardVo);
 	}
+
+	@Override
+	public List<ApplyVo> memberAdminList(HashMap<String, Object> map) {
+		return adminDao.memberAdminList(map);
+	}
+
+	@Override
+	public int countMemberAdmin(HashMap<String, Object> countMap) {
+		return adminDao.countMemberAdmin(countMap);
+	}
 	
-	
-	
-	
+	@Override
+	public int updateMemberAuthChange(HashMap<String, Object> map) {
+		return adminDao.updateMemberAuthChange(map);
+	}
+
+	@Override
+	public List<Map< String, Object>> churchPhotoAdminList(HashMap<String, Object> mapp) {
+		
+		//게시판 게시물 먼저 조회
+		List<BoardVo> boardList = adminDao.churchPhotoBoardMap(mapp);
+		//변수
+		
+		int board_no = 0;
+		//최종 리턴 리스트
+		List<Map< String, Object>> list= new ArrayList<Map< String, Object>>();
+
+		//게시물에 사진정보 붙이기
+		for(int i = 0; i < boardList.size(); i++){
+			//정보담을 map
+			Map<String, Object> map  = new HashMap<String, Object>();
+			
+			//map에 리스트 값 하나하나 담기
+			map.put("BOARD_NO", boardList.get(i).getBOARD_NO());
+			map.put("MEMBER_NAME", boardList.get(i).getMemberVo().getMEMBER_NAME());
+			map.put("BOARD_TITLE", boardList.get(i).getBOARD_TITLE());
+			map.put("BOARD_CONTENT", boardList.get(i).getBOARD_CONTENT());
+			map.put("RECENT_UPDATE_DATE", boardList.get(i).getRECENT_UPDATE_DATE());
+			
+			//각 게시물에 관련된 사진 갯수 조회
+			board_no = (int) boardList.get(i).getBOARD_NO();
+			int PhotoListCount = adminDao.PhotoListCount(board_no);
+			
+			//map에 사진 갯수 넣기
+			if(PhotoListCount != 0) {
+				map.put("PHOTO_COUNT", PhotoListCount);
+			}
+			
+			//각 게시물에 관련된 사진 rename 모두 조회
+			List<PhotoVo> PhotoList = adminDao.churchPhotoPhotoList(board_no);
+			
+			//map 모든 사진 rename 넣기
+			if(PhotoList != null) {
+				for(int j = 1; j <= PhotoList.size(); j++) {
+					map.put("PHOTO_IMAGE" + j, PhotoList.get(j-1).getPHOTO_RENAME());
+				}
+			}
+			list.add(map);
+		}
+		
+		return list;
+	}
+
+	@Override
+	public int countChurchPhotoAdmin(HashMap<String, Object> countMap) {
+		return adminDao.countChurchPhotoAdmin(countMap);
+	}
+
+	@Override
+	public SermonAndPraiseVo choirAdminList(char PRAISE_FG) {
+		return adminDao.choirAdminList(PRAISE_FG);
+	}
+
+	@Override
+	public int modifyChoirAdmin(SermonAndPraiseVo sermonAndPraiseVo) {
+		return adminDao.modifyChoirAdmin(sermonAndPraiseVo);
+	}
+
+	@Override
+	public List<NextGenerationVo> selectNextGenerationList() {
+		return adminDao.selectNextGenerationList();
+	}
+
+	@Override
+	public List<NextGenerationVo> selectNextGenerationYouthList() {
+		return adminDao.selectNextGenerationYouthList();
+	}
+
+	@Override
+	public int modifyChurchSchoolAdmin(NextGenerationVo nextGenerationVo) {
+		return adminDao.modifyChurchSchoolAdmin(nextGenerationVo);
+	}
 	
 }

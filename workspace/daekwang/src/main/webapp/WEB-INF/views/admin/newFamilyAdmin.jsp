@@ -131,7 +131,7 @@
 										<ul>
 											<li>
 												<label for="wPA">작성자</label>
-												<input type="text" id="wPA" name="wPA" value="${newFamily.memberVo.MEMBER_NAME }"/>
+												<input type="text" id="wPA" name="wPA" value="${newFamily.memberVo.MEMBER_NAME }" readonly/>
 												<input type="hidden" name="BOARD_NO" value="${newFamily.BOARD_NO }">
 											</li>
 											<li>

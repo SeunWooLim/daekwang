@@ -20,6 +20,8 @@ public class SermonAndPraiseVo {
 	private String PRAISE_TENOR;		//테너
 	private String PRAISE_BASS;			//베이스
 	private String PRAISE_DETAIL;		//특이사항
+	private String PRAISE_PHOTO_ORNAME; //성가대사진 원본명
+	private String PRAISE_PHOTO_RENAME; //성가대사진 고유명
 	
 	public SermonAndPraiseVo() {
 		
@@ -27,7 +29,8 @@ public class SermonAndPraiseVo {
 
 	public SermonAndPraiseVo(char pRAISE_FG, String pRAISE_BOSS, String pRAISE_CONDUCTOR, String pRAISE_BANJU,
 			String pRAISE_MANAGER, String pRAISE_SUBMANAGER, String pRAISE_WRITER, String pRAISE_ACCOUNTANT,
-			String pRAISE_SOPRANO, String pRAISE_ALTO, String pRAISE_TENOR, String pRAISE_BASS, String pRAISE_DETAIL) {
+			String pRAISE_SOPRANO, String pRAISE_ALTO, String pRAISE_TENOR, String pRAISE_BASS, String pRAISE_DETAIL,
+			String pRAISE_PHOTO_ORNAME, String pRAISE_PHOTO_RENAME) {
 		super();
 		PRAISE_FG = pRAISE_FG;
 		PRAISE_BOSS = pRAISE_BOSS;
@@ -42,6 +45,8 @@ public class SermonAndPraiseVo {
 		PRAISE_TENOR = pRAISE_TENOR;
 		PRAISE_BASS = pRAISE_BASS;
 		PRAISE_DETAIL = pRAISE_DETAIL;
+		PRAISE_PHOTO_ORNAME = pRAISE_PHOTO_ORNAME;
+		PRAISE_PHOTO_RENAME = pRAISE_PHOTO_RENAME;
 	}
 
 	public char getPRAISE_FG() {
@@ -148,6 +153,22 @@ public class SermonAndPraiseVo {
 		PRAISE_DETAIL = pRAISE_DETAIL;
 	}
 
+	public String getPRAISE_PHOTO_ORNAME() {
+		return PRAISE_PHOTO_ORNAME;
+	}
+
+	public void setPRAISE_PHOTO_ORNAME(String pRAISE_PHOTO_ORNAME) {
+		PRAISE_PHOTO_ORNAME = pRAISE_PHOTO_ORNAME;
+	}
+
+	public String getPRAISE_PHOTO_RENAME() {
+		return PRAISE_PHOTO_RENAME;
+	}
+
+	public void setPRAISE_PHOTO_RENAME(String pRAISE_PHOTO_RENAME) {
+		PRAISE_PHOTO_RENAME = pRAISE_PHOTO_RENAME;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -159,8 +180,9 @@ public class SermonAndPraiseVo {
 				+ ", PRAISE_SUBMANAGER=" + PRAISE_SUBMANAGER + ", PRAISE_WRITER=" + PRAISE_WRITER
 				+ ", PRAISE_ACCOUNTANT=" + PRAISE_ACCOUNTANT + ", PRAISE_SOPRANO=" + PRAISE_SOPRANO + ", PRAISE_ALTO="
 				+ PRAISE_ALTO + ", PRAISE_TENOR=" + PRAISE_TENOR + ", PRAISE_BASS=" + PRAISE_BASS + ", PRAISE_DETAIL="
-				+ PRAISE_DETAIL + "]";
+				+ PRAISE_DETAIL + ", PRAISE_PHOTO_ORNAME=" + PRAISE_PHOTO_ORNAME + ", PRAISE_PHOTO_RENAME="
+				+ PRAISE_PHOTO_RENAME + "]";
 	}
-	
+
 	
 }

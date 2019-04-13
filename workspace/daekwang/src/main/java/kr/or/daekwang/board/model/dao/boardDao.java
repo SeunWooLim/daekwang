@@ -106,6 +106,16 @@ public class BoardDao {
 		return mybatis.selectList("boardMapper.churchPhotoPhotoList", board_no);
 	}
 
+	public List<PhotoVo> autoDeletePhoto() {
+		return mybatis.selectList("boardMapper.autoDeletePhoto");
+	}
+
+	public int completeDeletePhoto(String photo_rename) {
+		return mybatis.delete("boardMapper.completeDeletePhoto", photo_rename);
+	}
+
+	
+
 	
 
 	

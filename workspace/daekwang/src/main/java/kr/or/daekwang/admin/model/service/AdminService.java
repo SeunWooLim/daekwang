@@ -6,6 +6,8 @@ import java.util.Map;
 
 import kr.or.daekwang.apply.model.vo.ApplyVo;
 import kr.or.daekwang.board.model.vo.BoardVo;
+import kr.or.daekwang.nextGeneration.model.vo.NextGenerationVo;
+import kr.or.daekwang.sermonAndPraise.model.vo.SermonAndPraiseVo;
 
 public interface AdminService {
 
@@ -58,5 +60,25 @@ public interface AdminService {
 	int ckDeletePhotoAdmin(String idx);
 
 	int updatePhotoAdmin(BoardVo boardVo);
+
+	List<ApplyVo> memberAdminList(HashMap<String, Object> map);
+
+	int countMemberAdmin(HashMap<String, Object> countMap);
+
+	int updateMemberAuthChange(HashMap<String, Object> map);
+
+	List<Map< String, Object>> churchPhotoAdminList(HashMap<String, Object> map);
+
+	int countChurchPhotoAdmin(HashMap<String, Object> countMap);
+
+	SermonAndPraiseVo choirAdminList(char PRAISE_FG);
+
+	int modifyChoirAdmin(SermonAndPraiseVo sermonAndPraiseVo);
+
+	List<NextGenerationVo> selectNextGenerationList();
+
+	List<NextGenerationVo> selectNextGenerationYouthList();
+
+	int modifyChurchSchoolAdmin(NextGenerationVo nextGenerationVo);
 
 }

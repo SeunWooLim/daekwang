@@ -126,7 +126,7 @@
 	</div>
 	
 <!-- 로그인  s-->
-<div class="h_login">
+<div class="h_login" id="loginModal">
 	<div class="box">
         <div class="head">
         	<p><i class="xi-profile-o"></i>로그인</p>
@@ -153,6 +153,53 @@
 	<div class="cb"></div>
 </div>
 <!-- 로그인 e -->
+
+<!-- 아이디찾기  s-->
+<div class="h_login" id="findIdModal">
+	<div class="box">
+        <div class="head">
+        	<p><i class="xi-profile-o"></i>아이디 찾기</p>
+    		<i class="xi-close"></i>
+        </div>
+        <div class="body">
+	        <form method="post" action="findId.do">
+	            <div class="input"><i class="xi-mail-o"></i><input type="text" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL1" value="">@<input type="text" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL2" value=""></div>
+	            <div class="input"><i class="xi-key"></i><input type="text" placeholder="이름" id="loginPasswd" name="MEMBER_NAME"></div>
+	            <div class="cb"></div>
+	            <button type="submit" class="button">아이디 찾기</button>
+	            <div class="line"></div>		
+	        </form>
+       
+            <div class="join_btn">가입하실 때 입력하신 이메일을 입력하십시오</div>		            
+        </div>
+    </div>
+	<div class="cb"></div>
+</div>
+<!-- 아이디찾기 e -->
+
+<!-- 비밀번호찾기  s-->
+<div class="h_login" id="findPwdModal">
+	<div class="box">
+        <div class="head">
+        	<p><i class="xi-profile-o"></i>비밀번호 찾기</p>
+    		<i class="xi-close"></i>
+        </div>
+        <div class="body">
+	        <form method="post" action="findPwd.do">
+	            <div class="input"><i class="xi-key"></i><input type="text" placeholder="아이디" id="loginPasswd" name="MEMBER_ID"></div>
+	            <div class="input"><i class="xi-mail-o"></i><input type="text" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL1" value="">@<input type="text" placeholder="이메일" id="loginEmail" name="MEMBER_EMAIL2" value=""></div>
+	            <div class="cb"></div>
+	            <button type="submit" class="button" id="findBtn">비밀번호 찾기</button>
+	            <div class="line"></div>		
+	        </form>
+       
+            <div class="join_btn" id="txt"></div>		            
+        </div>
+    </div>
+	<div class="cb"></div>
+</div>
+<!-- 비밀번호찾기 e -->
+
 <div class="scroll_top">
     <img class="on" src="<c:url value="/resources/img/scroll_top_on.png"/>"/>
     <img src="<c:url value="/resources/img/scroll_top.png"/>"/>
@@ -161,12 +208,24 @@
 <script>
 	$(document).ready(function(){
 		$(".login_btn").click(function(){
-			$(".h_login").stop().fadeIn(200);
+			$("#loginModal").stop().fadeIn(200);
 		});
 		
 		$(".h_login .box .head .xi-close").click(function(){
-			$(".h_login").stop().fadeOut(200);
+			$("#loginModal").stop().fadeOut(200);
+			$("#findIdModal").stop().fadeOut(200);
+			$("#findPwdModal").stop().fadeOut(200);
 		});
+		
+		$(".find_id_btn").click(function(){
+			$("#loginModal").stop().fadeOut(200);
+			$("#findIdModal").stop().fadeIn(200);
+		}); 
+		
+		$(".find_pw_btn").click(function(){
+			$("#loginModal").stop().fadeOut(200);
+			$("#findPwdModal").stop().fadeIn(200);
+		}); 
 		
 		$(".head_mid_wrap").mouseover(function(){
 			$(".head_mid_detail_wrap").show();
@@ -180,6 +239,10 @@
 		
 		$(".head_mid_detail_wrap").mouseleave(function(){
 			$(".head_mid_detail_wrap").hide();
+		});
+		
+		$("#findBtn").click(function(){
+			$("#txt").html("메일발송 중입니다. 잠시만 기다려 주십시오.").css("color","red");
 		});
 		
 		// header:s

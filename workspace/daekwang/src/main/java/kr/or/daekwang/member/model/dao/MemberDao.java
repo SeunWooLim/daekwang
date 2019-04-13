@@ -23,6 +23,18 @@ public class MemberDao {
 		return mybatis.insert("memberMapper.enroll", member);
 	}
 
+	public String findId(MemberVo member) {
+		return mybatis.selectOne("memberMapper.findId", member);
+	}
+
+	public int findPwd(MemberVo member) {
+		return mybatis.selectOne("memberMapper.findPwd", member);
+	}
+
+	public int updateTempPwd(MemberVo member) {
+		return mybatis.update("memberMapper.updateTempPwd", member);
+	}
+
 
 	
 	

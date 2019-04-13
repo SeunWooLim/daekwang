@@ -20,8 +20,8 @@ public class NextGenerationVo {
 	private String DEPT_WRITER;			//서기
 	private String DEPT_ACCOUNTANT;		//회계
 	private String DEPT_MEMBER;			//구성원
-	private String DEPT_PHOTO;			//사진
-	private String DEPT_PHOTO_NAME;		//사진고유명
+	private String DEPT_PHOTO_ORNAME;	//사진원본명
+	private String DEPT_PHOTO_RENAME;	//사진고유명
 	
 	public NextGenerationVo() {
 		
@@ -30,7 +30,7 @@ public class NextGenerationVo {
 	public NextGenerationVo(int dEPT_NO, String dEPT_NAME, String eDU_TITLE, String mAIN_WORDS, String wORSHIP_OBJECT,
 			String wORSHIP_TIME, String wORSHIP_AREA, String dEPT_VISION, String dEPT_MISSION, String dEPT_LEADER,
 			String dEPT_HEADER, String dEPT_DIRECTOR, String dEPT_BUDIRECTOR, String dEPT_MANAGER, String dEPT_WRITER,
-			String dEPT_ACCOUNTANT, String dEPT_MEMBER, String dEPT_PHOTO, String dEPT_PHOTO_NAME) {
+			String dEPT_ACCOUNTANT, String dEPT_MEMBER, String dEPT_PHOTO_ORNAME, String dEPT_PHOTO_RENAME) {
 		super();
 		DEPT_NO = dEPT_NO;
 		DEPT_NAME = dEPT_NAME;
@@ -49,8 +49,8 @@ public class NextGenerationVo {
 		DEPT_WRITER = dEPT_WRITER;
 		DEPT_ACCOUNTANT = dEPT_ACCOUNTANT;
 		DEPT_MEMBER = dEPT_MEMBER;
-		DEPT_PHOTO = dEPT_PHOTO;
-		DEPT_PHOTO_NAME = dEPT_PHOTO_NAME;
+		DEPT_PHOTO_ORNAME = dEPT_PHOTO_ORNAME;
+		DEPT_PHOTO_RENAME = dEPT_PHOTO_RENAME;
 	}
 
 	public int getDEPT_NO() {
@@ -189,20 +189,20 @@ public class NextGenerationVo {
 		DEPT_MEMBER = dEPT_MEMBER;
 	}
 
-	public String getDEPT_PHOTO() {
-		return DEPT_PHOTO;
+	public String getDEPT_PHOTO_ORNAME() {
+		return DEPT_PHOTO_ORNAME;
 	}
 
-	public void setDEPT_PHOTO(String dEPT_PHOTO) {
-		DEPT_PHOTO = dEPT_PHOTO;
+	public void setDEPT_PHOTO_ORNAME(String dEPT_PHOTO_ORNAME) {
+		DEPT_PHOTO_ORNAME = dEPT_PHOTO_ORNAME;
 	}
 
-	public String getDEPT_PHOTO_NAME() {
-		return DEPT_PHOTO_NAME;
+	public String getDEPT_PHOTO_RENAME() {
+		return DEPT_PHOTO_RENAME;
 	}
 
-	public void setDEPT_PHOTO_NAME(String dEPT_PHOTO_NAME) {
-		DEPT_PHOTO_NAME = dEPT_PHOTO_NAME;
+	public void setDEPT_PHOTO_RENAME(String dEPT_PHOTO_RENAME) {
+		DEPT_PHOTO_RENAME = dEPT_PHOTO_RENAME;
 	}
 
 	public static long getSerialversionuid() {
@@ -217,8 +217,8 @@ public class NextGenerationVo {
 				+ ", DEPT_LEADER=" + DEPT_LEADER + ", DEPT_HEADER=" + DEPT_HEADER + ", DEPT_DIRECTOR=" + DEPT_DIRECTOR
 				+ ", DEPT_BUDIRECTOR=" + DEPT_BUDIRECTOR + ", DEPT_MANAGER=" + DEPT_MANAGER + ", DEPT_WRITER="
 				+ DEPT_WRITER + ", DEPT_ACCOUNTANT=" + DEPT_ACCOUNTANT + ", DEPT_MEMBER=" + DEPT_MEMBER
-				+ ", DEPT_PHOTO=" + DEPT_PHOTO + ", DEPT_PHOTO_NAME=" + DEPT_PHOTO_NAME + "]";
+				+ ", DEPT_PHOTO_ORNAME=" + DEPT_PHOTO_ORNAME + ", DEPT_PHOTO_RENAME=" + DEPT_PHOTO_RENAME + "]";
 	}
-
+	
 	
 }

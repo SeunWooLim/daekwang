@@ -12,6 +12,7 @@
   		<result property="PHOTO_NO" column="PHOTO_NO"/>
   		<result property="PHOTO_ORNAME" column="PHOTO_ORNAME"/>
   		<result property="PHOTO_RENAME" column="PHOTO_RENAME"/>
+  		<result property="DELETE_DATE" column="DELETE_DATE"/>
 	</resultMap>
 	
 	<resultMap id="memberResultMap" type="Member">
@@ -28,6 +29,7 @@
   		<result property="MEMBER_ADDR_EXTRA" column="MEMBER_ADDR_EXTRA"/>
   		<result property="MEMBER_DETAIL" column="MEMBER_DETAIL"/>
   		<result property="MEMBER_USEYN" column="MEMBER_USEYN"/>
+  		<result property="MEMBER_AUTH" column="MEMBER_AUTH"/>
 	</resultMap>
 	
 	<resultMap id="adminResultMap" type="Admin">
@@ -70,6 +72,46 @@
   		<result property="REPLY_DELETE_YN" column="REPLY_DELETE_YN"/>
   		<collection property="memberVo" resultMap="memberResultMap"/>
   		<collection property="photoVo" resultMap="photoResultMap"/>
+	</resultMap>
+
+	<resultMap id="sermonAndPraiseResultMap" type="SermonAndPraise">
+		<result property="PRAISE_FG" column="PRAISE_FG"/>
+  		<result property="PRAISE_BOSS" column="PRAISE_BOSS"/>
+  		<result property="PRAISE_CONDUCTOR" column="PRAISE_CONDUCTOR"/>
+  		<result property="PRAISE_BANJU" column="PRAISE_BANJU"/>
+  		<result property="PRAISE_MANAGER" column="PRAISE_MANAGER"/>
+  		<result property="PRAISE_SUBMANAGER" column="PRAISE_SUBMANAGER"/>
+  		<result property="PRAISE_WRITER" column="PRAISE_WRITER"/>
+  		<result property="PRAISE_ACCOUNTANT" column="PRAISE_ACCOUNTANT"/>
+  		<result property="PRAISE_SOPRANO" column="PRAISE_SOPRANO"/>
+  		<result property="PRAISE_ALTO" column="PRAISE_ALTO"/>
+  		<result property="PRAISE_TENOR" column="PRAISE_TENOR"/>
+  		<result property="PRAISE_BASS" column="PRAISE_BASS"/>
+  		<result property="PRAISE_DETAIL" column="PRAISE_DETAIL"/>
+  		<result property="PRAISE_PHOTO_ORNAME" column="PRAISE_PHOTO_ORNAME"/>
+  		<result property="PRAISE_PHOTO_RENAME" column="PRAISE_PHOTO_RENAME"/>
+	</resultMap>
+	
+	<resultMap id="nextGenerationResultMap" type="NextGeneration">
+		<result property="DEPT_NO" column="DEPT_NO"/>
+  		<result property="DEPT_NAME" column="DEPT_NAME"/>
+  		<result property="EDU_TITLE" column="EDU_TITLE"/>
+  		<result property="MAIN_WORDS" column="MAIN_WORDS"/>
+  		<result property="WORSHIP_OBJECT" column="WORSHIP_OBJECT"/>
+  		<result property="WORSHIP_TIME" column="WORSHIP_TIME"/>
+  		<result property="WORSHIP_AREA" column="WORSHIP_AREA"/>
+  		<result property="DEPT_VISION" column="DEPT_VISION"/>
+  		<result property="DEPT_MISSION" column="DEPT_MISSION"/>
+  		<result property="DEPT_LEADER" column="DEPT_LEADER"/>
+  		<result property="DEPT_HEADER" column="DEPT_HEADER"/>
+  		<result property="DEPT_DIRECTOR" column="DEPT_DIRECTOR"/>
+  		<result property="DEPT_BUDIRECTOR" column="DEPT_BUDIRECTOR"/>
+  		<result property="DEPT_MANAGER" column="DEPT_MANAGER"/>
+  		<result property="DEPT_WRITER" column="DEPT_WRITER"/>
+  		<result property="DEPT_ACCOUNTANT" column="DEPT_ACCOUNTANT"/>
+  		<result property="DEPT_MEMBER" column="DEPT_MEMBER"/>
+  		<result property="DEPT_PHOTO_ORNAME" column="DEPT_PHOTO_ORNAME"/>
+  		<result property="DEPT_PHOTO_RENAME" column="DEPT_PHOTO_RENAME"/>
 	</resultMap>
 	
 	<!-- 주보광고신청 총 리스트 조회 -->
@@ -361,6 +403,13 @@
 		WHERE BOARD_NO = #{board_no}
 	</update>
 	
+	<!-- 꽃꽂이 갤러리, 새가족 소개 삭제일 추가 -->
+	<update id="insertDeleteDate" parameterType="Integer">
+		UPDATE photo
+		SET DELETE_DATE = NOW()
+		WHERE BOARD_NO = #{board_no}
+	</update>
+	
 	<!-- 꽃꽂이 갤러리, 새가족 소개 관리 게시물 수정 -->
 	<update id="updatePhotoAdmin" parameterType="Board">
 		UPDATE board
@@ -370,6 +419,187 @@
 		WHERE BOARD_NO = ${BOARD_NO}
 	</update>
 	
+	<!-- 회원 관리 리스트 조회 -->
+	<select id="memberAdminList" resultMap="memberResultMap" parameterType="java.util.HashMap">
+		SELECT MEMBER_NO
+			 , MEMBER_ID
+			 , MEMBER_NAME
+			 , MEMBER_PHONE
+			 , MEMBER_EMAIL
+			 , MEMBER_POSTCODE
+			 , MEMBER_ADDR
+			 , MEMBER_ADDR_DETAIL
+			 , MEMBER_ADDR_EXTRA
+			 , MEMBER_USEYN
+			 , MEMBER_AUTH
+			 , MEMBER_DETAIL 
+		FROM member
+		WHERE MEMBER_FG = '2'
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect eq '1'.toString()">
+			AND MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '2'.toString()">
+			AND MEMBER_ID LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '3'.toString()">
+			AND MEMBER_PHONE LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY MEMBER_NO DESC
+		LIMIT #{startRow}, #{endRow}
+	</select>
 	
+	<!-- 회원 관리 총 수 조회 -->
+	<select id="countMemberAdmin" resultType="Integer">
+		SELECT COUNT(*)
+		FROM member
+		WHERE MEMBER_FG = '2'
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect eq '1'.toString()">
+			AND MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '2'.toString()">
+			AND MEMBER_ID LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '3'.toString()">
+			AND MEMBER_PHONE LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY MEMBER_NO DESC
+	</select>
 	
+	<!-- 회원 권한 변경 처리 -->
+	<update id="updateMemberAuthChange" parameterType="java.util.HashMap">
+		UPDATE member
+		SET MEMBER_AUTH = #{member_auth} ,
+			MEMBER_USEYN = #{member_useyn}
+		WHERE MEMBER_NO = #{member_no}
+	</update>
+	
+	<!-- 교회 사진 관리 게시판 리스트 조회 -->
+	<select id="churchPhotoBoardMap" resultMap="boardResultMap">
+		SELECT A.*
+			 , B.MEMBER_NAME
+		FROM board A
+		   , member B
+		WHERE A.MEMBER_NO = B.MEMBER_NO 
+		and A.BOARD_FG = 3
+		AND A.DELETE_YN = 'N'
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect eq '1'.toString()">
+			AND A.BOARD_TITLE LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '2'.toString()">
+			AND A.BOARD_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '3'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY A.BOARD_NO DESC
+		LIMIT #{startRow}, #{endRow}
+	</select>
+	
+	<!-- 교회사진 관리 게시물에 대한 사진 갯수 조회 -->
+	<select id="PhotoListCount" resultType = "Integer">
+		SELECT COUNT(*)
+		FROM photo
+		WHERE BOARD_NO = #{board_no}
+		AND DELETE_YN = 'N'
+		ORDER BY PHOTO_NO DESC
+	</select>
+	
+	<!-- 교회 사진 관리 사진 리스트 조회 -->
+	<select id="churchPhotoPhotoList" resultMap="photoResultMap">
+		SELECT *
+		FROM photo
+		WHERE BOARD_NO = #{board_no}
+		AND DELETE_YN = 'N'
+		ORDER BY PHOTO_NO DESC
+	</select>
+	
+	<!-- 교회 사진 관리 총 row 갯수 조회 -->
+	<select id="countChurchPhotoAdmin" resultType="Integer">
+		SELECT COUNT(*)
+		FROM board A
+		   , member B
+		WHERE A.MEMBER_NO = B.MEMBER_NO 
+		and A.BOARD_FG = 3
+		AND A.DELETE_YN = 'N'
+		<if test="searchContent != NULL and searchContent != ''">
+			<if test="searchSelect eq '1'.toString()">
+			AND A.BOARD_TITLE LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '2'.toString()">
+			AND A.BOARD_CONTENT LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+			<if test="searchSelect eq '3'.toString()">
+			AND B.MEMBER_NAME LIKE CONCAT('%', #{searchContent}, '%')
+			</if>
+		</if>
+		ORDER BY A.BOARD_NO DESC
+	</select>
+	
+	<!-- 샬롬찬양대 조직 정보 -->
+	<select id="choirAdminList" resultType="SermonAndPraise">
+		SELECT *
+		FROM praise_team
+		WHERE PRAISE_FG = #{PRAISE_FG}
+	</select>
+	
+	<!-- 샬롬찬양대 조직 정보 수정-->
+	<update id="modifyChoirAdmin">
+		UPDATE praise_team
+		SET   
+			  PRAISE_BOSS = #{PRAISE_BOSS}
+			, PRAISE_CONDUCTOR = #{PRAISE_CONDUCTOR}
+			, PRAISE_BANJU = #{PRAISE_BANJU}
+			, PRAISE_MANAGER = #{PRAISE_MANAGER}
+			, PRAISE_SUBMANAGER = #{PRAISE_SUBMANAGER}
+			, PRAISE_WRITER = #{PRAISE_WRITER}
+			, PRAISE_ACCOUNTANT = #{PRAISE_ACCOUNTANT}
+			, PRAISE_SOPRANO = #{PRAISE_SOPRANO}
+			, PRAISE_ALTO = #{PRAISE_ALTO}
+			, PRAISE_TENOR = #{PRAISE_TENOR}
+			, PRAISE_BASS = #{PRAISE_BASS}
+			, PRAISE_PHOTO_ORNAME = #{PRAISE_PHOTO_ORNAME}
+			, PRAISE_PHOTO_RENAME = #{PRAISE_PHOTO_RENAME}
+		WHERE PRAISE_FG = #{PRAISE_FG}
+	</update>
+	
+	<!-- 다음세대 유아부~고등부 정보 --> 
+	<select id="selectNextGenerationList" resultMap="nextGenerationResultMap" resultType="list">
+		SELECT *
+		FROM next_gen
+		WHERE DEPT_NO BETWEEN 1 AND 6 
+	</select>
+	
+	<!-- 다음세대 1,2 청년부 정보 -->
+	<select id="selectNextGenerationYouthList" resultMap="nextGenerationResultMap" resultType="list">
+		SELECT *
+		FROM next_gen
+		WHERE DEPT_NO IN (7,8)
+	</select>
+	
+	<update id="modifyChurchSchoolAdmin">
+		UPDATE next_gen
+		SET 
+			  EDU_TITLE = #{EDU_TITLE}
+			, MAIN_WORDS = #{MAIN_WORDS}
+			, WORSHIP_OBJECT = #{WORSHIP_OBJECT}
+			, WORSHIP_TIME = #{WORSHIP_TIME}
+			, WORSHIP_AREA = #{WORSHIP_AREA}
+			, DEPT_LEADER = #{DEPT_LEADER}
+			, DEPT_HEADER = #{DEPT_HEADER}
+			, DEPT_DIRECTOR = #{DEPT_DIRECTOR}
+			, DEPT_BUDIRECTOR = #{DEPT_BUDIRECTOR}
+			, DEPT_MANAGER = #{DEPT_MANAGER}
+			, DEPT_WRITER = #{DEPT_WRITER}
+			, DEPT_ACCOUNTANT = #{DEPT_ACCOUNTANT}
+			, DEPT_MEMBER = #{DEPT_MEMBER}
+			, DEPT_PHOTO_ORNAME = #{DEPT_PHOTO_ORNAME}
+			, DEPT_PHOTO_RENAME = #{DEPT_PHOTO_RENAME}
+		WHERE DEPT_NO = #{DEPT_NO}
+	</update>
 </mapper>

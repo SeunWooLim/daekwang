@@ -12,6 +12,7 @@
   		<result property="PHOTO_NO" column="PHOTO_NO"/>
   		<result property="PHOTO_ORNAME" column="PHOTO_ORNAME"/>
   		<result property="PHOTO_RENAME" column="PHOTO_RENAME"/>
+  		<result property="DELETE_DATE" column="DELETE_DATE"/>
 	</resultMap>
 	
 	<resultMap id="memberResultMap" type="Member">
@@ -28,6 +29,7 @@
   		<result property="MEMBER_ADDR_EXTRA" column="MEMBER_ADDR_EXTRA"/>
   		<result property="MEMBER_DETAIL" column="MEMBER_DETAIL"/>
   		<result property="MEMBER_USEYN" column="MEMBER_USEYN"/>
+  		<result property="MEMBER_AUTH" column="MEMBER_AUTH"/>
 	</resultMap>
 	
 	<resultMap id="boardResultMap" type="Board">
@@ -263,5 +265,17 @@
 		ORDER BY PHOTO_NO DESC
 	</select>
 	
+	<!-- 삭제할 사진 정보 리스트 조회 -->
+	<select id="autoDeletePhoto" resultMap="photoResultMap">
+		SELECT *
+		FROM photo
+		WHERE DELETE_YN = 'Y'
+		AND DELETE_DATE <![CDATA[<]]> date_sub(now(), interval 1 month)
+	</select>
 	
+	<!-- PHOTO테이블 사진정보 완전삭제 -->
+	<delete id="completeDeletePhoto" parameterType="String">
+		DELETE FROM photo
+		WHERE PHOTO_RENAME = #{photo_rename}
+	</delete>
 </mapper>

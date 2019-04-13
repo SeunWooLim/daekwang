@@ -17,13 +17,14 @@ public class PhotoVo {
 	private int PHOTO_NO;			//사진번호
 	private String PHOTO_ORNAME;	//사진원본명
 	private String PHOTO_RENAME;	//사진고유명
+	private Date DELETE_DATE;		//삭제일
 	
 	public PhotoVo() {
 		
 	}
 
 	public PhotoVo(char bOARD_FG, int bOARD_NO, char dELETE_YN, int mEMBER_NO, Date pHOTO_DATE, int pHOTO_NO,
-			String pHOTO_ORNAME, String pHOTO_RENAME) {
+			String pHOTO_ORNAME, String pHOTO_RENAME, Date dELETE_DATE) {
 		super();
 		BOARD_FG = bOARD_FG;
 		BOARD_NO = bOARD_NO;
@@ -33,6 +34,7 @@ public class PhotoVo {
 		PHOTO_NO = pHOTO_NO;
 		PHOTO_ORNAME = pHOTO_ORNAME;
 		PHOTO_RENAME = pHOTO_RENAME;
+		DELETE_DATE = dELETE_DATE;
 	}
 
 	public char getBOARD_FG() {
@@ -99,6 +101,14 @@ public class PhotoVo {
 		PHOTO_RENAME = pHOTO_RENAME;
 	}
 
+	public Date getDELETE_DATE() {
+		return DELETE_DATE;
+	}
+
+	public void setDELETE_DATE(Date dELETE_DATE) {
+		DELETE_DATE = dELETE_DATE;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -107,8 +117,7 @@ public class PhotoVo {
 	public String toString() {
 		return "PhotoVo [BOARD_FG=" + BOARD_FG + ", BOARD_NO=" + BOARD_NO + ", DELETE_YN=" + DELETE_YN + ", MEMBER_NO="
 				+ MEMBER_NO + ", PHOTO_DATE=" + PHOTO_DATE + ", PHOTO_NO=" + PHOTO_NO + ", PHOTO_ORNAME=" + PHOTO_ORNAME
-				+ ", PHOTO_RENAME=" + PHOTO_RENAME + "]";
+				+ ", PHOTO_RENAME=" + PHOTO_RENAME + ", DELETE_DATE=" + DELETE_DATE + "]";
 	}
-	
-	
+
 }

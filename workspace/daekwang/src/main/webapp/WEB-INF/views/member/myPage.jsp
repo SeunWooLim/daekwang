@@ -26,41 +26,41 @@
 					<tbody>
 						<tr>
 							<td><label for="user_id">아이디</label></td>
-							<td>아이디출력</td>
+							<td>${member.MEMBER_ID }</td>
 						</tr>						
 						<tr>
 							<td><label for="user_pw">현재 비밀번호</label></td>
-							<td><input type="password" id="ernollpwd" name="MEMBER_PWD" oninput="checkPwd()" placeholder="영문, 숫자 8~14자리 조합"><p id="enrollpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
+							<td><input type="password" id="currentpwd" name="MEMBER_PWD"><p id="enrollpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
 						</tr>
 						<tr>
 							<td><label for="user_pw">새 비밀번호</label></td>
-							<td><input type="password" id="ernollpwd" name="MEMBER_PWD" oninput="checkPwd()" placeholder="영문, 숫자 8~14자리 조합"><p id="enrollpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
+							<td><input type="password" id="ernollpwd" name="MEMBER_NEWPWD" oninput="checkPwd()" placeholder="영문, 숫자 8~14자리 조합"><p id="enrollpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
 						</tr>
 						<tr>
 							<td><label for="user_pwc">새 비밀번호확인</label></td>
-							<td><input type="password" id="confirmpwd" name="user_pwc" oninput="checkPwd()"><p id="confirmpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
+							<td><input type="password" id="confirmpwd" name="MEMBER_NEWPWD2" oninput="checkPwd()" placeholder="영문, 숫자 8~14자리 조합"><p id="confirmpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
 						</tr>
 						<tr>
 							<td><label for="user_name">이름</label></td>
-							<td>이름출력</td>
+							<td>${member.MEMBER_NAME }</td>
 						</tr>
 						<tr>
 							<td><label for="address">주소</label></td>
 							<td class="add">
-								<input type="text" id="postcode" name="MEMBER_POSTCODE" placeholder="우편번호" readonly>
+								<input type="text" id="postcode" name="MEMBER_POSTCODE" placeholder="우편번호" value="${member.MEMBER_POSTCODE }" readonly>
 								<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
-								<input type="text" id="address" name="MEMBER_ADDR" placeholder="주소" readonly><br>
-								<input type="text" id="detailAddress" name="MEMBER_ADDR_DETAIL" placeholder="상세주소" oninput="checkAddr()">
-								<input type="text" style="width:89%" id="extraAddress" name="MEMBER_ADDR_EXTRA" placeholder="참고항목" readonly>
+								<input type="text" id="address" name="MEMBER_ADDR" placeholder="주소" value="${member.MEMBER_ADDR }" readonly><br>
+								<input type="text" id="detailAddress" name="MEMBER_ADDR_DETAIL" placeholder="상세주소" value="${member.MEMBER_ADDR_DETAIL }" oninput="checkAddr()">
+								<input type="text" style="width:89%" id="extraAddress" name="MEMBER_ADDR_EXTRA" placeholder="참고항목" value="${member.MEMBER_ADDR_EXTRA }" readonly>
 								<p id="addrtxt" style="display: inline-block; margin-left:10px;" ></p>
 							</td>
 						</tr>
 						<tr>
 							<td><label for="email">이메일</label></td>
 							<td>
-								<input type="text" id="email1" name="email1">
+								<input type="text" id="email1" name="email1" value="${map.email1 }">
 								@
-								<input type="text" id="email2" name="email2">
+								<input type="text" id="email2" name="email2" value="${map.email2 }">
 								<select id="email3" name="email3">
 									<option value="">직접입력</option>								
 									<option value="naver.com">naver.com</option>								
@@ -77,29 +77,67 @@
 							<td><label for="phone2">전화번호</label></td>
 							<td class="call">
 								<select id="phone1" name="phone1">
-									<option value="010">010</option>								
-									<option value="011">011</option>								
-									<option value="016">016</option>								
-									<option value="017">017</option>								
-									<option value="018">018</option>								
-									<option value="019">019</option>								
+									<c:choose>
+										<c:when test="${map.phone1 eq '011' }">
+											<option value="010">010</option>								
+											<option value="011" selected="selected">011</option>								
+											<option value="016">016</option>								
+											<option value="017">017</option>								
+											<option value="018">018</option>								
+											<option value="019">019</option>								
+										</c:when>
+										<c:when test="${map.phone1 eq '016' }">
+											<option value="010">010</option>								
+											<option value="011">011</option>								
+											<option value="016" selected="selected">016</option>								
+											<option value="017">017</option>								
+											<option value="018">018</option>								
+											<option value="019">019</option>								
+										</c:when>
+										<c:when test="${map.phone1 eq '017' }">
+											<option value="010">010</option>								
+											<option value="011">011</option>								
+											<option value="016">016</option>								
+											<option value="017" selected="selected">017</option>								
+											<option value="018">018</option>								
+											<option value="019">019</option>								
+										</c:when>
+										<c:when test="${map.phone1 eq '018' }">
+											<option value="010">010</option>								
+											<option value="011">011</option>								
+											<option value="016">016</option>								
+											<option value="017">017</option>								
+											<option value="018" selected="selected">018</option>								
+											<option value="019">019</option>								
+										</c:when>
+										<c:when test="${map.phone1 eq '019' }">
+											<option value="010">010</option>								
+											<option value="011">011</option>								
+											<option value="016">016</option>								
+											<option value="017">017</option>								
+											<option value="018">018</option>								
+											<option value="019" selected="selected">019</option>								
+										</c:when>
+										<c:otherwise>
+											<option value="010" selected="selected">010</option>								
+											<option value="011">011</option>								
+											<option value="016">016</option>								
+											<option value="017">017</option>								
+											<option value="018">018</option>								
+											<option value="019">019</option>
+										</c:otherwise>
+									</c:choose>
 								</select>
 								-
-								<input type="text"  style="width:27%"  id="phone2" name="phone2"  oninput="checkPhone()">
+								<input type="text"  style="width:27%"  id="phone2" name="phone2"  oninput="checkPhone()" value="${map.phone2 }">
 								-
-								<input type="text"  style="width:27%"  id="phone3" name="phone3"  oninput="checkPhone()">
+								<input type="text"  style="width:27%"  id="phone3" name="phone3"  oninput="checkPhone()" value="${map.phone3 }">
 								<p id="phonetxt" style="display: inline-block; margin-left:10px;" ></p>
-							</td>
-						</tr>
-						<tr>
-							<td><label for="inputAgree">약관동의</label></td>
-							<td class="dong">
-								<input id="inputAgree" type="checkbox" onclick=ischecked()> <a href="#"> 이용약관</a> 에 동의합니다.
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				<button type="submit" id="signupbtn" class="button">가입신청</button>
+				<button type="submit" id="signupbtn" class="button" disabled="disabled">수정</button>
 			</form>
 		</div>	
 	</div>
@@ -116,54 +154,12 @@
 </script>
  
 <script type="text/javascript">
-var IdCheck = 0;
 var pwdInputCheck = 0;
 var pwdConfirmCheck = 0;
-var nameCheck = 0;
 var addrCheck = 0;
+var emailCheck = 0;
 var phoneCheck = 0;
-var agreeCheck=0;
 
-
-// 아이디 체크하여 가입버튼 비활성화, 중복확인.
-function checkId() {
-	var ernollid = $('#user_id').val();
-	var regexp = /^[a-z0-9]{5,13}$/; // 영어소문자 숫자로만 5-13자
-	
-	$.ajax({
-		type : "post",
-		data : {
-			inpuid : ernollid
-		},
-		url : "/daekwang/checkId.do",
-		success : function(data) {
-			if (ernollid == "" && data == 0) {
-				$("#ernollid").css("background-color", "white");
-				IdCheck = 0;
-			} else {
-				if(!regexp.test(ernollid))
-				{
-					$("#ernollid").css("background-color", "#FFCECE");
-					IdCheck = 0;
-					$("#enrollidtxt").html("영문소문자, 숫자로 5~13자입력").css("color","red");
-				}else if (data == 0)
-				{
-					$("#ernollid").css("background-color", "#B0F6AC");
-					IdCheck = 1;
-					$("#enrollidtxt").html("사용 가능").css("color","green");
-				} else if (data == 1)
-				{
-					$("#ernollid").css("background-color", "#FFCECE");
-					IdCheck = 0;
-					$("#enrollidtxt").html("사용 불가").css("color","red");
-				}
-			}
-		}
-	});
-    return false;
-	toggleBtn();
-		
-}
 
 //재입력 비밀번호 체크하여 가입버튼 비활성화 또는 맞지않음을 알림.
 function checkPwd() {
@@ -208,27 +204,6 @@ function checkPwd() {
 	toggleBtn();
 }
 
-// 사용자이름을 입력하지 않았을 경우 가입버튼 비활성화
-function checkName() {
-	var username = $("#username").val();
-	if (username == "") {
-		nameCheck = 0;
-		$("#username").css("background-color", "white");
-	} else {
-		var pattern = /^[가-힣]{2,5}|[a-zA-Z]{2,10}$/;
-		if(pattern.test(username)){
-			nameCheck = 1;
-			$("#username").css("background-color", "#B0F6AC");
-			$("#usernametxt").html("사용가능").css("color","green");
-		}else{
-			nameCheck = 0;
-			$("#username").css("background-color", "#FFCECE");
-			$("#usernametxt").html("이름을 입력하세요").css("color","red");
-		}	
-	}
-	toggleBtn();
-}
-
 //주소 유효성검사
 function checkAddr() {
 	var postcode = $("#postcode").val();
@@ -240,6 +215,33 @@ function checkAddr() {
 	} else if(postcode !== "" && detailAddress.length > 3){
 		addrCheck = 1;
 		$("#addrtxt").html("입력완료").css("color","green");
+	}
+	toggleBtn();
+}
+
+//이메일 유효성검사
+function checkEmail(){
+	var email1 = $('#email1').val();
+	var email2 = $('#email2').val();
+	var email = email1 + '@' + email2;
+	
+	if(email1 == "" && email2 == ""){
+		$("#email1").css("background-color", "white");
+		$("#email2").css("background-color", "white");
+	}else{
+		var pattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		
+		if(pattern.test(email)){
+			$("#email1").css("background-color", "#B0F6AC");
+			$("#email2").css("background-color", "#B0F6AC");
+			emailCheck = 1;
+			$("#emailtxt").html("사용가능").css("color","green");
+		}else{
+			$("#email1").css("background-color", "#FFCECE");
+			$("#email2").css("background-color", "#FFCECE");
+			emailCheck = -1;
+			$("#emailtxt").html("사용불가").css("color","red");
+		}
 	}
 	toggleBtn();
 }
@@ -274,24 +276,11 @@ function checkPhone() {
 	toggleBtn();
 }
 
-//약관동의 체크 내역
-function ischecked(){
-//	var flag = $('input:checkbox[id="agree"]');
-	var flag = $('input[id="inputAgree"]');
-	if(flag.is(":checked")){
-		agreeCheck=1;
-	}
-	else{
-		agreeCheck=-1;
-	}
-	toggleBtn();
-}
-
 //모든 입력값 유효성 검사 확인후 회원가입 버튼 disabled 해체
 function toggleBtn() {
-	var activeBtn = IdCheck + pwdCheck + pwdConfirmCheck + nameCheck + addrCheck + ageCheck +phoneCheck + agreeCheck;
+	var activeBtn = pwdCheck + pwdConfirmCheck + addrCheck + emailCheck + phoneCheck;
 	console.log(activeBtn);
-	if (activeBtn == 8) {
+	if (activeBtn == 5) {
 		$("#signupbtn").prop("disabled", false);
 		$("#signupbtn").css("background-color", "#004157");
 	} else {

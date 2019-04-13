@@ -17,6 +17,8 @@
   		<result property="PRAISE_TENOR" column="PRAISE_TENOR"/>
   		<result property="PRAISE_BASS" column="PRAISE_BASS"/>
   		<result property="PRAISE_DETAIL" column="PRAISE_DETAIL"/>
+  		<result property="PRAISE_PHOTO_ORNAME" column="PRAISE_PHOTO_ORNAME"/>
+  		<result property="PRAISE_PHOTO_RENAME" column="PRAISE_PHOTO_RENAME"/>
 	</resultMap>
 	
 	<!-- 샬롬찬양대 임원조직 정보 -->

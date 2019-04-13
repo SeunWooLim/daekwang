@@ -20,6 +20,7 @@ public class MemberVo {
 	private String MEMBER_ADDR_EXTRA;  //회원추가주소
 	private String MEMBER_DETAIL;	//회원설명
 	private String MEMBER_USEYN;	//사용여부
+	private String MEMBER_AUTH; 	//회원권한
 	
 	public MemberVo() {
 		
@@ -27,7 +28,8 @@ public class MemberVo {
 
 	public MemberVo(int mEMBER_NO, String mEMBER_FG, String mEMBER_ID, String mEMBER_PWD, String mEMBER_NAME,
 			String mEMBER_PHONE, String mEMBER_EMAIL, int mEMBER_POSTCODE, String mEMBER_ADDR,
-			String mEMBER_ADDR_DETAIL, String mEMBER_ADDR_EXTRA, String mEMBER_DETAIL, String mEMBER_USEYN) {
+			String mEMBER_ADDR_DETAIL, String mEMBER_ADDR_EXTRA, String mEMBER_DETAIL, String mEMBER_USEYN,
+			String mEMBER_AUTH) {
 		super();
 		MEMBER_NO = mEMBER_NO;
 		MEMBER_FG = mEMBER_FG;
@@ -42,6 +44,7 @@ public class MemberVo {
 		MEMBER_ADDR_EXTRA = mEMBER_ADDR_EXTRA;
 		MEMBER_DETAIL = mEMBER_DETAIL;
 		MEMBER_USEYN = mEMBER_USEYN;
+		MEMBER_AUTH = mEMBER_AUTH;
 	}
 
 	public int getMEMBER_NO() {
@@ -148,6 +151,14 @@ public class MemberVo {
 		MEMBER_USEYN = mEMBER_USEYN;
 	}
 
+	public String getMEMBER_AUTH() {
+		return MEMBER_AUTH;
+	}
+
+	public void setMEMBER_AUTH(String mEMBER_AUTH) {
+		MEMBER_AUTH = mEMBER_AUTH;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -158,11 +169,9 @@ public class MemberVo {
 				+ ", MEMBER_PWD=" + MEMBER_PWD + ", MEMBER_NAME=" + MEMBER_NAME + ", MEMBER_PHONE=" + MEMBER_PHONE
 				+ ", MEMBER_EMAIL=" + MEMBER_EMAIL + ", MEMBER_POSTCODE=" + MEMBER_POSTCODE + ", MEMBER_ADDR="
 				+ MEMBER_ADDR + ", MEMBER_ADDR_DETAIL=" + MEMBER_ADDR_DETAIL + ", MEMBER_ADDR_EXTRA="
-				+ MEMBER_ADDR_EXTRA + ", MEMBER_DETAIL=" + MEMBER_DETAIL + ", MEMBER_USEYN=" + MEMBER_USEYN + "]";
+				+ MEMBER_ADDR_EXTRA + ", MEMBER_DETAIL=" + MEMBER_DETAIL + ", MEMBER_USEYN=" + MEMBER_USEYN
+				+ ", MEMBER_AUTH=" + MEMBER_AUTH + "]";
 	}
 
-	
-
-	
 	
 }

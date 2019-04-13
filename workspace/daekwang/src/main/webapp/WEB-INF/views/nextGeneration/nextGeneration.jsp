@@ -57,7 +57,7 @@
 					</div>
 					<!-- 이미지 추가부분 s -->
 					<div class="nextjpg_wrap nextjpg_wrap1111">
-						<img alt="" src="<c:url value="/"/>resources/img/exnext.jpg">
+						<img alt="" src="<c:url value="/"/>resources/img/deptImage/${schoolList.DEPT_PHOTO_RENAME }">
 						<span class="bg"></span>
 						<span class="lt"></span>
 						<span class="rt"></span>
@@ -66,31 +66,6 @@
 					</div>
 					<!-- 이미지 추가부분 e -->	
 				</div>
-				<%-- <div class="next_detail">
-					<div class="next_left">
-						<p>비전</p>
-					</div>
-					<div class="next_right">
-						<div class="right_left">
-							<p class="title">a.<span class="text">${schoolList.DEPT_VISION }</span></p>
-						</div>				
-					</div>
-				</div>
-				
-				<div class="next_detail">
-					<div class="next_left">
-						<p>핵심사역</p>
-					</div>
-					<div class="next_right">
-						<div class="right_left">
-							<p class="title">예배<span class="text">${schoolList.DEPT_MISSION }</span></p>
-							<p class="title">교육<span class="text">${schoolList.DEPT_MISSION }</span></p>
-							<p class="title">전도<span class="text">${schoolList.DEPT_MISSION }</span></p>
-							<p class="title">교제<span class="text">${schoolList.DEPT_MISSION }</span></p>
-							<p class="title">친교<span class="text">${schoolList.DEPT_MISSION }</span></p>
-						</div>				
-					</div>
-				</div>	 --%>																
 				<div class="next_detail">
 					<div class="next_left">
 						<p>섬기는분들</p>
@@ -159,8 +134,8 @@
 					</div>
 					<!-- 이미지 추가부분 s -->
 					<div class="nextjpg_wrap nextjpg_wrap1111">
-						<img alt="" src="<c:url value="/"/>resources/img/exnext.jpg">
-						<span class="bg"></span>
+						<img alt="" src="<c:url value="/"/>resources/img/deptImage/${youthList.DEPT_PHOTO_RENAME}">
+						<!-- <span class="bg"></span> -->
 						<span class="bg"></span>
 						<span class="lt"></span>
 						<span class="rt"></span>
@@ -170,33 +145,6 @@
 					<!-- 이미지 추가부분 e -->
 				</div>
 				
-				
-				
-				<%-- <div class="next_detail">
-					<div class="next_left">
-						<p>비전</p>
-					</div>
-					<div class="next_right">
-						<div class="right_left">
-							<p class="title">a.<span class="text">${youthList.DEPT_VISION }</span></p>
-						</div>				
-					</div>
-				</div>
-				
-				<div class="next_detail">
-					<div class="next_left">
-						<p>핵심사역</p>
-					</div>
-					<div class="next_right">
-						<div class="right_left">
-							<p class="title">예배<span class="text">${youthList.DEPT_MISSION }</span></p>
-							<p class="title">교육<span class="text">${youthList.DEPT_MISSION }</span></p>
-							<p class="title">전도<span class="text">${youthList.DEPT_MISSION }</span></p>
-							<p class="title">교제<span class="text">${youthList.DEPT_MISSION }</span></p>
-							<p class="title">친교<span class="text">${youthList.DEPT_MISSION }</span></p>
-						</div>				
-					</div>
-				</div> --%>
 				<div class="next_detail">
 					<div class="next_left">
 						<p>섬기는분들</p>
@@ -244,9 +192,7 @@
 		
 </div>
 
-
 <jsp:include page="../common/footer.jsp"/>
 
 </body>
 </html>
-

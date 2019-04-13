@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.daekwang.apply.model.vo.ApplyVo;
 import kr.or.daekwang.board.model.vo.BoardVo;
+import kr.or.daekwang.board.model.vo.PhotoVo;
+import kr.or.daekwang.nextGeneration.model.vo.NextGenerationVo;
+import kr.or.daekwang.sermonAndPraise.model.vo.SermonAndPraiseVo;
 
 @Repository("adminDao")
 public class AdminDao {
@@ -120,6 +123,56 @@ public class AdminDao {
 		return mybatis.update("adminMapper.updatePhotoAdmin", boardVo);
 	}
 
-	
-	
+	public List<ApplyVo> memberAdminList(HashMap<String, Object> map) {
+		return mybatis.selectList("adminMapper.memberAdminList", map);
+	}
+
+	public int countMemberAdmin(HashMap<String, Object> countMap) {
+		return mybatis.selectOne("adminMapper.countMemberAdmin", countMap);
+	}
+
+	public int updateMemberAuthChange(HashMap<String, Object> map) {
+		return mybatis.update("adminMapper.updateMemberAuthChange", map);
+	}
+
+	public int insertDeleteDate(int board_no) {
+		return mybatis.update("adminMapper.insertDeleteDate", board_no);
+	}
+
+	public List<BoardVo> churchPhotoBoardMap(HashMap<String, Object> mapp) {
+		return mybatis.selectList("adminMapper.churchPhotoBoardMap", mapp);
+	}
+
+	public int PhotoListCount(int board_no) {
+		return mybatis.selectOne("adminMapper.PhotoListCount", board_no);
+	}
+
+	public List<PhotoVo> churchPhotoPhotoList(int board_no) {
+		return mybatis.selectList("adminMapper.churchPhotoPhotoList", board_no);
+	}
+
+	public int countChurchPhotoAdmin(HashMap<String, Object> countMap) {
+		return mybatis.selectOne("adminMapper.countChurchPhotoAdmin", countMap);
+	}
+
+	public SermonAndPraiseVo choirAdminList(char PRAISE_FG) {
+		return mybatis.selectOne("adminMapper.choirAdminList", PRAISE_FG);
+	}
+
+	public int modifyChoirAdmin(SermonAndPraiseVo sermonAndPraiseVo) {
+		return mybatis.update("adminMapper.modifyChoirAdmin", sermonAndPraiseVo);
+	}
+
+	public List<NextGenerationVo> selectNextGenerationList() {
+		return mybatis.selectList("adminMapper.selectNextGenerationList");
+	}
+
+	public List<NextGenerationVo> selectNextGenerationYouthList() {
+		return mybatis.selectList("adminMapper.selectNextGenerationYouthList");
+	}
+
+	public int modifyChurchSchoolAdmin(NextGenerationVo nextGenerationVo) {
+		return mybatis.update("adminMapper.modifyChurchSchoolAdmin", nextGenerationVo);
+	}
+
 }

@@ -24,6 +24,7 @@
 		</div>
 		<div class="join_form">
 			<form method="post" action="enroll.do">
+				<p style="color:red">* 회원가입시 하나의 항목이라도 입력되지 않으면 가입신청 버튼이 눌리지 않습니다.(약관동의 필수)</p>
 				<table>
 					<colgroup>
 						<col width="20%">
@@ -60,9 +61,9 @@
 						<tr>
 							<td><label for="email">이메일</label></td>
 							<td>
-								<input type="text" id="email1" name="email1">
+								<input type="text" id="email1" name="email1" style="width:30%" oninput="checkEmail()">
 								@
-								<input type="text" id="email2" name="email2">
+								<input type="text" id="email2" name="email2" style="width:30%" oninput="checkEmail()">
 								<select id="email3" name="email3">
 									<option value="">직접입력</option>								
 									<option value="naver.com">naver.com</option>								
@@ -73,6 +74,7 @@
 									<option value="hotmail.com">hotmail.com</option>	
 									<option value=korea.com>korea.com</option>									
 								</select>
+								<p id="emailtxt" style="display: inline-block; margin-left:10px;" ></p>
 							</td>
 						</tr>
 						<tr>
@@ -96,12 +98,13 @@
 						<tr>
 							<td><label for="inputAgree">약관동의</label></td>
 							<td class="dong">
-								<input id="inputAgree" type="checkbox" onclick=ischecked()> <a href="#"> 이용약관</a> 에 동의합니다.
+								<input id="inputAgree" type="checkbox" onclick="ischecked()"> <a href="#"> 이용약관</a> 에 동의합니다.
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				<button type="submit" id="signupbtn" class="button">가입신청</button>
+				<button type="submit" id="signupbtn" class="button" disabled="disabled">가입신청</button>
+				<p style="color:red">* 입력하신 정보가 맞는지 한번 더 확인 하십시오</p>
 			</form>
 		</div>	
 	</div>
@@ -123,6 +126,7 @@ var pwdInputCheck = 0;
 var pwdConfirmCheck = 0;
 var nameCheck = 0;
 var addrCheck = 0;
+var emailCheck = 0;
 var phoneCheck = 0;
 var agreeCheck=0;
 
@@ -246,6 +250,33 @@ function checkAddr() {
 	toggleBtn();
 }
 
+//이메일 유효성검사
+function checkEmail(){
+	var email1 = $('#email1').val();
+	var email2 = $('#email2').val();
+	var email = email1 + '@' + email2;
+	
+	if(email1 == "" && email2 == ""){
+		$("#email1").css("background-color", "white");
+		$("#email2").css("background-color", "white");
+	}else{
+		var pattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+		
+		if(pattern.test(email)){
+			$("#email1").css("background-color", "#B0F6AC");
+			$("#email2").css("background-color", "#B0F6AC");
+			emailCheck = 1;
+			$("#emailtxt").html("사용가능").css("color","green");
+		}else{
+			$("#email1").css("background-color", "#FFCECE");
+			$("#email2").css("background-color", "#FFCECE");
+			emailCheck = -1;
+			$("#emailtxt").html("사용불가").css("color","red");
+		}
+	}
+	toggleBtn();
+}
+
 //휴대폰번호 유효성검사
 function checkPhone() {
 	var phone1 = $("#phone1").val();
@@ -281,24 +312,24 @@ function ischecked(){
 //	var flag = $('input:checkbox[id="agree"]');
 	var flag = $('input[id="inputAgree"]');
 	if(flag.is(":checked")){
-		agreeCheck=1;
+		agreeCheck = 1;
 	}
 	else{
-		agreeCheck=-1;
+		agreeCheck = -1;
 	}
 	toggleBtn();
 }
 
 //모든 입력값 유효성 검사 확인후 회원가입 버튼 disabled 해체
 function toggleBtn() {
-	var activeBtn = IdCheck + pwdCheck + pwdConfirmCheck + nameCheck + addrCheck + ageCheck +phoneCheck + agreeCheck;
+	var activeBtn = IdCheck + pwdCheck + pwdConfirmCheck + nameCheck + addrCheck + emailCheck + phoneCheck + agreeCheck;
 	console.log(activeBtn);
 	if (activeBtn == 8) {
 		$("#signupbtn").prop("disabled", false);
-		$("#signupbtn").css("background-color", "#004157");
+		//$("#signupbtn").css("background-color", "#004157");
 	} else {
 		$("#signupbtn").prop("disabled", true);
-		$("#signupbtn").css("background-color", "#aaaaaa");
+		//$("#signupbtn").css("background-color", "#aaaaaa");
 	}
 }
 </script>
@@ -352,7 +383,7 @@ function toggleBtn() {
             }
         }).open();
         
-    }
+    };
 </script>
 </body>
 

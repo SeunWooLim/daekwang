@@ -232,18 +232,18 @@ function UploadImage(){
 	    url : "insertChurchPhoto.do",
 	    data : formData,
 	    processData: false,
-	    contentType: false,
+	    contentType : false,
 	    success : function(result) {
-	        if(result=="ok"){
+	    	console.log(result);
+	        if(result=="success"){
 	        	alert(1);
-	        	//document.location.href = "churchPhoto.do";
+	        	location.href = "churchPhoto.do";
 	        }else{
 	            alert("이미지 등록에 실패하였습니다.");
 	            location.href = "churchPhoto.do";
-	        }
-	        
+	        } 
 	    },
-	    err : function(err) {
+	    error : function(err) {
 	        alert(err.status);
 	        location.href = "churchPhoto.do";
 	    }

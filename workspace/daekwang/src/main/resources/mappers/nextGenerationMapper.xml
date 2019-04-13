@@ -21,27 +21,8 @@
   		<result property="DEPT_WRITER" column="DEPT_WRITER"/>
   		<result property="DEPT_ACCOUNTANT" column="DEPT_ACCOUNTANT"/>
   		<result property="DEPT_MEMBER" column="DEPT_MEMBER"/>
-  		<result property="DEPT_PHOTO" column="DEPT_PHOTO"/>
-  		<result property="DEPT_PHOTO_NAME" column="DEPT_PHOTO_NAME"/>
-	</resultMap>
-	
-	<resultMap id="nextGenerationResultMap1" type="NextGeneration">
-		<result property="DEPT_NO" column="DEPT_NO"/>
-  		<result property="DEPT_NAME" column="DEPT_NAME"/>
-  		<result property="EDU_TITLE" column="EDU_TITLE"/>
-  		<result property="MAIN_WORDS" column="MAIN_WORDS"/>
-  		<result property="WORSHIP_OBJECT" column="WORSHIP_OBJECT"/>
-  		<result property="WORSHIP_TIME" column="WORSHIP_TIME"/>
-  		<result property="WORSHIP_AREA" column="WORSHIP_AREA"/>
-  		<result property="DEPT_VISION" column="DEPT_VISION"/>
-  		<result property="DEPT_MISSION" column="DEPT_MISSION"/>
-  		<result property="DEPT_LEADER" column="DEPT_LEADER"/>
-  		<result property="DEPT_HEADER" column="DEPT_HEADER"/>
-  		<result property="DEPT_DIRECTOR" column="DEPT_DIRECTOR"/>
-  		<result property="DEPT_MANAGER" column="DEPT_MANAGER"/>
-  		<result property="DEPT_WRITER" column="DEPT_WRITER"/>
-  		<result property="DEPT_ACCOUNTANT" column="DEPT_ACCOUNTANT"/>
-  		<result property="DEPT_MEMBER" column="DEPT_MEMBER"/>
+  		<result property="DEPT_PHOTO_ORNAME" column="DEPT_PHOTO_ORNAME"/>
+  		<result property="DEPT_PHOTO_RENAME" column="DEPT_PHOTO_RENAME"/>
 	</resultMap>
 	
 	<!-- 다음세대 유아부~고등부 정보 --> 

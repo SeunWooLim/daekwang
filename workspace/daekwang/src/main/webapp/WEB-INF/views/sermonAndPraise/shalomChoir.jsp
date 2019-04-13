@@ -20,7 +20,7 @@
 		</ul>
 	</div>
 	<div class="nextgene_wrap1">
-		<img alt="" src="<c:url value="/"/>resources/img/ex111.jpg">
+		<img alt="" src="<c:url value="/"/>resources/img/deptImage/${sapVo1.PRAISE_PHOTO_RENAME }">
 		<div class="next_detail">	
 			<p class="next_title">샬롬 찬양대 임원조직</p>			
 			<div class="next_right">
