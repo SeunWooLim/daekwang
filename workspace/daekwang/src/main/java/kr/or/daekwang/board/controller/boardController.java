@@ -683,4 +683,23 @@ public class BoardController {
 		
 		return resizedImage;
     }	
+    
+    
+    /**
+	 * 교회 사진 뉴 페이지
+	 * @return sharingAndData/churchPhotoNew
+	 */
+	@RequestMapping(value = "/churchPhotoNew.do")
+	public String churchPhotoNew() {
+		return "sharingAndData/churchPhotoNew";
+	}
+	
+	/**
+	 * 교회 사진 디테일 페이지
+	 * @return sharingAndData/churchPhotoNew
+	 */
+	@RequestMapping(value = "/churchPhotoDetail.do")
+	public String churchPhotoDetail() {
+		return "sharingAndData/churchPhotoDetail";
+	}
 }

@@ -11,18 +11,18 @@
 <div id="wrap">
 	<div class="subvisual_wrap">
 		<div class="subvisual_text">
-			<p class=title>교회소식</p>
+			<p class=title>교회사진</p>
 			<p class="text">안양대광교회</p>
 		</div>
 	</div>
 	
 	<div class="ch_detail_wrap">
 		<div class="head">
-			<span class="left">${boardVo.BOARD_TITLE }</span>
-			<span class="right">${boardVo.RECENT_UPDATE_DATE }</span>
+			<span class="left">제목</span>
+			<span class="right">등록일</span>
 		</div>
 		<div class="mid">
-			${boardVo.BOARD_CONTENT }
+			내용
 		</div>
 		<!-- <div class="bot">
 			<ul>
@@ -34,7 +34,7 @@
 		<!-- 삭제버튼 -->
 		<!-- div class="tac" 로 무조건 버튼들 감싸주고 써주시면 됩니다. -->
 		<div class="tac">
-			<a href="churchNews.do" class="btn11">목록</a>
+			<a href="churchPhotoNew.do" class="btn11">목록</a>
 			<a href="#" class="btn11">삭제</a>
 		</div>
 	</div>

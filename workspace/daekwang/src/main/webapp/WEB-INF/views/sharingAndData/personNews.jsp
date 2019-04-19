@@ -14,11 +14,11 @@
 			<p class="text">안양대광교회</p>
 		</div>
 	</div>
-	
-	<div class="pw_board_wrap">
-		<div class="insertBtn_wrap mt20">
+	<div class="insertBtn_wrap mt20">
 	       <a href="#" class="newInsertBtn">글쓰기</a>
 	    </div>
+	<div class="pw_board_wrap">
+		
 	
  		<ul id="personNews">
 		</ul>
@@ -79,10 +79,15 @@
 									'<p class="title">'+ json.personNewsList[i].board_title +'</p>' +
 									'<p class="text"><span>' + json.personNewsList[i].recent_update_date + '</span><span>' + json.personNewsList[i].member_name + '</span></p>' +
 									'<i class="xi-angle-down"></i>' +
+									
 								'</div>' +
 								'<div class="body" id="body'+listCount+'">' +
 									'<p class="title">' + json.personNewsList[i].board_content + '</p>' +
 								'</div>' +
+								<!--삭제버튼 s-->
+								<!--이 i태그 에다가 삭제 기능 넣어주시면 됩니다.-->
+								'<i class="xi-close"></i>' +
+								<!--삭제버튼 e-->
 							'</li>'							
 							;
 					listCount--;
