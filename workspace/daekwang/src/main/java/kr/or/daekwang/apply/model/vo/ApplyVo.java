@@ -24,6 +24,7 @@ public class ApplyVo {
 	private String WORSHIP_NAME; 	//예배명
 	private String APPLY_CATE;		//주보신청분류
 	private String DEPT_NAME; 		//부서명
+	private String UPLOAD_YYMM;		//업로드년월
 	
 	private MemberVo memberVo;
 	private AdminVo adminVo;
@@ -34,7 +35,7 @@ public class ApplyVo {
 
 	public ApplyVo(char aPPLY_FG, int aPPLY_NO, String aPPLY_TITLE, String aPPLY_CONTENT, int mEMBER_NO,
 			Date aPPLY_DATE, String aPPLY_ORFILE, String aPPLY_REFILE, char dELETE_YN, String wORSHIP_NAME,
-			String aPPLY_CATE, String dEPT_NAME, MemberVo memberVo, AdminVo adminVo) {
+			String aPPLY_CATE, String dEPT_NAME, String uPLOAD_YYMM, MemberVo memberVo, AdminVo adminVo) {
 		super();
 		APPLY_FG = aPPLY_FG;
 		APPLY_NO = aPPLY_NO;
@@ -48,6 +49,7 @@ public class ApplyVo {
 		WORSHIP_NAME = wORSHIP_NAME;
 		APPLY_CATE = aPPLY_CATE;
 		DEPT_NAME = dEPT_NAME;
+		UPLOAD_YYMM = uPLOAD_YYMM;
 		this.memberVo = memberVo;
 		this.adminVo = adminVo;
 	}
@@ -148,6 +150,14 @@ public class ApplyVo {
 		DEPT_NAME = dEPT_NAME;
 	}
 
+	public String getUPLOAD_YYMM() {
+		return UPLOAD_YYMM;
+	}
+
+	public void setUPLOAD_YYMM(String uPLOAD_YYMM) {
+		UPLOAD_YYMM = uPLOAD_YYMM;
+	}
+
 	public MemberVo getMemberVo() {
 		return memberVo;
 	}
@@ -156,10 +166,6 @@ public class ApplyVo {
 		this.memberVo = memberVo;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
 	public AdminVo getAdminVo() {
 		return adminVo;
 	}
@@ -168,13 +174,17 @@ public class ApplyVo {
 		this.adminVo = adminVo;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
 		return "ApplyVo [APPLY_FG=" + APPLY_FG + ", APPLY_NO=" + APPLY_NO + ", APPLY_TITLE=" + APPLY_TITLE
 				+ ", APPLY_CONTENT=" + APPLY_CONTENT + ", MEMBER_NO=" + MEMBER_NO + ", APPLY_DATE=" + APPLY_DATE
 				+ ", APPLY_ORFILE=" + APPLY_ORFILE + ", APPLY_REFILE=" + APPLY_REFILE + ", DELETE_YN=" + DELETE_YN
-				+ ", WORSHIP_NAME=" + WORSHIP_NAME + ", APPLY_CATE=" + APPLY_CATE + ", DEPT_NAME=" + DEPT_NAME + "]";
+				+ ", WORSHIP_NAME=" + WORSHIP_NAME + ", APPLY_CATE=" + APPLY_CATE + ", DEPT_NAME=" + DEPT_NAME
+				+ ", UPLOAD_YYMM=" + UPLOAD_YYMM + "]";
 	}
-
 	
 }

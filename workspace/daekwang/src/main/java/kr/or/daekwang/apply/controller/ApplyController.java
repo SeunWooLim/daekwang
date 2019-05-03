@@ -3,6 +3,8 @@ package kr.or.daekwang.apply.controller;
 import java.io.File;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Map;
 
 import javax.activation.CommandMap;
@@ -28,6 +30,12 @@ public class ApplyController {
 	@Autowired
 	private ApplyService applyService;
 	
+	/**
+	 * 주보광고신청 페이지로 이동
+	 * @param session
+	 * @param model
+	 * @return sharingAndData/weekPageApply
+	 */
 	@RequestMapping(value = "/weekPageApply.do")
 	public String weekPageApply(HttpSession session, Model model) {
 		String returnVal = null;
@@ -45,10 +53,15 @@ public class ApplyController {
 		return returnVal;
 	}
 	
+	/**
+	 * 주보광고신청 insert
+	 * @param model
+	 * @param applyVo
+	 * @return returnVal
+	 */
 	@RequestMapping(value = "/insertWeekPage.do", method=RequestMethod.POST)
 	public String insertWeekPage(Model model, ApplyVo applyVo) {
 		String returnVal = null;
-		System.out.println(applyVo);
 		int result = applyService.insertWeekPage(applyVo);
 		
 		if(result != 1) {
@@ -62,6 +75,12 @@ public class ApplyController {
 		return returnVal;
 	}
 	
+	/**
+	 * 예배자료신청 페이지로 이동
+	 * @param session
+	 * @param model
+	 * @return sharingAndData/worshipDataApply
+	 */
 	@RequestMapping(value = "/worshipDataApply.do")
 	public String worshipDataApply(HttpSession session, Model model) {
 		String returnVal = null;
@@ -80,6 +99,14 @@ public class ApplyController {
 		
 	}
 	
+	/**
+	 * 예배자료신청 insert
+	 * @param model
+	 * @param applyVo
+	 * @param mtfRequest
+	 * @param request
+	 * @return returnVal
+	 */
 	@RequestMapping(value = "/insertWorshipData.do", method=RequestMethod.POST)
 	public String insertWorshipData(Model model, ApplyVo applyVo, MultipartHttpServletRequest mtfRequest, HttpServletRequest request) {
 		String returnVal = null;
@@ -87,19 +114,34 @@ public class ApplyController {
 		//파일객체생성
 		MultipartFile mf = mtfRequest.getFile("file");
 		
-		//경로설정
+		//폴더를 만들기 위한 현재 년월 가져오기
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM");
+		Calendar time = Calendar.getInstance();
+		String format_time = format.format(time.getTime());
+		
+		//실제 카페24 운영서버 경로
+		//폴더생성
+		/*String tempPath = "/home/hosting_users/dlatmddn77/tomcat/webapps/upload/" + format_time +"/" ;
+		File floder = new File(tempPath);
+		if (!floder.exists()) {
+			try{
+				floder.mkdir(); 
+	        } 
+	        catch(Exception e){
+	        	e.getStackTrace();
+			}        
+         }*/
+		
+		//로컬서버 경로설정
 		String root = request.getSession().getServletContext().getRealPath("resources");
 		String path = root + "\\uploadFile\\";
+		
+		//String path = tempPath;
 		
 		String originFileName = mf.getOriginalFilename(); // 원본 파일 명
 		String ext = originFileName.substring(originFileName.lastIndexOf('.')); //확장자명 추출
         long fileSize = mf.getSize(); // 파일 사이즈
         long reFileName = System.currentTimeMillis();  // 고유 파일 명
-        
-        System.out.println("originFileName : " + originFileName);
-        System.out.println("fileSize : " + fileSize);
-        System.out.println("reFileName : " + reFileName);
-        System.out.println("ext : " + ext);
         
         //저장될 파일 명
         String safeFile = path + reFileName + ext;
@@ -118,8 +160,7 @@ public class ApplyController {
         
         applyVo.setAPPLY_ORFILE(originFileName);
         applyVo.setAPPLY_REFILE(Long.valueOf(reFileName).toString() + ext);
-		
-        System.out.println("applyVo : " + applyVo);
+        applyVo.setUPLOAD_YYMM(format_time);
 		
 		int result = applyService.insertWorshipData(applyVo);
 		
