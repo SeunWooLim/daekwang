@@ -25,6 +25,10 @@ public class BoardDao {
 	public int listCount() {
 		return mybatis.selectOne("boardMapper.listCount");
 	}
+	
+	public int insertPersonNews(BoardVo boardVo) {
+		return mybatis.insert("boardMapper.insertPersonNews", boardVo);
+	}
 
 	public List<ApplyVo> churchNewsList(HashMap<String, Object> map) {
 		return mybatis.selectList("boardMapper.churchNewsList", map);
@@ -106,21 +110,28 @@ public class BoardDao {
 		return mybatis.selectList("boardMapper.churchPhotoPhotoList", board_no);
 	}
 
-	public List<PhotoVo> autoDeletePhoto() {
-		return mybatis.selectList("boardMapper.autoDeletePhoto");
+	public int countChurchPhotoNew() {
+		return mybatis.selectOne("boardMapper.countChurchPhotoNew");
 	}
 
-	public int completeDeletePhoto(String photo_rename) {
-		return mybatis.delete("boardMapper.completeDeletePhoto", photo_rename);
+	public List<BoardVo> churchPhotoNewList(HashMap<String, Object> map) {
+		return mybatis.selectList("boardMapper.churchPhotoNewList", map);
 	}
 
-	
+	public List<PhotoVo> selectChurchPhotoDetail(int board_no) {
+		return mybatis.selectList("boardMapper.selectChurchPhotoDetail", board_no);
+	}
 
-	
+	public int deleteBoardInfor(int board_no) {
+		return mybatis.update("boardMapper.deleteBoardInfor", board_no);
+	}
 
-	
+	public int deletePhotoInfor(int board_no) {
+		return mybatis.update("boardMapper.deletePhotoInfor", board_no);
+	}
 
-	
-	
+	public int insertDeleteDate(int board_no) {
+		return mybatis.update("boardMapper.insertDeleteDate", board_no);
+	}
 
 }

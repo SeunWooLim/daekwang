@@ -1,12 +1,9 @@
 package kr.or.daekwang.board.model.service;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +22,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVo> personNewsList(int endRow) {
 		return boardDao.personNewsList(endRow);
+	}
+
+	@Override
+	public int insertPersonNews(BoardVo boardVo) {
+		return boardDao.insertPersonNews(boardVo);
 	}
 
 	@Override
@@ -176,6 +178,7 @@ public class BoardServiceImpl implements BoardService {
 			//각 게시물에 관련된 사진 rename 모두 조회
 			List<PhotoVo> PhotoList = boardDao.churchPhotoPhotoList(board_no);
 			
+			map.put("UPLOAD_YYMM", PhotoList.get(0).getUPLOAD_YYMM());
 			//map 모든 사진 rename 넣기
 			if(PhotoList != null) {
 				for(int j = 1; j <= PhotoList.size(); j++) {
@@ -189,39 +192,82 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void autoDeletePhoto(String path) {
+	public int countChurchPhotoNew() {
+		return boardDao.countChurchPhotoNew();
+	}
+
+	@Override
+	public List<Map< String, Object>> churchPhotoNewList(HashMap<String, Object> smap) {
+		//게시판 게시물 먼저 조회
+		List<BoardVo> boardList = boardDao.churchPhotoNewList(smap);
 		
-		//삭제처리된지 한달 이상 된 사진리스트 조회
-		List<PhotoVo> list =  boardDao.autoDeletePhoto();
+		//변수
+		int board_no = 0;
+		//최종 리턴 리스트
+		List<Map< String, Object>> list= new ArrayList<Map< String, Object>>();
 
-		//사진이 있으면 삭제
-		if(list != null) {
-			for(int i = 0; i < list.size(); i++) {
-				//삭제할 사진 고유명 저장
-				String photo_rename = list.get(i).getPHOTO_RENAME();
-				//실제 경로 저장
-				String real_path = path + photo_rename;
-				//파일객체 생성
-				File file = new File(real_path);
-				//파일삭제
-		        file.delete();
-		        
-		        //해당 파일이 삭제된지 안된지 확인
-		        boolean isExists = file.exists();
-		        if(!isExists) { 
-		        	//삭제되었다면 DB에서도 삭제
-		        	int result = boardDao.completeDeletePhoto(photo_rename);
-		        	
-		        	if(result != 0) {
-		        		System.out.println("delete the file.");
-		        	}
-		        }else { 
-		        	System.out.println("No, there is not a no file."); 
-	        	}
+		//게시물에 사진정보 붙이기
+		for(int i = 0; i < boardList.size(); i++){
+			//정보담을 map
+			Map<String, Object> map  = new HashMap<String, Object>();
+			
+			//map에 리스트 값 하나하나 담기
+			map.put("BOARD_NO", boardList.get(i).getBOARD_NO());
+			map.put("BOARD_TITLE", boardList.get(i).getBOARD_TITLE());
+			map.put("BOARD_CONTENT", boardList.get(i).getBOARD_CONTENT());
+			map.put("RECENT_UPDATE_DATE", boardList.get(i).getRECENT_UPDATE_DATE());
+			map.put("MEMBER_NO", boardList.get(i).getMEMBER_NO());
+			
+			//각 게시물에 관련된 사진 갯수 조회
+			board_no = (int) boardList.get(i).getBOARD_NO();
+			int PhotoListCount = boardDao.PhotoListCount(board_no);
+			
+			//map에 사진 갯수 넣기
+			if(PhotoListCount != 0) {
+				map.put("PHOTO_COUNT", PhotoListCount);
+			}
+			
+			//각 게시물에 관련된 사진 rename 모두 조회
+			List<PhotoVo> PhotoList = boardDao.churchPhotoPhotoList(board_no);
+			
+			map.put("UPLOAD_YYMM", PhotoList.get(0).getUPLOAD_YYMM());
+			//map 모든 사진 rename 넣기
+			if(PhotoList != null) {
+				for(int j = 1; j <= PhotoList.size(); j++) {
+					map.put("PHOTO_IMAGE" + j, PhotoList.get(j-1).getPHOTO_RENAME());
+				}
+			}
+			list.add(map);
+		}
+		
+		return list;
+	}
 
+	@Override
+	public List<PhotoVo> selectChurchPhotoDetail(int board_no) {
+		return boardDao.selectChurchPhotoDetail(board_no);
+	}
+
+	@Override
+	public int deleteBoardAndPhoto(int board_no) {
+		//게시판 DELETE_YN = 'Y'처리
+		int deleteResult = boardDao.deleteBoardInfor(board_no);
+		int result = 0;
+		
+		if(deleteResult != 0 ) {
+			//사진정보 DELETE_YN ='Y' 처리
+			result = boardDao.deletePhotoInfor(board_no);
+			//사진 DELETE_DATE 추가
+			if(result != 0) {
+				boardDao.insertDeleteDate(board_no);
 			}
 		}
+		return result;
 	}
-	
+
+	@Override
+	public int deleteBoard(int board_no) {
+		return boardDao.deleteBoardInfor(board_no);
+	}
 	
 }

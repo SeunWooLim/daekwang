@@ -38,8 +38,16 @@ public interface BoardService {
 
 	List<Map< String, Object>> churchPhoto(int endRow);
 
-	void autoDeletePhoto(String path);
+	int insertPersonNews(BoardVo boardVo);
 
+	int countChurchPhotoNew();
 
+	List<Map< String, Object>> churchPhotoNewList(HashMap<String, Object> map);
+
+	List<PhotoVo> selectChurchPhotoDetail(int board_no);
+
+	int deleteBoardAndPhoto(int board_no);
+
+	int deleteBoard(int board_no);
 
 }

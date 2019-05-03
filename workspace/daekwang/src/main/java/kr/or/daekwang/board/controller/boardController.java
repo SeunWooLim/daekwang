@@ -7,11 +7,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +25,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -46,12 +47,6 @@ public class BoardController {
 	 */
 	@RequestMapping(value = "/newFamilyIntroducing.do")
 	public String newFamilyIntroducing(HttpServletRequest request) {
-		
-		String root = request.getSession().getServletContext().getRealPath("resources");
-		String path = root + "\\uploadPhoto\\";
-		
-		boardSerivce.autoDeletePhoto(path);
-		
 		return "sharingAndData/newFamilyIntroducing";
 	}
 	
@@ -83,6 +78,7 @@ public class BoardController {
 			job2.put("board_content", board.getBOARD_CONTENT());
 			job2.put("recent_update_date", board.getRECENT_UPDATE_DATE().toString());
 			job2.put("photo_rename", board.getPhotoVo().getPHOTO_RENAME());
+			job2.put("upload_yymm", board.getPhotoVo().getUPLOAD_YYMM());
 			jarr.add(job2);
 		}
 		job.put("newFamilyIntroducing", jarr);
@@ -121,9 +117,28 @@ public class BoardController {
 		//생성된 파일 객체 이미지파일로 변환
 		BufferedImage image = ImageIO.read(mf.getInputStream());
 		
-		//경로설정
+		//폴더를 만들기 위한 현재 년월 가져오기
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM");
+		Calendar time = Calendar.getInstance();
+		String format_time = format.format(time.getTime());
+		
+		//실제 카페24 운영서버 경로
+		//폴더생성
+		/*String tempPath = "/home/hosting_users/dlatmddn77/tomcat/webapps/upload/" + format_time +"/" ;
+		File floder = new File(tempPath);
+		if (!floder.exists()) {
+			try{
+				floder.mkdir(); 
+	        } 
+	        catch(Exception e){
+	        	e.getStackTrace();
+			}        
+		}*/
+		
+		//로컬서버 경로설정
 		String root = request.getSession().getServletContext().getRealPath("resources");
 		String path = root + "\\uploadPhoto\\";
+		//String path = tempPath;
 		
 		//파일명 설정
 		String originFileName = mf.getOriginalFilename(); // 원본 파일 명
@@ -148,9 +163,7 @@ public class BoardController {
         //이미지 원본이름, 고유이름 설정
         photoVo.setPHOTO_ORNAME(originFileName);
         photoVo.setPHOTO_RENAME(Long.valueOf(reFileName).toString() + ext);
-        
-        System.out.println("boardVo : " + boardVo);
-        System.out.println("photoVo : " + photoVo);
+        photoVo.setUPLOAD_YYMM(format_time);
         
         //게시판 정보, 이미지정보 저장
         int result = boardSerivce.insertNewFamilyIntroducing(boardVo, photoVo);
@@ -181,6 +194,18 @@ public class BoardController {
 		// 검색어
 		String searchContent = request.getParameter("searchContent");
 		
+		//삭제
+		if(request.getParameter("deleteFlag") != null) {
+			int result = 0;
+			int board_no = Integer.parseInt(request.getParameter("BOARD_NO"));
+			result = boardSerivce.deleteBoard(board_no);
+			if(result == 0) {
+				model.addAttribute("msg", "삭제를 실패했습니다");
+				model.addAttribute("url", "newFamilyAdmin.do");
+				return "common/alert";
+			}
+		}
+		
 		//조회할 총 갯수 map 파라미터
 		HashMap<String, Object> countMap = new HashMap<String, Object>();
 		countMap.put("searchSelect", searchSelect);
@@ -190,7 +215,6 @@ public class BoardController {
 		int limit = 10;
 		//페이징 처리 할 총 게시물의 갯수 조회
 		int listCount = boardSerivce.countChurchNews(countMap);
-		System.out.println("listCount : " + listCount);
 		//총 페이징 갯수
 		int maxPage = (int)((double)listCount / limit + 0.9);
 		//현재 페이지 기본 값 1
@@ -285,7 +309,6 @@ public class BoardController {
 			boardSerivce.addChurchNewsReadCount(board_no);
 		}
 		BoardVo boardVo = boardSerivce.selectChurchNewsDetail(board_no);
-		System.out.println(boardVo);
 		model.addAttribute("boardVo", boardVo);
 		
 		return "sharingAndData/churchNewsDetail";
@@ -308,7 +331,6 @@ public class BoardController {
 	 */
 	@RequestMapping(value = "/insertChurchNews.do")
 	public String insertChurchNews(Model model, BoardVo boardVo) {
-		System.out.println(boardVo);
 		if(boardVo.getBOARD_TITLE() != null && boardVo.getBOARD_CONTENT() != null) {
 			boardSerivce.insertChurchNews(boardVo);
 		}
@@ -342,6 +364,7 @@ public class BoardController {
 			JSONObject job2 = new JSONObject();
 			job2.put("board_no", board.getBOARD_NO());
 			job2.put("member_name", board.getMemberVo().getMEMBER_NAME());
+			job2.put("member_no", board.getMEMBER_NO());
 			job2.put("board_title", board.getBOARD_TITLE());
 			job2.put("board_content", board.getBOARD_CONTENT());
 			job2.put("recent_update_date", board.getRECENT_UPDATE_DATE().toString());
@@ -361,7 +384,19 @@ public class BoardController {
 	 * @throws IOException 
 	 */
 	@RequestMapping(value = "/personNews.do")
-	public String personNews(Model model) {
+	public String personNews(Model model, HttpServletRequest request) {
+		
+		//삭제
+		if(request.getParameter("deleteFlag") != null) {
+			int result = 0;
+			int board_no = Integer.parseInt(request.getParameter("BOARD_NO"));
+			result = boardSerivce.deleteBoard(board_no);
+			if(result == 0) {
+				model.addAttribute("msg", "삭제를 실패했습니다");
+				model.addAttribute("url", "newFamilyAdmin.do");
+				return "common/alert";
+			}
+		}
 		
 		return "sharingAndData/personNews";
 	}
@@ -373,6 +408,30 @@ public class BoardController {
 	@RequestMapping(value = "/personNewsInsert.do")
 	public String personNewsInsert() {
 		return "sharingAndData/personNewsInsert";
+	}
+	
+	
+	/**
+	 * 교우소식 게시물 insert
+	 * @param boardVo
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "insertPersonNews.do")
+	public String insertPersonNews(BoardVo boardVo, Model model) {
+		
+		int result = 0;
+		if(boardVo.getBOARD_TITLE() != null && boardVo.getBOARD_TITLE() != null) {
+			result = boardSerivce.insertPersonNews(boardVo);
+		}
+		
+		if(result != 0) {
+			return "redirect:/personNews.do";
+		}else {
+			model.addAttribute("msg", "게시물 등록을 실패했습니다");
+			model.addAttribute("url", "personNews.do");
+			return  "common/alert";
+		}
 	}
 	
 	/**
@@ -390,12 +449,6 @@ public class BoardController {
 	 */
 	@RequestMapping(value = "/flowerPhoto.do")
 	public String flowerPhoto(HttpServletRequest request) {
-		
-		String root = request.getSession().getServletContext().getRealPath("resources");
-		String path = root + "\\uploadPhoto\\";
-		
-		boardSerivce.autoDeletePhoto(path);
-		
 		return "sharingAndData/flowerPhoto";
 	}
 	
@@ -427,6 +480,7 @@ public class BoardController {
 			job2.put("board_content", board.getBOARD_CONTENT());
 			job2.put("recent_update_date", board.getRECENT_UPDATE_DATE().toString());
 			job2.put("photo_rename", board.getPhotoVo().getPHOTO_RENAME());
+			job2.put("upload_yymm", board.getPhotoVo().getUPLOAD_YYMM());
 			jarr.add(job2);
 		}
 		job.put("flowerPhoto", jarr);
@@ -459,9 +513,29 @@ public class BoardController {
 		//생성된 파일 객체 이미지파일로 변환
 		BufferedImage image = ImageIO.read(mf.getInputStream());
 
-		//경로설정
+		//폴더를 만들기 위한 현재 년월 가져오기
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM");
+		Calendar time = Calendar.getInstance();
+		String format_time = format.format(time.getTime());
+		
+		//실제 카페24 운영서버 경로
+		//폴더생성
+		/*String tempPath = "/home/hosting_users/dlatmddn77/tomcat/webapps/upload/" + format_time +"/" ;
+		File floder = new File(tempPath);
+		if (!floder.exists()) {
+			try{
+				floder.mkdir(); 
+	        } 
+	        catch(Exception e){
+	        	e.getStackTrace();
+			}        
+		}*/
+		
+		//로컬서버 경로설정
 		String root = request.getSession().getServletContext().getRealPath("resources");
 		String path = root + "\\uploadPhoto\\";
+		
+		//String path = tempPath;
 		
 		//파일명 설정
 		String originFileName = mf.getOriginalFilename(); // 원본 파일 명
@@ -486,9 +560,7 @@ public class BoardController {
         //이미지 원본이름, 고유이름 설정
         photoVo.setPHOTO_ORNAME(originFileName);
         photoVo.setPHOTO_RENAME(Long.valueOf(reFileName).toString() + ext);
-        
-        System.out.println("boardVo(flower) : " + boardVo);
-        System.out.println("photoVo(flower) : " + photoVo);
+        photoVo.setUPLOAD_YYMM(format_time);
         
         //게시판 정보, 이미지정보 저장
         int result = boardSerivce.insertFlowerPhoto(boardVo, photoVo);
@@ -505,17 +577,130 @@ public class BoardController {
 	}
 	
 	/**
+	 * new 교회사진 리스트 페이지로 이동
+	 * @param model
+	 * @param request
+	 * @param boardVo
+	 * @return sharingAndData/churchPhotoNew
+	 */
+	@RequestMapping(value = "/churchPhotoNew.do")
+	public String churchPhotoNew(Model model, HttpServletRequest request, BoardVo boardVo) {
+		
+		//삭제
+		if(request.getParameter("deleteFlag") != null) {
+			int result = 0;
+			int board_no = Integer.parseInt(request.getParameter("BOARD_NO"));
+			result = boardSerivce.deleteBoardAndPhoto(board_no);
+			if(result == 0) {
+				model.addAttribute("msg", "삭제를 실패했습니다");
+				model.addAttribute("url", "newFamilyAdmin.do");
+				return "common/alert";
+			}
+		}
+		
+		//페이징 처리 된 행의 갯수
+		int limit = 9;
+		//페이징 처리 할 총 게시물의 갯수 조회
+		int listCount = boardSerivce.countChurchPhotoNew();
+		//총 페이징 갯수
+		int maxPage = (int)((double)listCount / limit + 0.9);
+		//현재 페이지 기본 값 1
+		int currentPage = 1;
+		int temp = 0;
+		//화면에서 선택된 현재 페이지의 값 불러오기
+		if(request.getParameter("currentPage") != null) {
+			// < 버튼 눌렀을때의 처리
+			if(request.getParameter("prev") != null) {
+				temp = Integer.parseInt(request.getParameter("currentPage"));
+				
+				if(temp > 5) {
+					currentPage = ((int)((temp - 1) / 5) - 1) * 5 + 1;
+				}
+			// > 버튼 눌렀을 때의 처리
+			}else if(request.getParameter("next") != null) {
+				temp = Integer.parseInt(request.getParameter("currentPage"));
+				if(maxPage % 5 == 0) {
+					if(temp < maxPage - ((maxPage - 1 )% 5)) {
+						currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+					}else {
+						currentPage = maxPage;
+					}
+				}else {
+					if(temp < maxPage - ((maxPage % 5) - 1)) {
+						currentPage = ((int)((temp - 1) / 5) + 1) * 5 + 1;
+					}else {
+						currentPage = maxPage;
+					}
+				}
+			// 이외의 처리
+			}else {
+				currentPage = Integer.parseInt(request.getParameter("currentPage"));
+			}
+		}
+		
+		//화면의 시작 페이지
+		int startPage = 0;
+		if(currentPage % 5 != 0){
+			startPage = (((int)((limit + currentPage) / 5)) -2 ) * 5 + 1;
+		}else{
+			startPage = currentPage - 4;
+		}
+		//화면의 끝 페이지
+		int endPage = startPage + 4;
+		//페이징의 시작 행
+		int startRow = (currentPage - 1)*limit;
+		//페이징의 끝 행
+		int endRow = 9;
+		//페이징 처리한 게시물의 번호
+		int tableNum = listCount - (currentPage - 1)*limit;
+		
+		//현재 페이지에 대한 시작행부터 끝행 까지만 조회
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("startRow", startRow);
+		map.put("endRow", endRow);
+		
+		//검색조건에 대한 조회 prameter map
+		List<Map< String, Object>> list = boardSerivce.churchPhotoNewList(map);
+		
+		if(maxPage < endPage)
+			endPage = maxPage;
+		
+		model.addAttribute("tableNum",tableNum);
+		model.addAttribute("list",list);
+		model.addAttribute("limit",limit);
+		model.addAttribute("currentPage",currentPage);
+		model.addAttribute("maxPage",maxPage);
+		model.addAttribute("startPage",startPage);	
+		model.addAttribute("endPage",endPage);
+		model.addAttribute("startRow", startRow);
+		model.addAttribute("listCount", listCount);
+		
+		return "sharingAndData/churchPhotoNew";
+	}
+	
+	/**
+	 * new 교회사진 디테일 페이지로 이동
+	 * @param boardVo
+	 * @param model
+	 * @return sharingAndData/churchPhotoDetail
+	 */
+	@RequestMapping(value = "/churchPhotoDetail.do")
+	public String churchPhotoDetail(BoardVo boardVo, Model model, @RequestParam(value="currentPage")int currentPage) {
+		
+		List<PhotoVo> list = boardSerivce.selectChurchPhotoDetail(boardVo.getBOARD_NO());
+		model.addAttribute("list", list);
+		model.addAttribute("boardVo", boardVo);
+		model.addAttribute("currentPage", currentPage);
+		
+		return "sharingAndData/churchPhotoDetail";
+	}
+	
+	/**
 	 * 교회 사진 페이지로 이동
 	 * @return sharingAndData/churchPhoto
 	 */
 	@RequestMapping(value = "/churchPhoto.do")
 	public String churchPhoto(HttpServletRequest request) {
-		
-		String root = request.getSession().getServletContext().getRealPath("resources");
-		String path = root + "\\uploadChurch\\";
-		
-		boardSerivce.autoDeletePhoto(path);
-		
 		return "sharingAndData/churchPhoto";
 	}
 	
@@ -547,6 +732,7 @@ public class BoardController {
 			job2.put("board_content", list.get(i).get("BOARD_CONTENT"));
 			job2.put("recent_update_date", list.get(i).get("RECENT_UPDATE_DATE").toString());
 			job2.put("photo_count", list.get(i).get("PHOTO_COUNT"));
+			//job2.put("upload_yymm", list.get(i).get("UPLOAD_YYMM"));
 			for(int j = 1; j <= (int)list.get(i).get("PHOTO_COUNT"); j++) {
 				imageName += list.get(i).get("PHOTO_IMAGE" + j);
 			}
@@ -580,74 +766,99 @@ public class BoardController {
 	 * @param response
 	 * @throws IOException
 	 */
-	@RequestMapping(value = "/insertChurchPhoto.do")
-	public void insertChurchPhoto(Model model, MultipartHttpServletRequest mtfRequest, HttpServletRequest request, BoardVo boardVo, PhotoVo photoVo, HttpServletResponse response) throws IOException {
+	@RequestMapping(value = "/insertChurchPhoto.do", method = RequestMethod.POST)
+	public @ResponseBody String insertChurchPhoto(MultipartHttpServletRequest mtfRequest, HttpServletRequest request, BoardVo boardVo, PhotoVo photoVo, HttpServletResponse response)  {
 		
 		//파일객체생성
-		List<MultipartFile> fileList = mtfRequest.getFiles("img");
-		System.out.println(fileList);
-		System.out.println(boardVo);
+		List<MultipartFile> fileList = mtfRequest.getFiles("file");
 		
-		//경로설정 및 변수 설정
+		//폴더를 만들기 위한 현재 년월 가져오기
+		SimpleDateFormat format = new SimpleDateFormat ("yyyy-MM");
+		Calendar time = Calendar.getInstance();
+		String format_time = format.format(time.getTime());
+		
+		//실제 카페24 운영서버 경로
+		//폴더생성
+		/*String tempPath = "/home/hosting_users/dlatmddn77/tomcat/webapps/upload/" + format_time +"/" ;
+		File floder = new File(tempPath);
+		if (!floder.exists()) {
+			try{
+				floder.mkdir(); 
+	        } 
+	        catch(Exception e){
+	        	e.getStackTrace();
+			}        
+		}*/
+		
+		//로컬서버 경로설정
 		String root = request.getSession().getServletContext().getRealPath("resources");
 		String path = root + "\\uploadChurch\\";
+
+		//String path = tempPath;
+		
+		//변수 설정
 		String originFileName = null ;// 원본 파일 명
         String ext = null;//확장자명
         long reFileName = 0;  // 고유 파일 명
 		String safeFile = null;
 		int result = 0;
 		
-		//게시판 정보 저장
-		int board_no = boardSerivce.insertChurchPhotoBoardVo(boardVo);
+		if(fileList != null && fileList.size() > 0) {
 		
-        for (MultipartFile mf : fileList) {
-            originFileName = mf.getOriginalFilename(); // 원본 파일 명
-            ext = originFileName.substring(originFileName.lastIndexOf('.')); //확장자명 추출
-            reFileName = System.currentTimeMillis();  // 고유 파일 명
-            
-            photoVo.setPHOTO_ORNAME(originFileName);
-            photoVo.setPHOTO_RENAME(Long.valueOf(reFileName).toString() + ext);
-            photoVo.setBOARD_NO(board_no);
-            photoVo.setMEMBER_NO(boardVo.getMEMBER_NO());
-            
-            //사진 정보 저장
-            result = boardSerivce.insertChurchPhotoPhotoVo(photoVo);
-            
-            //생성된 파일 객체 이미지파일로 변환
-    		BufferedImage image = ImageIO.read(mf.getInputStream());
-    		
-            //저장될 파일 명
-            safeFile = path + reFileName + ext;
-            
-            try {
-                //mf.transferTo(new File(safeFile));
-            	ImageIO.write(imageResize(image), "jpg", new File(safeFile));
-            } catch (IllegalStateException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        PrintWriter out = response.getWriter();
-        System.out.println(result);
-        if(result != 0) {
-			out.append("success");
+			//게시판 정보 저장
+			int board_no = boardSerivce.insertChurchPhotoBoardVo(boardVo);
+			
+	        for (MultipartFile mf : fileList) {
+	        	
+	        	if(!mf.isEmpty()) {
+		            originFileName = mf.getOriginalFilename(); // 원본 파일 명
+		            ext = originFileName.substring(originFileName.lastIndexOf('.')); //확장자명 추출
+		            reFileName = System.currentTimeMillis();  // 고유 파일 명
+		            
+		            photoVo.setPHOTO_ORNAME(originFileName);
+		            photoVo.setPHOTO_RENAME(Long.valueOf(reFileName).toString() + ext);
+		            photoVo.setBOARD_NO(board_no);
+		            photoVo.setMEMBER_NO(boardVo.getMEMBER_NO());
+		            photoVo.setUPLOAD_YYMM(format_time);
+		            
+		            //사진 정보 저장
+		            result = boardSerivce.insertChurchPhotoPhotoVo(photoVo);
+		            
+		            //저장될 파일 명
+		            safeFile = path + reFileName + ext;
+		            
+		            try {
+		            	//생성된 파일 객체 이미지파일로 변환
+			    		BufferedImage image = ImageIO.read(mf.getInputStream());
+		                //mf.transferTo(new File(safeFile));
+		            	ImageIO.setUseCache(false);
+		            	ImageIO.write(imageResize(image), "jpg", new File(safeFile));
+		            	mf.getInputStream().close();
+		            } catch (IllegalStateException e) {
+		                // TODO Auto-generated catch block
+		                e.printStackTrace();
+		            } catch (IOException e) {
+		                // TODO Auto-generated catch block
+		                e.printStackTrace();
+		            }
+	        	}
+	        }
 		}
-		else {
-			out.append("fail");
-		}
-        out.flush();
-		out.close();
+		String messageToReturn = ""; 
+	    if (result != 0) { 
+	    	messageToReturn = "success"; 
+	    } else {
+	    	messageToReturn = "failed"; 
+	    }
+		return messageToReturn;
 	}
-	
+
 	/**
 	 * image resize 설정 세팅
 	 * @param image
 	 * @return resizeImageHintJpg
 	 */
-	public static BufferedImage imageResize(BufferedImage image) {
+	public BufferedImage imageResize(BufferedImage image) {
 		
 		Integer IMG_WIDTH = image.getWidth();
 		Integer IMG_HEIGHT = image.getHeight();
@@ -669,7 +880,7 @@ public class BoardController {
      * @param IMG_HEIGHT
      * @return resizedImage
      */
-    public static BufferedImage resizeImageWithHint(BufferedImage originalImage, int type, Integer IMG_WIDTH, Integer IMG_HEIGHT){
+    public BufferedImage resizeImageWithHint(BufferedImage originalImage, int type, Integer IMG_WIDTH, Integer IMG_HEIGHT){
 		
 		BufferedImage resizedImage = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, type);
 		Graphics2D g = resizedImage.createGraphics();
@@ -683,23 +894,4 @@ public class BoardController {
 		
 		return resizedImage;
     }	
-    
-    
-    /**
-	 * 교회 사진 뉴 페이지
-	 * @return sharingAndData/churchPhotoNew
-	 */
-	@RequestMapping(value = "/churchPhotoNew.do")
-	public String churchPhotoNew() {
-		return "sharingAndData/churchPhotoNew";
-	}
-	
-	/**
-	 * 교회 사진 디테일 페이지
-	 * @return sharingAndData/churchPhotoNew
-	 */
-	@RequestMapping(value = "/churchPhotoDetail.do")
-	public String churchPhotoDetail() {
-		return "sharingAndData/churchPhotoDetail";
-	}
 }

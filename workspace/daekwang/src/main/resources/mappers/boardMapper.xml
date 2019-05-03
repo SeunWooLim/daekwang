@@ -13,6 +13,7 @@
   		<result property="PHOTO_ORNAME" column="PHOTO_ORNAME"/>
   		<result property="PHOTO_RENAME" column="PHOTO_RENAME"/>
   		<result property="DELETE_DATE" column="DELETE_DATE"/>
+  		<result property="UPLOAD_YYMM" column="UPLOAD_YYMM"/>
 	</resultMap>
 	
 	<resultMap id="memberResultMap" type="Member">
@@ -73,6 +74,26 @@
 		AND A.DELETE_YN = 'N'
 		ORDER BY BOARD_NO DESC
 	</select>
+	
+	<!-- 교우소식 게시판 게시물 등록 -->
+	<insert id="insertPersonNews" parameterType="Board">
+		INSERT INTO board(
+						  BOARD_FG
+						, BOARD_TITLE
+						, BOARD_CONTENT
+						, MEMBER_NO
+						, FIRST_INPUT_DATE
+						, RECENT_UPDATE_DATE
+						)
+		VALUES( 
+				2
+			  , #{BOARD_TITLE}
+			  , #{BOARD_CONTENT}
+			  , #{MEMBER_NO}
+			  , NOW()
+			  , NOW()
+			  )
+	</insert>
 	
 	<!-- 교회소식 게시판 리스트 -->
 	<select id="churchNewsList" resultMap="boardResultMap">
@@ -164,8 +185,8 @@
 	
 	<!-- 새가족 소개 게시물 photo에 insert -->
 	<insert id="insertNewFamilyIntroducingPhoto">
-		INSERT INTO photo(PHOTO_DATE, PHOTO_ORNAME, PHOTO_RENAME, BOARD_FG, BOARD_NO, MEMBER_NO)
-		VALUES(NOW(), #{PHOTO_ORNAME}, #{PHOTO_RENAME}, 4, #{BOARD_NO}, #{MEMBER_NO})
+		INSERT INTO photo(PHOTO_DATE, PHOTO_ORNAME, PHOTO_RENAME, BOARD_FG, BOARD_NO, MEMBER_NO, UPLOAD_YYMM)
+		VALUES(NOW(), #{PHOTO_ORNAME}, #{PHOTO_RENAME}, 4, #{BOARD_NO}, #{MEMBER_NO}, #{UPLOAD_YYMM})
 	</insert>
 	
 	<!-- 새가족 소개 게시판 리스트 조회 -->
@@ -210,8 +231,8 @@
 	
 	<!-- 꽃꽂이 갤러리 게시물 photo에 insert -->
 	<insert id="insertFlowerPhotoPhoto">
-		INSERT INTO photo(PHOTO_DATE, PHOTO_ORNAME, PHOTO_RENAME, BOARD_FG, BOARD_NO, MEMBER_NO)
-		VALUES(NOW(), #{PHOTO_ORNAME}, #{PHOTO_RENAME}, 5, #{BOARD_NO}, #{MEMBER_NO})
+		INSERT INTO photo(PHOTO_DATE, PHOTO_ORNAME, PHOTO_RENAME, BOARD_FG, BOARD_NO, MEMBER_NO, UPLOAD_YYMM)
+		VALUES(NOW(), #{PHOTO_ORNAME}, #{PHOTO_RENAME}, 5, #{BOARD_NO}, #{MEMBER_NO}, #{UPLOAD_YYMM})
 	</insert>
 	
 	<!-- 교회 사진 게시물 board에 insert -->
@@ -232,8 +253,8 @@
 	
 	<!-- 교회 사진 게시물 photo에 insert -->
 	<insert id="insertChurchPhotoPhotoVo">
-		INSERT INTO photo(PHOTO_DATE, PHOTO_ORNAME, PHOTO_RENAME, BOARD_FG, BOARD_NO, MEMBER_NO)
-		VALUES(NOW(), #{PHOTO_ORNAME}, #{PHOTO_RENAME}, 3, #{BOARD_NO}, #{MEMBER_NO})
+		INSERT INTO photo(PHOTO_DATE, PHOTO_ORNAME, PHOTO_RENAME, BOARD_FG, BOARD_NO, MEMBER_NO, UPLOAD_YYMM)
+		VALUES(NOW(), #{PHOTO_ORNAME}, #{PHOTO_RENAME}, 3, #{BOARD_NO}, #{MEMBER_NO}, #{UPLOAD_YYMM})
 	</insert>
 	
 	<!-- 교회 사진 게시판 리스트 조회 -->
@@ -265,17 +286,52 @@
 		ORDER BY PHOTO_NO DESC
 	</select>
 	
-	<!-- 삭제할 사진 정보 리스트 조회 -->
-	<select id="autoDeletePhoto" resultMap="photoResultMap">
-		SELECT *
-		FROM photo
-		WHERE DELETE_YN = 'Y'
-		AND DELETE_DATE <![CDATA[<]]> date_sub(now(), interval 1 month)
+	<!-- NEW 교회사진 갯수 조회 -->
+	<select id="countChurchPhotoNew" resultType = "Integer">
+		SELECT COUNT(*)
+		FROM board
+		WHERE BOARD_FG = 3
+		AND DELETE_YN = 'N'
+		ORDER BY BOARD_NO DESC
 	</select>
 	
-	<!-- PHOTO테이블 사진정보 완전삭제 -->
-	<delete id="completeDeletePhoto" parameterType="String">
-		DELETE FROM photo
-		WHERE PHOTO_RENAME = #{photo_rename}
-	</delete>
+	<!-- NEW 교회사진 리스트 조회 -->
+	<select id="churchPhotoNewList" resultMap="boardResultMap">
+		SELECT A.*
+		FROM board A
+		WHERE A.BOARD_FG = 3
+		AND A.DELETE_YN = 'N'
+		ORDER BY A.BOARD_NO DESC
+		LIMIT #{startRow}, #{endRow}
+	</select>
+	
+	<!-- NEW 교회사진 디테일 페이지 사진 리스트 조회 -->
+	<select id="selectChurchPhotoDetail" resultMap="photoResultMap">
+		SELECT *
+		FROM photo
+		WHERE BOARD_NO = #{board_no}
+		AND DELETE_YN = 'N'
+		ORDER BY PHOTO_NO DESC
+	</select>
+	
+	<!-- 사진게시판 게시물 삭제 -->
+	<update id="deleteBoardInfor" parameterType="Integer">
+		UPDATE board
+		SET DELETE_YN = 'Y'
+		WHERE BOARD_NO = #{board_no}
+	</update>
+	
+	<!-- 사진게시판 사진테이블 삭제처리 -->
+	<update id="deletePhotoInfor">
+		UPDATE photo
+		SET DELETE_YN = 'Y'
+		WHERE BOARD_NO = #{board_no}
+	</update>
+	
+	<!-- 사진게시판 삭제일 추가 -->
+	<update id="insertDeleteDate" parameterType="Integer">
+		UPDATE photo
+		SET DELETE_DATE = NOW()
+		WHERE BOARD_NO = #{board_no}
+	</update>
 </mapper>
