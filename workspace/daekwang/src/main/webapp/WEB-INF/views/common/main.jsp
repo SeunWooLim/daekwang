@@ -11,44 +11,24 @@
 </head>
 <body>
 
-	<!-- 밑에 두가지 방법 중 하나 이용 -->
-	<jsp:include page="header.jsp" />
+<jsp:include page="header.jsp" />
 
 	<div id="wrap">
 		<div class="main_slider">
 			<ul>
-				<li>
-					<div class="main_slider_div">
-						<p class="title">제목</p>
-						<p class="text">내용</p>
-					</div>
-					<div class="main_slider_bg"></div>
-					<img alt="" src="<c:url value="/resources/img/main1.jpg"/>">
-				</li>
-				<li>
-					<div class="main_slider_div">
-						<p class="title">제목</p>
-						<p class="text">내용</p>
-					</div>
-					<div class="main_slider_bg"></div>
-					<img alt="" src="<c:url value="/resources/img/main2.jpg"/>">
-				</li>
-				<li>
-					<div class="main_slider_div">
-						<p class="title">제목</p>
-						<p class="text">내용</p>
-					</div>
-					<div class="main_slider_bg"></div>
-					<img alt="" src="<c:url value="/resources/img/main3.jpg"/>">
-				</li>
-				<li>
-					<div class="main_slider_div">
-						<p class="title">제목</p>
-						<p class="text">내용</p>
-					</div>
-					<div class="main_slider_bg"></div>
-					<img alt="" src="<c:url value="/resources/img/main4.jpg"/>">
-				</li>
+				<c:forEach var="mainSlider" items="${list }">
+					<li>
+						<div class="main_slider_div">
+							<p class="title">${mainSlider.SLIDER_TITLE }</p>
+							<p class="text">${mainSlider.SLIDER_CONTENT }</p>
+						</div>
+						<div class="main_slider_bg"></div>
+						<!-- 로컬서버 경로 -->
+						<%-- <img alt="" src="<c:url value="/resources/img/mainSlideImage/${mainSlider.SLIDER_RENAME }"/>"> --%>
+						<!-- 카페24 경로 -->
+						<img alt="" src="<c:url value="/upload/${mainSlider.UPLOAD_YYMM }/${mainSlider.SLIDER_RENAME}"/>">
+					</li>
+				</c:forEach>
 			</ul>
 		</div>
 		<div class="main_background_wrap" id="sliderwrapp">
@@ -185,17 +165,12 @@
 				</div>
 			</div>
 		</div>
-			
-		
-
 	</div>
-
 	<jsp:include page="footer.jsp" />
 
 </body>
 <script>
 	$(document).ready(function() {
-		
 		
 		/*메인슬라이더 px*/
 		$(".main_slider ul li img").css({
@@ -228,22 +203,10 @@
 			//video: true,
 			useCSS : false,
 		})
-		
-		
-		
-		
 	})
-	
-	
-	
-	
-	
-	
 </script>
 <script>
-
 var isVisible = false;
-
 
 	$(window).on('scroll',function() {
 		if (checkVisible($('#sliderwrapp'))&&!isVisible) {
@@ -261,7 +224,6 @@ var isVisible = false;
 			
 			isVisible=true;
 		}
-		
 	});
 	 
 	function checkVisible( elm, eval ) {
@@ -274,9 +236,5 @@ var isVisible = false;
 		if (eval == "object visible") return ((y < (viewportHeight + scrolltop)) && (y > (scrolltop - elementHeight)));
 		if (eval == "above") return ((y < (viewportHeight + scrolltop)));
 	}
-
-</script>
 </script>
 </html>
-
-
