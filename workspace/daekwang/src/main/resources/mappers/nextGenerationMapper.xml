@@ -23,6 +23,7 @@
   		<result property="DEPT_MEMBER" column="DEPT_MEMBER"/>
   		<result property="DEPT_PHOTO_ORNAME" column="DEPT_PHOTO_ORNAME"/>
   		<result property="DEPT_PHOTO_RENAME" column="DEPT_PHOTO_RENAME"/>
+  		<result property="DEPT_UPLOAD_YYMM" column="DEPT_UPLOAD_YYMM"/>
 	</resultMap>
 	
 	<!-- 다음세대 유아부~고등부 정보 --> 

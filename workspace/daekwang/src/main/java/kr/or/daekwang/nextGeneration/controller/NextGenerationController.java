@@ -16,6 +16,11 @@ public class NextGenerationController {
 	@Autowired
 	private NextGenerationService nextGenerationService;
 	
+	/**
+	 * 다음세대 페이지로 이동
+	 * @param model
+	 * @return nextGeneration/nextGeneration
+	 */
 	@RequestMapping(value = "nextGeneration.do")
 	public String nextGeneration(Model model) {
 		
