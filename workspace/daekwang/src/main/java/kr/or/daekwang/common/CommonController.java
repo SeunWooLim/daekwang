@@ -1,17 +1,32 @@
 package kr.or.daekwang.common;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import kr.or.daekwang.admin.model.service.AdminService;
+import kr.or.daekwang.apply.model.vo.ApplyVo;
 
 @Controller
 public class CommonController {
+	
+	@Autowired
+	private AdminService adminService;
 	
 	/**
 	 * 메인페이지로 이동
 	 * @return main.jsp
 	 */
 	@RequestMapping(value = "/forwardMain.do")
-	public String forwardBoard() {
+	public String forwardBoard(Model model) {
+		
+		//메인슬라이더 리스트 조회
+		List<ApplyVo> list = adminService.mainSlideAdminList();
+		model.addAttribute("list", list);
+		
 		return "common/main";
 	}
 	
