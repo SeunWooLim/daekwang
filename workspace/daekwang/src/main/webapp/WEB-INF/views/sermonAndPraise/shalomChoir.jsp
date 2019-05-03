@@ -20,6 +20,9 @@
 		</ul>
 	</div>
 	<div class="nextgene_wrap1">
+		<!-- 카페24 경로 -->
+		<%-- <img src="<c:url value="/"/>upload/${sapVo1.PRAISE_UPLOAD_YYMM }/${sapVo1.PRAISE_PHOTO_RENAME}"> --%>
+		<!-- 로컬서버 경로 -->
 		<img alt="" src="<c:url value="/"/>resources/img/deptImage/${sapVo1.PRAISE_PHOTO_RENAME }">
 		<div class="next_detail">	
 			<p class="next_title">샬롬 찬양대 임원조직</p>			
