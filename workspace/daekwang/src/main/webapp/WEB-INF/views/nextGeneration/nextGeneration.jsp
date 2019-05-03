@@ -57,7 +57,10 @@
 					</div>
 					<!-- 이미지 추가부분 s -->
 					<div class="nextjpg_wrap nextjpg_wrap1111">
-						<img alt="" src="<c:url value="/"/>resources/img/deptImage/${schoolList.DEPT_PHOTO_RENAME }">
+						<!-- 카페24 경로 -->
+						<%-- <img src="<c:url value="/upload/${schoolList.DEPT_UPLOAD_YYMM }/${schoolList.DEPT_PHOTO_RENAME}"/>"> --%>
+						<!-- 로컬서버 경로 -->
+						<img alt="" src="<c:url value="/resources/img/deptImage/${schoolList.DEPT_PHOTO_RENAME }"/>">
 						<span class="bg"></span>
 						<span class="lt"></span>
 						<span class="rt"></span>
@@ -134,7 +137,10 @@
 					</div>
 					<!-- 이미지 추가부분 s -->
 					<div class="nextjpg_wrap nextjpg_wrap1111">
-						<img alt="" src="<c:url value="/"/>resources/img/deptImage/${youthList.DEPT_PHOTO_RENAME}">
+						<!-- 카페24 경로 -->
+						<%-- <img src="<c:url value="/upload/${youthList.DEPT_UPLOAD_YYMM }/${youthList.DEPT_PHOTO_RENAME}"/>"> --%>
+						<!-- 로컬서버 경로 -->
+						<img alt="" src="<c:url value="/resources/img/deptImage/${youthList.DEPT_PHOTO_RENAME}"/>">
 						<!-- <span class="bg"></span> -->
 						<span class="bg"></span>
 						<span class="lt"></span>
