@@ -10,6 +10,6 @@
 </head>
 <body>
 <c:url var="contextPath" value="/"/>
-<jsp:forward page="WEB-INF/views/common/main.jsp"/>
+<jsp:forward page="/forwardMain.do"/>
 </body>
 </html>
