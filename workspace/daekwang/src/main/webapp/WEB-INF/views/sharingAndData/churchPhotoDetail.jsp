@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="../common/meta.jsp"/>
 
-
-<!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="../common/header.jsp"/>
 <div id="wrap">
 	<div class="subvisual_wrap">
@@ -18,11 +17,16 @@
 	
 	<div class="ch_detail_wrap">
 		<div class="head">
-			<span class="left">제목</span>
-			<span class="right">등록일</span>
+			<span class="left">${boardVo.BOARD_TITLE }</span>
+			<span class="right">${boardVo.RECENT_UPDATE_DATE }</span>
 		</div>
 		<div class="mid">
-			내용
+			<c:forEach var="photoDetail" items="${list }">
+				<!-- 카페24경로 -->
+				<%-- <img src="<c:url value="/upload/${photoDetail.UPLOAD_YYMM}/${photoDetail.PHOTO_RENAME }"/>"> --%>
+				<!-- 로컬서버 경로 -->
+				<img src="<c:url value="/resources/uploadChurch/${photoDetail.PHOTO_RENAME }"/>">
+			</c:forEach>
 		</div>
 		<!-- <div class="bot">
 			<ul>
@@ -34,15 +38,30 @@
 		<!-- 삭제버튼 -->
 		<!-- div class="tac" 로 무조건 버튼들 감싸주고 써주시면 됩니다. -->
 		<div class="tac">
-			<a href="churchPhotoNew.do" class="btn11">목록</a>
-			<a href="#" class="btn11">삭제</a>
+			<c:url var="list" value="churchPhotoNew.do">
+				<c:param name="currentPage" value="${currentPage }"/>
+			</c:url>
+			<a href="${list }" class="btn11">목록</a>
+			<c:if test="${sessionScope.loginUser.MEMBER_NO eq boardVo.MEMBER_NO}">
+				<a class="btn11" onclick="delete_event()">삭제</a>
+			</c:if>
 		</div>
 	</div>
-	
-	
-	
 	
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
+<script type="text/javascript">
+	function delete_event(){
+		var currentPage = '${currentPage}';
+		var BOARD_NO = '${boardVo.BOARD_NO}';
+		var deleteYN = 'Y';
+		
+		if(confirm("정말 삭제하시겠습니까?") == true){
+			location.href="churchPhotoNew.do?deleteFlag="+deleteYN+"&currentPage="+currentPage+"&BOARD_NO="+BOARD_NO; 
+		}else{
+			return;
+		}
+	}
+</script>
 </html>

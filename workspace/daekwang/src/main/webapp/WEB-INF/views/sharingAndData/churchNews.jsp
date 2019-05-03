@@ -61,7 +61,7 @@
 					<button type="submit" class="newInsertBtn" style="position:relative; margin:0;">검색</button>
 				</li> 
 			</ul>
-			<c:if test="${sessionScope.loginUser ne null}">
+			<c:if test="${sessionScope.loginUser.MEMBER_AUTH eq 'W'}">
 				<div class="insertBtn_wrap" style="position:absolute; top:0; right:0; width:62px;">
 					<a href="churchNewsInsertPage.do" class="newInsertBtn">글쓰기</a>
 				</div>
@@ -119,52 +119,52 @@
 	
 	<!-- 페이지 네이션 -->
 	<div class=paging_wrap>
-	<ul class="board_page">
-		<li>
-			<c:url var="first" value="churchNews.do">
-				<c:param name="currentPage" value="1" />
-				<c:param name="searchSelect" value="${searchSelect }"/>
-				<c:param name="searchContent" value="${searchContent }"/>	
-			</c:url>
-			<a href="${first }">&lt;&lt;</a>
-		</li>
-		<li>
-			<c:url var="prev" value="churchNews.do">
-				<c:param name="currentPage" value="${currentPage}" />
-				<c:param name="prev" value="1" />
-				<c:param name="searchSelect" value="${searchSelect }"/>
-				<c:param name="searchContent" value="${searchContent }"/>
-			</c:url>
-			<a href="${prev }">&lt;</a>
-		</li>
-		<c:forEach var="p" begin="${startPage }" end="${endPage }" step="1">
+		<ul class="board_page">
 			<li>
-				<c:url var="page" value="churchNews.do">
-					<c:param name="currentPage" value="${p }" />
+				<c:url var="first" value="churchNews.do">
+					<c:param name="currentPage" value="1" />
+					<c:param name="searchSelect" value="${searchSelect }"/>
+					<c:param name="searchContent" value="${searchContent }"/>	
+				</c:url>
+				<a href="${first }">&lt;&lt;</a>
+			</li>
+			<li>
+				<c:url var="prev" value="churchNews.do">
+					<c:param name="currentPage" value="${currentPage}" />
+					<c:param name="prev" value="1" />
 					<c:param name="searchSelect" value="${searchSelect }"/>
 					<c:param name="searchContent" value="${searchContent }"/>
 				</c:url>
-				<a href="${page }" id="pageNum<%=pageNum++ %>" class="">${p }</a>
+				<a href="${prev }">&lt;</a>
 			</li>
-		</c:forEach>
-		<li>
-			<c:url var="next" value="churchNews.do">
-				<c:param name="currentPage" value="${currentPage }" />
-				<c:param name="next" value="1" />
-				<c:param name="searchSelect" value="${searchSelect }"/>
-				<c:param name="searchContent" value="${searchContent }"/>
-			</c:url>
-			<a href="${next }">&gt;</a>
-		</li>
-		<li>
-			<c:url var="last" value="churchNews.do">
-				<c:param name="currentPage" value="${maxPage }" />
-				<c:param name="searchSelect" value="${searchSelect }"/>
-				<c:param name="searchContent" value="${searchContent }"/>
-			</c:url>
-			<a href="${last }">&gt;&gt;</a>
-		</li>
-	</ul>
+			<c:forEach var="p" begin="${startPage }" end="${endPage }" step="1">
+				<li>
+					<c:url var="page" value="churchNews.do">
+						<c:param name="currentPage" value="${p }" />
+						<c:param name="searchSelect" value="${searchSelect }"/>
+						<c:param name="searchContent" value="${searchContent }"/>
+					</c:url>
+					<a href="${page }" id="pageNum<%=pageNum++ %>" class="">${p }</a>
+				</li>
+			</c:forEach>
+			<li>
+				<c:url var="next" value="churchNews.do">
+					<c:param name="currentPage" value="${currentPage }" />
+					<c:param name="next" value="1" />
+					<c:param name="searchSelect" value="${searchSelect }"/>
+					<c:param name="searchContent" value="${searchContent }"/>
+				</c:url>
+				<a href="${next }">&gt;</a>
+			</li>
+			<li>
+				<c:url var="last" value="churchNews.do">
+					<c:param name="currentPage" value="${maxPage }" />
+					<c:param name="searchSelect" value="${searchSelect }"/>
+					<c:param name="searchContent" value="${searchContent }"/>
+				</c:url>
+				<a href="${last }">&gt;&gt;</a>
+			</li>
+		</ul>
 	</div>
 	
 </div>

@@ -14,15 +14,18 @@
 			<p class="text">안양대광교회</p>
 		</div>
 	</div>
-	<div class="insertBtn_wrap mt20">
-	       <a href="#" class="newInsertBtn">글쓰기</a>
-	    </div>
-	<div class="pw_board_wrap">
-		
 	
+	<c:if test="${sessionScope.loginUser.MEMBER_AUTH eq 'W'}">
+		<div class="insertBtn_wrap mt20">
+	       <a href="personNewsInsert.do" class="newInsertBtn">글쓰기</a>
+	    </div>
+	</c:if>
+	
+	<div class="pw_board_wrap">
  		<ul id="personNews">
 		</ul>
 	</div>
+	
 	
 	
 </div>
@@ -55,6 +58,7 @@
 	})
 
 	let fetchList = function(pageNum) {
+		
 		if (isEnd == true) {
 			return;
 		}
@@ -70,6 +74,7 @@
 	      		var json = JSON.parse(jsonStr);
 	      		var tag = "";
 	      		var listCount = json.listCount;
+	      		var member_no = '${sessionScope.loginUser.MEMBER_NO}';
 	      			
 	      		for(var i = 0; i<json.personNewsList.length; i++){
 	      			tag += 
@@ -79,16 +84,15 @@
 									'<p class="title">'+ json.personNewsList[i].board_title +'</p>' +
 									'<p class="text"><span>' + json.personNewsList[i].recent_update_date + '</span><span>' + json.personNewsList[i].member_name + '</span></p>' +
 									'<i class="xi-angle-down"></i>' +
-									
 								'</div>' +
 								'<div class="body" id="body'+listCount+'">' +
 									'<p class="title">' + json.personNewsList[i].board_content + '</p>' +
-								'</div>' +
-								<!--삭제버튼 s-->
-								<!--이 i태그 에다가 삭제 기능 넣어주시면 됩니다.-->
-								'<i class="xi-close"></i>' +
-								<!--삭제버튼 e-->
-							'</li>'							
+								'</div>';
+								//삭제버튼 처리
+								if(member_no == json.personNewsList[i].member_no){
+									tag += 	'<i class="xi-close" onclick="delete_event(' + json.personNewsList[i].board_no + ');"></i>' ;
+								}
+								tag += 	'</li>'	;						
 							;
 					listCount--;
 	      		}
@@ -106,6 +110,18 @@
 		var body = document.getElementById("body");
 		$("#body"+listCount).slideToggle();
 		$("#head"+listCount).parent().toggleClass("on");
+	}
+	
+	//게시물 삭제 Event
+	function delete_event(BOARD_NO){
+		var currentPage = '${currentPage}';
+		var deleteYN = 'Y';
+		
+		if(confirm("정말 삭제하시겠습니까?") == true){
+			location.href="personNews.do?deleteFlag="+deleteYN+"&BOARD_NO="+BOARD_NO; 
+		}else{
+			return;
+		}
 	}
 </script>
 

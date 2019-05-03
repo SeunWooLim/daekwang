@@ -15,7 +15,7 @@
 	</div>
 	
 	<div class="photo_wrap">
-		<c:if test="${sessionScope.loginUser ne null}">
+		<c:if test="${sessionScope.loginUser.MEMBER_AUTH eq 'W'}">
 			<div class="insertBtn_wrap">
 				<a href="newFamilyIntroducingInsert.do" class="newInsertBtn">글쓰기</a>
 			</div>
@@ -26,12 +26,9 @@
 		</ul> 
 	</div>
 	
-	
-	
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
-
 <!-- 무한 스크롤 처리 -->
 <script type="text/javascript">
 	let isEnd = false;
@@ -44,9 +41,6 @@
 			let windowHeight = $window.height();
 			let documentHeight = $(document).height();
 	
-			console.log("documentHeight:" + documentHeight + " | scrollTop:" +
-			scrollTop + " | windowHeight: " + windowHeight);
-			
 			// scrollbar의 thumb가 바닥 전 50px까지 도달 하면 리스트를 가져온다.
 			if (scrollTop + windowHeight + 50 > documentHeight) {
 				fetchList(pageNum);
@@ -83,7 +77,10 @@
 								'</div>' +
 								'<div class="photo_mid">' +
 									'<ul>' +
-										'<li><img src="<c:url value="/"/>resources/uploadPhoto/' + json.newFamilyIntroducing[i].photo_rename + '"></li>' +
+										/* 카페 24 경로 */
+										//'<li><img src="<c:url value="/upload/' + json.newFamilyIntroducing[i].upload_yymm + '/' + json.newFamilyIntroducing[i].photo_rename + '"/>"></li>' +
+										/* 로컬서버 경로 */
+										'<li><img src="<c:url value="/resources/uploadPhoto/' + json.newFamilyIntroducing[i].photo_rename + '"/>"></li>' +
 									'</ul>' +
 								'</div>' +
 								'<div class="photo_bot">' +
@@ -100,25 +97,6 @@
     	});
 	}
 
-</script>
-
-<script>
-
-	var container1 = document.querySelector( '.masonry2' );
-	var msnry1 = $('.masonry2').masonry( {	  
-		  	itemSelector	: ".item",
-			columnWidth	: '.sizer',
-			gutter : 20,
-			percentPosition : true,
-			
-			
-		});
-	
-	 msnry1.imagesLoaded().progress(function(){
-				msnry1.masonry('layout');
-	});
-	
-	 	
 </script>
 
 </html>

@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	
-	<form action="insertFlowerPhoto.do" method="post" enctype="multipart/form-data">
+	<form action="insertFlowerPhoto.do" method="post" enctype="multipart/form-data" onsubmit="return nullCheck()">
 		<div class="apply_wrap">
 			<div class="apply">
 				<table>
@@ -42,12 +42,7 @@
 						<tr>
 							<td><label for="wPA_context">내용</label></td>
 							<td><textarea id="wPA_context" name="BOARD_CONTENT"  placeholder="내용 작성"></textarea></td>
-							<!-- <script type="text/javascript">
-							CKEDITOR.replace('wPA_context',
-									{height: 200});
-							</script> -->
 						</tr>
-						
 					</tbody>
 				</table>
 				<button type="submit" class="apply_btn">등록</button>
@@ -89,6 +84,21 @@
 	         }
 	    });
 	}); 
+	
+	/* 제목, 내용 널 체크 */
+	function nullCheck(){
+		if($("#wPA_title").val()==""){
+			alert("제목을 입력하십시오");
+			$("#wPA_title").focus();
+			return false;
+		}else if($("#wPA_context").val()==""){
+			alert("내용을 입력하십시오");
+			$("#wPA_context").focus();
+			return false;
+		}else{
+			return true;
+		}
+	};		
 </script>
 
 </html>

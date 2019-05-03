@@ -5,8 +5,6 @@
 
 <jsp:include page="../common/meta.jsp"/>
 
-
-<!-- 밑에 두가지 방법 중 하나 이용 -->
 <jsp:include page="../common/header.jsp"/>
 <div id="wrap">
 	<div class="subvisual_wrap">
@@ -17,7 +15,7 @@
 	</div>
 	
 	<div class="photo_wrap">
-		<c:if test="${sessionScope.loginUser ne null}">
+		<c:if test="${sessionScope.loginUser.MEMBER_AUTH eq 'W'}">
 			<div class="insertBtn_wrap">
 				<a href="churchPhotoInsert.do" class="newInsertBtn">글쓰기</a>
 			</div>
@@ -44,9 +42,6 @@
 			let windowHeight = $window.height();
 			let documentHeight = $(document).height();
 	
-			console.log("documentHeight:" + documentHeight + " | scrollTop:" +
-			scrollTop + " | windowHeight: " + windowHeight);
-			
 			// scrollbar의 thumb가 바닥 전 50px까지 도달 하면 리스트를 가져온다.
 			if (scrollTop + windowHeight + 50 > documentHeight) {
 				fetchList(pageNum);
@@ -88,7 +83,10 @@
 										var tempA = 4;
 										var tempB = 21;
 										for(var j = 1; j <= json.churchPhoto[i].photo_count; j++  ){
-											tag +=	'<li><img src="<c:url value="/"/>resources/uploadChurch/' + imageName.substring(tempA, tempB) + '"></li>' ;
+											//카페24 경로
+											//tag +=	'<li><img src="<c:url value="/upload/' + json.churchPhoto[i].upload_yymm + '/' + imageName.substring(tempA, tempB) + '"/>"></li>' ;
+											//로컬서버 경로
+											tag +=	'<li><img src="<c:url value="/resources/uploadChurch/' + imageName.substring(tempA, tempB) + '"/>"></li>' ;
 											tempA += 17;
 											tempB += 17;
 										} 
@@ -101,28 +99,25 @@
 							;
 	      		}
 	      		$('#churchPhoto').html(tag);
-	      		$(document).ready(function(){
-	      			$(".photo_mid > ul").bxSlider({
-	      				mode: "fade",    
-	      				slideMargin: 0,
-	      				moveSlides: 1,
-	      				startSlide: 0,         
-	      				infiniteLoop: true,    
-	      				//captions: true,       
-	      				pager: true,         
-	      				adaptiveHeight: true,   
-	      				auto: false,            
-	      				pause: 3000,           
-	      				speed: 500,           
-	      				easing: "",	
-	      				touchEnabled:true,   	
-	      				controls: true,
-	      				//video: true,
-	      				useCSS: false,
-	      			});
-	      			
-	      			
-	      		})
+      			
+	      		$(".photo_mid > ul").bxSlider({
+	  				mode: "fade",    
+	  				slideMargin: 0,
+	  				moveSlides: 1,
+	  				startSlide: 0,         
+	  				infiniteLoop: true,    
+	  				//captions: true,       
+	  				pager: true,         
+	  				adaptiveHeight: true,   
+	  				auto: false,            
+	  				pause: 3000,           
+	  				speed: 500,           
+	  				easing: "",	
+	  				touchEnabled:true,   	
+	  				controls: true,
+	  				//video: true,
+	  				useCSS: false,
+	  			});
 	      	},
 	      	error: function(request, status, errorData){
 	      		alert("error code : " + request.status + "\n" + "message : " + request.responseText + "\n" + "error : " + errorData);

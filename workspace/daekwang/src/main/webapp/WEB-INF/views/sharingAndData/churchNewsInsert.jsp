@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	
-	<form action="insertChurchNews.do" method="post">
+	<form action="insertChurchNews.do" method="post" onsubmit="return nullCheck()">
 		<div class="apply_wrap">
 			<div class="apply">
 				<table>
@@ -53,4 +53,16 @@
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
+
+<script type="text/javascript">
+	function nullCheck(){
+		if($("#wPA_title").val()==""){
+			alert("제목을 입력하십시오");
+			$("#wPA_title").focus();
+			return false;
+		}else{
+			return true;
+		}
+	};
+</script>
 </html>

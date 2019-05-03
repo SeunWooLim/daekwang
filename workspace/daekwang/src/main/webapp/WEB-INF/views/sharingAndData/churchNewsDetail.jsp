@@ -35,7 +35,9 @@
 		<!-- div class="tac" 로 무조건 버튼들 감싸주고 써주시면 됩니다. -->
 		<div class="tac">
 			<a href="churchNews.do" class="btn11">목록</a>
-			<a href="#" class="btn11">삭제</a>
+			<c:if test="${sessionScope.loginUser.MEMBER_NO eq boardVo.MEMBER_NO}">
+				<a href="#" class="btn11" onclick="delete_event(${boardVo.BOARD_NO})">삭제</a>
+			</c:if>
 		</div>
 	</div>
 	
@@ -45,4 +47,19 @@
 </div>
 <jsp:include page="../common/footer.jsp"/>
 </body>
+
+<script type="text/javascript">
+	//게시물 삭제 Event
+	function delete_event(BOARD_NO){
+		var currentPage = '${currentPage}';
+		var deleteYN = 'Y';
+		
+		if(confirm("정말 삭제하시겠습니까?") == true){
+			location.href="churchNews.do?deleteFlag="+deleteYN+"&BOARD_NO="+BOARD_NO; 
+		}else{
+			return;
+		}
+	}
+</script>
+
 </html>

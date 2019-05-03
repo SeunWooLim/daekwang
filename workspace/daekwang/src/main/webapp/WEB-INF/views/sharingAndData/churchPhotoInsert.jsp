@@ -37,7 +37,7 @@
 		</div>
 	</div>
 	
-	<form action="#" method="post" enctype="multipart/form-data" id="uploadForm">
+	<form method="post" enctype="multipart/form-data" id="uploadForm">
 		<div class="apply_wrap">
 			<div class="apply">
 				<table>
@@ -74,14 +74,10 @@
 						<tr>
 							<td><label for="wPA_context">내용</label></td>
 							<td><textarea id="wPA_context" name="BOARD_CONTENT"  placeholder="내용 작성"></textarea></td>
-							<!-- <script type="text/javascript">
-							CKEDITOR.replace('wPA_context',
-									{height: 300});
-							</script> -->
 						</tr>
 					</tbody>
 				</table>
-				<button type="submit" class="apply_btn" onclick="UploadImage();">등록</button>
+				<a class="apply_btn" onclick="UploadImage()">등록</a>
 			</div>
 		</div>
 	</form>
@@ -108,6 +104,8 @@ $(document).ready(function(){
 
 // 섬네일 이미지아이디 변수
 var imageNum = 0;
+// 실제 업로드되는 이미지 갯수 세기위한 변수
+var realImageNum = 0;
 // 선택된 이미지 보관 배열
 var filesTempArr = new Array();
 
@@ -178,7 +176,14 @@ function FileSelectHandler(e) {
             return;
          }
         
+        if(realImageNum == 10){
+        	alert("이미지 첨부는 최대 10장까지만 가능합니다.");
+            $(".upload-name").val("");
+            return;
+        } 
+        
         filesTempArr.push(f);
+        realImageNum++;
 		ThumnailImage(f, imageNum);
 		imageNum++;
 	}
@@ -214,43 +219,47 @@ function DeleteThumnail(orderParam){
 	$('#pre_image'+ orderParam).remove();
 	filesTempArr.splice(orderParam, 1);
 	filesTempArr.splice(orderParam, 0, 0);
+	realImageNum--;
 }
 
 //이미지 업로드
 function UploadImage(){
-	
-	// 이미지 담을 폼데이터 세팅
-	var formData = new FormData(document.getElementById('uploadForm'));
-	
-	// 이미지 배열을 폼데이터에 추가
-	for(var i=0 ; i < filesTempArr.length; i++) {
-	   formData.append("img", filesTempArr[i]);
+	if($("#wPA_title").val()==""){
+		alert("제목을 입력하십시오");
+		$("#wPA_title").focus();
+		return false;
+	}else if($("#wPA_context").val()==""){
+		alert("내용을 입력하십시오");
+		$("#wPA_context").focus();
+		return false;
+	}else{
+		
+		// 이미지 담을 폼데이터 세팅
+		var formData = new FormData($('#uploadForm')[0]);
+		formData.append("count", filesTempArr.length);
+		// 이미지 배열을 폼데이터에 추가
+		for(var i=0 ; i < filesTempArr.length; i++) {
+			formData.append("file", filesTempArr[i]);
+		}
+		
+		$.ajax({
+		    type: "POST",
+		    url: "insertChurchPhoto.do",
+		    data: formData,
+		    async: false,
+		    processData: false,
+		    contentType: false,
+		    success: function(data){
+		    	if(data == "success"){
+		    		location.href="churchPhotoNew.do";
+		    	}else{
+		    		alert("이미지 업로드에 실패 하였습니다");
+		    		location.href="churchPhotoNew.do";
+		    	}
+		    }
+		});
 	}
-	
-	$.ajax({
-	    type : "POST",
-	    url : "insertChurchPhoto.do",
-	    data : formData,
-	    processData: false,
-	    contentType : false,
-	    success : function(result) {
-	    	console.log(result);
-	        if(result=="success"){
-	        	alert(1);
-	        	location.href = "churchPhoto.do";
-	        }else{
-	            alert("이미지 등록에 실패하였습니다.");
-	            location.href = "churchPhoto.do";
-	        } 
-	    },
-	    error : function(err) {
-	        alert(err.status);
-	        location.href = "churchPhoto.do";
-	    }
-	});
-
 }
-
 
 </script>
 </html>

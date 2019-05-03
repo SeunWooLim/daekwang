@@ -35,7 +35,7 @@
 		</div>
 	</div>
 	
-	<form action="insertNewFamilyIntroducing.do" method="post" enctype="multipart/form-data">
+	<form action="insertNewFamilyIntroducing.do" method="post" enctype="multipart/form-data" onsubmit="return nullCheck()">
 		<div class="apply_wrap">
 			<div class="apply">
 				<table>
@@ -63,10 +63,6 @@
 						<tr>
 							<td><label for="wPA_context">내용</label></td>
 							<td><textarea id="wPA_context" name="BOARD_CONTENT"  placeholder="내용 작성"></textarea></td>
-							<!-- <script type="text/javascript">
-							CKEDITOR.replace('wPA_context',
-									{height: 200});
-							</script> -->
 						</tr>
 					</tbody>
 				</table>
@@ -74,35 +70,6 @@
 			</div>
 		</div>
 	</form>
-	
-<!-- 	<div class="apply_wrap">
-		<div class="apply">
-			<form id="upload" action="upload.php" method="POST" enctype="multipart/form-data">
-
-			<fieldset>
-			<legend>HTML File Upload</legend>
-			
-			<input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
-			
-			<div>
-				<label for="fileselect">Files to upload:</label>
-				<input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
-				<div id="filedrag">or drop files here</div>
-			</div>
-			
-			<div id="submitbutton">
-				<button type="submit">Upload Files</button>
-			</div>
-			
-			</fieldset>
-			
-			</form>
-			
-			<div id="messages">
-			<p>Status Messages</p>
-			</div>
-		</div>
-	</div> -->
 	
 </div>
 <jsp:include page="../common/footer.jsp"/>
@@ -138,89 +105,21 @@
 	         }
 	    });
 	}); 
+	
+	/* 제목, 내용 널 체크 */
+	function nullCheck(){
+		if($("#wPA_title").val()==""){
+			alert("제목을 입력하십시오");
+			$("#wPA_title").focus();
+			return false;
+		}else if($("#wPA_context").val()==""){
+			alert("내용을 입력하십시오");
+			$("#wPA_context").focus();
+			return false;
+		}else{
+			return true;
+		}
+	};
 </script>
-<!-- <script type="text/javascript">
-//getElementById
-function $id(id) {
-	return document.getElementById(id);
-}
 
-// output information
-function Output(msg) {
-	var m = $id("messages");
-	m.innerHTML = msg + m.innerHTML;
-}
-
-// call initialization file
-if (window.File && window.FileList && window.FileReader) {
-	Init();
-}
-
-// initialize
-function Init() {
-
-	var fileselect = $id("fileselect"),
-		filedrag = $id("filedrag"),
-		submitbutton = $id("submitbutton");
-
-	// file select
-	fileselect.addEventListener("change", FileSelectHandler, false);
-
-	// is XHR2 available?
-	var xhr = new XMLHttpRequest();
-	if (xhr.upload) {
-	
-		// file drop
-		filedrag.addEventListener("dragover", FileDragHover, false);
-		filedrag.addEventListener("dragleave", FileDragHover, false);
-		filedrag.addEventListener("drop", FileSelectHandler, false);
-		filedrag.style.display = "block";
-		
-		// remove submit button
-		submitbutton.style.display = "none";
-		//fileselect.style.display = "none";
-		
-	}
-}
-
-//file drag hover
-function FileDragHover(e) {
-	e.stopPropagation();
-	e.preventDefault();
-	e.target.className = (e.type == "dragover" ? "hover" : "");
-}
-
-//file selection
-function FileSelectHandler(e) {
-
-	// cancel event and hover styling
-	FileDragHover(e);
-
-	// fetch FileList object
-	var files = e.target.files || e.dataTransfer.files;
-
-	// process all File objects
-	for (var i = 0, f; f = files[i]; i++) {
-		ParseFile(f);
-	}
-	
-
-} 
-
-function ParseFile(file) {
-	/* Output(
-		"<p>File information: <strong>" + file.name +
-		"</strong> type: <strong>" + file.type +
-		"</strong> size: <strong>" + file.size +
-		"</strong> bytes</p>"
-	); */
-	$('#imgDesc').remove();
-	
-	Output(
-		"<p id='imgDesc'>파일명 : " + file.name + "</p>"
-	);
-}
-
-
-</script> -->
 </html>
