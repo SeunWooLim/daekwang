@@ -51,7 +51,10 @@
 								<tr>
 									<td>이미지</td>
 									<td colspan="3" class="tal">
-										<img src="<c:url value="/"/>resources/img/deptImage/${schoolList.DEPT_PHOTO_RENAME}">
+										<!-- 카페24 경로 -->
+										<%-- <img src="<c:url value="/upload/${schoolList.DEPT_UPLOAD_YYMM }/${schoolList.DEPT_PHOTO_RENAME}"/>"> --%>
+										<!-- 로컬서버 경로 -->
+										<img src="<c:url value="/resources/img/deptImage/${schoolList.DEPT_PHOTO_RENAME}"/>">
 										<input type="file" name="file" style="padding:0;">
 										<p style="color:red;">* 가로 사진으로 업로드 하시기 바랍니다.</p>
 										<input type="hidden" name="DEPT_PHOTO_RENAME" value="${schoolList.DEPT_PHOTO_RENAME }">
@@ -110,6 +113,7 @@
 								</tr>
 							</tbody>
 						</table>
+						<input type="hidden" name="DEPT_UPLOAD_YYMM" value="${schoolList.DEPT_UPLOAD_YYMM }">
 						
 						<button class="btnform1 mt20">수정</button>			
 					</form>
@@ -131,7 +135,10 @@
 								<tr>
 									<td>이미지</td>
 									<td colspan="3" class="tal">
-										<img src="<c:url value="/"/>resources/img/deptImage/${youthList.DEPT_PHOTO_RENAME}">
+										<!-- 카페24 경로 -->
+										<%-- <img src="<c:url value="/upload/${youthList.DEPT_UPLOAD_YYMM }/${youthList.DEPT_PHOTO_RENAME}"/>"> --%>
+										<!-- 로컬서버 경로 -->
+										<img src="<c:url value="/resources/img/deptImage/${youthList.DEPT_PHOTO_RENAME}"/>">
 										<input type="file" name="file" style="padding:0;">
 										<p style="color:red;">* 가로 사진으로 업로드 하시기 바랍니다.</p>
 										<input type="hidden" name="DEPT_PHOTO_RENAME" value="${youthList.DEPT_PHOTO_RENAME }">
@@ -194,6 +201,7 @@
 								</tr>
 							</tbody>
 						</table>
+						<input type="hidden" name="DEPT_UPLOAD_YYMM" value="${youthList.DEPT_UPLOAD_YYMM }">
 						
 						<button class="btnform1 mt20">수정</button>			
 					</form>

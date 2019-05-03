@@ -97,9 +97,6 @@
 				String cp = pageContext.getAttribute("pageNum").toString();
 				int pageNum = Integer.parseInt(cp);
 				int ediNum = 1;
-				
-				
-				
 			%>
 			
 			<div class="table_wrap">
@@ -143,12 +140,14 @@
 								<td>${weekPage.APPLY_DATE }</td>
 								<td>
 									<a class="btnform5 update_btn" onclick="updateForm(<%= rowNum %>);">보기</a>
+									<%-- 
 									<c:url var="delete" value="weekPageApplyAdmin.do">
 										<c:param name="APPLY_NO" value="${weekPage.APPLY_NO }" />
 										<c:param name="currentPage" value="${currentPage }" />
 										<c:param name="deleteFlag" value="Y" />
 									</c:url>
-									<a href="${delete }" class="btnform6">삭제</a>
+									--%>
+									<a class="btnform6" onclick="deleteOne(${weekPage.APPLY_NO });">삭제</a>
 								</td>	
 							</tr>
 							
@@ -303,6 +302,16 @@
 	    }
 	}
 	
+	/* 게시물 단일 삭제 */
+	function deleteOne(APPLY_NO){
+		var currentPage = '${currentPage}';
+		var deleteYN = 'Y';
+		
+		if(confirm("정말 삭제 하시겠습니까?")){
+			location.href="weekPageApplyAdmin.do?APPLY_NO="+APPLY_NO+"&currentPage="+currentPage+"&deleteFlag="+deleteYN;   
+		}
+	}
+	
 	/* 체크된 게시물 삭제 */
 	function deleteAction(){
 		var checkBox = "";
@@ -316,7 +325,7 @@
 	 	 	return false;
 		}
 		
-		if(confirm("정보를 삭제 하시겠습니까?")){
+		if(confirm("정말 삭제 하시겠습니까?")){
 		    
 		    //삭제처리 후 다시 불러올 리스트 url      
 		    var currentPage = '${currentPage}';
@@ -324,7 +333,6 @@
 		    var searchSelect1 = '${searchSelect1}';
 		    var searchContent = '${searchContent}';
 		    var deleteYN = 'Y';
-		    //location.href="weekPageApplyAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&searchSelect2="+searchSelect2+"searchSelect1="+searchSelect1+"searchContent="+searchContent+"delete="+deleteYN;      
 		    location.href="weekPageApplyAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&deleteFlag="+deleteYN;      
 		}
 	}

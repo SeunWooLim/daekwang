@@ -98,7 +98,7 @@
 							<th>작성자</th>
 							<th>제목</th>
 							<th>내용</th>
-							<th>등록일(수정일)</th>
+							<th>등록일</th>
 							<th>편집</th>
 						</tr>
 					</thead>
@@ -107,7 +107,10 @@
 							<tr>
 								<td><input type="checkbox" name="checkBox" value="${flowerPhoto.BOARD_NO }" id="check2"/><label for="check2"></label> </td>
 								<td><%= num-- %></td>
-								<td><img src="<c:url value="/"/>resources/uploadPhoto/${flowerPhoto.photoVo.PHOTO_RENAME}"></td>
+								<!-- 카페24 경로 -->
+								<%-- <td><img src="<c:url value="/upload/${flowerPhoto.photoVo.UPLOAD_YYMM }/${flowerPhoto.photoVo.PHOTO_RENAME}"/>"></td> --%>
+								<!-- 로컬서버 경로 -->
+								<td><img src="<c:url value="/resources/uploadPhoto/${newFamily.photoVo.PHOTO_RENAME}"/>"></td>
 								<td>${flowerPhoto.memberVo.MEMBER_NAME }</td>
 								<td>${flowerPhoto.BOARD_TITLE }</td>
 								<c:set var="text" value="${flowerPhoto.BOARD_CONTENT }"/>		
@@ -116,15 +119,17 @@
 									String replacetext = text.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
 								%>
 								<td style="text-align:center"><p style="width:600px; text-align:center; margin:0 auto;"><%=replacetext %></p></td>
-								<td>${flowerPhoto.RECENT_UPDATE_DATE }</td>
+								<td>${flowerPhoto.FIRST_INPUT_DATE }</td>
 								<td>
 									<a href="#" class="btnform5" onclick="updateForm(<%= rowNum %>);">수정</a>
+									<%-- 
 									<c:url var="delete" value="flowerPhotoAdmin.do">
 										<c:param name="BOARD_NO" value="${flowerPhoto.BOARD_NO }" />
 										<c:param name="currentPage" value="${currentPage }" />
 										<c:param name="deleteFlag" value="Y" />
 									</c:url>
-									<a href="${delete }" class="btnform6">삭제</a>
+									 --%>
+									<a class="btnform6" onclick="deleteOne(${flowerPhoto.BOARD_NO });">삭제</a>
 								</td>
 							</tr>
 							
@@ -140,12 +145,15 @@
 												<input type="hidden" name="BOARD_NO" value="${flowerPhoto.BOARD_NO }">
 											</li>
 											<li>
-												<label for="wPA_Dep">등록일</label>
+												<label for="wPA_Dep">수정일</label>
 												<input type="text" id="wPA_Dep" name="wPA_Dep" value="${flowerPhoto.RECENT_UPDATE_DATE }" readonly/>
 											</li>
 											<li>
 												<label>이미지</label>
-												<img alt="" src="<c:url value="/"/>resources/uploadPhoto/${flowerPhoto.photoVo.PHOTO_RENAME}">
+												<!-- 카페24 경로 -->
+												<%-- <img src="<c:url value="/upload/${flowerPhoto.photoVo.UPLOAD_YYMM }/${flowerPhoto.photoVo.PHOTO_RENAME}"/>"> --%>
+												<!-- 로컬서버 경로 -->
+												<img alt="" src="<c:url value="/resources/uploadPhoto/${flowerPhoto.photoVo.PHOTO_RENAME}"/>">
 											</li>
 											<li>
 												<label>제목</label>
@@ -284,6 +292,16 @@
 	    }
 	}
 	
+	/* 게시물 단일 삭제 */
+	function deleteOne(BOARD_NO){
+		var currentPage = '${currentPage}';
+		var deleteYN = 'Y';
+		
+		if(confirm("정말 삭제 하시겠습니까?")){
+			location.href="flowerPhotoAdmin.do?BOARD_NO="+BOARD_NO+"&currentPage="+currentPage+"&deleteFlag="+deleteYN;   
+		}
+	}
+	
 	/* 체크된 게시물 삭제 */
 	function deleteAction(){
 		var checkBox = "";
@@ -297,7 +315,7 @@
 	 	 	return false;
 		}
 		
-		if(confirm("정보를 삭제 하시겠습니까?")){
+		if(confirm("정말 삭제 하시겠습니까?")){
 		    
 		    //삭제처리 후 다시 불러올 리스트 url      
 		    var currentPage = '${currentPage}';

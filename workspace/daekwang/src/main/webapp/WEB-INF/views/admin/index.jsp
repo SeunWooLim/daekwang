@@ -46,9 +46,3 @@
 
  </body>
 </html>
-<style>
-	.menuuuuuu{}
-	.menuuuuuu li{margin-bottom:20px; }
-	.menuuuuuu li p{font-size:20px;}
-	.menuuuuuu li p span{font-size:20px;}
-</style>

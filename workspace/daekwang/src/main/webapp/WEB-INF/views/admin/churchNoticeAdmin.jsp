@@ -97,7 +97,7 @@
 							<th>작성자</th>
 							<th>제목</th>
 							<th>내용</th>
-							<th>등록일(수정일)</th>
+							<th>등록일</th>
 							<th>편집</th>
 						</tr>
 					</thead>
@@ -114,15 +114,17 @@
 									String replacetext = text.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
 								%>
 								<td style="text-align:center"><p style="width:600px; text-align:center; margin:0 auto;"><%=replacetext %></p></td>
-								<td>${churchNotice.RECENT_UPDATE_DATE }</td>
+								<td>${churchNotice.FIRST_INPUT_DATE }</td>
 								<td>
 									<a href="#" class="btnform5" onclick="updateForm(<%= rowNum %>);">수정</a>
+									<%-- 
 									<c:url var="delete" value="churchNoticeAdmin.do">
 										<c:param name="BOARD_NO" value="${churchNotice.BOARD_NO }" />
 										<c:param name="currentPage" value="${currentPage }" />
 										<c:param name="deleteFlag" value="Y" />
 									</c:url>
-									<a href="${delete }" class="btnform6">삭제</a>
+									 --%>
+									<a class="btnform6" onclick="deleteOne(${churchNotice.BOARD_NO });">삭제</a>
 								</td>
 							</tr>
 							
@@ -138,7 +140,7 @@
 												<input type="hidden" name="BOARD_NO" value="${churchNotice.BOARD_NO }">
 											</li>
 											<li>
-												<label for="wPA_Dep">등록일</label>
+												<label for="wPA_Dep">수정일</label>
 												<input type="text" id="wPA_Dep" name="wPA_Dep" value="${churchNotice.RECENT_UPDATE_DATE }" readonly/>
 											</li>
 											<li>
@@ -313,6 +315,16 @@
 	    }
 	}
 	
+	/* 게시물 단일 삭제 */
+	function deleteOne(BOARD_NO){
+		var currentPage = '${currentPage}';
+		var deleteYN = 'Y';
+		
+		if(confirm("정말 삭제 하시겠습니까?")){
+			location.href="churchNoticeAdmin.do?BOARD_NO="+BOARD_NO+"&currentPage="+currentPage+"&deleteFlag="+deleteYN;   
+		}
+	}
+	
 	/* 체크된 게시물 삭제 */
 	function deleteAction(){
 		var checkBox = "";
@@ -326,14 +338,13 @@
 	 	 	return false;
 		}
 		
-		if(confirm("정보를 삭제 하시겠습니까?")){
+		if(confirm("정말 삭제 하시겠습니까?")){
 		    
 		    //삭제처리 후 다시 불러올 리스트 url      
 		    var currentPage = '${currentPage}';
 		    var searchSelect1 = '${searchSelect}';
 		    var searchContent = '${searchContent}';
 		    var deleteYN = 'Y';
-		    //location.href="weekPageApplyAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&searchSelect2="+searchSelect2+"searchSelect1="+searchSelect1+"searchContent="+searchContent+"delete="+deleteYN;      
 		    location.href="churchNoticeAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&deleteFlag="+deleteYN;      
 		}
 	}

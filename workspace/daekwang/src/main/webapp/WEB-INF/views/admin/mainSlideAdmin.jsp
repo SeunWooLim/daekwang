@@ -24,10 +24,12 @@
 			<div class="category_wrap">
 				<ul class="ul_form2">
 					<li><a class="btnform3" onclick="openInsertForm();">등록</a></li>
-					<li><a href="#" class="btnform4" onclick="deleteAction();">삭제</a></li>
 				</ul>
 			</div>
-
+			
+			<%  
+				int rowNum = 1; 
+			%>
 
 			<div class="table_wrap">
 				<table>
@@ -35,59 +37,67 @@
 						<col width="*"/>
 					</colgroup>
 					<tbody>
-						<tr>							
-							<td style="position: relative; padding:0;">
-								<img style="width:100%; height:600px"src="<c:url value="/"/>resources/uploadPhoto/1553920806011.jpg">
-								<div style="position:absolute; top:0; left:0; width:100%; height:600px; display:block; background:rgba(0,0,0,0.5)"></div>
-								<div style="position: absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); text-align:center; color:#fff;">
-									<p>제목입니다</p>
-									<p>내용입니다</p>
-								</div>
-								<ul class="mt20 mb20">
-									<li>
-										<a href="#" class="btnform5" onclick="updateForm()">수정</a>
-										<a href="#" class="btnform6">삭제</a>
-									</li>
-								</ul>
-							</td>
-						</tr>
-						<!-- 수정 폼 모달 -->
-						<form action="personNewsAdmin.do" method="post">
-							<div class="form_wrap" id="form_wrap">
-								<div class="form">
-									<p>메인슬라이드 수정</p>
-									<ul>
+						<c:forEach var="mainSlider" items="${list }">
+							
+							<tr>							
+								<td style="position: relative; padding:0;">
+									<!-- 카페24 경로 -->
+									<%-- <img style="width:100%; height:600px"src="<c:url value="/upload/${mainSlider.UPLOAD_YYMM }/${mainSlider.SLIDER_RENAME}"/>"> --%>
+									<!-- 로컬서버 경로 -->
+									<img style="width:100%; height:600px"src="<c:url value="/resources/img/mainSlideImage/${mainSlider.SLIDER_RENAME}"/>">
+									<div style="position:absolute; top:0; left:0; width:100%; height:600px; display:block; background:rgba(0,0,0,0.5)"></div>
+									<div style="position: absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); text-align:center; color:#fff;">
+										<p>${mainSlider.SLIDER_TITLE }</p>
+										<p>${mainSlider.SLIDER_CONTENT }</p>
+									</div>
+									<ul class="mt20 mb20">
 										<li>
-											<label>제목</label>
-											<input type="text" id="" name="" />
+											<a href="#" class="btnform5" onclick="updateForm(<%= rowNum %>)">수정</a>
+											<c:url var="delete" value="mainSlideAdmin.do">
+												<c:param name="SLIDER_NO" value="${mainSlider.SLIDER_NO }" />
+												<c:param name="SLIDER_RENAME" value="${mainSlider.SLIDER_RENAME}"></c:param>
+												<c:param name="deleteFlag" value="Y" />
+											</c:url>
+											<a href="${delete }" class="btnform6">삭제</a>
 										</li>
-										<li>
-											<label>내용</label>
-											<input type="text" id="" name="" />
-										</li>
-										<li>
-											<label>이미지</label>
-											<img style="width:300px; height:200px; "src="<c:url value="/"/>resources/uploadPhoto/1553920806011.jpg">
-											<input type="file" style="padding:0; height:100%; width: 50%;    vertical-align: top;">
-										</li>
-									</ul>								
-									
-									
-									<input type="hidden" name="updateFlag" value="Y">
-									
-									<ul class="list">
-										<li><button type="submit" class="btnform2 update_btn">수정</button></li>
-										<li><a class="btnform2 close_btn" onclick="closeUpdateForm()">닫기</a></li>
 									</ul>
-								</div>
+								</td>
+							</tr>
+							
+							<!-- 수정 폼 모달 START-->
+							<div class="form_wrap" id="form_wrap<%= rowNum %>">
+								<form action="mainSlideAdmin.do" method="post">
+									<div class="form">
+										<p>메인슬라이드 수정</p>
+										<ul>
+											<li>
+												<label>제목</label>
+												<input type="text" id="" name="SLIDER_TITLE" value="${ mainSlider.SLIDER_TITLE}" />
+											</li>
+											<li>
+												<label>내용</label>
+												<input type="text" id="" name="SLIDER_CONTENT" value="${mainSlider.SLIDER_CONTENT }" />
+											</li>
+										</ul>								
+										
+										<!-- hidden 변수 -->
+										<input type="hidden" name="updateFlag" value="Y">
+										<input type="hidden" name="SLIDER_NO" value="${mainSlider.SLIDER_NO }">
+										<input type="hidden" name="SLIDER_RENAME" value="${mainSlider.SLIDER_RENAME }">
+										
+										<ul class="list">
+											<li><button type="submit" class="btnform2 update_btn">수정</button></li>
+											<li><a class="btnform2 close_btn" onclick="closeUpdateForm(<%= rowNum++ %>)">닫기</a></li>
+										</ul>
+									</div>
+								</form>
 							</div>
-						</form>
+							<!-- 수정 폼 모달 END -->
+						</c:forEach>
 					</tbody>
 				</table>
 				
-				<jsp:include page="board_page.jsp"/>
 			</div>
-			
 			
 		</div>
 	<!--container s-->
@@ -96,24 +106,23 @@
 	<!-- 수정, 등록 폼 모달 backGround -->
 	<div class="formbg"></div>
 	
-	<!-- 등록 폼 모달 -->
-	<div class="form_wrap" id="form_wrap_ins">
-		<form action="" method="post">
+	<!-- 등록 폼 모달 START -->
+	<div class="form_wrap" id="form_wrap_ins" >
+		<form action="insertMainSlideAdmin.do" method="post" enctype="multipart/form-data">
 			<div class="form">
 				<p>메인슬라이더 등록</p>
 				<ul>
 					<li>
 						<label>제목</label>
-						<input type="text" id="" name="" />
+						<input type="text" id="" name="SLIDER_TITLE" />
 					</li>
 					<li>
 						<label>내용</label>
-						<input type="text" id="" name="" />
+						<input type="text" id="" name="SLIDER_CONTENT" />
 					</li>
 					<li>
 						<label>이미지</label>
-						<img style="width:300px; height:200px; "src="<c:url value="/"/>resources/uploadPhoto/1553920806011.jpg">
-						<input type="file" style="padding:0; height:100%; width: 50%;    vertical-align: top;">
+						<input type="file" name="file" style="padding:0; height:100%; width: 50%;    vertical-align: top;">
 					</li>
 				</ul>								
 				
@@ -123,10 +132,10 @@
 					<li><button type="submit" class="btnform2 update_btn" id="btn_insert">등록</button></li>
 					<li><a class="btnform2 close_btn" id="btn_ins" onclick="closeInsertForm();">닫기</a></li>
 				</ul>
-				
 			</div>
 		</form>
 	</div>
+	<!-- 등록 폼 모달 END -->
 
  </body>
  <script type="text/javascript">
@@ -161,46 +170,6 @@
 			$("#form_wrap_ins").hide();
 			$(".formbg").hide();	
 		})
-	}
-	
-	/* 현재 페이지 'on' addClass */
-	$(document).ready(function(){
-		var currentPageNum = '${currentPage}';
-		var pageNum = $('#pageNum'+currentPageNum);
-		pageNum.addClass('on');
-	})
-	
-	/* 체크박스 전체 선택 */
-	function checkAll(){
-	    if( $("#check1").is(':checked') ){
-	      $("input[name=checkBox]").prop("checked", true);
-	    }else{
-	      $("input[name=checkBox]").prop("checked", false);
-	    }
-	}
-	
-	/* 체크된 게시물 삭제 */
-	function deleteAction(){
-		var checkBox = "";
-		$( "input[name='checkBox']:checked" ).each (function (){
-			checkBox = checkBox + $(this).val()+"," ;
-		});
-			checkBox = checkBox.substring(0,checkBox.lastIndexOf( ",")); //맨끝 콤마 지우기
-		
-		if(checkBox == ''){
-		  	alert("삭제할 대상을 선택하세요.");
-	 	 	return false;
-		}
-		
-		if(confirm("정보를 삭제 하시겠습니까?")){
-		    
-		    //삭제처리 후 다시 불러올 리스트 url      
-		    var currentPage = '${currentPage}';
-		    var searchSelect1 = '${searchSelect}';
-		    var searchContent = '${searchContent}';
-		    var deleteYN = 'Y';
-		    location.href="personNewsAdmin.do?idx="+checkBox+"&currentPage="+currentPage+"&deleteFlag="+deleteYN;      
-		}
 	}
 	
 	/* ESC key 이벤트 */

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <nav id="sidenav" class="sidenav">
-	<a class="logo" href="forwardMain.do"><img alt="안양대광교회" src="/daekwang/resources/img/logo5.png" style="width:100%"></a>
+	<a class="logo" href="forwardMain.do"><img alt="안양대광교회" src="<c:url value="/resources/img/logo5.png"/>" style="width:100%"></a>
 	<ul class="">
 		<li><a href="admin.do" style="background:none;"><i class="xi-home"></i>Home</a></li>
 	</ul>

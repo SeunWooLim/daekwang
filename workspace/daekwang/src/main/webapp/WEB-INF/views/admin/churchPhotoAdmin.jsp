@@ -84,9 +84,10 @@
 						<col width="5%"/>
 						<col width="5%"/>
 						<col width="10%"/>
+						<col width="5%"/>
 						<col width="10%"/>
 						<col width="25%"/>
-						<col width="25%"/>
+						<col width="*"/>
 						<col width="10%"/>
 						<col width="10%"/>
 					</colgroup>
@@ -94,11 +95,12 @@
 						<tr>
 							<th><input type="checkbox" name="checkAll" id="check1" onclick="checkAll();"/><label for="check1"></label> </th>
 							<th>NO</th>
-							<th>리스트이미지</th>
+							<th>첫번째 이미지</th>
+							<th>이미지 갯수</th>
 							<th>작성자</th>
 							<th>제목</th>
 							<th>내용</th>
-							<th>등록일(수정일)</th>
+							<th>등록일</th>
 							<th>편집</th>
 						</tr>
 					</thead>
@@ -107,7 +109,11 @@
 							<tr>
 								<td><input type="checkbox" name="checkBox" value="${churchPhoto.BOARD_NO }" id="check2"/><label for="check2"></label> </td>
 								<td><%= num-- %></td>
-								<td><img src="<c:url value="/"/>resources/uploadChurch/${churchPhoto.PHOTO_IMAGE1}"></td>
+								<!-- 카페24 경로 -->
+								<%-- <td><img src="<c:url value="/upload/${churchPhoto.UPLOAD_YYMM }/${churchPhoto.PHOTO_IMAGE1}"/>"></td> --%>
+								<!-- 로컬서버 경로 -->
+								<td><img src="<c:url value="/resources/uploadChurch/${churchPhoto.PHOTO_IMAGE1}"/>"></td>
+								<td>${churchPhoto.PHOTO_COUNT }</td>
 								<td>${churchPhoto.MEMBER_NAME }</td>
 								<td>${churchPhoto.BOARD_TITLE }</td>
 								<c:set var="text" value="${churchPhoto.BOARD_CONTENT }"/>		
@@ -116,15 +122,17 @@
 									String replacetext = text.replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", "");
 								%>
 								<td style="text-align:center"><p style="width:600px; text-align:center; margin:0 auto;"><%=replacetext %></p></td>
-								<td>${churchPhoto.RECENT_UPDATE_DATE }</td>
+								<td>${churchPhoto.FIRST_INPUT_DATE }</td>
 								<td>
 									<a href="#" class="btnform5" onclick="updateForm(<%= rowNum %>);">수정</a>
+									<%-- 
 									<c:url var="delete" value="churchPhotoAdmin.do">
 										<c:param name="BOARD_NO" value="${churchPhoto.BOARD_NO }" />
 										<c:param name="currentPage" value="${currentPage }" />
 										<c:param name="deleteFlag" value="Y" />
 									</c:url>
-									<a href="${delete }" class="btnform6">삭제</a>
+									 --%>
+									<a class="btnform6" onclick="deleteOne(${churchPhoto.BOARD_NO });">삭제</a>
 								</td>
 							</tr>
 							
@@ -132,27 +140,47 @@
 							<form action="churchPhotoAdmin.do" method="post">
 								<div class="form_wrap" id="form_wrap<%= rowNum %>">
 									<div class="form">
-										<p>꽃꽃이갤러리 수정</p>
+										<p>교회사진 관리 수정</p>
 										<ul>
 											<li>
 												<label for="wPA">작성자</label>
-												<input type="text" id="wPA" name="wPA" value="${churchPhoto.memberVo.MEMBER_NAME }" readonly/>
+												<input type="text" id="wPA" name="wPA" value="${churchPhoto.MEMBER_NAME }" readonly/>
 												<input type="hidden" name="BOARD_NO" value="${churchPhoto.BOARD_NO }">
 											</li>
 											<li>
-												<label for="wPA_Dep">등록일</label>
+												<label for="wPA_Dep">수정일</label>
 												<input type="text" id="wPA_Dep" name="wPA_Dep" value="${churchPhoto.RECENT_UPDATE_DATE }" readonly/>
 											</li>
 											<li>
 												<label>이미지</label>
 												<ul class="photoooooooooooo">
-													<c:forEach var="photo" begin="1" end="${churchPhoto.PHOTO_COUNT }" step="1">
-													<li>
-														<img alt="" src="<c:url value="/"/>resources/uploadChurch/${churchPhoto.PHOTO_IMAGE1}">
-													</li>
-													</c:forEach>
+													<%-- <c:forEach var="photo" begin="1" end="${churchPhoto.PHOTO_COUNT }" step="1">
+														<li>
+															<img alt="" src="<c:url value="/"/>resources/uploadChurch/${churchPhoto.PHOTO_IMAGE}">
+														</li>
+													</c:forEach> --%>
+													<c:set var="photoCount" value="${churchPhoto.PHOTO_COUNT }"/>
+													<c:set var="photoImage" value="${churchPhoto.PHOTO_IMAGE }"/>
+													<%
+														String photoCount = pageContext.getAttribute("photoCount").toString();
+														String photoImage = pageContext.getAttribute("photoImage").toString();
+														int photoNum = Integer.parseInt(photoCount);
+														int tempA = 0;
+														int tempB = 17;
+														for(int i = 1; i <= photoNum; i++ ) {
+													%>
+															<li>
+																<!-- 카페24 경로 -->
+																<%-- <img src="<c:url value='/upload/${churchPhoto.UPLOAD_YYMM}/<%=photoImage.substring(tempA, tempB)%>'/>"> --%>
+																<!-- 로컬서버 경로 -->
+																<img alt="" src="<c:url value="/resources/uploadChurch/<%= photoImage.substring(tempA, tempB) %>"/>">
+															</li>
+													<%
+															tempA += 17;
+															tempB += 17;
+														}
+													%>
 												</ul>	
-												
 											</li>
 											<li>
 												<label>제목</label>
@@ -161,12 +189,8 @@
 											<li>
 												<label for="wPA_context" style="vertical-align:top;">내용</label>
 												<textarea id="wPA_context<%= ediNum %>" name="BOARD_CONTENT">${churchPhoto.BOARD_CONTENT }</textarea>
-												<%-- <script type="text/javascript">
-												CKEDITOR.replace('wPA_context<%= ediNum++%>',
-														{height: 150});
-												</script> --%>
 											</li>
-										</ul>								
+										</ul>
 										
 										<input type="hidden" name="currentPage" value="${currentPage }">
 										<input type="hidden" name="searchSelect" value="${searchSelect }">
@@ -291,6 +315,16 @@
 	    }
 	}
 	
+	/* 게시물 단일 삭제 */
+	function deleteOne(BOARD_NO){
+		var currentPage = '${currentPage}';
+		var deleteYN = 'Y';
+		
+		if(confirm("정말 삭제 하시겠습니까?")){
+			location.href="churchPhotoAdmin.do?BOARD_NO="+BOARD_NO+"&currentPage="+currentPage+"&deleteFlag="+deleteYN;   
+		}
+	}
+	
 	/* 체크된 게시물 삭제 */
 	function deleteAction(){
 		var checkBox = "";
@@ -304,7 +338,7 @@
 	 	 	return false;
 		}
 		
-		if(confirm("정보를 삭제 하시겠습니까?")){
+		if(confirm("정말 삭제 하시겠습니까?")){
 		    
 		    //삭제처리 후 다시 불러올 리스트 url      
 		    var currentPage = '${currentPage}';

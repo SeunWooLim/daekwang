@@ -34,11 +34,15 @@
 							<tr>
 								<td>이미지</td>
 								<td colspan="3" class="tal">
+									<!-- 카페24 경로 -->
+									<%-- <img src="<c:url value="/upload/${sapVo2.PRAISE_UPLOAD_YYMM }/${sapVo2.PRAISE_PHOTO_RENAME}"/>"> --%>
+									<!-- 로컬서버 경로 -->
 									<img src="<c:url value="/"/>resources/img/deptImage/${sapVo2.PRAISE_PHOTO_RENAME}">
 									<input type="file" name="file" style="padding:0;" value="${sapVo2.PRAISE_PHOTO_ORNAME}">
 									<p style="color:red;">* 가로 사진으로 업로드 하시기 바랍니다.</p>
 									<input type="hidden" name="PRAISE_PHOTO_RENAME" value="${sapVo2.PRAISE_PHOTO_RENAME}">
 									<input type="hidden" name="PRAISE_PHOTO_ORNAME" value="${sapVo2.PRAISE_PHOTO_ORNAME}">
+									<input type="hidden" name="PRAISE_UPLOAD_YYMM" value="${sapVo2.PRAISE_UPLOAD_YYMM }">	
 									<input type="hidden" name="PRAISE_FG" value="2">
 								</td>
 							</tr>
@@ -81,8 +85,8 @@
 								<td colspan="3"><input type="text" name="PRAISE_BASS" id="" value="${sapVo2.PRAISE_BASS}"></td>
 							</tr>
 						</tbody>
-					</table>	
-									
+					</table>
+						
 					<button class="btnform1 mt20">수정</button>			
 				</div>
 			</form>
