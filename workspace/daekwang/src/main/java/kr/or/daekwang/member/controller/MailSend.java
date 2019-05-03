@@ -3,7 +3,7 @@ package kr.or.daekwang.member.controller;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
- 
+
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -25,10 +25,14 @@ public class MailSend {
 	        Authenticator auth = new MailAuth();
 	        
 	        Session session = Session.getDefaultInstance(prop, auth);
+	        //ServletWebRequest servletContainer = (ServletWebRequest)RequestContextHolder.getRequestAttributes();
+
+	        //HttpServletResponse response = servletContainer.getResponse();
 	        
+        	String text = "대광교회 홈페이지를 이용해주셔서 진심으로 감사드립니다. 회원님의 임시 비밀번호는 ' " + tempPwd + " ' 입니다. 해당 비밀번호로 로그인 후 비밀번호를 변경하여 주시기 바랍니다. 감사합니다."; 
+	        	
 	        MimeMessage msg = new MimeMessage(session);
-	        String text = "대광교회 홈페이지를 이용해주셔서 진심으로 감사드립니다. 회원님의 임시 비밀번호는 ' " + tempPwd + " ' 입니다. 해당 비밀번호로 로그인 후 비밀번호를 변경하여 주시기 바랍니다. 감사합니다."; 
-	    
+	        
 	        try {
 	            msg.setSentDate(new Date());
 	            
