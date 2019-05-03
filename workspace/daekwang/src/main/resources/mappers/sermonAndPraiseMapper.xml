@@ -19,6 +19,7 @@
   		<result property="PRAISE_DETAIL" column="PRAISE_DETAIL"/>
   		<result property="PRAISE_PHOTO_ORNAME" column="PRAISE_PHOTO_ORNAME"/>
   		<result property="PRAISE_PHOTO_RENAME" column="PRAISE_PHOTO_RENAME"/>
+  		<result property="PRAISE_UPLOAD_YYMM" column="PRAISE_UPLOAD_YYMM"/>
 	</resultMap>
 	
 	<!-- 샬롬찬양대 임원조직 정보 -->

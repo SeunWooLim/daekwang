@@ -22,6 +22,7 @@ public class SermonAndPraiseVo {
 	private String PRAISE_DETAIL;		//특이사항
 	private String PRAISE_PHOTO_ORNAME; //성가대사진 원본명
 	private String PRAISE_PHOTO_RENAME; //성가대사진 고유명
+	private String PRAISE_UPLOAD_YYMM;	//업로드년월
 	
 	public SermonAndPraiseVo() {
 		
@@ -30,7 +31,7 @@ public class SermonAndPraiseVo {
 	public SermonAndPraiseVo(char pRAISE_FG, String pRAISE_BOSS, String pRAISE_CONDUCTOR, String pRAISE_BANJU,
 			String pRAISE_MANAGER, String pRAISE_SUBMANAGER, String pRAISE_WRITER, String pRAISE_ACCOUNTANT,
 			String pRAISE_SOPRANO, String pRAISE_ALTO, String pRAISE_TENOR, String pRAISE_BASS, String pRAISE_DETAIL,
-			String pRAISE_PHOTO_ORNAME, String pRAISE_PHOTO_RENAME) {
+			String pRAISE_PHOTO_ORNAME, String pRAISE_PHOTO_RENAME, String pRAISE_UPLOAD_YYMM) {
 		super();
 		PRAISE_FG = pRAISE_FG;
 		PRAISE_BOSS = pRAISE_BOSS;
@@ -47,6 +48,7 @@ public class SermonAndPraiseVo {
 		PRAISE_DETAIL = pRAISE_DETAIL;
 		PRAISE_PHOTO_ORNAME = pRAISE_PHOTO_ORNAME;
 		PRAISE_PHOTO_RENAME = pRAISE_PHOTO_RENAME;
+		PRAISE_UPLOAD_YYMM = pRAISE_UPLOAD_YYMM;
 	}
 
 	public char getPRAISE_FG() {
@@ -169,6 +171,14 @@ public class SermonAndPraiseVo {
 		PRAISE_PHOTO_RENAME = pRAISE_PHOTO_RENAME;
 	}
 
+	public String getPRAISE_UPLOAD_YYMM() {
+		return PRAISE_UPLOAD_YYMM;
+	}
+
+	public void setPRAISE_UPLOAD_YYMM(String pRAISE_UPLOAD_YYMM) {
+		PRAISE_UPLOAD_YYMM = pRAISE_UPLOAD_YYMM;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -181,8 +191,6 @@ public class SermonAndPraiseVo {
 				+ ", PRAISE_ACCOUNTANT=" + PRAISE_ACCOUNTANT + ", PRAISE_SOPRANO=" + PRAISE_SOPRANO + ", PRAISE_ALTO="
 				+ PRAISE_ALTO + ", PRAISE_TENOR=" + PRAISE_TENOR + ", PRAISE_BASS=" + PRAISE_BASS + ", PRAISE_DETAIL="
 				+ PRAISE_DETAIL + ", PRAISE_PHOTO_ORNAME=" + PRAISE_PHOTO_ORNAME + ", PRAISE_PHOTO_RENAME="
-				+ PRAISE_PHOTO_RENAME + "]";
+				+ PRAISE_PHOTO_RENAME + ", PRAISE_UPLOAD_YYMM=" + PRAISE_UPLOAD_YYMM + "]";
 	}
-
-	
 }
