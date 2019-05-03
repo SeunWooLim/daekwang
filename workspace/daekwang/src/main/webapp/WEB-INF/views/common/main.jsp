@@ -24,9 +24,9 @@
 						</div>
 						<div class="main_slider_bg"></div>
 						<!-- 로컬서버 경로 -->
-						<%-- <img alt="" src="<c:url value="/resources/img/mainSlideImage/${mainSlider.SLIDER_RENAME }"/>"> --%>
+						<img alt="" src="<c:url value="/resources/img/mainSlideImage/${mainSlider.SLIDER_RENAME }"/>">
 						<!-- 카페24 경로 -->
-						<img alt="" src="<c:url value="/upload/${mainSlider.UPLOAD_YYMM }/${mainSlider.SLIDER_RENAME}"/>">
+						<%-- <img alt="" src="<c:url value="/upload/${mainSlider.UPLOAD_YYMM }/${mainSlider.SLIDER_RENAME}"/>"> --%>
 					</li>
 				</c:forEach>
 			</ul>
