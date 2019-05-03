@@ -41,7 +41,15 @@ public class MemberServiceImpl implements MemberService{
 	public int updateTempPwd(MemberVo member) {
 		return memberDao.updateTempPwd(member);
 	}
-	
-	
+
+	@Override
+	public int checkPwd(MemberVo memberVo) {
+		return memberDao.checkPwd(memberVo);
+	}
+
+	@Override
+	public int modifyMember(MemberVo member) {
+		return memberDao.modifyMember(member);
+	}
 	
 }

@@ -16,4 +16,8 @@ public interface MemberService {
 
 	int updateTempPwd(MemberVo member);
 
+	int checkPwd(MemberVo memberVo);
+
+	int modifyMember(MemberVo member);
+
 }

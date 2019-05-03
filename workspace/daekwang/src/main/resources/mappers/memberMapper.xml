@@ -25,6 +25,7 @@
 		SELECT * 
 		FROM member
 		WHERE MEMBER_ID = #{MEMBER_ID} AND MEMBER_PWD = #{MEMBER_PWD}
+		AND MEMBER_USEYN = 'Y'
 	</select>
 	
 	<!-- 회원가입시 ID 중복체크 -->	
@@ -83,5 +84,26 @@
 		UPDATE member
 		SET MEMBER_PWD = #{MEMBER_PWD}
 		WHERE MEMBER_ID = #{MEMBER_ID}
+	</update>
+	
+	
+	<select id="checkPwd" parameterType="Member" resultType="Integer">
+		SELECT COUNT(*)
+		FROM member
+		WHERE MEMBER_ID = #{MEMBER_ID}
+		AND MEMBER_PWD = #{MEMBER_PWD}
+	</select>
+	
+	<update id="modifyMember">
+		UPDATE member   
+	    SET   
+    		  MEMBER_PHONE = #{MEMBER_PHONE}
+	    	, MEMBER_EMAIL = #{MEMBER_EMAIL}
+	    	, MEMBER_POSTCODE = #{MEMBER_POSTCODE}
+	    	, MEMBER_ADDR = #{MEMBER_ADDR}
+	    	, MEMBER_ADDR_DETAIL = #{MEMBER_ADDR_DETAIL}
+	    	, MEMBER_ADDR_EXTRA = #{MEMBER_ADDR_EXTRA}
+    	    , MEMBER_PWD = #{MEMBER_PWD}
+	    WHERE MEMBER_NO = #{MEMBER_NO}
 	</update>
 </mapper>

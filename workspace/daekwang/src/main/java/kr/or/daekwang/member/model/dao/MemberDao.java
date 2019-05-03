@@ -35,7 +35,12 @@ public class MemberDao {
 		return mybatis.update("memberMapper.updateTempPwd", member);
 	}
 
+	public int checkPwd(MemberVo memberVo) {
+		return mybatis.selectOne("memberMapper.checkPwd", memberVo);
+	}
 
-	
-	
+	public int modifyMember(MemberVo member) {
+		return mybatis.update("memberMapper.modifyMember", member);
+	}
+
 }
