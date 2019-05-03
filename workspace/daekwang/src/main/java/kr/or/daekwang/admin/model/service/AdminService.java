@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import kr.or.daekwang.admin.model.vo.SliderVo;
 import kr.or.daekwang.apply.model.vo.ApplyVo;
 import kr.or.daekwang.board.model.vo.BoardVo;
 import kr.or.daekwang.nextGeneration.model.vo.NextGenerationVo;
@@ -80,5 +81,15 @@ public interface AdminService {
 	List<NextGenerationVo> selectNextGenerationYouthList();
 
 	int modifyChurchSchoolAdmin(NextGenerationVo nextGenerationVo);
+
+	List<ApplyVo> mainSlideAdminList();
+
+	int deleteMainSlideAdmin(int slider_no);
+
+	int updateMainSlideAdmin(SliderVo sliderVo);
+
+	int insertMainSlideAdmin(SliderVo sliderVo);
+	
+	void autoDeletePhoto();
 
 }

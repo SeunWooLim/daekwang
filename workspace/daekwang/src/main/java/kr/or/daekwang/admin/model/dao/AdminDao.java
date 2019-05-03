@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.daekwang.admin.model.vo.SliderVo;
 import kr.or.daekwang.apply.model.vo.ApplyVo;
 import kr.or.daekwang.board.model.vo.BoardVo;
 import kr.or.daekwang.board.model.vo.PhotoVo;
@@ -173,6 +174,30 @@ public class AdminDao {
 
 	public int modifyChurchSchoolAdmin(NextGenerationVo nextGenerationVo) {
 		return mybatis.update("adminMapper.modifyChurchSchoolAdmin", nextGenerationVo);
+	}
+
+	public List<ApplyVo> mainSlideAdminList() {
+		return mybatis.selectList("adminMapper.mainSlideAdminList");
+	}
+
+	public int deleteMainSlideAdmin(int slider_no) {
+		return mybatis.delete("adminMapper.deleteMainSlideAdmin", slider_no);
+	}
+
+	public int updateMainSlideAdmin(SliderVo sliderVo) {
+		return mybatis.update("adminMapper.updateMainSlideAdmin", sliderVo);
+	}
+
+	public int insertMainSlideAdmin(SliderVo sliderVo) {
+		return mybatis.insert("adminMapper.insertMainSlideAdmin", sliderVo);
+	}
+	
+	public List<PhotoVo> autoDeletePhoto() {
+		return mybatis.selectList("adminMapper.autoDeletePhoto");
+	}
+
+	public int completeDeletePhoto(String photo_rename) {
+		return mybatis.delete("adminMapper.completeDeletePhoto", photo_rename);
 	}
 
 }

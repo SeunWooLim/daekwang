@@ -13,6 +13,7 @@
   		<result property="PHOTO_ORNAME" column="PHOTO_ORNAME"/>
   		<result property="PHOTO_RENAME" column="PHOTO_RENAME"/>
   		<result property="DELETE_DATE" column="DELETE_DATE"/>
+  		<result property="UPLOAD_YYMM" column="UPLOAD_YYMM"/>
 	</resultMap>
 	
 	<resultMap id="memberResultMap" type="Member">
@@ -32,6 +33,16 @@
   		<result property="MEMBER_AUTH" column="MEMBER_AUTH"/>
 	</resultMap>
 	
+	<resultMap id="sliderResultMap" type="Slider">
+		<result property="SLIDER_NO" column="SLIDER_NO"/>
+  		<result property="SLIDER_DATE" column="SLIDER_DATE"/>
+  		<result property="SLIDER_TITLE" column="SLIDER_TITLE"/>
+  		<result property="SLIDER_CONTENT" column="SLIDER_CONTENT"/>
+  		<result property="SLIDER_ORNAME" column="SLIDER_ORNAME"/>
+  		<result property="SLIDER_RENAME" column="SLIDER_RENAME"/>
+  		<result property="UPLOAD_YYMM" column="UPLOAD_YYMM"/>
+	</resultMap>
+	
 	<resultMap id="adminResultMap" type="Admin">
 		<result property="RNUM" column="RNUM"/>
 	</resultMap>	
@@ -49,6 +60,7 @@
   		<result property="WORSHIP_NAME" column="WORSHIP_NAME"/>
   		<result property="APPLY_CATE" column="APPLY_CATE"/>
   		<result property="DEPT_NAME" column="DEPT_NAME"/>
+  		<result property="UPLOAD_YYMM" column="UPLOAD_YYMM"/>
   		<collection property="memberVo" resultMap="memberResultMap"/>
   		<collection property="adminVo" resultMap="adminResultMap"></collection>
 	</resultMap>
@@ -90,6 +102,7 @@
   		<result property="PRAISE_DETAIL" column="PRAISE_DETAIL"/>
   		<result property="PRAISE_PHOTO_ORNAME" column="PRAISE_PHOTO_ORNAME"/>
   		<result property="PRAISE_PHOTO_RENAME" column="PRAISE_PHOTO_RENAME"/>
+  		<result property="PRAISE_UPLOAD_YYMM" column="PRAISE_UPLOAD_YYMM"/>
 	</resultMap>
 	
 	<resultMap id="nextGenerationResultMap" type="NextGeneration">
@@ -112,6 +125,7 @@
   		<result property="DEPT_MEMBER" column="DEPT_MEMBER"/>
   		<result property="DEPT_PHOTO_ORNAME" column="DEPT_PHOTO_ORNAME"/>
   		<result property="DEPT_PHOTO_RENAME" column="DEPT_PHOTO_RENAME"/>
+  		<result property="DEPT_PRAISE_UPLOAD_YYMM" column="DEPT_PRAISE_UPLOAD_YYMM"/>
 	</resultMap>
 	
 	<!-- 주보광고신청 총 리스트 조회 -->
@@ -343,6 +357,7 @@
 		SELECT A.*
 			 , B.MEMBER_NAME
 			 , C.PHOTO_RENAME
+			 , C.UPLOAD_YYMM
 		FROM board A
 		   , member B
 		   , photo C
@@ -541,14 +556,14 @@
 		ORDER BY A.BOARD_NO DESC
 	</select>
 	
-	<!-- 샬롬찬양대 조직 정보 -->
+	<!-- 찬양대 조직 정보 -->
 	<select id="choirAdminList" resultType="SermonAndPraise">
 		SELECT *
 		FROM praise_team
 		WHERE PRAISE_FG = #{PRAISE_FG}
 	</select>
 	
-	<!-- 샬롬찬양대 조직 정보 수정-->
+	<!-- 찬양대 조직 정보 수정-->
 	<update id="modifyChoirAdmin">
 		UPDATE praise_team
 		SET   
@@ -565,6 +580,7 @@
 			, PRAISE_BASS = #{PRAISE_BASS}
 			, PRAISE_PHOTO_ORNAME = #{PRAISE_PHOTO_ORNAME}
 			, PRAISE_PHOTO_RENAME = #{PRAISE_PHOTO_RENAME}
+			, PRAISE_UPLOAD_YYMM = #{PRAISE_UPLOAD_YYMM}
 		WHERE PRAISE_FG = #{PRAISE_FG}
 	</update>
 	
@@ -582,6 +598,7 @@
 		WHERE DEPT_NO IN (7,8)
 	</select>
 	
+	<!-- 다음세대(교회학교) 수정 -->
 	<update id="modifyChurchSchoolAdmin">
 		UPDATE next_gen
 		SET 
@@ -600,6 +617,55 @@
 			, DEPT_MEMBER = #{DEPT_MEMBER}
 			, DEPT_PHOTO_ORNAME = #{DEPT_PHOTO_ORNAME}
 			, DEPT_PHOTO_RENAME = #{DEPT_PHOTO_RENAME}
+			, DEPT_UPLOAD_YYMM = #{DEPT_UPLOAD_YYMM}
 		WHERE DEPT_NO = #{DEPT_NO}
 	</update>
+	
+	<!-- 메인슬라이더 리스트 조회 -->
+	<select id="mainSlideAdminList" resultMap="sliderResultMap" resultType="list">
+		SELECT *
+		FROM main_slider
+	</select>
+	
+	<!-- 메인슬라이더 삭제 -->
+	<delete id="deleteMainSlideAdmin">
+		DELETE FROM main_slider
+		WHERE SLIDER_NO = #{slider_no}
+	</delete>
+	
+	<!-- 메인슬라이더 수정 -->
+	<update id="updateMainSlideAdmin">
+		UPDATE main_slider
+		SET 
+			  SLIDER_TITLE = #{SLIDER_TITLE}
+			, SLIDER_CONTENT = #{SLIDER_CONTENT}
+			, SLIDER_RENAME = #{SLIDER_RENAME}
+		WHERE SLIDER_NO = #{SLIDER_NO}
+	</update>
+	
+	<!-- 메인 슬라이더 등록 -->
+	<insert id="insertMainSlideAdmin">
+		INSERT INTO main_slider(SLIDER_DATE
+							  , SLIDER_TITLE
+							  , SLIDER_CONTENT
+							  , SLIDER_ORNAME
+							  , SLIDER_RENAME
+							  , UPLOAD_YYMM)
+		VALUES(NOW(), #{SLIDER_TITLE}, #{SLIDER_CONTENT}, #{SLIDER_ORNAME}, #{SLIDER_RENAME}, #{UPLOAD_YYMM})							  
+	</insert>
+	
+	<!-- 삭제할 사진 정보 리스트 조회 -->
+	<select id="autoDeletePhoto" resultMap="photoResultMap">
+		SELECT *
+		FROM photo
+		WHERE DELETE_YN = 'Y'
+		AND DELETE_DATE <![CDATA[<]]> date_sub(now(), interval 1 month)
+	</select>
+	
+	<!-- PHOTO테이블 사진정보 완전삭제 -->
+	<delete id="completeDeletePhoto" parameterType="String">
+		DELETE FROM photo
+		WHERE PHOTO_RENAME = #{photo_rename}
+	</delete>
+	
 </mapper>

@@ -1,10 +1,15 @@
 package kr.or.daekwang.admin.controller;
 
+import java.awt.AlphaComposite;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import kr.or.daekwang.admin.model.service.AdminService;
+import kr.or.daekwang.admin.model.vo.SliderVo;
 import kr.or.daekwang.apply.model.vo.ApplyVo;
 import kr.or.daekwang.board.controller.BoardController;
 import kr.or.daekwang.board.model.vo.BoardVo;
@@ -38,6 +44,10 @@ public class AdminController {
 	
 	@RequestMapping(value = "admin.do")
 	public String adminHome() {
+		
+		//삭제처리된지 한달 이상 지난 사진파일 및 photo테이블 삭제
+		adminService.autoDeletePhoto();
+		
 		return "admin/adminhome";
 	}
 	
@@ -753,7 +763,6 @@ public class AdminController {
 		
 		//검색조건에 대한 조회 prameter map
 		List<Map< String, Object>> list = adminService.churchPhotoAdminList(map);
-		
 		if(maxPage < endPage)
 			endPage = maxPage;
 		
@@ -942,14 +951,18 @@ public class AdminController {
 				result = adminService.ckDeleteWeekPageApplyAdmin(idx);
 				
 				if(result == 0) {
-					return "error/500errorPage";
+					model.addAttribute("msg", "삭제를 실패했습니다");
+					model.addAttribute("url", "weekPageApplyAdmin.do");
+					return "common/alert";
 				}
 			//한줄삭제
 			}else {
 				int apply_no = Integer.parseInt(request.getParameter("APPLY_NO"));
 				result = adminService.deleteWeekPageApplyAdmin(apply_no);
 				if(result == 0) {
-					return "error/500errorPage";
+					model.addAttribute("msg", "삭제를 실패했습니다");
+					model.addAttribute("url", "weekPageApplyAdmin.do");
+					return "common/alert";
 				}
 			}
 		}
@@ -1069,14 +1082,18 @@ public class AdminController {
 				String idx = request.getParameter("idx");
 				result = adminService.ckDeleteWorshipDataApplyAdmin(idx);
 				if(result == 0) {
-					return "error/500errorPage";
+					model.addAttribute("msg", "삭제를 실패했습니다");
+					model.addAttribute("url", "worshipDataApplyAdmin.do");
+					return "common/alert";
 				}
 			//한줄삭제
 			}else {
 				int apply_no = Integer.parseInt(request.getParameter("APPLY_NO"));
 				result = adminService.deleteWorshipDataApplyAdmin(apply_no);
 				if(result == 0) {
-					return "error/500errorPage";
+					model.addAttribute("msg", "삭제를 실패했습니다");
+					model.addAttribute("url", "worshipDataApplyAdmin.do");
+					return "common/alert";
 				}
 			}
 		}
@@ -1208,16 +1225,42 @@ public class AdminController {
 		//파일객체생성(이미지파일)
 		MultipartFile mf = mtfRequest.getFile("file");
 		
+		//폴더를 만들기 위한 현재 년월 가져오기
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM");
+		Calendar time = Calendar.getInstance();
+		String format_time = format.format(time.getTime());
+		
 		//파일이 들어왔다면
 		if(!mf.isEmpty()) {
+			
+			//실제 카페24 운영서버 경로
+			//폴더생성
+			/*String tempPath = "/home/hosting_users/dlatmddn77/tomcat/webapps/upload/" + format_time +"/" ;
+			File floder = new File(tempPath);
+			if (!floder.exists()) {
+				try{
+					floder.mkdir(); 
+		        } 
+		        catch(Exception e){
+		        	e.getStackTrace();
+				}        
+	         }*/
 
-			//경로설정
+			//로컬서버 경로설정
 			String root = request.getSession().getServletContext().getRealPath("resources");
 			String path = root + "\\img\\deptImage\\";
 			
-			//기존 파일삭제
+			//String path = tempPath;
+			
+			//카페24 기존 파일삭제
+			//String deletePath = "/home/hosting_users/dlatmddn77/tomcat/webapps/upload/" + nextGenerationVo.getDEPT_UPLOAD_YYMM() +"/" ;
+			//File file = new File(deletePath + nextGenerationVo.getDEPT_PHOTO_RENAME());
+			
+			//로컬 기존 파일 삭제
 			File file = new File(path + nextGenerationVo.getDEPT_PHOTO_RENAME());
-	        file.delete();
+			if(file.exists()) {
+				file.delete();
+			}
 			
 			//생성된 파일 객체 이미지파일로 변환
 			BufferedImage image = ImageIO.read(mf.getInputStream());
@@ -1232,7 +1275,7 @@ public class AdminController {
 	        
 	        //파일 업로드
 	        try {
-	        	ImageIO.write(BoardController.imageResize(image), "jpg", new File(safeFile));
+	        	ImageIO.write(imageResize(image), "jpg", new File(safeFile));
 	        } catch (IllegalStateException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
@@ -1244,6 +1287,7 @@ public class AdminController {
 	        //이미지 정보 세팅
 	        nextGenerationVo.setDEPT_PHOTO_ORNAME(originFileName);
 	        nextGenerationVo.setDEPT_PHOTO_RENAME(Long.valueOf(reFileName).toString() + ext);
+	        nextGenerationVo.setDEPT_UPLOAD_YYMM(format_time);
 	        
 		}
 		
@@ -1310,19 +1354,44 @@ public class AdminController {
 	 */
 	@RequestMapping(value = "modifyChoirAdmin.do")
 	public String modifyChoirAdmin(Model model, SermonAndPraiseVo sermonAndPraiseVo, MultipartHttpServletRequest mtfRequest, HttpServletRequest request) throws IOException {
+		
 		//파일객체생성(이미지파일)
 		MultipartFile mf = mtfRequest.getFile("file");
 		
+		//폴더를 만들기 위한 현재 년월 가져오기
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM");
+		Calendar time = Calendar.getInstance();
+		String format_time = format.format(time.getTime());
+		
 		//파일이 들어왔다면
 		if(!mf.isEmpty()) {
+			
+			//실제 카페24 운영서버 경로
+			//폴더생성
+			/*String tempPath = "/home/hosting_users/dlatmddn77/tomcat/webapps/upload/" + format_time +"/" ;
+			File floder = new File(tempPath);
+			if (!floder.exists()) {
+				try{
+					floder.mkdir(); 
+		        } 
+		        catch(Exception e){
+		        	e.getStackTrace();
+				}        
+	         }*/
 
-			//경로설정
+			//로컬서버 경로설정
 			String root = request.getSession().getServletContext().getRealPath("resources");
 			String path = root + "\\img\\deptImage\\";
+			//String path = tempPath;
 			
 			//기존 파일삭제
+			//String deletePath = "/home/hosting_users/dlatmddn77/tomcat/webapps/upload/" + sermonAndPraiseVo.getPRAISE_UPLOAD_YYMM() +"/" ;
+			//File file = new File(deletePath + sermonAndPraiseVo.getPRAISE_PHOTO_RENAME());
+			//로컬 기존 파일 삭제
 			File file = new File(path + sermonAndPraiseVo.getPRAISE_PHOTO_RENAME());
-	        file.delete();
+	        if(file.exists()) {
+	        	file.delete();
+	        }
 			
 			//생성된 파일 객체 이미지파일로 변환
 			BufferedImage image = ImageIO.read(mf.getInputStream());
@@ -1337,7 +1406,7 @@ public class AdminController {
 	        
 	        //파일 업로드
 	        try {
-	        	ImageIO.write(BoardController.imageResize(image), "jpg", new File(safeFile));
+	        	ImageIO.write(imageResize(image), "jpg", new File(safeFile));
 	        } catch (IllegalStateException e) {
 	            // TODO Auto-generated catch block
 	            e.printStackTrace();
@@ -1349,6 +1418,7 @@ public class AdminController {
 	        //이미지 정보 세팅
 	        sermonAndPraiseVo.setPRAISE_PHOTO_ORNAME(originFileName);
 	        sermonAndPraiseVo.setPRAISE_PHOTO_RENAME(Long.valueOf(reFileName).toString() + ext);
+	        sermonAndPraiseVo.setPRAISE_UPLOAD_YYMM(format_time);
 	        
 		}
 		
@@ -1377,12 +1447,134 @@ public class AdminController {
 		return returnVal;
 	}
 	
+	/**
+	 * Admin - 메인슬라이더 관리
+	 * @param model
+	 * @param sliderVo
+	 * @param request
+	 * @return admin/mainSlideAdmin
+	 */
 	@RequestMapping(value = "mainSlideAdmin.do")
-	public String mainSlideAdmin() {
+	public String mainSlideAdmin(Model model, SliderVo sliderVo, HttpServletRequest request){
 		
+		//게시물 수정
+		if(request.getParameter("updateFlag") != null) {
+			int result = 0;
+			result = adminService.updateMainSlideAdmin(sliderVo);
+			if(result == 0) {
+				model.addAttribute("msg", "수정을 실패했습니다");
+				model.addAttribute("url", "mainSlideAdmin.do");
+				return "common/alert";
+			}
+		}
 		
+		//삭제
+		if(request.getParameter("deleteFlag") != null) {
+			
+			//경로설정
+			String root = request.getSession().getServletContext().getRealPath("resources");
+			String path = root + "\\img\\mainSlideImage\\";
+			//기존 파일삭제
+			File file = new File(path + sliderVo.getSLIDER_RENAME());
+	        file.delete();
+	        
+			int result = 0;
+			int slider_no = Integer.parseInt(request.getParameter("SLIDER_NO"));
+			result = adminService.deleteMainSlideAdmin(slider_no);
+			if(result == 0) {
+				model.addAttribute("msg", "삭제를 실패했습니다");
+				model.addAttribute("url", "personNewsAdmin.do");
+				return "common/alert";
+			}
+		}
+		
+		//메인슬라이더 리스트 조회
+		List<ApplyVo> list = adminService.mainSlideAdminList();
+		
+		model.addAttribute("list", list);
 		
 		return "admin/mainSlideAdmin";
+	}
+	
+	/**
+	 * Admin - 메인슬라이더 게시물 등록
+	 * @param request
+	 * @param mtfRequest
+	 * @param sliderVo
+	 * @param model
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/insertMainSlideAdmin.do")
+	public String insertMainSlideAdmin(HttpServletRequest request, MultipartHttpServletRequest mtfRequest, SliderVo sliderVo, Model model) throws Exception{
+		
+		//파일객체생성(이미지파일)
+		MultipartFile mf = mtfRequest.getFile("file");
+		
+		//폴더를 만들기 위한 현재 년월 가져오기
+		SimpleDateFormat format = new SimpleDateFormat ( "yyyy-MM");
+		Calendar time = Calendar.getInstance();
+		String format_time = format.format(time.getTime());
+		
+		if(!mf.isEmpty()) {
+			//실제 카페24 운영서버 경로
+			//폴더생성
+			/*String tempPath = "/home/hosting_users/dlatmddn77/tomcat/webapps/upload/" + format_time +"/" ;
+			File floder = new File(tempPath);
+			if (!floder.exists()) {
+				try{
+					floder.mkdir(); 
+		        } 
+		        catch(Exception e){
+		        	e.getStackTrace();
+				}        
+	         }*/
+			
+			//로컬 서버의 경로
+			String root = request.getSession().getServletContext().getRealPath("resources");
+			String path = root + "\\img\\mainSlideImage\\";
+			
+			//경로설정
+			//String path = tempPath;
+			
+			//생성된 파일 객체 이미지파일로 변환
+			BufferedImage image = ImageIO.read(mf.getInputStream());
+			
+			//파일명 설정
+			String originFileName = mf.getOriginalFilename(); // 원본 파일 명
+			String ext = originFileName.substring(originFileName.lastIndexOf('.')); //확장자명 추출
+	        long reFileName = System.currentTimeMillis();  // 고유 파일 명
+			
+	        //실제 저장될 파일 명
+	        String safeFile = path + reFileName + ext;
+	        
+	        //파일 업로드
+	        try {
+	        	ImageIO.write(imageResize(image), "jpg", new File(safeFile));
+	        } catch (IllegalStateException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	        
+	        //이미지 정보 세팅
+	        sliderVo.setSLIDER_ORNAME(originFileName);
+	        sliderVo.setSLIDER_RENAME(Long.valueOf(reFileName).toString() + ext);
+	        sliderVo.setUPLOAD_YYMM(format_time);
+		}
+		
+		//게시물 등록
+		int result = adminService.insertMainSlideAdmin(sliderVo);
+		
+		if(result != 1) {
+			model.addAttribute("msg", "등록을 실패했습니다");
+			model.addAttribute("url", "mainSlideAdmin.do");
+			return "common/alert";
+		}else {
+			return "redirect:/mainSlideAdmin.do";
+		}
 	}
 	
 	/**
@@ -1396,7 +1588,11 @@ public class AdminController {
 		
 		String storedFileName = request.getParameter("STORED_FILE_NAME");
 		String originalFileName = request.getParameter("ORIGINAL_FILE_NAME");
+		String uploadYYMM = request.getParameter("UPLOAD_YYMM");
 		
+		//카페24경로
+		//String path = "/home/hosting_users/dlatmddn77/tomcat/webapps/upload/" + uploadYYMM +"/" ;
+		//로컬서버 경로
 		String root = request.getSession().getServletContext().getRealPath("resources");
 		String path = root + "\\uploadFile\\";
 		
@@ -1412,5 +1608,47 @@ public class AdminController {
 		response.getOutputStream().flush();
 		response.getOutputStream().close();
 	}
+	
+	/**
+	 * image resize 설정 세팅
+	 * @param image
+	 * @return resizeImageHintJpg
+	 */
+	public BufferedImage imageResize(BufferedImage image) {
+		
+		Integer IMG_WIDTH = image.getWidth();
+		Integer IMG_HEIGHT = image.getHeight();
+		
+		BufferedImage originalImage = image;
+		int type = originalImage.getType() == 0? BufferedImage.TYPE_INT_ARGB : originalImage.getType();
+			
+		BufferedImage resizeImageHintJpg = resizeImageWithHint(originalImage, type, IMG_WIDTH, IMG_HEIGHT);
+		
+		return resizeImageHintJpg;
+			
+	}
+	
+    /**
+     * image Resizing
+     * @param originalImage
+     * @param type
+     * @param IMG_WIDTH
+     * @param IMG_HEIGHT
+     * @return resizedImage
+     */
+    public BufferedImage resizeImageWithHint(BufferedImage originalImage, int type, Integer IMG_WIDTH, Integer IMG_HEIGHT){
+		
+		BufferedImage resizedImage = new BufferedImage(IMG_WIDTH, IMG_HEIGHT, type);
+		Graphics2D g = resizedImage.createGraphics();
+		g.drawImage(originalImage, 0, 0, IMG_WIDTH, IMG_HEIGHT, null);
+		g.dispose();	
+		g.setComposite(AlphaComposite.Src);
+	
+		g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+		g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		
+		return resizedImage;
+    }	
 	
 }
