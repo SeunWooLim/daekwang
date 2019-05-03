@@ -24,7 +24,7 @@
 		</div>
 		<div class="join_form">
 			<form method="post" action="enroll.do">
-				<p style="color:red">* 회원가입시 하나의 항목이라도 입력되지 않으면 가입신청 버튼이 눌리지 않습니다.(약관동의 필수)</p>
+				<p style="color:red; margin-bottom:2px;">* 회원가입시 하나의 항목이라도 입력되지 않으면 가입신청 버튼이 눌리지 않습니다 (약관동의 필수)</p>
 				<table>
 					<colgroup>
 						<col width="20%">
@@ -45,7 +45,7 @@
 						</tr>
 						<tr>
 							<td><label for="user_name">이름</label></td>
-							<td><input type="text" id="username" name="MEMBER_NAME" oninput="checkName()"><p id="usernametxt" style="display: inline-block; margin-left:10px;" ></p></td>
+							<td><input type="text" id="username" name="MEMBER_NAME" oninput="checkName()"><p id="usernametxt" style="display: inline-block; margin-left:10px;" ></p><p style="color:red; margin-top:2px">* 별명이나 닉네임이 아닌 '실명'을 입력하세요</p></td>
 						</tr>
 						<tr>
 							<td><label for="address">주소</label></td>
@@ -104,7 +104,7 @@
 					</tbody>
 				</table>
 				<button type="submit" id="signupbtn" class="button" disabled="disabled">가입신청</button>
-				<p style="color:red">* 입력하신 정보가 맞는지 한번 더 확인 하십시오</p>
+				<p style="color:red; margin-top:2px">* 입력하신 정보가 맞는지 한번 더 확인 하십시오</p>
 			</form>
 		</div>	
 	</div>

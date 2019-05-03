@@ -17,7 +17,7 @@
 	</div>
 	
 	<div class="join_form">
-			<form method="post" action="enroll.do">
+			<form method="post" action="modifyMember.do">
 				<table>
 					<colgroup>
 						<col width="20%">
@@ -26,15 +26,14 @@
 					<tbody>
 						<tr>
 							<td><label for="user_id">아이디</label></td>
-							<td>${member.MEMBER_ID }</td>
+							<td>${member.MEMBER_ID }<input type="hidden" name="MEMBER_NO" value="${member.MEMBER_NO }"></td>
 						</tr>						
 						<tr>
-							<td><label for="user_pw">현재 비밀번호</label></td>
-							<td><input type="password" id="currentpwd" name="MEMBER_PWD"><p id="enrollpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
-						</tr>
-						<tr>
 							<td><label for="user_pw">새 비밀번호</label></td>
-							<td><input type="password" id="ernollpwd" name="MEMBER_NEWPWD" oninput="checkPwd()" placeholder="영문, 숫자 8~14자리 조합"><p id="enrollpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
+							<td>
+								<input type="password" id="ernollpwd" name="MEMBER_NEWPWD" oninput="checkPwd()" placeholder="영문, 숫자 8~14자리 조합"><p id="enrollpwdtxt" style="display: inline-block; margin-left:10px;" ></p>
+								<input type="hidden" name="MEMBER_PWD" value="${member.MEMBER_PWD }">
+							</td>
 						</tr>
 						<tr>
 							<td><label for="user_pwc">새 비밀번호확인</label></td>
@@ -50,7 +49,7 @@
 								<input type="text" id="postcode" name="MEMBER_POSTCODE" placeholder="우편번호" value="${member.MEMBER_POSTCODE }" readonly>
 								<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"><br>
 								<input type="text" id="address" name="MEMBER_ADDR" placeholder="주소" value="${member.MEMBER_ADDR }" readonly><br>
-								<input type="text" id="detailAddress" name="MEMBER_ADDR_DETAIL" placeholder="상세주소" value="${member.MEMBER_ADDR_DETAIL }" oninput="checkAddr()">
+								<input type="text" id="detailAddress" name="MEMBER_ADDR_DETAIL" placeholder="상세주소" value="${member.MEMBER_ADDR_DETAIL }" onchange="checkAddr()">
 								<input type="text" style="width:89%" id="extraAddress" name="MEMBER_ADDR_EXTRA" placeholder="참고항목" value="${member.MEMBER_ADDR_EXTRA }" readonly>
 								<p id="addrtxt" style="display: inline-block; margin-left:10px;" ></p>
 							</td>
@@ -58,9 +57,9 @@
 						<tr>
 							<td><label for="email">이메일</label></td>
 							<td>
-								<input type="text" id="email1" name="email1" value="${map.email1 }">
+								<input type="text" id="email1" name="email1" style="width:30%" value="${map.email1 }" onchange="checkEmail()">
 								@
-								<input type="text" id="email2" name="email2" value="${map.email2 }">
+								<input type="text" id="email2" name="email2" style="width:30%" value="${map.email2 }" onchange="checkEmail()">
 								<select id="email3" name="email3">
 									<option value="">직접입력</option>								
 									<option value="naver.com">naver.com</option>								
@@ -71,6 +70,7 @@
 									<option value="hotmail.com">hotmail.com</option>	
 									<option value=korea.com>korea.com</option>									
 								</select>
+								<p id="emailtxt" style="display: inline-block; margin-left:10px;" ></p>
 							</td>
 						</tr>
 						<tr>
@@ -129,15 +129,16 @@
 									</c:choose>
 								</select>
 								-
-								<input type="text"  style="width:27%"  id="phone2" name="phone2"  oninput="checkPhone()" value="${map.phone2 }">
+								<input type="text"  style="width:27%"  id="phone2" name="phone2"  onchange="checkPhone()" value="${map.phone2 }">
 								-
-								<input type="text"  style="width:27%"  id="phone3" name="phone3"  oninput="checkPhone()" value="${map.phone3 }">
+								<input type="text"  style="width:27%"  id="phone3" name="phone3"  onchange="checkPhone()" value="${map.phone3 }">
 								<p id="phonetxt" style="display: inline-block; margin-left:10px;" ></p>
 							</td>
 						</tr>
 					</tbody>
 				</table>
-				<button type="submit" id="signupbtn" class="button" disabled="disabled">수정</button>
+				<button type="submit" id="signupbtn" class="button" >수정</button>
+				<p style="color:red">* 입력하신 정보가 맞는지 한번 더 확인 하십시오</p>
 			</form>
 		</div>	
 	</div>
@@ -277,8 +278,8 @@ function checkPhone() {
 }
 
 //모든 입력값 유효성 검사 확인후 회원가입 버튼 disabled 해체
-function toggleBtn() {
-	var activeBtn = pwdCheck + pwdConfirmCheck + addrCheck + emailCheck + phoneCheck;
+/* function toggleBtn() {
+ 	var activeBtn = pwdCheck + pwdConfirmCheck + addrCheck + emailCheck + phoneCheck;
 	console.log(activeBtn);
 	if (activeBtn == 5) {
 		$("#signupbtn").prop("disabled", false);
@@ -286,8 +287,9 @@ function toggleBtn() {
 	} else {
 		$("#signupbtn").prop("disabled", true);
 		$("#signupbtn").css("background-color", "#aaaaaa");
-	}
-}
+	} 
+	
+} */
 </script>
 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>

@@ -18,7 +18,7 @@
 	
 	<div class="join_form join_chk_form">
 			<p>회원정보 수정을 위해 비밀번호를 입력해주세요.</p>
-			<form method="post" action="">
+			<form method="post" action="checkPwd.do">
 				<table>
 					<colgroup>
 						<col width="20%">
@@ -26,20 +26,18 @@
 					</colgroup>
 					<tbody>
 						<tr>
-							<td><label for="user_pw">현재 비밀번호</label></td>
+							<td><label for="user_pw">현재 비밀번호</label></td> 	
 							<td><input type="password" id="currentpwd" name="MEMBER_PWD"><p id="enrollpwdtxt" style="display: inline-block; margin-left:10px;" ></p></td>
 						</tr>
-						
 					</tbody>
 				</table>
-				<button type="submit" id="signupbtn" class="button" disabled="disabled">확인</button>
+				<input type="hidden" name="MEMBER_ID" value="${sessionScope.loginUser.MEMBER_ID }">
+				<button type="submit" id="signupbtn" class="button">확인</button>
 			</form>
 		</div>	
 	</div>
 
 <jsp:include page="../common/footer.jsp"/>
  
-
 </body>
-
 </html>
