@@ -11,6 +11,7 @@
 	
 	<typeAliases>
 		<typeAlias type="kr.or.daekwang.admin.model.vo.AdminVo" alias="Admin" />
+		<typeAlias type="kr.or.daekwang.admin.model.vo.SliderVo" alias="Slider" />
 		<typeAlias type="kr.or.daekwang.apply.model.vo.ApplyVo" alias="Apply" />
 		<typeAlias type="kr.or.daekwang.board.model.vo.BoardVo" alias="Board" />
 		<typeAlias type="kr.or.daekwang.member.model.vo.MemberVo" alias="Member" />
