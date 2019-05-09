@@ -84,19 +84,19 @@
 	<div class="cw_board_wrap">
 		<table>
 			<colgroup>
-				<col width="8%">
+				<col width="8%" class="m_width">
 				<col width="*">
-				<col width="13%">
-				<col width="10%">
-				<col width="8%">
+				<col width="13%" class="m_dn">
+				<col width="10%" class="m_width">
+				<col width="8%" class="m_dn">
 			</colgroup>
 			<thead>
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
-					<th>등록일</th>
+					<th class="m_dn">등록일</th>
 					<th>작성자</th>
-					<th>조회</th>
+					<th class="m_dn">조회</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -106,10 +106,12 @@
 						<c:url var="churchNewsDetail" value="churchNewsDetail.do">
 							<c:param name="BOARD_NO" value="${churchNews.BOARD_NO }"/>
 						</c:url>
-						<td class="tal"><a href="${churchNewsDetail }">${churchNews.BOARD_TITLE }</a></td>		
-						<td>${churchNews.RECENT_UPDATE_DATE }</td>
+						<td class="tal">
+							<a class="tddd tdddw" href="${churchNewsDetail }">${churchNews.BOARD_TITLE }</a>
+						</td>		
+						<td class="m_dn">${churchNews.RECENT_UPDATE_DATE }</td>
 						<td>${churchNews.memberVo.MEMBER_NAME }</td>
-						<td>${churchNews.BOARD_READCNT }</td>
+						<td class="m_dn">${churchNews.BOARD_READCNT }</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -180,4 +182,18 @@
 	})
 	
 </script>
+
+<script>
+  $('.dotdot').dotdotdot({
+      // configuration goes here
+      ellipsis: '...',//말줄임 뭘로 할지
+      watch : true, //윈도우 창에따라서 업데이트 할건지, 윈도우가 리사이즈될 때 업데이트할 건지
+      wrap : 'letter',//word(단어단위), letter(글 단위), children(자식단위) 자르기
+      height  : 20,
+      tolerance : 20 //글이 넘치면 얼만큼 height 늘릴건지
+  });
+</script>
+
+
+
 </html>
