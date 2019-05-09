@@ -21,13 +21,20 @@
 		</ul>
 	</div>
 	<div class="moviewrap">
-		<ul id="results" class="movieul"></ul>
-		<div class="youtube_Btn">
-			<a href="https://www.youtube.com/playlist?list=PLwcdqPJXVv0a6Oh50GrnRaQgMMRQ0N7QD" target="_blank">
-				<i class="xi-youtube-play"></i>
-				<span>대광교회 YouTube</span>
-			</a>
-		</div>
+		<ul id="results" class="movieul">
+			<li>	
+				<a href="https://www.youtube.com/playlist?list=PLwcdqPJXVv0a6Oh50GrnRaQgMMRQ0N7QD" target="_blank">
+					<div class="mwrap">
+						<img width="222" height="118" src="<c:url value="/resources/img/youtube.jpg"/>">
+						<div class="text">
+							<p class="title">배너클릭시 수요기도회 설교 유튜브채널로 이동합니다.</p>
+							<p class="text">Sunday Worship</p>
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+	
 	</div>
 	
 	

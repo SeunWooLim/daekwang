@@ -83,13 +83,20 @@
 	
 	
 	<div class="moviewrap">
-		<ul id="results" class="movieul"></ul>
-		<div class="youtube_Btn">
-			<a href="https://www.youtube.com/playlist?list=PLwcdqPJXVv0a-ggDC9Xr9ycvkOKCmIzLk" target="_blank">
-				<i class="xi-youtube-play"></i>
-				<span>대광교회 YouTube</span>
-			</a>
-		</div>
+		<ul id="results" class="movieul">
+			<li>	
+				<a href="https://www.youtube.com/playlist?list=PLwcdqPJXVv0a-ggDC9Xr9ycvkOKCmIzLk" target="_blank">
+					<div class="mwrap">
+						<img width="222" height="118" src="<c:url value="/resources/img/youtube.jpg"/>">
+						<div class="text">
+							<p class="title">배너클릭시 샬롬찬양대 유튜브채널로 이동합니다.</p>
+							<p class="text">Sunday Worship</p>
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+		
 	</div>
 	
 	
