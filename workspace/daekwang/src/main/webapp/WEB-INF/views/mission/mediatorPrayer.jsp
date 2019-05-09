@@ -19,7 +19,6 @@
 	<div class="cc_wrap">
 		<div id="infantsTab"  class="nextgene_cate">
 			<div class="next_detail">
-				<img alt="" src="<c:url value="/resources/img/pray.png"/>">
 				<div class="next_left">
 					<p>중보기도</p>
 				</div>
@@ -36,14 +35,14 @@
 									<td class="title fb">화요 중보 기도모임</td>
 								</tr>
 								<tr>
-									<td>일시 : 매주 화요일 오전 10시, 장소 : 본당 지하 유치부실</td>									
+									<td>일시 : 매주 화요일 오전 10시,<br class="br_m"> 장소 : 본당 지하 유치부실</td>									
 								</tr>
 								
 								<tr>
 									<td class="title fb">어머니 기도회</td>
 								</tr>
 								<tr>
-									<td>일시 : 매주 목요일 오후 3시, 장소 : 교육관</td>
+									<td>일시 : 매주 목요일 오후 3시,<br class="br_m"> 장소 : 교육관</td>
 									
 								</tr>
 								
@@ -52,7 +51,7 @@
 									<td class="title fb">주일 중보 기도모임</td>
 								</tr>
 								<tr>
-									<td>일시 : 매주 주일, 장소 : 중보기도실</td>
+									<td>일시 : 매주 주일,<br class="br_m"> 장소 : 중보기도실</td>
 									
 								</tr>
 								
@@ -62,12 +61,13 @@
 									<td class="title fb">금요 기도모임</td>
 								</tr>
 								<tr>
-									<td>일시 : 매월 첫째주 금요일 저녁 8시, 장소 : 본당</td>
+									<td>일시 : 매월 첫째주 금요일 저녁 8시,<br class="br_m"> 장소 : 본당</td>
 									
 								</tr>
 							
 							</tbody>
 						</table>
+						<img alt="" src="<c:url value="/resources/img/pray.png"/>" style="width:100%; margin-top:20px;">
 					</div>				
 				</div>
 			</div>

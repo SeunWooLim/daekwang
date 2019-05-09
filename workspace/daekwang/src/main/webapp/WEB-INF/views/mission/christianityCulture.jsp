@@ -51,54 +51,36 @@
 									<td class="title">약력</td>
 									<td class="title">시간</td>
 								</tr>
-								<tr>
-									<td>바이올린</td>
-									<td>임주은</td>
-									<td>숭실대학교 졸업</td>
-									<td>수요일 오후 6:00</td>
-								</tr>
+								
 								<tr>
 									<td>탁구</td>
 									<td>송이숙</td>
-									<td>안양여고배 개인복식 우승, 안양시장기 단체전 우승,<br>우승 골드핑퐁.남한산성, 수지협회장기 입상</td>
+									<td>안양여고배 개인복식 우승,<br class="br_m"> 안양시장기 단체전 우승,<br>골드핑퐁.남한산성, 수지협회장기 입상</td>
 									<td>월요일 오전 10:00<br>목요일 오전 10:00<br>금요일 오후 7:00</td>
 								</tr>
 								<tr>
 									<td>문인화</td>
 									<td>김병권</td>
-									<td>대한민국미술대전초대작가</td>
-									<td>기초반 화요일 오전 10:00<br>중급반 화요일 오후 12:30</td>
+									<td>대한민국미술대전<br class="br_m">초대작가</td>
+									<td>기초반 화요일 <br class="br_m">오전 10:00<br>중급반 화요일 <br class="br_m">오후 12:30</td>
 								</tr>
 								<tr>
 									<td>드럼</td>
-									<td>나윤수</td>
-									<td>프로듀서</td>
-									<td>수요일 오후 03:00<br>토요일 오후 11:00</td>
+									<td>김영현</td>
+									<td>Shepherd university 학사<br>
+									California drum off<br class="br_m"> 2등<br>
+									수원 청소년 문화 <br class="br_m">센터 강사
+									</td>
+									<td>수요일 오후 03:00</td>
 								</tr>
-								<tr>
-									<td>플룻</td>
-									<td>이석용</td>
-									<td>중앙대학원</td>
-									<td>수요일 오후 7:00</td>
-								</tr>
-								<tr>
-									<td>색소폰</td>
-									<td>이석용</td>
-									<td>중앙대학원</td>
-									<td>수요일 오후 8:00</td>
-								</tr>
+							
 								<tr>
 									<td>오카리나</td>
 									<td>장정숙</td>
-									<td>코리아 펜플렛 오카리나 아카데미 지도자 과정이수,<br>강남롯데 MBC문화센타 강사</td>
+									<td>코리아 펜플렛<br class="br_m"> 오카리나 아카데미 지도자 과정이수,<br>강남롯데<br class="br_m"> MBC문화센타 강사</td>
 									<td>월요일 오후 7:00</td>
 								</tr>
-								<tr>
-									<td>기타</td>
-									<td>나윤수</td>
-									<td>프로듀서</td>
-									<td>수요일 오전 11:00<br>토요일 오전 10:00</td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>				
