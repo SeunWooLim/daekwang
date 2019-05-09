@@ -10,6 +10,13 @@
 					<img alt="안양대광교회" src="<c:url value="/resources/img/logo1.png"/>">
 				</a>
 			</div>
+			<div class="gnb_m_btn">
+				<div id="nav-icon1" class="">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+			</div>
 			<div class="head_top_right">
 				<ul>
 					<!-- 로그인X -->
@@ -17,8 +24,6 @@
 						<li><a class="login_btn">로그인</a></li>
 						<li>|</li>
 						<li><a href="join.do">회원가입</a></li>
-						<li>|</li>
-						<li><a>사이트맵</a></li>
 					</c:if>
 					<!-- 로그인O -->
 					<c:if test="${sessionScope.loginUser ne null}">
@@ -38,6 +43,93 @@
 				</ul>
 			</div>
 			</div>
+		</div>
+		<div class="gnb_menu_bg"></div>
+		<div class="gnb_menu">
+			<ul class="gnb_menu1">
+				<li><a>교회안내</a>
+					<ul class="gnb_menu2">
+						<li><a href="pastorGreeting.do">담임목사 인사</a></li>
+						<li><a href="churchIntroducing.do">대광교회 소개</a></li>
+						<li><a href="churchVision.do">교회비전</a></li>
+						<li><a href="churchHistory.do">교회연혁</a></li>
+						<li><a href="newFamilyGuide.do">새가족을 위한 안내</a></li>
+						<li><a href="volunteers.do">섬기는 사람들</a></li>
+						<li><a href="worshipGuide.do">예배안내</a></li>
+						<li><a href="howToCome.do">찾아오시는 길</a></li>
+					</ul>
+				</li>
+				<li><a>말씀과 찬양</a>
+					<ul class="gnb_menu2">
+						<li><span class="subtitle">예배 설교</span></li>
+						<li><a href="sundayWorship.do">주일 낮 설교</a></li>
+						<li><a href="wednesdayWorship.do">수요기도회 설교</a></li>
+						<li><a href="allgenWorship.do">올젠워십 설교</a></li>
+						<li><span class="subtitle">예배 찬양</span></li>
+						<li><a href="shalomChoir.do">샬롬 찬양대</a></li>	
+						<li><a href="immanuelChoir.do">임마누엘 찬양대</a></li>
+						<li><a href="unionChoir.do">연합찬양대</a></li>
+						<li><a href="specialSong.do">특송</a></li>
+						<li><a href="specialEvent.do">특별행사</a></li>
+					</ul>
+				</li>
+				<li><a>나눔과 자료</a>
+					<ul class="gnb_menu2">
+						<li><a href="newFamilyIntroducing.do">새가족소개</a></li>
+						<li><a href="churchNews.do">교회소식</a></li>
+						<li><a href="personNews.do">교우소식</a></li>
+						<!-- <li><a href="churchPhoto.do">교회사진</a></li> -->
+						<li><a href="churchPhotoNew.do">교회사진</a></li>
+						<li><a href="eventVideo.do">행사 동영상</a></li>
+						<li><a href="flowerPhoto.do">꽃꽃이 갤러리</a></li>
+						<li><a href="weekPageApply.do">주보 광고신청</a></li>
+						<li><a href="worshipDataApply.do">예배 자료신청</a></li>
+					</ul>
+				</li>
+				<li><a>다음세대</a>
+					<ul class="gnb_menu2">
+						<li><span class="subtitle">교회학교</span></li>
+						<li><a href="nextGeneration.do#tab1">영유아부</a></li>
+						<li><a href="nextGeneration.do#tab2">유치부</a></li>
+						<li><a href="nextGeneration.do#tab3">유년부</a></li>
+						<li><a href="nextGeneration.do#tab4">소년부</a></li>
+						<li><a href="nextGeneration.do#tab5">중등부</a></li>
+						<li><a href="nextGeneration.do#tab6">고등부</a></li>
+						<li><span class="subtitle">청년회</span></li>
+						<li><a href="nextGeneration.do#tab7">제1청년회</a></li>
+						<li><a href="nextGeneration.do#tab8">제2청년회</a></li>
+					</ul>
+				</li>
+				<li><a>선교</a>
+					<ul class="gnb_menu2">
+						<li><a href="mediatorPrayer.do">중보기도회</a></li>
+						<li><a href="christianityCulture.do">경기기독문화원</a></li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="login_ullll">
+				<!-- 로그인X -->
+				<c:if test="${sessionScope.loginUser eq null}">
+					<li><a class="login_btn">로그인</a></li>
+					<li>|</li>
+					<li><a href="join.do">회원가입</a></li>
+				</c:if>
+				<!-- 로그인O -->
+				<c:if test="${sessionScope.loginUser ne null}">
+					<!-- 관리자 -->
+					<c:if test="${sessionScope.loginUser.MEMBER_FG eq 1 }">
+						<li><a href="admin.do" class="login_btn">${sessionScope.loginUser.MEMBER_NAME }님</a></li>
+					</c:if>
+					<!-- 일반사용자 -->
+					<c:if test="${sessionScope.loginUser.MEMBER_FG eq 2 }">
+						<li><a>${sessionScope.loginUser.MEMBER_NAME }님</a></li>
+					</c:if>
+					<li>|</li>
+					<li><a href="logout.do" class="login_btn">로그아웃</a></li>
+					<li>|</li>
+					<li><a href="myPageChk.do">myPage</a></li>
+				</c:if>
+			</ul>
 		</div>
 		<div class="head_mid_wrap">
 			<ul>
@@ -389,5 +481,20 @@
 		}
 	}
 	//이메일 찾기 엔터 클릭:e
+</script>
+<script>
+	$(document).ready(function(){
+		$(".gnb_m_btn").click(function(){
+			$("#nav-icon1").toggleClass("open");
+			$(".gnb_menu").slideToggle();
+			$(".gnb_menu_bg").toggleClass("open");
+		})
+		
+		$(".gnb_menu1 > li > a").click(function(){
+			$(this).siblings(".gnb_menu2").slideToggle();
+			$(this).parent().siblings("li").find(".gnb_menu2").slideUp();
+			
+		})
+	})
 </script>
 

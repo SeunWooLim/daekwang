@@ -2,14 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+
 <jsp:include page="meta.jsp" />
-</head>
-<body>
+
 
 <jsp:include page="header.jsp" />
 
@@ -74,7 +69,7 @@
 					<span class="bg2"></span>
 					<div class="text">
 						<p>교회소식</p>
-						<ul>
+						<!-- <ul>
 							<li><a href="#"> <span class="left">제목입니다.</span> <span
 									class="right">2019-02-20</span>
 							</a></li>
@@ -87,7 +82,7 @@
 							<li><a href="#"> <span class="left">제목입니다.</span> <span
 									class="right">2019-02-20</span>
 							</a></li>
-						</ul>
+						</ul> -->
 					</div>
 					<span><a href="churchNews.do"><i
 							class="xi-plus-circle-o"></i></a></span>
