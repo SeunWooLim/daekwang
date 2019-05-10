@@ -78,6 +78,11 @@
 												<label>내용</label>
 												<input type="text" id="" name="SLIDER_CONTENT" value="${mainSlider.SLIDER_CONTENT }" />
 											</li>
+											<li>
+												<label>백그라운드 선택</label>
+												<label for="bgY" style="width:30px;">사용</label><input type="radio" name="s1" id="bgY" style="width:20px; height:20px; margin-right:15px;">
+												<label for="bgN" style="width:50px;">사용안함</label><input type="radio" name="s1" id="bgN" style="width:20px; height:20px;">
+											</li>
 										</ul>								
 										
 										<!-- hidden 변수 -->
@@ -123,6 +128,15 @@
 					<li>
 						<label>이미지</label>
 						<input type="file" name="file" style="padding:0; height:100%; width: 50%;    vertical-align: top;">
+					</li>
+					<li>
+						<label>모바일이미지</label>
+						<input type="file" name="file" style="padding:0; height:100%; width: 50%;    vertical-align: top;">
+					</li>
+					<li>
+						<label>백그라운드 선택</label>
+						<label for="bgY" style="width:30px;">사용</label><input type="radio" name="s1" id="bgY" style="width:20px; height:20px; margin-right:15px;">
+						<label for="bgN" style="width:50px;">사용안함</label><input type="radio" name="s1" id="bgN" style="width:20px; height:20px;">
 					</li>
 				</ul>								
 				

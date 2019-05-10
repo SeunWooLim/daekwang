@@ -599,6 +599,9 @@
 	.login_ullll li{display: inline-block; color: #3e96a9}
 	.login_ullll li a{color: #3e96a9; font-weight: bold;}
 	
+	.w_main_slider{display: block;}
+		.m_main_slider{display: none;}
+	
 	@media(max-width:1200px){
 		.greet_wrap .greet_detail .greet_left{width:100%;}
 		.greet_wrap .greet_detail .greet_right{width:100%;}
@@ -743,6 +746,8 @@
 		.newfamilytxt{top:-48px;    width: 100px; height: 100px;    background-size: 100%;    font-size: 16px;}
 		
 		.newfamilybg img{width:100%;}
+		.w_main_slider{display: none;}
+		.m_main_slider{display: block;}
 	}
 	
 	@media(max-width:500px){

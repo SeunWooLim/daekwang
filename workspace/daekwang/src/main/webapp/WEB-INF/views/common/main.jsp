@@ -9,7 +9,24 @@
 <jsp:include page="header.jsp" />
 
 	<div id="wrap">
-		<div class="main_slider">
+		<div class="main_slider w_main_slider">
+			<ul>
+				<c:forEach var="mainSlider" items="${list }">
+					<li>
+						<div class="main_slider_div">
+							<p class="title">${mainSlider.SLIDER_TITLE }</p>
+							<p class="text">${mainSlider.SLIDER_CONTENT }</p>
+						</div>
+						<div class="main_slider_bg"></div>
+						<!-- 로컬서버 경로 -->
+						<img alt="" src="<c:url value="/resources/img/mainSlideImage/${mainSlider.SLIDER_RENAME }"/>">
+						<!-- 카페24 경로 -->
+						<%-- <img alt="" src="<c:url value="/upload/${mainSlider.UPLOAD_YYMM }/${mainSlider.SLIDER_RENAME}"/>"> --%>
+					</li>
+				</c:forEach>
+			</ul>
+		</div>
+		<div class="main_slider m_main_slider">
 			<ul>
 				<c:forEach var="mainSlider" items="${list }">
 					<li>

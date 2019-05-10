@@ -167,11 +167,11 @@ input[type='radio']:checked + label::before{background: url('/common/img/radio_o
 .form_wrap ul{}
 .form_wrap ul li{border:1px solid #ccc; padding:10px 10px; color:#333; border-bottom:0;}
 .form_wrap ul li:last-child{border-bottom:1px solid #ccc; }
-.form_wrap ul li label{width:60px; display:inline-block; vertical-align: top}
+.form_wrap ul li label{width:90px; display:inline-block; vertical-align: top}
 .form_wrap ul li img{width:100% !important; height:400px !important;}
-.form_wrap ul li input{height:30px; width:91%; box-sizing:border-box; padding:0 10px; color:#333; border:1px solid #e1e1e1;}
-.form_wrap ul li select{height:30px; width:91%; box-sizing:border-box; padding:0 10px; color:#333; border:1px solid #e1e1e1;}
-.form_wrap ul li textarea{height:200px; width:91%; box-sizing:border-box; padding:5px 10px; color:#333; border:1px solid #e1e1e1;}
+.form_wrap ul li input{height:30px; width:86%; box-sizing:border-box; padding:0 10px; color:#333; border:1px solid #e1e1e1;}
+.form_wrap ul li select{height:30px; width:86%; box-sizing:border-box; padding:0 10px; color:#333; border:1px solid #e1e1e1;}
+.form_wrap ul li textarea{height:200px; width:86%; box-sizing:border-box; padding:5px 10px; color:#333; border:1px solid #e1e1e1;}
 .form_wrap ul.list{text-align:center; margin-top:20px;}
 .form_wrap ul.list li{display: inline-block; border:none;}
 .form_wrap ul.list li a{cursor:pointer}

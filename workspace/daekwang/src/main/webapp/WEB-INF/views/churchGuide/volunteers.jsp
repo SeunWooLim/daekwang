@@ -27,10 +27,18 @@
 			<ul>
 				<li>
 					<div class="left_box">
+						<img alt="" src="<c:url value="/"/>resources/img/bking.gif" style="width:184px; height:219px;">
+					</div>
+					<div class="right_box">
+						<p>원로목사 : 임영수</p>
+					</div>
+				</li>
+				<li>
+					<div class="left_box">
 						<img alt="" src="<c:url value="/"/>resources/img/king.png">
 					</div>
 					<div class="right_box">
-						<p>이병수 원로목사</p>
+						<p>위임목사 : 이병수</p>
 					</div>
 				</li>
 				<li>
