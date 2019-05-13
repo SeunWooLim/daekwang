@@ -1490,8 +1490,10 @@ public class AdminController {
 		
 		//메인슬라이더 리스트 조회
 		List<ApplyVo> list = adminService.mainSlideAdminList();
+		List<ApplyVo> list2 = adminService.mainSlideAdminList2();
 		
-		model.addAttribute("list", list);
+		model.addAttribute("wList", list);
+		model.addAttribute("mList", list2);
 		
 		return "admin/mainSlideAdmin";
 	}

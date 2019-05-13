@@ -179,6 +179,10 @@ public class AdminDao {
 	public List<ApplyVo> mainSlideAdminList() {
 		return mybatis.selectList("adminMapper.mainSlideAdminList");
 	}
+	
+	public List<ApplyVo> mainSlideAdminList2() {
+		return mybatis.selectList("adminMapper.mainSlideAdminList2");
+	}
 
 	public int deleteMainSlideAdmin(int slider_no) {
 		return mybatis.delete("adminMapper.deleteMainSlideAdmin", slider_no);

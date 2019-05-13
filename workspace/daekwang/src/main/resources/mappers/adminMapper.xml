@@ -41,6 +41,8 @@
   		<result property="SLIDER_ORNAME" column="SLIDER_ORNAME"/>
   		<result property="SLIDER_RENAME" column="SLIDER_RENAME"/>
   		<result property="UPLOAD_YYMM" column="UPLOAD_YYMM"/>
+  		<result property="SLIDER_CATE" column="SLIDER_CATE"/>
+  		<result property="SLIDER_BG" column="SLIDER_BG"/>
 	</resultMap>
 	
 	<resultMap id="adminResultMap" type="Admin">
@@ -621,10 +623,18 @@
 		WHERE DEPT_NO = #{DEPT_NO}
 	</update>
 	
-	<!-- 메인슬라이더 리스트 조회 -->
+	<!-- 메인슬라이더 리스트 조회 pc용 -->
 	<select id="mainSlideAdminList" resultMap="sliderResultMap" resultType="list">
 		SELECT *
 		FROM main_slider
+		WHERE SLIDER_CATE = 'W'
+	</select>
+	
+	<!-- 메인슬라이더 리스트 조회 모바일용-->
+	<select id="mainSlideAdminList2" resultMap="sliderResultMap" resultType="list">
+		SELECT *
+		FROM main_slider
+		WHERE SLIDER_CATE = 'M'
 	</select>
 	
 	<!-- 메인슬라이더 삭제 -->
@@ -640,18 +650,32 @@
 			  SLIDER_TITLE = #{SLIDER_TITLE}
 			, SLIDER_CONTENT = #{SLIDER_CONTENT}
 			, SLIDER_RENAME = #{SLIDER_RENAME}
+			, SLIDER_BG = #{SLIDER_BG}
 		WHERE SLIDER_NO = #{SLIDER_NO}
 	</update>
 	
 	<!-- 메인 슬라이더 등록 -->
 	<insert id="insertMainSlideAdmin">
-		INSERT INTO main_slider(SLIDER_DATE
+		INSERT INTO main_slider(
+								SLIDER_DATE
 							  , SLIDER_TITLE
 							  , SLIDER_CONTENT
 							  , SLIDER_ORNAME
 							  , SLIDER_RENAME
-							  , UPLOAD_YYMM)
-		VALUES(NOW(), #{SLIDER_TITLE}, #{SLIDER_CONTENT}, #{SLIDER_ORNAME}, #{SLIDER_RENAME}, #{UPLOAD_YYMM})							  
+							  , UPLOAD_YYMM
+							  ,	SLIDER_CATE
+							  , SLIDER_BG
+							  )
+		VALUES(
+				  NOW()
+				, #{SLIDER_TITLE}
+				, #{SLIDER_CONTENT}
+				, #{SLIDER_ORNAME}
+				, #{SLIDER_RENAME}
+				, #{UPLOAD_YYMM}
+				, #{SLIDER_CATE}
+				, #{SLIDER_BG}
+				)							  
 	</insert>
 	
 	<!-- 삭제할 사진 정보 리스트 조회 -->

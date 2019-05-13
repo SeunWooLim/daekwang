@@ -305,8 +305,12 @@ public class MemberController {
 		int result = memberService.modifyMember(member);
 		
 		if(result != 0) {
-			model.addAttribute("msg", "수정이 완료되었습니다.");
-			model.addAttribute("url", "myPage.do");
+			HttpSession session = request.getSession(false);
+			if(session != null) {
+				session.invalidate();
+			}
+			model.addAttribute("msg", "수정이 완료되었습니다. 다시 로그인하여 주십시오");
+			model.addAttribute("url", "forwardMain.do");
 			returnVal = "common/alert";
 		}else {
 			model.addAttribute("msg", "회원정보 수정에 실패하였습니다.");

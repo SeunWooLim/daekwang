@@ -11,13 +11,17 @@
 	<div id="wrap">
 		<div class="main_slider w_main_slider">
 			<ul>
-				<c:forEach var="mainSlider" items="${list }">
+				<c:forEach var="mainSlider" items="${wList }">
 					<li>
 						<div class="main_slider_div">
 							<p class="title">${mainSlider.SLIDER_TITLE }</p>
 							<p class="text">${mainSlider.SLIDER_CONTENT }</p>
 						</div>
-						<div class="main_slider_bg"></div>
+						<!-- 메인슬라이더 배경 -->
+						<c:if test="${fn:contains(mainSlider.SLIDER_BG,'Y')}">
+							<div class="main_slider_bg"></div>
+						</c:if>
+						
 						<!-- 로컬서버 경로 -->
 						<img alt="" src="<c:url value="/resources/img/mainSlideImage/${mainSlider.SLIDER_RENAME }"/>">
 						<!-- 카페24 경로 -->
@@ -28,13 +32,16 @@
 		</div>
 		<div class="main_slider m_main_slider">
 			<ul>
-				<c:forEach var="mainSlider" items="${list }">
+				<c:forEach var="mainSlider" items="${mList }">
 					<li>
 						<div class="main_slider_div">
 							<p class="title">${mainSlider.SLIDER_TITLE }</p>
 							<p class="text">${mainSlider.SLIDER_CONTENT }</p>
 						</div>
-						<div class="main_slider_bg"></div>
+						<!-- 메인슬라이더 배경 -->
+						<c:if test="${fn:contains(mainSlider.SLIDER_BG,'Y')}">
+							<div class="main_slider_bg"></div>
+						</c:if>
 						<!-- 로컬서버 경로 -->
 						<img alt="" src="<c:url value="/resources/img/mainSlideImage/${mainSlider.SLIDER_RENAME }"/>">
 						<!-- 카페24 경로 -->

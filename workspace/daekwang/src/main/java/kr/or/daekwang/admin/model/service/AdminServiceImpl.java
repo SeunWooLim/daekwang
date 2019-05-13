@@ -338,6 +338,11 @@ public class AdminServiceImpl implements AdminService{
 	public List<ApplyVo> mainSlideAdminList() {
 		return adminDao.mainSlideAdminList();
 	}
+	
+	@Override
+	public List<ApplyVo> mainSlideAdminList2() {
+		return adminDao.mainSlideAdminList2();
+	}
 
 	@Override
 	public int deleteMainSlideAdmin(int slider_no) {

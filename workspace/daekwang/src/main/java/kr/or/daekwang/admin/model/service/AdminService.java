@@ -92,4 +92,6 @@ public interface AdminService {
 	
 	void autoDeletePhoto();
 
+	List<ApplyVo> mainSlideAdminList2();
+
 }
