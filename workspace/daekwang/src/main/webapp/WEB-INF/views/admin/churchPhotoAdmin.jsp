@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -154,32 +156,34 @@
 											<li>
 												<label>이미지</label>
 												<ul class="photoooooooooooo">
-													<%-- <c:forEach var="photo" begin="1" end="${churchPhoto.PHOTO_COUNT }" step="1">
-														<li>
-															<img alt="" src="<c:url value="/"/>resources/uploadChurch/${churchPhoto.PHOTO_IMAGE}">
-														</li>
-													</c:forEach> --%>
 													<c:set var="photoCount" value="${churchPhoto.PHOTO_COUNT }"/>
 													<c:set var="photoImage" value="${churchPhoto.PHOTO_IMAGE }"/>
 													<%
 														String photoCount = pageContext.getAttribute("photoCount").toString();
 														String photoImage = pageContext.getAttribute("photoImage").toString();
 														int photoNum = Integer.parseInt(photoCount);
+														List<Map> photoList = new ArrayList<Map>();
+														
 														int tempA = 0;
 														int tempB = 17;
 														for(int i = 1; i <= photoNum; i++ ) {
-													%>
-															<li>
-																<!-- 카페24 경로 -->
-																<%-- <img src="<c:url value='/upload/${churchPhoto.UPLOAD_YYMM}/<%=photoImage.substring(tempA, tempB)%>'/>"> --%>
-																<!-- 로컬서버 경로 -->
-																<img alt="" src="<c:url value="/resources/uploadChurch/<%= photoImage.substring(tempA, tempB) %>"/>">
-															</li>
-													<%
+															Map<String, String> photoMap = new HashMap<String, String>();
+															String tempImage = photoImage.substring(tempA, tempB);
+															photoMap.put("PHOTO_IMAGE", tempImage);
+															photoList.add(photoMap);
+															
 															tempA += 17;
 															tempB += 17;
 														}
 													%>
+													<c:forEach var="photo" items="<%= photoList %>">
+														<li>
+															<!-- 카페24 경로 -->
+															<%-- <img src="<c:url value='/upload/${churchPhoto.UPLOAD_YYMM}/<%=photoImage.substring(tempA, tempB)%>'/>"> --%>
+															<!-- 로컬서버 경로 -->
+															<img alt="" src="<c:url value="resources/uploadChurch/${photo.PHOTO_IMAGE}"/>">
+														</li>
+													</c:forEach>
 												</ul>	
 											</li>
 											<li>
