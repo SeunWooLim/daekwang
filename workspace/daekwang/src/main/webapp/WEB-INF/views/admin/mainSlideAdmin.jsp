@@ -10,6 +10,10 @@
 <jsp:include page="../common/adminmeta.jsp"/>
 </head>
 <body>
+<style>
+				.asdfasdf{overflow: hidden;}
+		
+			</style>
 <div id="wrap">
 	<!--header s-->
 	<jsp:include page="header.jsp"/>
@@ -22,9 +26,12 @@
 			</div>
 
 			<div class="category_wrap">
-				<ul class="ul_form2">
-					<li><a class="btnform3" onclick="changeDept(1);">PC용</a></li>
+				<ul class="ul_form2" style="float:left;">
+					<li><a class="btnform3" onclick="changeDept(1);">PC용</a></li> 
 					<li><a class="btnform3" onclick="changeDept(2);">모바일용</a></li>
+				</ul>
+				<ul class="ul_form2">
+					
 					<li><a class="btnform3" onclick="openInsertForm();">등록</a></li>
 				</ul>
 			</div>
@@ -116,42 +123,34 @@
 			
 			<!-- 모바일용 이미지 -->
 			<div class="table_wrap" id="table_wrap2">
-				<table>
-					<colgroup>
-						<col width="*"/>
-					</colgroup>
-					<tbody>
-						<c:forEach var="mainSlider" items="${mList }">
-							
-							<tr>							
-								<td style="position: relative; padding:0;">
-									<!-- 카페24 경로 -->
-									<%-- <img style="width:100%; height:600px"src="<c:url value="/upload/${mainSlider.UPLOAD_YYMM }/${mainSlider.SLIDER_RENAME}"/>"> --%>
-									<!-- 로컬서버 경로 -->
-									<img style="width:100%; height:600px"src="<c:url value="/resources/img/mainSlideImage/${mainSlider.SLIDER_RENAME}"/>">
-									<c:if test="${fn:contains(mainSlider.SLIDER_BG,'Y')}">
-										<div style="position:absolute; top:0; left:0; width:100%; height:600px; display:block; background:rgba(0,0,0,0.5)"></div>
-									</c:if>
-									<div style="position: absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); text-align:center; color:#fff;">
-										<p>${mainSlider.SLIDER_TITLE }</p>
-										<p>${mainSlider.SLIDER_CONTENT }</p>
-									</div>
-									<ul class="mt20 mb20">
-										<li>
-											<a href="#" class="btnform5" onclick="updateForm(<%= rowNum %>)">수정</a>
-											<c:url var="delete" value="mainSlideAdmin.do">
-												<c:param name="SLIDER_NO" value="${mainSlider.SLIDER_NO }" />
-												<c:param name="SLIDER_RENAME" value="${mainSlider.SLIDER_RENAME}"></c:param>
-												<c:param name="deleteFlag" value="Y" />
-											</c:url>
-											<a href="${delete }" class="btnform6">삭제</a>
-										</li>
-									</ul>
-								</td>
-							</tr>
-							
-							<!-- 수정 폼 모달 START-->
-							<div class="form_wrap" id="form_wrap<%= rowNum %>">
+			
+				<ul class="asdfasdf">
+					<c:forEach var="mainSlider" items="${mList }">
+					<li style="float:left; width:19%; margin-right:1%;position: relative;">
+						<!-- 카페24 경로 -->
+						<%-- <img style="width:100%; height:600px"src="<c:url value="/upload/${mainSlider.UPLOAD_YYMM }/${mainSlider.SLIDER_RENAME}"/>"> --%>
+						<!-- 로컬서버 경로 -->
+						<img style="width:100%; height:600px"src="<c:url value="/resources/img/mainSlideImage/${mainSlider.SLIDER_RENAME}"/>">
+						<c:if test="${fn:contains(mainSlider.SLIDER_BG,'Y')}">
+							<div style="position:absolute; top:0; left:0; width:100%; height:600px; display:block; background:rgba(0,0,0,0.5)"></div>
+						</c:if>
+						<div style="position: absolute; top:50%; left:50%; transform:translateX(-50%) translateY(-50%); text-align:center; color:#fff;">
+							<p>${mainSlider.SLIDER_TITLE }</p>
+							<p>${mainSlider.SLIDER_CONTENT }</p>
+						</div>
+						<ul class="mt20 mb20" style="text-align:center;">
+							<li>
+								<a href="#" class="btnform5" onclick="updateForm(<%= rowNum %>)">수정</a>
+								<c:url var="delete" value="mainSlideAdmin.do">
+									<c:param name="SLIDER_NO" value="${mainSlider.SLIDER_NO }" />
+									<c:param name="SLIDER_RENAME" value="${mainSlider.SLIDER_RENAME}"></c:param>
+									<c:param name="deleteFlag" value="Y" />
+								</c:url>
+								<a href="${delete }" class="btnform6">삭제</a>
+							</li>
+						</ul>
+					</li>
+					<div class="form_wrap" id="form_wrap<%= rowNum %>">
 								<form action="mainSlideAdmin.do" method="post">
 									<div class="form">
 										<p>메인슬라이드 수정</p>
@@ -190,6 +189,23 @@
 								</form>
 							</div>
 							<!-- 수정 폼 모달 END -->
+					</c:forEach>
+				</ul>
+				<table>
+					<colgroup>
+						<col width="*"/>
+					</colgroup>
+					<tbody>
+						<c:forEach var="mainSlider" items="${mList }">
+							
+							<tr>							
+								<td style="position: relative; padding:0;">
+									
+								</td>
+							</tr>
+							
+							<!-- 수정 폼 모달 START-->
+							
 						</c:forEach>
 					</tbody>
 				</table>
